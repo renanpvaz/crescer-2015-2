@@ -63,10 +63,6 @@ public class Elfo {
         return nome;
     }
     
-    public void setNome(String novoNome) {
-        this.nome = novoNome;
-    }
-    
     public int getFlechas() {
         return this.flechas;
     }
