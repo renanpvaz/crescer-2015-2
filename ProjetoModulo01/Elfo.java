@@ -11,9 +11,16 @@ public class Elfo {
         }
     }
     
+    public int getFlechas(){
+        return flechas;
+    }
+    
+    public void setFlechas(int flechas){
+        this.flechas = flechas;
+    }
+    
     public void atirarFlecha(){
         experiencia++;
-        flechas--;
     }
 }
     
