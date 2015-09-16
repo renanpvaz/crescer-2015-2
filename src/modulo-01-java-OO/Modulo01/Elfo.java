@@ -33,9 +33,10 @@ public class Elfo {
      *      public void atirarFlechaDeFogo
     */
    
-    public void atirarFlecha() {
+    public void atirarFlecha(Dwarf dwarf) {
         flechas--;
         experiencia++;
+        dwarf.receberFlechada();
         //experiencia += 1;
         //experiencia = experiencia + 1;
     }
