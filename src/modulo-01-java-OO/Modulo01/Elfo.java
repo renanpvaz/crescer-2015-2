@@ -58,4 +58,23 @@ public class Elfo {
         }
         flechas--;
     }
+    
+    public String getNome() {
+        return nome;
+    }
+    
+    public void setNome(String novoNome) {
+        this.nome = novoNome;
+    }
+    
+    public int getFlechas() {
+        return this.flechas;
+    }
+    
+    /* 
+    public void setFlechas(int flechas) {
+        if (flechas > this.flechas)
+            this.flechas = flechas;
+    }
+    */
 }
