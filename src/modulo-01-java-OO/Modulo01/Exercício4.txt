@@ -1,0 +1,7 @@
+public void atirarFlechaRefactory(){
+	flechas--;
+
+	if(acertar()){
+		experiencia++;
+    }
+}
