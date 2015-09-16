@@ -1,20 +1,24 @@
 
 /**
- * Write a description of class Obra here.
+ * Escreva a descrição da classe Obra aqui.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (seu nome) 
+ * @version (número de versão ou data)
  */
 public class Obra
 {
+    
     private String situacao;
+   
 
     /**
-     * Constructor for objects of class Obra
+     * COnstrutor para objetos da classe Obra
      */
     public Obra(String sith)
     {
-        // initialise instance variables
+        // inicializa variáveis de instância
         situacao = sith;
     }
+
+    
 }
