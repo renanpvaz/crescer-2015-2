@@ -18,4 +18,12 @@ public class DwarfTest
         Dwarf gimli = new Dwarf("Gimli");
         assertEquals(110, gimli.getVida());
     }
+    
+    @Test
+    public void dwarfPerdeVida(){
+         Elfo thranduil = new Elfo ("Thranduil", 10);
+        Dwarf gimli = new Dwarf("Gimli");
+        thranduil.atirarFlecha(gimli);
+        assertEquals(100, gimli.getVida());
+    }
 }

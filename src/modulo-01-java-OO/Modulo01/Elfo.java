@@ -37,6 +37,10 @@ public class Elfo {
         return nome;
     }
     
+    public int getExperiencia(){
+        return experiencia;
+    }
+    
     /* PascalCase (C#, VB.NET)
      *      public void AtirarFlechaDeFogo
      * camelCase (Java, JavaScript)
