@@ -7,38 +7,69 @@ import org.junit.Test;
 
 public class ElfoTest
 {
-    Elfo thranduil = new Elfo ("Thranduil", 10);
-    Dwarf gimli = new Dwarf("Gimli");
-    
+    //Nome
     @Test
-    public void elfoCriadoNomeEscolhido(){        
+    public void elfoCriadoNomeEscolhido(){
+        Elfo thranduil = new Elfo ("Thranduil");
         assertEquals("Thranduil", thranduil.getNome());
     }
+    @Test
+    public void elfoCriadoNomeEscolhidoNull(){        
+        Elfo elfoNulo = new Elfo(null);
+        assertNull(elfoNulo.getNome());
+    }
+    @Test
+    public void elfoCriadoNomeEscolhidoVazio(){        
+        Elfo elfoVazio = new Elfo("");
+        assertEquals("", elfoVazio.getNome());
+    }
     
+    //Flechas
     @Test
     public void flechasNotNull(){
         Elfo thranduil = new Elfo ("Thranduil");
         assertNotNull(thranduil.getFlechas());
     }
-    
     @Test
-    public void elfoPerdeFlechasAoAtirar(){
-        int flechasIni = thranduil.getFlechas();
-        thranduil.atirarFlecha(gimli);       
-        assertEquals(flechasIni - 1, thranduil.getFlechas());
+    public void elfoMuitasFlechas(){
+        Elfo muitasFlechas = new Elfo ("Muitas Flechas", 1000);
+        assertNotNull(muitasFlechas.getFlechas());
+    }
+    @Test
+    public void elfoPoucasFlechas(){
+        Elfo poucasFlechas = new Elfo ("Poucas Flechas", 1);
+        assertNotNull(poucasFlechas.getFlechas());
     }
     
+    //Exp
+    public void elfoComeçaCom0Exp(){
+        Elfo exp0 = new Elfo("Exp0");
+        assertEquals(0, exp0.getExperiencia());
+    }
+    
+    //AtirarFlecha
     @Test
-    public void elfoGanhaExperienciaAoAtirar(){
+    public void elfoAtiraFlechaEmDwarf(){
+        Elfo thranduil = new Elfo("Thranduil");
+        Dwarf gimli = new Dwarf("Gimli");
         thranduil.atirarFlecha(gimli);
-        assert(0 < thranduil.getExperiencia());
-    }
+        assertEquals(41, thranduil.getFlechas());
+        assertEquals(1, thranduil.getExperiencia());
+        assertEquals(100, gimli.getVida());
+   }
+    
     
     @Test
-    public void toStringRetornaInfoCorreta(){       
-       String info = thranduil.toString();       
-       boolean contain = info.contains(thranduil.getNome() + " possui " + thranduil.getFlechas() + 
-            " flechas e " + thranduil.getExperiencia() + " níveis de experiência.");       
-       assertEquals(true, contain);     
-    }    
+    public void toStringComNiveisEFlechas(){
+      Elfo thranduil = new Elfo("Thranduil", 10);  
+     assertEquals("Thranduil possui 10 flechas e 0 níveis de experiência.", thranduil.toString());        
+          
+    }
+    @Test
+    public void toStringUmaFlechaUmNível(){
+      Elfo thranduil = new Elfo("Thranduil", 2);
+      Dwarf gimli = new Dwarf("Gimli");
+      thranduil.atirarFlecha(gimli);
+      assertEquals("Thranduil possui 1 flecha e 1 nível de experiência.", thranduil.toString());    
+    }
 }

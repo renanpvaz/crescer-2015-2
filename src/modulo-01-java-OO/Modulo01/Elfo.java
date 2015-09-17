@@ -71,10 +71,18 @@ public class Elfo {
     
     public String toString(){
         
-        String info = "";
+        String textoFlechas = "flechas";
+        String textoNiveis = "níveis";
         
-        return this.nome + " possui " + this.flechas + " flechas e " 
-            + this.experiencia + " níveis de experiência.";
+        boolean flechaNoSingular = Math.abs(this.flechas) == 1;
+        boolean nivelNoSingular = Math.abs(this.experiencia) == 1;
+ 
+        return String.format("%s possui %d %s e %d %s de experiência.", 
+            this.nome, 
+            this.flechas, 
+            textoFlechas = flechaNoSingular ? "flecha" : "flechas", 
+            this.experiencia, 
+            textoNiveis  = nivelNoSingular ? "nível" : "níveis");
             
             
           
