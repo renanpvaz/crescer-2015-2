@@ -44,20 +44,18 @@ public class DwarfTest
     @Test
     public void dwarfMorto(){
        Dwarf gimli = new Dwarf("Gimli");
-       Elfo thranduil = new Elfo ("Thranduil", 11);
-       for(int i = 0; i <= 10; i++){
-          thranduil.atirarFlecha(gimli);  
-        }
+       for(int i = 0; i <= 10; i++){  
+           gimli.recebeDano();
+       }
         assertEquals(Status.MORTO, gimli.getStatus());
     }
     @Test 
-    public void dwarfMortoComVidaMenorQue0(){
+    public void dwarfVidaNaoPassaDeZero(){
         Dwarf gimli = new Dwarf("Gimli");
-       Elfo thranduil = new Elfo ("Thranduil", 12);
        for(int i = 0; i <= 11; i++){
-          thranduil.atirarFlecha(gimli);  
+          gimli.recebeDano();  
         }
-        assertEquals(Status.MORTO, gimli.getStatus());
+        assertEquals(0, gimli.getVida());
     }
         
 }
