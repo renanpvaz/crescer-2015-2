@@ -4,6 +4,7 @@
 public class Elfo {
     private String nome;
     private int flechas, experiencia;
+    private Status status;
 
     /* Type initializer
      * Executa antes de cada construtor
@@ -14,6 +15,7 @@ public class Elfo {
     public Elfo(String nome, int flechas) {
         this.nome = nome;
         this.flechas = flechas;
+        this.status = Status.VIVO;
     }
 
     /* Apenas para elucidar as diferenças entre int X Integer, esta duplicação não faz sentido.
@@ -76,6 +78,10 @@ public class Elfo {
 
     public int getExperiencia() {
         return this.experiencia;
+    }
+    
+    public Status getStatus() {
+        return this.status;
     }
 
     /* 

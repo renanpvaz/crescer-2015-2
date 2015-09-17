@@ -16,6 +16,12 @@ public class ElfoTest
         Elfo elrond = new Elfo(null);
         assertNull(elrond.getNome());
     }
+    
+    @Test
+    public void elfoNasceVivo() {
+        Elfo legolas = new Elfo("Legolas");
+        assertEquals(Status.VIVO, legolas.getStatus());
+    }
 
     @Test
     public void elfoCriadoNasceCom0DeExperiencia() {
