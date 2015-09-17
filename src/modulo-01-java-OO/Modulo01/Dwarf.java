@@ -9,6 +9,9 @@ public class Dwarf
         this.nome = nome;
     }
     
+    public String getNome(){
+        return nome;
+    }
     
     public int getVida(){
         return vida;

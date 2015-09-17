@@ -14,6 +14,12 @@ import org.junit.Test;
 public class DwarfTest
 {
     @Test
+    public void nomeCerto(){
+        Dwarf thrain = new Dwarf ("Thrain");
+        assertEquals("Thrain", thrain.getNome());
+    }
+    
+    @Test
     public void dwarfNasceCom110DeVida(){
         Dwarf gimli = new Dwarf("Gimli");
         assertEquals(110, gimli.getVida());

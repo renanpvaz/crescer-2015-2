@@ -75,7 +75,7 @@ public class Elfo {
         flechas--;
     }
     
-    public String info(){
+    public String toString(){
         
         String info = "";
         

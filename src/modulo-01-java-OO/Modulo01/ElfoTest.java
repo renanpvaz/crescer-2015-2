@@ -8,6 +8,12 @@ import org.junit.Test;
 public class ElfoTest
 {
     @Test
+    public void nomeCerto(){
+        Elfo thranduil = new Elfo ("Thranduil", null);
+        assertEquals("Thranduil", thranduil.getNome());
+    }
+    
+    @Test
     public void flechasNotNull(){
         Elfo thranduil = new Elfo ("Thranduil", null);
         assertEquals(42, thranduil.getFlechas());
