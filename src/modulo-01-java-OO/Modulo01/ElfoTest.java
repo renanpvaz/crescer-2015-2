@@ -7,32 +7,37 @@ import org.junit.Test;
 
 public class ElfoTest
 {
+    Elfo thranduil = new Elfo ("Thranduil", 10);
+    Dwarf gimli = new Dwarf("Gimli");
+    
     @Test
-    public void nomeCerto(){
-        Elfo thranduil = new Elfo ("Thranduil", null);
+    public void elfoCriadoNomeCerto(){        
         assertEquals("Thranduil", thranduil.getNome());
     }
     
     @Test
     public void flechasNotNull(){
         Elfo thranduil = new Elfo ("Thranduil", null);
-        assertEquals(42, thranduil.getFlechas());
+        assertNotNull(thranduil.getFlechas());
     }
     
     @Test
     public void elfoPerdeFlechas(){
-        Elfo thranduil = new Elfo ("Thranduil", 10);
-        Dwarf gimli = new Dwarf("Gimli");
         thranduil.atirarFlecha(gimli);
         assertEquals(9, thranduil.getFlechas());
     }
     
     @Test
     public void elfoGanhaExperiencia(){
-        Elfo thranduil = new Elfo ("Thranduil", 10);
-        Dwarf gimli = new Dwarf("Gimli");
         thranduil.atirarFlecha(gimli);
         assertEquals(1, thranduil.getExperiencia());
     }
-   
+    
+    @Test
+    public void testeToStringContem(){       
+       String info = thranduil.toString();       
+       boolean contain = info.contains(thranduil.getNome() + " possui " + thranduil.getFlechas() + 
+            " flechas e " + thranduil.getExperiencia() + " níveis de experiência.");       
+       assertEquals(true, contain);     
+    }
 }
