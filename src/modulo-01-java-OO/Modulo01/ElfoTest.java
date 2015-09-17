@@ -17,7 +17,7 @@ public class ElfoTest
     
     @Test
     public void flechasNotNull(){
-        Elfo thranduil = new Elfo ("Thranduil", null);
+        Elfo thranduil = new Elfo ("Thranduil");
         assertNotNull(thranduil.getFlechas());
     }
     
