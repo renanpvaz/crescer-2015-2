@@ -10,6 +10,12 @@ public class DwarfTest
         Dwarf gimli = new Dwarf();
         assertEquals(110, gimli.getVida());
     }
+    
+    @Test
+    public void dwarfNasceVivo() {
+        Dwarf balin = new Dwarf();
+        assertEquals(Status.VIVO, balin.getStatus());
+    }
 
     @Test
     public void dwarfRecebeFlechaEPerde10Vida() {
@@ -57,6 +63,47 @@ public class DwarfTest
         gimli.receberFlechada();
         // Assert
         assertEquals(vidaEsperada, gimli.getVida());
+    }
+
+    @Test
+    public void dwarfRecebeFlecha12VezesEMorre() {
+        Dwarf gimli = new Dwarf();
+        // Act
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        // Assert
+        assertEquals(Status.MORTO, gimli.getStatus());
+    }
+
+    @Test
+    public void dwarfRecebeFlecha13VezesEVidaFicaZerada() {
+        Dwarf gimli = new Dwarf();
+        // Act
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        // Assert
+        assertEquals(0, gimli.getVida());
     }
 
 }
