@@ -10,4 +10,53 @@ public class DwarfTest
         Dwarf gimli = new Dwarf();
         assertEquals(110, gimli.getVida());
     }
+
+    @Test
+    public void dwarfRecebeFlechaEPerde10Vida() {
+        // AAA
+        // Arrange
+        Dwarf gimli = new Dwarf();
+        int vidaEsperada = 100;
+        // Act
+        gimli.receberFlechada();
+        // Assert
+        assertEquals(vidaEsperada, gimli.getVida());
+    }
+
+    @Test
+    public void dwarfRecebeFlecha11VezesEVidaÉ0() {
+        Dwarf gimli = new Dwarf();
+        int vidaEsperada = 0;
+        // Act
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        // Assert
+        assertEquals(vidaEsperada, gimli.getVida());
+    }
+
+    @Test
+    public void dwarfRecebeFlecha7VezesEVidaÉ40() {
+        Dwarf gimli = new Dwarf();
+        int vidaEsperada = 40;
+        // Act
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        // Assert
+        assertEquals(vidaEsperada, gimli.getVida());
+    }
+
 }
