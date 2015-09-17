@@ -10,19 +10,35 @@ public class DwarfTest
         Dwarf gimli = new Dwarf();
         assertEquals(110, gimli.getVida());
     }
-    
+
     @Test
     public void dwarfNasceVivo() {
         Dwarf balin = new Dwarf();
         assertEquals(Status.VIVO, balin.getStatus());
     }
-    
+
     @Test
     public void dwarfNasceCom0DeExperiencia() {
         Dwarf balin = new Dwarf();
         assertEquals(0, balin.getExperiencia());
     }
-    
+
+    @Test
+    public void dwarfNasceComDataNascimentoPadrão() {
+        Dwarf bofur = new Dwarf();
+        assertEquals(1, bofur.getDataNascimento().getDia());
+        assertEquals(1, bofur.getDataNascimento().getMes());
+        assertEquals(1, bofur.getDataNascimento().getAno());
+    }
+
+    @Test
+    public void dwarfNasceComNomeEDataDeNascimento() {
+        Dwarf bernardin = new Dwarf("Bernardin", new DataTerceiraEra(12, 11, 1987));
+        assertEquals(12, bernardin.getDataNascimento().getDia());
+        assertEquals(11, bernardin.getDataNascimento().getMes());
+        assertEquals(1987, bernardin.getDataNascimento().getAno());
+    }
+
     @Test
     public void dwarfNasceComNome() {
         Dwarf oin = new Dwarf("Oin II");
