@@ -11,7 +11,7 @@ public class ElfoTest
     Dwarf gimli = new Dwarf("Gimli");
     
     @Test
-    public void elfoCriadoNomeCerto(){        
+    public void elfoCriadoNomeEscolhido(){        
         assertEquals("Thranduil", thranduil.getNome());
     }
     
@@ -22,19 +22,20 @@ public class ElfoTest
     }
     
     @Test
-    public void elfoPerdeFlechas(){
-        thranduil.atirarFlecha(gimli);
-        assertEquals(9, thranduil.getFlechas());
+    public void elfoPerdeFlechasAoAtirar(){
+        int flechasIni = thranduil.getFlechas();
+        thranduil.atirarFlecha(gimli);       
+        assertEquals(flechasIni - 1, thranduil.getFlechas());
     }
     
     @Test
-    public void elfoGanhaExperiencia(){
+    public void elfoGanhaExperienciaAoAtirar(){
         thranduil.atirarFlecha(gimli);
-        assertEquals(1, thranduil.getExperiencia());
+        assert(0 < thranduil.getExperiencia());
     }
     
     @Test
-    public void testeToStringContem(){       
+    public void toStringRetornaInfoCorreta(){       
        String info = thranduil.toString();       
        boolean contain = info.contains(thranduil.getNome() + " possui " + thranduil.getFlechas() + 
             " flechas e " + thranduil.getExperiencia() + " níveis de experiência.");       

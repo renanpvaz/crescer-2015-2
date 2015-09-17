@@ -73,7 +73,7 @@ public class Elfo {
         
         String info = "";
         
-        return nome + " possui " + this.flechas + " flechas e " 
+        return this.nome + " possui " + this.flechas + " flechas e " 
             + this.experiencia + " níveis de experiência.";
             
             
