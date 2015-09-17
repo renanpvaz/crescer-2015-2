@@ -16,12 +16,14 @@ public class Elfo {
         this.flechas = flechas;
     }
     
+    /* Apenas para elucidar as diferenças entre int X Integer, esta duplicação não faz sentido.
     public Elfo(String nome, Integer flechas) {
         this(nome);
         if (flechas != null) {
             this.flechas = flechas;
         }
     }
+    */
     
     public Elfo(String nome) {
         this(nome, 42);
@@ -42,7 +44,7 @@ public class Elfo {
     }
     
     /*
-     * 
+     * ANTES:
      * public atirarFlechaRefactory(this.flechas, this.experiencia){
      *     if(boolean acertar == true){
      *         flechas--;
@@ -51,14 +53,18 @@ public class Elfo {
      *          flechas--;
      *      }
      *  }
-     */
-    public void atirarFlechaRefactory(){
-        boolean acertar = true;
-        if (acertar) {
-            experiencia++;
+    
+     *  DEPOIS:
+
+        public void atirarFlechaRefactory(){
+            boolean acertar = true;
+            if (acertar) {
+                experiencia++;
+            }
+            flechas--;
         }
-        flechas--;
-    }
+    
+    */
     
     public String getNome() {
         return nome;
