@@ -67,13 +67,7 @@ public class Elfo {
      *      }
      *  }
      */
-    public void atirarFlechaRefactory(){
-        boolean acertar = true;
-        if (acertar) {
-            experiencia++;
-        }
-        flechas--;
-    }
+    
     
     public String toString(){
         

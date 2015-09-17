@@ -39,5 +39,5 @@ public class ElfoTest
        boolean contain = info.contains(thranduil.getNome() + " possui " + thranduil.getFlechas() + 
             " flechas e " + thranduil.getExperiencia() + " níveis de experiência.");       
        assertEquals(true, contain);     
-    }
+    }    
 }
