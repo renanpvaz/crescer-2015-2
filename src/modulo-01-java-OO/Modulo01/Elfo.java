@@ -74,4 +74,15 @@ public class Elfo {
         }
         flechas--;
     }
+    
+    public String info(){
+        
+        String info = "";
+        
+        info = this.nome + " possui " + this.flechas + " flechas e " 
+            + this.experiencia + " níveis de experiência.";
+            
+            return info;
+          
+        }    
 }
