@@ -41,6 +41,23 @@ public class DwarfTest
         }
         assertEquals(0, gimli.getVida());
     }
-    
-    
+    @Test
+    public void dwarfMorto(){
+       Dwarf gimli = new Dwarf("Gimli");
+       Elfo thranduil = new Elfo ("Thranduil", 11);
+       for(int i = 0; i <= 10; i++){
+          thranduil.atirarFlecha(gimli);  
+        }
+        assertEquals(Status.MORTO, gimli.getStatus());
+    }
+    @Test 
+    public void dwarfMortoComVidaMenorQue0(){
+        Dwarf gimli = new Dwarf("Gimli");
+       Elfo thranduil = new Elfo ("Thranduil", 12);
+       for(int i = 0; i <= 11; i++){
+          thranduil.atirarFlecha(gimli);  
+        }
+        assertEquals(Status.MORTO, gimli.getStatus());
+    }
+        
 }

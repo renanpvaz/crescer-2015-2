@@ -3,8 +3,8 @@
  */
 public class Elfo {
     private final String nome;
-    
-    private int flechas, experiencia;
+    private int flechas, experiencia;    
+    private Status status;
     
     /* Type initializer
      * Executa antes de cada construtor
@@ -15,6 +15,7 @@ public class Elfo {
     public Elfo(String nome, int flechas) {
         this.nome = nome;
         this.flechas = flechas;
+         this. status = Status.VIVO;
     }
     
     /*public Elfo(String nome, Integer flechas) {
@@ -41,6 +42,10 @@ public class Elfo {
         return experiencia;
     }
     
+    public Status getStatus(){
+        return status;
+    }
+    
     /* PascalCase (C#, VB.NET)
      *      public void AtirarFlechaDeFogo
      * camelCase (Java, JavaScript)
@@ -50,8 +55,7 @@ public class Elfo {
     public void atirarFlecha(Dwarf alvo) {  
         flechas--;
         experiencia++;
-        alvo.setVida(alvo.getVida() - 10);
-
+        alvo.recebeDano();
         //experiencia += 1;
         //experiencia = experiencia + 1;
     }

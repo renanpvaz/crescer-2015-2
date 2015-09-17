@@ -40,7 +40,12 @@ public class ElfoTest
         Elfo poucasFlechas = new Elfo ("Poucas Flechas", 1);
         assertNotNull(poucasFlechas.getFlechas());
     }
-    
+    //Status
+    @Test 
+    public void elfoNasceVivo(){
+        Elfo vivao = new Elfo("Vivão");
+        assertEquals(Status.VIVO, vivao.getStatus());
+    }
     //Exp
     public void elfoComeçaCom0Exp(){
         Elfo exp0 = new Elfo("Exp0");
