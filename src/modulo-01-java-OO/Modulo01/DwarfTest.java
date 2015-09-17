@@ -16,6 +16,18 @@ public class DwarfTest
         Dwarf balin = new Dwarf();
         assertEquals(Status.VIVO, balin.getStatus());
     }
+    
+    @Test
+    public void dwarfNasceCom0DeExperiencia() {
+        Dwarf balin = new Dwarf();
+        assertEquals(0, balin.getExperiencia());
+    }
+    
+    @Test
+    public void dwarfNasceComNome() {
+        Dwarf oin = new Dwarf("Oin II");
+        assertEquals("Oin II", oin.getNome());
+    }
 
     @Test
     public void dwarfRecebeFlechaEPerde10Vida() {
