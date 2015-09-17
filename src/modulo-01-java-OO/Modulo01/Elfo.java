@@ -90,6 +90,12 @@ public class Elfo {
         boolean flechaNoSingular = Math.abs(this.flechas) == 1;
         boolean nivelNoSingular = Math.abs(this.experiencia) == 1;
         
+        // Ruby ou CoffeeScript:
+        //"#{nome} possui #{flechas} #{textoFlechas} e #{experiencia} #{textoNiveis} de experiência."
+        
+        // C# 6:
+        //"\{nome} possui \{flechas} \{textoFlechas} e \{experiencia} \{textoNiveis} de experiência."
+        
         return String.format("%s possui %d %s e %d %s de experiência.",
             this.nome,
             this.flechas,
