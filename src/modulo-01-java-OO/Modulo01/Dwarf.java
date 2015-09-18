@@ -38,6 +38,10 @@ public class Dwarf
         return dataNascimento;
     }
     
+    public int getExperiencia(){
+        return experiencia;
+    }
+    
     public void recebeDano(){
         if(this.getSorte() < 0){
             this.experiencia += 2;
@@ -49,7 +53,7 @@ public class Dwarf
                 this.vida = 0;
             }
             if(this.vida == 0){
-            this.status = Status.MORTO;    
+                this.status = Status.MORTO;    
             }
         }
     }

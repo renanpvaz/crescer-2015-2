@@ -44,7 +44,7 @@ public class DwarfTest
     }
     
     @Test
-    public void dwarfMorto(){
+    public void dwarfMorreAoReceberDano11Vezes(){
        Dwarf gimli = new Dwarf("Gimli");
        for(int i = 0; i <= 10; i++){  
            gimli.recebeDano();
@@ -83,11 +83,21 @@ public class DwarfTest
       Dwarf seixas = new Dwarf("Seixas", new DataTerceiraEra(29, 3, 1997));
       assertEquals(33, seixas.getSorte(), 0.001);
     }
+    @Test
+    public void dwarfComNomeSeixasEAnoBissextoTrue(){
+      Dwarf seixas = new Dwarf("Seixas", new DataTerceiraEra(29, 3, 2016));
+      assertEquals(101.0, seixas.getSorte(), 0.001);
+    }
     
     @Test
     public void dwarfComNomeMeirelesEAnoBissextoFalse(){
       Dwarf meireles = new Dwarf("Meireles", new DataTerceiraEra(29, 3, 1997));
       assertEquals(33, meireles.getSorte(), 0.001);
+    }
+    @Test
+    public void dwarfComNomeMeirelesEAnoBissextoTrue(){
+      Dwarf meireles = new Dwarf("Meireles", new DataTerceiraEra(29, 3, 2016));
+      assertEquals(101.0, meireles.getSorte(), 0.001);
     }
     
     @Test
@@ -96,6 +106,19 @@ public class DwarfTest
        assertEquals(101.0, gimli.getSorte(), 0.001);
     }
     
+    @Test 
+    public void dwarfNasceCom0DeExperiencia(){
+        Dwarf gimli = new Dwarf("Gimli");
+        assertEquals(0, gimli.getExperiencia());
+    }
     
+    @Test
+    public void dwarfComVida80EAnoBissextoTrueGanha2Exp(){
+      Dwarf gimli = new Dwarf("Gimli", new DataTerceiraEra(29, 2, 2016));
+      for(int i = 0; i <= 2; i++){
+          gimli.recebeDano();  
+      }
+      assertEquals(2, gimli.getExperiencia());
+    }
     
 } 
