@@ -36,4 +36,10 @@ public class DataTerceiraEra
             return false;
         }
     }
+    
+    public boolean equals(Object obj){
+        DataTerceiraEra outraData = (DataTerceiraEra) obj;
+        
+        return this.dia == outraData.getDia() && this.mes == outraData.getMes() && this.ano == outraData.getAno();
+    }
 }
