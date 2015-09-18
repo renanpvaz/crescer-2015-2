@@ -159,7 +159,7 @@ public class DwarfTest
         // Assert
         assertEquals(-3333.0, resultado, 0.00001);
     }
-    
+
     @Test
     public void gerarNumeroAnoNaoBissextoNomeSeixas() {
         // Arrange
@@ -169,7 +169,7 @@ public class DwarfTest
         // Assert
         assertEquals(33.0, resultado, 0.00001);
     }
-    
+
     @Test
     public void gerarNumeroSemEntrarNasCondicoes() {
         // Arrange
@@ -179,5 +179,34 @@ public class DwarfTest
         // Assert
         assertEquals(101.0, resultado, 0.00001);
     }
+
+    @Test
+    public void dwarfRecebeFlechaComNumeroSorteNegativo() {
+        // Arrange
+        Dwarf dwarf = new Dwarf("Gimli", new DataTerceiraEra(1,1,2000));
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        // Act
+        dwarf.receberFlechada();
+        // Assert
+        assertEquals(2, dwarf.getExperiencia());
+        assertEquals(90, dwarf.getVida());   
+    }
     
+    @Test
+    public void dwarfReceberFlechadaComAnoNormalMeireles() {
+        Dwarf meireles = new Dwarf("Meireles", new DataTerceiraEra(2, 3, 2015));
+        meireles.receberFlechada();
+        assertEquals(0, meireles.getExperiencia());
+        assertEquals(110, meireles.getVida());
+    }
+    
+    @Test
+    public void dwarfReceberFlechadaNormal(){
+        Dwarf dwarf = new Dwarf();
+        dwarf.receberFlechada();
+        assertEquals(100, dwarf.getVida());
+        assertEquals(0, dwarf.getExperiencia());
+    }
+
 }
