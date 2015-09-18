@@ -64,7 +64,9 @@ public class DwarfTest
     @Test
     public void nasceComDiaNascimento(){
         Dwarf gimli = new Dwarf ("Gimli", new DataTerceiraEra(12, 2, 1998));
-        assertEquals("12/2/1998", gimli.getDataNascimento());
+        assertEquals(12, gimli.getDataNascimento().getDia());
+        assertEquals(2, gimli.getDataNascimento().getMes());
+        assertEquals(1998, gimli.getDataNascimento().getAno());
     }
     
     @Test

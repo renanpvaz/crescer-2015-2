@@ -34,8 +34,8 @@ public class Dwarf
         return status;
     }
     
-    public String getDataNascimento(){
-        return dataNascimento.getDia() + "/" + dataNascimento.getMes() + "/" + dataNascimento.getAno();
+    public DataTerceiraEra getDataNascimento(){
+        return dataNascimento;
     }
     
     public void recebeDano(){
