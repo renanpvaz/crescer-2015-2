@@ -59,12 +59,14 @@ public class Dwarf
     }
     
     public double getSorte(){
+        double retorno = 101;
         if(this.dataNascimento.ehBissexto() && this.vida >= 80 && this.vida <= 90){
-                return 101.0 * -33;
-        }else if(!this.dataNascimento.ehBissexto() && this.nome.equals("Seixas") ||!this.dataNascimento.ehBissexto() && this.nome.equals("Meireles")){
-                return (101.0 * 33) % 100;
+                retorno *= -33;
+        } 
+        if(!this.dataNascimento.ehBissexto() && (this.nome.equals("Seixas") || this.nome.equals("Meireles"))){
+                retorno = retorno * 33 % 100;
         }
-        return 101.0;
+        return retorno;
     }     
 }
  
