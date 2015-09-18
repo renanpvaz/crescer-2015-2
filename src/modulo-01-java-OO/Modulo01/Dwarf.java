@@ -42,7 +42,7 @@ public class Dwarf
         if(this.getSorte() < 0){
             this.experiencia += 2;
         } else if(this.getSorte() > 0 && this.getSorte() < 100){
-            
+            return;
         }else{
             this.vida += -10;
             if(this.vida < 0){
