@@ -147,4 +147,37 @@ public class DwarfTest
         assertEquals(0, gimli.getVida());
     }
 
+    @Test
+    public void gerarNumeroAnoBissextoVidaEntre80e90() {
+        // Arrange
+        Dwarf uru = new Dwarf("Uru", new DataTerceiraEra(01, 01, 2016));
+        uru.receberFlechada();
+        uru.receberFlechada();
+        uru.receberFlechada();
+        // Act
+        double resultado = uru.gerarNumero();
+        // Assert
+        assertEquals(-3333.0, resultado, 0.00001);
+    }
+    
+    @Test
+    public void gerarNumeroAnoNaoBissextoNomeSeixas() {
+        // Arrange
+        Dwarf seixas = new Dwarf("Seixas", new DataTerceiraEra(01, 01, 2015));
+        // Act
+        double resultado = seixas.gerarNumero();
+        // Assert
+        assertEquals(33.0, resultado, 0.00001);
+    }
+    
+    @Test
+    public void gerarNumeroSemEntrarNasCondicoes() {
+        // Arrange
+        Dwarf balin = new Dwarf();
+        // Act
+        double resultado = balin.gerarNumero();
+        // Assert
+        assertEquals(101.0, resultado, 0.00001);
+    }
+    
 }
