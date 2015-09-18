@@ -34,6 +34,10 @@ public class Dwarf
         return status;
     }
     
+    public String getDataNascimento(){
+        return dataNascimento.getDia() + "/" + dataNascimento.getMes() + "/" + dataNascimento.getAno();
+    }
+    
     public void recebeDano(){
         if(this.getSorte() < 0){
             this.experiencia += 2;
@@ -51,7 +55,7 @@ public class Dwarf
     }
     
     public double getSorte(){
-        if(this.dataNascimento.ehBissexto() && this.vida > 80 && this.vida < 90){
+        if(this.dataNascimento.ehBissexto() && this.vida >= 80 && this.vida <= 90){
             return 101.0 * -33;
         } else if(!this.dataNascimento.ehBissexto() && this.nome == "Seixas" || this.nome == "Meireles"){
             return (101.0 * 33) % 100;

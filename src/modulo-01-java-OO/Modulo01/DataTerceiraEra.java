@@ -26,7 +26,7 @@ public class DataTerceiraEra
     }
     
     public boolean ehBissexto(){
-        if(this.dia == 29 && this.mes == 2){
+        if(this.ano % 400 == 0){
             return true;
         }else{
             return false;
