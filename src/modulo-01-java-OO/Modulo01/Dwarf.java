@@ -35,22 +35,28 @@ public class Dwarf
     }
     
     public void recebeDano(){
-        this.vida += -10;
-        if(this.vida < 0){
+        if(this.getSorte() < 0){
+            this.experiencia += 2;
+        } else if(this.getSorte() > 0 && this.getSorte() < 100){
+            this.vida = this.vida;
+        }else{
+            this.vida += -10;
+            if(this.vida < 0){
                 this.vida = 0;
             }
-         if(this.vida == 0){
+            if(this.vida == 0){
             status = this.status.MORTO;    
+            }
         }
     }
     
     public double getSorte(){
         if(this.dataNascimento.ehBissexto() && this.vida > 80 && this.vida < 90){
             return 101.0 * -33;
-        } else if(!this.dataNascimento.ehBissexto() && this.nome == "Seixas" || this.nome == "Meireles") {
+        } else if(!this.dataNascimento.ehBissexto() && this.nome == "Seixas" || this.nome == "Meireles"){
             return (101.0 * 33) % 100;
-        }    
-        
-        return 101.0;
+        } else {   
+            return 101.0;
+        }
     }
 }
