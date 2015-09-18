@@ -6,12 +6,15 @@ public class Dwarf
     private int vida = 110;
     private Status status;
     private int experiencia = 0;
-    public DataTerceiraEra dataNascimento;
+    private DataTerceiraEra dataNascimento;
+    private Inventario inventario;
+    
     
     public Dwarf(String nome, DataTerceiraEra dataNascimento){
         this.nome = nome;
         this.status = Status.VIVO;
         this.dataNascimento = dataNascimento;
+        this.inventario = new Inventario();
     }
     
     public Dwarf(String nome){
@@ -68,7 +71,14 @@ public class Dwarf
                 retorno = retorno * 33 % 100;
         }
         return retorno;
-    }     
+    }
+    
+    /* TO DO:
+    public String getDescricoesItens(){
+      for(int i = 0; i <= this.inventario.getListaDeItens().getSize(); i++){
+          
+      }
+    }*/
 }
  
 
