@@ -32,6 +32,7 @@ public class DwarfTest
         thranduil.atirarFlecha(gimli);
         assertEquals(100, gimli.getVida());
     }
+    
     @Test
     public void dwarfPerde110DeVidaAoReceber11Flechas(){
         Elfo thranduil = new Elfo ("Thranduil", 11);
@@ -41,6 +42,7 @@ public class DwarfTest
         }
         assertEquals(0, gimli.getVida());
     }
+    
     @Test
     public void dwarfMorto(){
        Dwarf gimli = new Dwarf("Gimli");
@@ -49,6 +51,7 @@ public class DwarfTest
        }
         assertEquals(Status.MORTO, gimli.getStatus());
     }
+    
     @Test 
     public void dwarfVidaNaoPassaDeZero(){
         Dwarf gimli = new Dwarf("Gimli");
@@ -57,5 +60,10 @@ public class DwarfTest
         }
         assertEquals(0, gimli.getVida());
     }
-        
+    
+    @Test
+    public void nasceComDiaNascimento(){
+        Dwarf gimli = new Dwarf ("Gimli", new DataTerceiraEra(12, 2, 1998));
+        assertEquals(12, gimli.dataNascimento.getDia());
+    }
 }
