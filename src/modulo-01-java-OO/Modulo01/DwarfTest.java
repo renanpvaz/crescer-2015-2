@@ -94,6 +94,19 @@ public class DwarfTest
     }
 
     @Test
+    public void dwarfRecebeFlecha5VezesESobrevive() {
+        Dwarf gimli = new Dwarf();
+        // Act
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        gimli.receberFlechada();
+        // Assert
+        assertEquals(Status.VIVO, gimli.getStatus());
+    }
+
+    @Test
     public void dwarfRecebeFlecha12VezesEMorre() {
         Dwarf gimli = new Dwarf();
         // Act
