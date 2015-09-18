@@ -69,29 +69,29 @@ public class DwarfTest
     
     @Test
     public void dwarfComVida80EAnoBissextoTrue(){
-      Dwarf gimli = new Dwarf("Gimli", new DataTerceiraEra(29, 2, 1998));
+      Dwarf gimli = new Dwarf("Gimli", new DataTerceiraEra(29, 2, 2016));
       for(int i = 0; i <= 2; i++){
           gimli.recebeDano();  
       }
-      assertEquals(-3333.0, gimli.getSorte(), 0);
+      assertEquals(-3333.0, gimli.getSorte(), 0.001);
     }
     
     @Test
     public void dwarfComNomeSeixasEAnoBissextoFalse(){
-      Dwarf seixas = new Dwarf("Seixas", new DataTerceiraEra(29, 3, 1998));
-      assertEquals((101.0 * 33) % 100, seixas.getSorte(), 0);
+      Dwarf seixas = new Dwarf("Seixas", new DataTerceiraEra(29, 3, 1997));
+      assertEquals(33, seixas.getSorte(), 0.001);
     }
     
     @Test
     public void dwarfComNomeMeirelesEAnoBissextoFalse(){
-      Dwarf meireles = new Dwarf("Meireles", new DataTerceiraEra(29, 3, 1998));
-      assertEquals((101.0 * 33) % 100, meireles.getSorte(), 0);
+      Dwarf meireles = new Dwarf("Meireles", new DataTerceiraEra(29, 3, 1997));
+      assertEquals(33, meireles.getSorte(), 0.001);
     }
     
     @Test
     public void dwarfComNomeDiferenteDeMeirelesESeixasEAnoBissextoFalse(){
-       Dwarf gimli = new Dwarf("Gimli", new DataTerceiraEra(29, 3, 1998));
-       assertEquals(101.0, gimli.getSorte(), 0);
+       Dwarf gimli = new Dwarf("Gimli", new DataTerceiraEra(29, 3, 1997));
+       assertEquals(101.0, gimli.getSorte(), 0.001);
     }
     
     
