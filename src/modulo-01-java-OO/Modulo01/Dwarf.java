@@ -49,7 +49,7 @@ public class Dwarf
                 this.vida = 0;
             }
             if(this.vida == 0){
-            status = this.status.MORTO;    
+            this.status = Status.MORTO;    
             }
         }
     }
