@@ -15,6 +15,10 @@ public class DataTerceiraEra
         this.ano = ano;
     }
     
+    public DataTerceiraEra(){
+        this(1, 1, 1);
+    }
+    
     public int getDia(){
         return dia;
     }
