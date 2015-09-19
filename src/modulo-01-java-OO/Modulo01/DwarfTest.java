@@ -129,4 +129,15 @@ public class DwarfTest
       }
       assertEquals(2, gimli.getExperiencia());
     }
+    
+    @Test
+    public void dwarfTestaSorteEGanhaNaMega(){
+      Dwarf gimli = new Dwarf("Gimli", new DataTerceiraEra(29, 2, 2016));
+      for(int i = 0; i <= 2; i++){
+          gimli.recebeDano();  
+      }
+      gimli.getInventario().adicionarItem(new Item("Pedra Arken", 1));
+      gimli.tentarSorte();
+      assertEquals(1001, gimli.getInventario().getListaDeItens().get(0).getQuantidade());
+    }
 } 

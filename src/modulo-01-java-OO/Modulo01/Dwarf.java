@@ -76,6 +76,13 @@ public class Dwarf
         }
         return retorno;
     }
-}
+    
+    public void tentarSorte(){
+         if(this.getSorte() == (-3333)){
+           this.inventario.adicionar1000TodosItens();
+         }    
+       }
+   }
+
  
 

@@ -27,4 +27,12 @@ public class Inventario
       }
       return descricoes;
     }
+    
+   public void adicionar1000TodosItens(){
+    int i = 0;
+    while (i < this.ListaDeItens.size()){
+        this.ListaDeItens.get(i).adicionar1000();
+        i++;
+    }
+   }
 }

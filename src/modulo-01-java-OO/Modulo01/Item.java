@@ -22,4 +22,8 @@ public class Item
    public int getQuantidade(){
        return quantidade;
    }
+   
+   public void adicionar1000(){
+       this.quantidade += 1000;
+   }
 }
