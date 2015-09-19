@@ -45,6 +45,10 @@ public class Dwarf
         return experiencia;
     }
     
+    public Inventario getInventario(){
+        return inventario;
+    }
+    
     public void recebeDano(){
         double sorte = this.getSorte();
         if(sorte < 0){
@@ -77,8 +81,8 @@ public class Dwarf
     public String getDescricoesItens(){
       int index = this.inventario.getListaDeItens().size();
       String descricoes = "";
-      for(int i = 0; i <= index; i++){
-          if(i == index){
+      for(int i = 0; i < index; i++){
+          if(i == index - 1){
               descricoes += this.inventario.getListaDeItens().get(i).getDescricao();
           }else{
               descricoes += this.inventario.getListaDeItens().get(i).getDescricao() + ",";
