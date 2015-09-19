@@ -47,4 +47,19 @@ public class Inventario
         } 
        return itemComMaiorQuantidade;
    }
-}
+   /* TO DO:
+   public void ordenarItens(){
+       int maiorPosicao = ListaDeItens.size() - 1;
+       Item comp;
+        for(int i = 0; i <= maiorPosicao; i++){
+            for(int ii = 0; i <= maiorPosicao; i++){
+                if(ListaDeItens.get(ii).getQuantidade() <= ListaDeItens.get(i).getQuantidade()){
+                    ListaDeItens.set(i, ListaDeItens.get(ii));
+                       
+                    }
+                }
+            }
+   } */
+       
+   }
+

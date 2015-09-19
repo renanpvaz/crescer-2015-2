@@ -60,4 +60,16 @@ public class InventarioTest
       invDoThorin.adicionarItem(new Item("Espada emprestada do brother Légolas", 1));
       assertEquals(5, invDoThorin.getItemComMaiorQuantidade().getQuantidade());  
     }
+    
+    @Test 
+    public void itensOrdenadosDeFormaAscendente(){
+      Inventario invDoThorin = new Inventario();
+      invDoThorin.adicionarItem(new Item("Pedra Arken", 3));
+      invDoThorin.adicionarItem(new Item("Tererê de barba", 5));
+      invDoThorin.adicionarItem(new Item("Espada emprestada do brother Légolas", 1));
+      invDoThorin.ordenarItens();
+      assertEquals(1, invDoThorin.getListaDeItens().get(0).getQuantidade());
+      assertEquals(3, invDoThorin.getListaDeItens().get(1).getQuantidade());
+      assertEquals(5, invDoThorin.getListaDeItens().get(2).getQuantidade());
+    }
 }
