@@ -129,5 +129,10 @@ public class DwarfTest
       }
       assertEquals(2, gimli.getExperiencia());
     }
-    
+    /* TO DO:
+    @Test
+    public void dwarfRetornaDescriçõesDosSeusItens(){
+        
+    }
+    */
 } 

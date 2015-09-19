@@ -31,4 +31,15 @@ public class InventarioTest
        i.removerItem(batataDoce);
        assertEquals(1, i.getListaDeItens().size());
    }
+   
+   @Test
+   public void itemNãoRemovidoPassaASerOPrimeiroDeDois(){
+       Inventario i = new Inventario();
+       Item batata = new Item("Batata", 3);
+       Item batataDoce = new Item("Batata Doce", 1);
+       i.adicionarItem(batata);
+       i.adicionarItem(batataDoce);
+       i.removerItem(batata);
+       assertEquals(batataDoce, i.getListaDeItens().get(0));
+   }
 }
