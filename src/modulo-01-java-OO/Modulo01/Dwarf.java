@@ -77,9 +77,12 @@ public class Dwarf
     public String getDescricoesItens(){
       int index = this.inventario.getListaDeItens().size();
       String descricoes = "";
-      
-      for(int i = 0; i != index; i++){
-          descricoes += this.inventario.getListaDeItens().get(i).getDescricao() + ",";
+      for(int i = 0; i <= index; i++){
+          if(i == index){
+              descricoes += this.inventario.getListaDeItens().get(i).getDescricao();
+          }else{
+              descricoes += this.inventario.getListaDeItens().get(i).getDescricao() + ",";
+          }
       }
       return descricoes;
     }
