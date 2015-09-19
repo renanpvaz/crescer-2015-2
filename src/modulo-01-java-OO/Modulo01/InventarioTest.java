@@ -42,4 +42,13 @@ public class InventarioTest
        i.removerItem(batata);
        assertEquals(batataDoce, i.getListaDeItens().get(0));
    }
+   
+   @Test
+    public void dwarfRetornaDescriçõesDosSeusItens(){
+      Inventario invDoThorin = new Inventario();
+      invDoThorin.adicionarItem(new Item("Pedra Arken", 1));
+      invDoThorin.adicionarItem(new Item("Tererê de barba", 5));
+      invDoThorin.adicionarItem(new Item("Espada emprestada do brother Légolas", 1));
+      assertEquals("Pedra Arken,Tererê de barba,Espada emprestada do brother Légolas", invDoThorin.getDescricoesItens());
+    }
 }

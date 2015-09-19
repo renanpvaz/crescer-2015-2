@@ -76,20 +76,6 @@ public class Dwarf
         }
         return retorno;
     }
-    
-    
-    public String getDescricoesItens(){
-      int index = this.inventario.getListaDeItens().size();
-      String descricoes = "";
-      for(int i = 0; i < index; i++){
-          if(i == index - 1){
-              descricoes += this.inventario.getListaDeItens().get(i).getDescricao();
-          }else{
-              descricoes += this.inventario.getListaDeItens().get(i).getDescricao() + ",";
-          }
-      }
-      return descricoes;
-    }
 }
  
 

@@ -129,14 +129,4 @@ public class DwarfTest
       }
       assertEquals(2, gimli.getExperiencia());
     }
-    
-    @Test
-    public void dwarfRetornaDescriçõesDosSeusItens(){
-      Dwarf thorin = new Dwarf("Thorin");
-      thorin.getInventario().adicionarItem(new Item("Pedra Arken", 1));
-      thorin.getInventario().adicionarItem(new Item("Tererê de barba", 5));
-      thorin.getInventario().adicionarItem(new Item("Espada emprestada do brother Légolas", 1));
-      assertEquals("Pedra Arken,Tererê de barba,Espada emprestada do brother Légolas", thorin.getDescricoesItens());
-    }
-    
 } 
