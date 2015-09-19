@@ -35,4 +35,16 @@ public class Inventario
         i++;
     }
    }
+   
+   public Item getItemComMaiorQuantidade(){
+       Item itemComMaiorQuantidade = this.ListaDeItens.get(0);
+       int qntMaior = 0;
+       for(int i = 0; i < this.ListaDeItens.size(); i++){
+           if(this.ListaDeItens.get(i).getQuantidade() > qntMaior){
+               qntMaior = this.ListaDeItens.get(i).getQuantidade();
+               itemComMaiorQuantidade = this.ListaDeItens.get(i);
+            }
+        } 
+       return itemComMaiorQuantidade;
+   }
 }

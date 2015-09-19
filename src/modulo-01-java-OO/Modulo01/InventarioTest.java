@@ -51,4 +51,13 @@ public class InventarioTest
       invDoThorin.adicionarItem(new Item("Espada emprestada do brother Légolas", 1));
       assertEquals("Pedra Arken,Tererê de barba,Espada emprestada do brother Légolas", invDoThorin.getDescricoesItens());
     }
+    
+    @Test 
+    public void itemComMaiorQuantidadeÉOItemComMaiorQuantidade(){
+      Inventario invDoThorin = new Inventario();
+      invDoThorin.adicionarItem(new Item("Pedra Arken", 3));
+      invDoThorin.adicionarItem(new Item("Tererê de barba", 5));
+      invDoThorin.adicionarItem(new Item("Espada emprestada do brother Légolas", 1));
+      assertEquals(5, invDoThorin.getItemComMaiorQuantidade().getQuantidade());  
+    }
 }
