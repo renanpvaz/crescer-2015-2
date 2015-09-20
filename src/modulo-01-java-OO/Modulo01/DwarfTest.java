@@ -140,4 +140,36 @@ public class DwarfTest
       gimli.tentarSorte();
       assertEquals(1001, gimli.getInventario().getListaDeItens().get(0).getQuantidade());
     }
+    
+    @Test
+    public void dwarfTestaSorteEGanhaNaMega3xQuantidades(){
+      Dwarf gimli = new Dwarf("Gimli", new DataTerceiraEra(29, 2, 2016));
+      Inventario invDoThorin = new Inventario();
+      for(int i = 0; i <= 2; i++){
+          gimli.recebeDano();  
+      }
+      gimli.getInventario().adicionarItem(new Item("Pedra Arken", 1));
+      gimli.getInventario().adicionarItem(new Item("Tererê de barba", 3));
+      gimli.getInventario().adicionarItem(new Item("Espada emprestada do brother Légolas", 5));
+      gimli.tentarSorte();
+      assertEquals(1001, gimli.getInventario().getListaDeItens().get(0).getQuantidade());
+      assertEquals(1003, gimli.getInventario().getListaDeItens().get(1).getQuantidade());
+      assertEquals(1005, gimli.getInventario().getListaDeItens().get(2).getQuantidade());
+    }
+    
+    @Test
+    public void dwarfTestaSorteEGanhaNaMega3xNomes(){
+      Dwarf gimli = new Dwarf("Gimli", new DataTerceiraEra(29, 2, 2016));
+      Inventario invDoThorin = new Inventario();
+      for(int i = 0; i <= 2; i++){
+          gimli.recebeDano();  
+      }
+      gimli.getInventario().adicionarItem(new Item("Pedra Arken", 1));
+      gimli.getInventario().adicionarItem(new Item("Tererê de barba", 3));
+      gimli.getInventario().adicionarItem(new Item("Espada emprestada do brother Légolas", 5));
+      gimli.tentarSorte();
+      assertEquals("Pedra Arken", gimli.getInventario().getListaDeItens().get(0).getDescricao());
+      assertEquals("Tererê de barba", gimli.getInventario().getListaDeItens().get(1).getDescricao());
+      assertEquals("Espada emprestada do brother Légolas", gimli.getInventario().getListaDeItens().get(2).getDescricao());
+    }
 } 
