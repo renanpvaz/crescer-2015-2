@@ -14,15 +14,26 @@ import org.junit.Test;
 public class InventarioTest
 {
    @Test
-   public void itemAdicionadoPosição1(){
+   public void itemAdicionadoNaPrimeiraPosição(){
        Inventario i = new Inventario();
        Item batata = new Item("Batata", 3);
        i.adicionarItem(batata);
-       assertEquals(i.getListaDeItens().get(0), batata);
+       assertEquals(batata, i.getListaDeItens().get(0));
    }
    
    @Test
-   public void itemRemoverPosição1(){
+   public void itemAdicionadoNaSegundaPosição(){
+       Inventario i = new Inventario();
+       Item batata = new Item("Batata", 3);
+       Item batataDoce = new Item("Batata Doce", 1);
+       i.adicionarItem(batataDoce);
+       i.ListaDeItens.add(1, batata);
+       i.ListaDeItens.set(0, null);
+       assertEquals(batata, i.getListaDeItens().get(1));
+   }
+   
+   @Test
+   public void removerItemNaSegundaPosição(){
        Inventario i = new Inventario();
        Item batata = new Item("Batata", 3);
        Item batataDoce = new Item("Batata Doce", 1);
@@ -30,6 +41,15 @@ public class InventarioTest
        i.adicionarItem(batataDoce);
        i.removerItem(batataDoce);
        assertEquals(1, i.getListaDeItens().size());
+   }
+   
+   @Test
+   public void removerUmItemEListaFicaVazia(){
+       Inventario i = new Inventario();
+       Item batata = new Item("Batata", 3);
+       i.adicionarItem(batata);
+       i.removerItem(batata);
+       assertTrue(i.getListaDeItens().isEmpty());
    }
    
    @Test
@@ -114,6 +134,21 @@ public class InventarioTest
        assertEquals(1, invDoThorin.getListaDeItens().get(0).getQuantidade());
        assertEquals(3, invDoThorin.getListaDeItens().get(1).getQuantidade());
        assertEquals(5, invDoThorin.getListaDeItens().get(2).getQuantidade());
+   }
+   
+   @Test
+    public void inventarioOrdenaInventarioCorreto(){
+       Inventario invDoThorin = new Inventario();
+       Inventario invDoBilbo = new Inventario();
+       invDoThorin.adicionarItem(new Item("Pedra Arken", 1));
+       invDoThorin.adicionarItem(new Item("Tererê de barba", 3));
+       invDoThorin.adicionarItem(new Item("Espada emprestada do brother Légolas", 1));
+       invDoBilbo.adicionarItem(new Item("Ferroada", 1));
+       invDoThorin.ordenarItens();
+       assertEquals(1, invDoThorin.getListaDeItens().get(0).getQuantidade());
+       assertEquals(1, invDoThorin.getListaDeItens().get(1).getQuantidade());
+       assertEquals(3, invDoThorin.getListaDeItens().get(2).getQuantidade());
+       assertEquals("Ferroada", invDoBilbo.getListaDeItens().get(0).getDescricao());
    }
    
    @Test
