@@ -8,7 +8,7 @@ public class Inventario
    }
    
    public void adicionarItem(Item item){
-       ListaDeItens.add(item);
+       ListaDeItens.add(item); 
    }
     
    public void removerItem(Item item){
@@ -47,19 +47,19 @@ public class Inventario
         } 
        return itemComMaiorQuantidade;
    }
-   /* TO DO:
+   
    public void ordenarItens(){
-       int maiorPosicao = ListaDeItens.size() - 1;
-       Item comp;
-        for(int i = 0; i <= maiorPosicao; i++){
-            for(int ii = 0; i <= maiorPosicao; i++){
-                if(ListaDeItens.get(ii).getQuantidade() <= ListaDeItens.get(i).getQuantidade()){
-                    ListaDeItens.set(i, ListaDeItens.get(ii));
-                       
+       Item maior;
+        for(int i = 1; i < ListaDeItens.size(); i++){
+            for(int ii = 0; ii < ListaDeItens.size(); ii++){
+                if(ListaDeItens.get(ii).getQuantidade() > ListaDeItens.get(i).getQuantidade()){
+                        maior = ListaDeItens.get(ii);
+                        ListaDeItens.set(ii, ListaDeItens.get(i));
+                        ListaDeItens.set(i, maior);
                     }
                 }
             }
-   } */
-       
-   }
+        }
+   }     
+
 
