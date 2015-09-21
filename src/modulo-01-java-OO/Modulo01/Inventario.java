@@ -25,6 +25,12 @@ public class Inventario {
         return descricoes.substring(0, descricoes.length() - 1);
     }
     
+    public void aumentar1000UnidadesEmCadaItem() {
+        for (Item item : this.itens) {
+            item.aumentar1000Unidades();
+        }
+    }
+    
     public boolean equals(Object obj) {
         Inventario outroInventario = (Inventario)obj;
         return this.itens.equals(outroInventario.getItens());

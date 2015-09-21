@@ -22,6 +22,10 @@ public class Item
         return this.quantidade;
     }
     
+    public void aumentar1000Unidades() {
+        this.quantidade += 1000;
+    }
+    
     public boolean equals(Object obj) {
         Item outro = (Item)obj;
         return this.descricao.equals(outro.getDescricao()) && this.quantidade == outro.getQuantidade();

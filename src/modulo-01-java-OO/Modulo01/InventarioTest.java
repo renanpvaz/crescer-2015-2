@@ -29,19 +29,19 @@ public class InventarioTest
 
         assertEquals(esperado, mochila);
     }
-    
+
     @Test
     public void perderItemDoInventario() {
         Inventario mochila = new Inventario();
         Inventario esperado = new Inventario();
         Item adaga = new Item(1, "Adaga");
         mochila.adicionarItem(adaga);
-        
+
         mochila.perderItem(adaga);
 
         assertEquals(esperado, mochila);
     }
-    
+
     @Test
     public void perderItemComDoisNoInventario() {
         Inventario mochila = new Inventario();
@@ -51,12 +51,12 @@ public class InventarioTest
         esperado.adicionarItem(escudo);
         mochila.adicionarItem(adaga);
         mochila.adicionarItem(escudo);
-        
+
         mochila.perderItem(adaga);
 
         assertEquals(esperado, mochila);
     }
-    
+
     @Test
     public void perderItemQueNãoEstáNoInventário() {
         Inventario mochila = new Inventario();
@@ -64,7 +64,7 @@ public class InventarioTest
         mochila.perderItem(new Item(1, "Luvas de prata"));
         assertEquals(esperado, mochila);
     }
-    
+
     @Test
     public void getDescricoesItensComDoisItens() {
         Inventario mochila = new Inventario();
@@ -74,5 +74,18 @@ public class InventarioTest
         String obtido = mochila.getDescricoesItens();
         assertEquals(esperado, obtido);
     }
-    
+
+    @Test
+    public void aumentar1000UnidadesEmCadaItem() {
+        Inventario mochila = new Inventario();
+        Inventario esperado = new Inventario();
+        esperado.adicionarItem(new Item(1002, "Poções"));
+        esperado.adicionarItem(new Item(1001, "Machado"));
+        mochila.adicionarItem(new Item(2, "Poções"));
+        mochila.adicionarItem(new Item(1, "Machado"));
+        mochila.aumentar1000UnidadesEmCadaItem();
+        
+        assertEquals(esperado, mochila);
+    }
+
 }

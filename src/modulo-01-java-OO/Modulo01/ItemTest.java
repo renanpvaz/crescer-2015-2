@@ -28,4 +28,11 @@ public class ItemTest
         assertEquals(quantidadeEsperada, item.getQuantidade());
         assertEquals(descricaoEsperada, item.getDescricao());
     }
+    
+    @Test
+    public void aumentar1000Unidades() {
+        Item espada = new Item(42, "Espada");
+        espada.aumentar1000Unidades();
+        assertEquals(1042, espada.getQuantidade());
+    }
 }
