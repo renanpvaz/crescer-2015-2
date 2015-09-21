@@ -31,6 +31,20 @@ public class Inventario {
         }
     }
     
+    public Item getItemComMaiorQuantidade() {
+        int indice = 0, maiorQtd = 0;
+        
+        for (Item item : this.itens) {
+            int qtdAtual = item.getQuantidade();
+            if (qtdAtual > maiorQtd) {
+                indice = this.itens.indexOf(item);
+                maiorQtd = qtdAtual;
+            }
+        }
+        
+        return this.itens.get(indice);
+    }
+    
     public boolean equals(Object obj) {
         Inventario outroInventario = (Inventario)obj;
         return this.itens.equals(outroInventario.getItens());

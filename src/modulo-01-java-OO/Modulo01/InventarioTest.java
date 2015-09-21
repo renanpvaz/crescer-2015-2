@@ -87,5 +87,29 @@ public class InventarioTest
         
         assertEquals(esperado, mochila);
     }
+    
+    @Test
+    public void obterItemComMaiorQuantidade() {
+        Inventario mochila = new Inventario();
+        mochila.adicionarItem(new Item(9, "Elder Scroll"));
+        mochila.adicionarItem(new Item(99, "Escudo"));
+        mochila.adicionarItem(new Item(2, "Canivete suíço"));
+        Item esperado = new Item(99, "Escudo");
+        Item obtido = mochila.getItemComMaiorQuantidade();
+        
+        assertEquals(esperado, obtido);
+    }
+    
+    @Test
+    public void obterItemComMaiorQuantidadeTodosIguais() {
+        Inventario mochila = new Inventario();
+        mochila.adicionarItem(new Item(99, "Elder Scroll"));
+        mochila.adicionarItem(new Item(99, "Escudo"));
+        mochila.adicionarItem(new Item(99, "Canivete suíço"));
+        Item esperado = new Item(99, "Elder Scroll");
+        Item obtido = mochila.getItemComMaiorQuantidade();
+        
+        assertEquals(esperado, obtido);
+    }
 
 }
