@@ -14,7 +14,7 @@ import org.junit.Test;
 public class IrishDwarfTest
 {
     @Test
-    public void dwarfTestaSorteEGanhaNaMega(){
+    public void irishDwarfTestaSorteEGanhaNaMega(){
       IrishDwarf gimli = new IrishDwarf("Gimli", new DataTerceiraEra(29, 2, 2016));
       for(int i = 0; i <= 2; i++){
           gimli.recebeDano();  
@@ -25,7 +25,7 @@ public class IrishDwarfTest
     }
     
     @Test
-    public void dwarfTestaSorteENãoGanhaNaMega(){
+    public void irishDwarfTestaSorteENãoGanhaNaMega(){
       IrishDwarf gimli = new IrishDwarf("Gimli", new DataTerceiraEra(29, 2, 2015));
       for(int i = 0; i <= 2; i++){
           gimli.recebeDano();  
@@ -36,7 +36,7 @@ public class IrishDwarfTest
     }
     
     @Test
-    public void dwarfTestaSorteEGanhaNaMega3xQuantidades(){
+    public void irishDwarfTestaSorteEGanhaNaMegaMaisSomaDasQuantidades(){
       IrishDwarf gimli = new IrishDwarf("Gimli", new DataTerceiraEra(29, 2, 2016));
       Inventario invDoThorin = new Inventario();
       for(int i = 0; i <= 2; i++){
