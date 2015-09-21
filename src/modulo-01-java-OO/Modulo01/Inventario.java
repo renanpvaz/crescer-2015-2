@@ -45,6 +45,47 @@ public class Inventario {
         return this.itens.get(indice);
     }
     
+    public void ordenarItens() {        
+        // Versão mais simples porém mais instável do BubbleSort - sempre O(n^2)
+        int numeroItens = this.itens.size();
+        
+        for (int i = 0; i < numeroItens; i++) {
+            for (int j = 0; j < numeroItens - 1; j++) {
+                Item itemAtual = this.itens.get(j);
+                Item proximo = this.itens.get(j + 1);
+                
+                boolean precisaTrocar = 
+                    itemAtual.getQuantidade() > proximo.getQuantidade();
+                
+                if (precisaTrocar) {
+                    this.itens.set(j, proximo);
+                    this.itens.set(j + 1, itemAtual);
+                }
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        // Java - MergeSort - O(n logn)
+        /*Collections.sort(this.itens, new Comparator<Item>() {
+            public int compare(Item item, Item outroItem) {
+                return Integer.compare(item.getQuantidade(), outroItem.getQuantidade());
+            }
+        });*/
+        
+        
+        // C# - MergeSort - O(n logn)
+        // return this.itens.OrderBy(x => x.Quantidade);
+        
+        // Ruby - QuickSort - O (n logn) em média, porém pior caso O(n^2)
+        // itens.sort_by { |x| x.quantidade }
+    }
+    
     public boolean equals(Object obj) {
         Inventario outroInventario = (Inventario)obj;
         return this.itens.equals(outroInventario.getItens());

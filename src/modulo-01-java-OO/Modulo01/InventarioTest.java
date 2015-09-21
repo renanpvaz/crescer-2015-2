@@ -111,5 +111,21 @@ public class InventarioTest
         
         assertEquals(esperado, obtido);
     }
+    
+    @Test
+    public void ordenarItens() {
+        Inventario mochila = new Inventario();
+        mochila.adicionarItem(new Item(9, "Elder Scroll"));
+        mochila.adicionarItem(new Item(99, "Escudo"));
+        mochila.adicionarItem(new Item(2, "Canivete suíço"));
+        Inventario esperado = new Inventario();
+        esperado.adicionarItem(new Item(2, "Canivete suíço"));
+        esperado.adicionarItem(new Item(9, "Elder Scroll"));
+        esperado.adicionarItem(new Item(99, "Escudo"));
+        
+        mochila.ordenarItens();
+        
+        assertEquals(esperado, mochila);
+    }
 
 }
