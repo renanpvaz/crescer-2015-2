@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Inventario {
-    private ArrayList<Item> itens = new ArrayList<Item>();
+    private ArrayList<Item> itens = new ArrayList<>();
     
     public void adicionarItem(Item item) {
         this.itens.add(item);
@@ -42,6 +42,9 @@ public class Inventario {
             }
         }
         
+        // C#6
+        // return this.itens.Max(x => x.Quantidade);
+        
         return this.itens.get(indice);
     }
     
@@ -62,14 +65,7 @@ public class Inventario {
                     this.itens.set(j + 1, itemAtual);
                 }
             }
-        }
-        
-        
-        
-        
-        
-        
-        
+        }        
         
         // Java - MergeSort - O(n logn)
         /*Collections.sort(this.itens, new Comparator<Item>() {
