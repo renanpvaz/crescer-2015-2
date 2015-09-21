@@ -65,4 +65,14 @@ public class InventarioTest
         assertEquals(esperado, mochila);
     }
     
+    @Test
+    public void getDescricoesItensComDoisItens() {
+        Inventario mochila = new Inventario();
+        mochila.adicionarItem(new Item(2, "Poções"));
+        mochila.adicionarItem(new Item(1, "Machado"));
+        String esperado = "Poções,Machado";
+        String obtido = mochila.getDescricoesItens();
+        assertEquals(esperado, obtido);
+    }
+    
 }

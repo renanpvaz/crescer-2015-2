@@ -15,6 +15,16 @@ public class Inventario {
         return this.itens;
     }
     
+    public String getDescricoesItens() {
+        String descricoes = "";
+        
+        for (Item item : this.itens) {
+            descricoes += item.getDescricao() + ",";
+        }
+        
+        return descricoes.substring(0, descricoes.length() - 1);
+    }
+    
     public boolean equals(Object obj) {
         Inventario outroInventario = (Inventario)obj;
         return this.itens.equals(outroInventario.getItens());
