@@ -229,8 +229,6 @@ public class DwarfTest
     @Test
     public void dwarfTentarSorteSemSorte() {
         Dwarf dwarf = new Dwarf();
-        dwarf.receberFlechada();
-        dwarf.receberFlechada();
         dwarf.adicionarItem(new Item(5, "Lança"));
         dwarf.adicionarItem(new Item(25, "Poção"));
         
