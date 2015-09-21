@@ -47,7 +47,7 @@ public class Inventario
         } 
        return itemComMaiorQuantidade;
    }
-   /*
+   
    public void ordenarItens(){
        Item maior;
         for(int i = 1; i < ListaDeItens.size(); i++){
@@ -59,19 +59,7 @@ public class Inventario
                     }
                 }
             }
-        }*/
-        
-        public void ordenarItens(){    
-       for(int i = 0; i < ListaDeItens.size(); i++) {
-           for(int j = 0; j < (ListaDeItens.size()-1) ; j++) {
-               if(ListaDeItens.get(j).getQuantidade() > ListaDeItens.get(j+1).getQuantidade()) {
-                   Item temp = ListaDeItens.get(j);
-                   ListaDeItens.set(j, ListaDeItens.get(j + 1));
-                   ListaDeItens.set(j + 1, temp);
-               }
-           }
-       }
-   }
+        }
    }     
 
 

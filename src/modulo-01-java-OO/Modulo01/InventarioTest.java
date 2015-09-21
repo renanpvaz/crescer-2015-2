@@ -33,6 +33,18 @@ public class InventarioTest
    }
    
    @Test
+   public void itemAdicionadoNaSegundaPosição2(){
+       Inventario i = new Inventario();
+       Item batata = new Item("Batata", 3);
+       Item batataDoce = new Item("Batata Doce", 1);
+       i.adicionarItem(batataDoce);
+       i.ListaDeItens.set(0, null);
+       i.adicionarItem(batata);
+       //i.ListaDeItens.add(1, batata);
+       assertEquals(batata, i.getListaDeItens().get(1));
+   }
+   
+   @Test
    public void removerItemNaSegundaPosição(){
        Inventario i = new Inventario();
        Item batata = new Item("Batata", 3);
