@@ -17,7 +17,7 @@ public class IrishDwarfTest
     public void irishDwarfTestaSorteEGanhaNaMega(){
       IrishDwarf gimli = new IrishDwarf("Gimli", new DataTerceiraEra(29, 2, 2016));
       for(int i = 0; i <= 2; i++){
-          gimli.recebeDano();  
+          gimli.recebeDano(10);  
       }
       gimli.getInventario().adicionarItem(new Item("Pedra Arken", 3));
       gimli.tentarSorte();
@@ -28,7 +28,7 @@ public class IrishDwarfTest
     public void irishDwarfTestaSorteENãoGanhaNaMega(){
       IrishDwarf gimli = new IrishDwarf("Gimli", new DataTerceiraEra(29, 2, 2015));
       for(int i = 0; i <= 2; i++){
-          gimli.recebeDano();  
+          gimli.recebeDano(10);  
       }
       gimli.getInventario().adicionarItem(new Item("Pedra Arken", 3));
       gimli.tentarSorte();
@@ -40,7 +40,7 @@ public class IrishDwarfTest
       IrishDwarf gimli = new IrishDwarf("Gimli", new DataTerceiraEra(29, 2, 2016));
       Inventario invDoThorin = new Inventario();
       for(int i = 0; i <= 2; i++){
-          gimli.recebeDano();  
+          gimli.recebeDano(10);  
       }
       gimli.getInventario().adicionarItem(new Item("Pedra Arken", 1));
       gimli.getInventario().adicionarItem(new Item("Tererê de barba", 3));
