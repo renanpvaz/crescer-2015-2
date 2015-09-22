@@ -1,18 +1,16 @@
 
 
-public class Orc
+public class Orc extends Personagem
 {
     protected int vida;
-    protected Inventario inventario;
     protected Status status;
     protected TipoOrc tipoOrc;
 
-    public Orc() {
+    public Orc()  {
     }
     
     public Orc(TipoOrc tipoOrc)
     {
-        this.inventario = new Inventario();
         this.tipoOrc = tipoOrc;
         gerarVidaInicial();
         gerarInventario();
@@ -73,10 +71,6 @@ public class Orc
     
     public int getVida(){
         return this.vida;
-    }
-    
-    public Inventario getInventario(){
-        return this.inventario;
     }
     
     public Status getStatus(){

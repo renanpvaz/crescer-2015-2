@@ -1,5 +1,5 @@
 
-public class Dwarf
+public class Dwarf extends Personagem
 {
     protected String nome;
     protected int vida = 110;
@@ -8,7 +8,7 @@ public class Dwarf
     protected DataTerceiraEra dataNascimento;
     protected Inventario inventario;
 
-    public Dwarf() {
+    public Dwarf()  {
         this.dataNascimento = new DataTerceiraEra(1,1,1);
     }
     
@@ -45,10 +45,6 @@ public class Dwarf
 
     public int getExperiencia(){
         return experiencia;
-    }
-
-    public Inventario getInventario(){
-        return inventario;
     }
 
     public void atacarOrc(Orc alvo){

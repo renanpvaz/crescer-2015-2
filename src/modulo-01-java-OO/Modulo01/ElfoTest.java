@@ -10,7 +10,7 @@ public class ElfoTest
     //Nome
     @Test
     public void elfoCriadoNomeEscolhido(){
-        Elfo thranduil = new Elfo ("Thranduil");
+        Elfo thranduil = new Elfo("Thranduil");
         assertEquals("Thranduil", thranduil.getNome());
     }
     @Test

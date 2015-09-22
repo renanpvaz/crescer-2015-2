@@ -1,7 +1,7 @@
 /**
  * Representa objetos do tipo Elfo.
  */
-public class Elfo {
+public class Elfo extends Personagem {
     private final String nome;
     private int flechas, experiencia;    
     private Status status;
@@ -13,12 +13,14 @@ public class Elfo {
     flechas = 42;
     }
      */
-    public Elfo(String nome, int flechas) {
+    public Elfo(String nome, int flechas){
         this.nome = nome;
         this.flechas = flechas;
-        this. status = Status.VIVO;
-        this.status = Status.VIVO;
         this.vida = 80;
+    }
+    
+    public Elfo(String nome){
+        this(nome, 42);
     }
 
     /* Apenas para elucidar as diferenças entre int X Integer, esta duplicação não faz sentido.
@@ -29,11 +31,6 @@ public class Elfo {
     }
     }
      */
-
-    public Elfo(String nome) {
-        this(nome, 42);
-    }
-
     public int getFlechas(){
         return flechas;
     }
@@ -48,6 +45,10 @@ public class Elfo {
 
     public Status getStatus(){
         return status;
+    }
+    
+    public Inventario getInventario(){
+        return inventario;
     }
 
     public void atacarDwarf(Dwarf alvo) {  
