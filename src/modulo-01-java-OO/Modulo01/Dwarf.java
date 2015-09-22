@@ -48,14 +48,18 @@ public class Dwarf
         return inventario;
     }
     
-    public void recebeDano(){
+    public void atacarOrc(Orc alvo){
+        alvo.recebeDano(10);
+    }
+    
+    public void recebeDano(int dano){
         double sorte = this.getSorte();
         if(sorte < 0){
             this.experiencia += 2;
         } else if(sorte >= 0 && sorte <= 100){
             return;
         }else{
-            this.vida += -10;
+            this.vida -= dano;
             if(this.vida < 0){
                 this.vida = 0;
             }
