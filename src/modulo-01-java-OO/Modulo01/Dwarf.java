@@ -40,6 +40,15 @@ public class Dwarf {
             }
         }
     }
+    
+    public void receberAtaqueDoOrc(Orc orc){
+        int danoCausado = orc.getDanoDeAtaque();
+        this.vida -= danoCausado;
+    }
+    
+    public void atacarOrc(Orc orc){
+        orc.levarAtaqueDeAnao();
+    }
 
     public int getVida() {
         return this.vida;
