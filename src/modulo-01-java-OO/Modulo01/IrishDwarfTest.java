@@ -49,5 +49,22 @@ public class IrishDwarfTest
       assertEquals(1002, gimli.getInventario().getListaDeItens().get(0).getQuantidade());
       assertEquals(6009, gimli.getInventario().getListaDeItens().get(1).getQuantidade());
       assertEquals(15020, gimli.getInventario().getListaDeItens().get(2).getQuantidade());
+public class IrishDwarfTest
+{
+    @Test
+    public void irishDwarfComSorte() {
+        IrishDwarf dwarf = new IrishDwarf("Leprechaun sortudo", new DataTerceiraEra(1, 1, 2000));
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.adicionarItem(new Item(5, "Lança"));
+        dwarf.adicionarItem(new Item(25, "Poção"));
+        
+        Inventario esperado = new Inventario();
+        esperado.adicionarItem(new Item(15005, "Lança"));
+        esperado.adicionarItem(new Item(325025, "Poção"));
+        
+        dwarf.tentarSorte();
+        
+        assertEquals(esperado, dwarf.getInventario());
     }
 }

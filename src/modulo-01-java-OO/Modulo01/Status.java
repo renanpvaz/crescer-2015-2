@@ -12,5 +12,6 @@ public enum Status
     FERIDO,
     CAÇANDO,
     FUGINDO,
+    TREINANDO,
     STEALTH
 }
