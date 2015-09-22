@@ -11,16 +11,38 @@ public class Personagem
     protected int experiencia;
     protected int vida;
     protected Status status;
+    protected String nome;
     
-    public Personagem(){
+    public Personagem(String nome){
+        this.nome = nome;
         this.inventario = new Inventario();
         this.experiencia = 0;
         this.status = Status.VIVO;
 
     }
     
+    public Personagem(){
+        this(null);
+    }
+    
     public Inventario getInventario(){
         return inventario;
+    }
+    
+    public String getNome(){
+        return nome;
+    }
+    
+    public int getVida(){
+        return vida;
+    }
+    
+    public int getExperiencia(){
+        return experiencia;
+    }
+    
+    public Status getStatus(){
+        return status;
     }
     
     public void adicionarItem(Item item){
