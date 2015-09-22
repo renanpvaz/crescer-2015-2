@@ -18,13 +18,6 @@ public class Elfo {
          this. status = Status.VIVO;
     }
     
-    /*public Elfo(String nome, Integer flechas) {
-        this(nome);
-        if (flechas != null) {
-            this.flechas = flechas;
-        }
-    }*/
-    
     public Elfo(String nome) {
         this(nome, 42);
     }
@@ -45,33 +38,18 @@ public class Elfo {
     public Status getStatus(){
         return status;
     }
-    
-    /* PascalCase (C#, VB.NET)
-     *      public void AtirarFlechaDeFogo
-     * camelCase (Java, JavaScript)
-     *      public void atirarFlechaDeFogo
-    */
    
-    public void atirarFlecha(Dwarf alvo) {  
+    public void atacarDwarf(Dwarf alvo) {  
         flechas--;
         experiencia++;
-        alvo.recebeDano();
-        //experiencia += 1;
-        //experiencia = experiencia + 1;
+        alvo.recebeDano(10);
     }
     
-    /*
-     * 
-     * public atirarFlechaRefactory(this.flechas, this.experiencia){
-     *     if(boolean acertar == true){
-     *         flechas--;
-     *         experiencia++;
-     *      }else{
-     *          flechas--;
-     *      }
-     *  }
-     */
-    
+    public void atacarOrc(Orc alvo){
+        flechas--;
+        experiencia++;
+        alvo.recebeDano(8);
+    }
     
     public String toString(){
         

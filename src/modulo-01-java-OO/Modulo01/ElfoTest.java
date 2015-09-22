@@ -57,7 +57,7 @@ public class ElfoTest
     public void elfoAtiraFlechaEmDwarf(){
         Elfo thranduil = new Elfo("Thranduil");
         Dwarf gimli = new Dwarf("Gimli");
-        thranduil.atirarFlecha(gimli);
+        thranduil.atacarDwarf(gimli);
         assertEquals(41, thranduil.getFlechas());
         assertEquals(1, thranduil.getExperiencia());
         assertEquals(100, gimli.getVida());
@@ -74,7 +74,7 @@ public class ElfoTest
     public void toStringUmaFlechaUmNível(){
       Elfo thranduil = new Elfo("Thranduil", 2);
       Dwarf gimli = new Dwarf("Gimli");
-      thranduil.atirarFlecha(gimli);
+      thranduil.atacarDwarf(gimli);
       assertEquals("Thranduil possui 1 flecha e 1 nível de experiência.", thranduil.toString());    
     }
 }
