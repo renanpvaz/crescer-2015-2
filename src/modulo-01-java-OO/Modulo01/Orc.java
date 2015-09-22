@@ -2,11 +2,14 @@
 
 public class Orc
 {
-    private int vida;
-    private Inventario inventario;
-    private Status status;
-    private TipoOrc tipoOrc;
+    protected int vida;
+    protected Inventario inventario;
+    protected Status status;
+    protected TipoOrc tipoOrc;
 
+    public Orc() {
+    }
+    
     public Orc(TipoOrc tipoOrc)
     {
         this.inventario = new Inventario();
