@@ -1,6 +1,10 @@
 public class DataTerceiraEra {
     private int dia, mes, ano;
     
+    public DataTerceiraEra() {
+        this.dia = this.mes = this.ano = 1;
+    }
+    
     public DataTerceiraEra(int dia, int mes, int ano) {
         this.dia = dia;
         this.mes = mes;

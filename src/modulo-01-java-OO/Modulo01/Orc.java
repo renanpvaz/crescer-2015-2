@@ -83,11 +83,15 @@ public class Orc
         return this.status;
     }
     
+    public void recebeDano(int dano) {
+        this.vida -= dano;
+    }
+    
     private void debitarFlecha() {
         Item flecha = getItem("Flecha");
         
         if(flecha.getQuantidade() == 1){
-            this.inventario.perderItem(flecha);
+            this.inventario.removerItem(flecha);
         }
         else {
             flecha.debitarUmaUnidade();
