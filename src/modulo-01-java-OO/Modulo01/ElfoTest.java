@@ -132,8 +132,8 @@ public class ElfoTest
         int experienciaEsperada = 2;
         int vidaEsperada = 100;
         // Act
-        elfo.atirarFlecha(balin);
-        elfo.atirarFlecha(filhoDeBalin);
+        elfo.atacarDwarf(balin);
+        elfo.atacarDwarf(filhoDeBalin);
         // Assert
         assertEquals(qtdFlechasEsperada, elfo.getFlechas());
         assertEquals(experienciaEsperada, elfo.getExperiencia());
@@ -152,10 +152,10 @@ public class ElfoTest
         int experienciaEsperada = 2;
         int vidaEsperada = 90;
         // Act
-        elfo1.atirarFlecha(balin);
-        elfo1.atirarFlecha(filhoDeBalin);
-        elfo2.atirarFlecha(balin);
-        elfo2.atirarFlecha(filhoDeBalin);
+        elfo1.atacarDwarf(balin);
+        elfo1.atacarDwarf(filhoDeBalin);
+        elfo2.atacarDwarf(balin);
+        elfo2.atacarDwarf(filhoDeBalin);
         // Assert
         assertEquals(qtdFlechasEsperada, elfo1.getFlechas());
         assertEquals(experienciaEsperada, elfo1.getExperiencia());
@@ -183,7 +183,7 @@ public class ElfoTest
     @Test
     public void elfoComUmDeExperienciaToString() {
         Elfo elfo1 = new Elfo(null);
-        elfo1.atirarFlecha(new Dwarf("Dwarf"));
+        elfo1.atacarDwarf(new Dwarf("Dwarf"));
         String textoEsperado = "null possui 41 flechas e 1 nível de experiência.";
         assertEquals(textoEsperado, elfo1.toString());
     }

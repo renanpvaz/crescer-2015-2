@@ -2,10 +2,7 @@
  * Representa objetos do tipo Elfo.
  */
 public class Elfo extends Personagem {
-    private final String nome;
-    private int flechas, experiencia;    
-    private Status status;
-    private int vida;
+    private int flechas;   
 
     /* Type initializer
      * Executa antes de cada construtor
@@ -14,7 +11,7 @@ public class Elfo extends Personagem {
     }
      */
     public Elfo(String nome, int flechas){
-        this.nome = nome;
+        super(nome);
         this.flechas = flechas;
         this.vida = 80;
     }
@@ -22,6 +19,11 @@ public class Elfo extends Personagem {
     public Elfo(String nome){
         this(nome, 42);
     }
+    
+    public Elfo(){
+        this(null, 42);
+    }
+    
 
     /* Apenas para elucidar as diferenças entre int X Integer, esta duplicação não faz sentido.
     public Elfo(String nome, Integer flechas) {
@@ -33,22 +35,6 @@ public class Elfo extends Personagem {
      */
     public int getFlechas(){
         return flechas;
-    }
-
-    public String getNome(){
-        return nome;
-    }
-
-    public int getExperiencia(){
-        return experiencia;
-    }
-
-    public Status getStatus(){
-        return status;
-    }
-    
-    public Inventario getInventario(){
-        return inventario;
     }
 
     public void atacarDwarf(Dwarf alvo) {  
@@ -63,19 +49,6 @@ public class Elfo extends Personagem {
         alvo.recebeDano(8);
     }
 
-    /* PascalCase (C#, VB.NET)
-     *      public void AtirarFlechaDeFogo
-     * camelCase (Java, JavaScript)
-     *      public void atirarFlechaDeFogo
-     */
-
-    public void atirarFlecha(Dwarf dwarf) {
-        flechas--;
-        experiencia++;
-        dwarf.recebeDano(10);
-        //experiencia += 1;
-        //experiencia = experiencia + 1;
-    }
 
     public void receberAtaqueDoOrc(Orc orc){
         int dano = orc.getDanoDeAtaque();
