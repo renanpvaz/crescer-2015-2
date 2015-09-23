@@ -1,72 +1,70 @@
-
-public class Dwarf extends Personagem
-{
+public class Dwarf extends Personagem {
     protected DataTerceiraEra dataNascimento;
-    
 
-    public Dwarf()  {
-        super();
-        this.dataNascimento = new DataTerceiraEra(1,1,1);
+    public Dwarf() {
         this.vida = 110;
-    }
-    
-    public Dwarf(String nome){
-        this(nome, new DataTerceiraEra(1, 1, 1));
-        this.vida = 110;
-    }
-
-    public Dwarf(String nome, DataTerceiraEra dataNascimento){
-        this.nome = nome;
         this.status = Status.VIVO;
+        this.dataNascimento = new DataTerceiraEra(1,1,1);
+    }
+
+    public Dwarf(String nome) {
+        this();
+        this.nome = nome;
+    }
+
+    public Dwarf(String nome, DataTerceiraEra dataNascimento) {
+        this(nome);
         this.dataNascimento = dataNascimento;
-        this.inventario = new Inventario();
-        this.vida = 110;
     }
 
-    public DataTerceiraEra getDataNascimento(){
-        return dataNascimento;
-    }
+    public void receberFlechada() {
 
-    public void atacarOrc(Orc alvo){
-        alvo.recebeDano(10);
+        double numero = this.gerarNumero();
+
+        if (numero < 0) {
+            this.experiencia += 2;
+        } else if (numero > 100) {
+
+            int dano = 10, vidaAposFlechada = this.vida-dano;
+            if (vidaAposFlechada == 0) {
+                this.status = Status.MORTO;
+            } 
+
+            if (vida > 0) {
+                this.vida = vidaAposFlechada;
+            }
+        }
     }
     
-    public void receberAtaqueDoOrc(Orc orc){
-        int danoCausado = orc.getDanoDeAtaque();
-        this.vida -= danoCausado;
+    public void atacarOrc(Orc orc){
+        orc.levarAtaque();
     }
 
-    public void recebeDano(int dano){
-        double sorte = this.getSorte();
-        if(sorte < 0){
-            this.experiencia += 2;
-        } else if(sorte >= 0 && sorte <= 100){
-            return;
-        }else{
-            this.vida -= dano;
-            if(this.vida < 0){
-                this.vida = 0;
-            }
-            if(this.vida == 0){
-                this.status = Status.MORTO;    
-            }
+    public DataTerceiraEra getDataNascimento() {
+        return this.dataNascimento;
+    }
+
+    public double gerarNumero() {
+        double resultado = 101.;
+
+        if (dataNascimento.ehBissexto() && this.vida >= 80 && this.vida <= 90) {
+            resultado *= -33.0;
         }
-    }
 
-    public double getSorte(){
-        double retorno = 101;
-        if(this.dataNascimento.ehBissexto() && this.vida >= 80 && this.vida <= 90){
-            retorno *= -33;
-        } 
-        if(!this.dataNascimento.ehBissexto() && (this.nome.equals("Seixas") || this.nome.equals("Meireles"))){
-            retorno = retorno * 33 % 100;
+        if (!dataNascimento.ehBissexto() &&
+        this.nome != null &&
+        (this.nome.equals("Seixas") || this.nome.equals("Meireles"))) {
+            resultado = resultado * 33 % 100;
         }
-        return retorno;
-    }
 
-    public void tentarSorte(){
-        if(this.getSorte() == (-3333)){
-            this.inventario.adicionar1000TodosItens();
-        }    
+        return resultado;
+    }
+    
+    public void tentarSorte() {
+        double numero = gerarNumero();
+        
+        if (numero == -3333.0) {
+            this.inventario.aumentar1000UnidadesEmCadaItem();
+        }
     }
 }

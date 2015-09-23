@@ -2,7 +2,7 @@
  * Representa objetos do tipo Elfo.
  */
 public class Elfo extends Personagem {
-    private int flechas;   
+    protected int flechas;
 
     /* Type initializer
      * Executa antes de cada construtor
@@ -10,20 +10,12 @@ public class Elfo extends Personagem {
     flechas = 42;
     }
      */
-    public Elfo(String nome, int flechas){
-        super(nome);
+    public Elfo(String nome, int flechas) {
+        this.nome = nome;
         this.flechas = flechas;
-        this.vida = 80;
+        this.status = Status.VIVO;
+        this.vida = 100;
     }
-    
-    public Elfo(String nome){
-        this(nome, 42);
-    }
-    
-    public Elfo(){
-        this(null, 42);
-    }
-    
 
     /* Apenas para elucidar as diferenças entre int X Integer, esta duplicação não faz sentido.
     public Elfo(String nome, Integer flechas) {
@@ -33,30 +25,27 @@ public class Elfo extends Personagem {
     }
     }
      */
-    public int getFlechas(){
-        return flechas;
+
+    public Elfo(String nome) {
+        this(nome, 42);
     }
 
-    public void atacarDwarf(Dwarf alvo) {  
+    /* PascalCase (C#, VB.NET)
+     *      public void AtirarFlechaDeFogo
+     * camelCase (Java, JavaScript)
+     *      public void atirarFlechaDeFogo
+     */
+
+    public void atirarFlecha(Dwarf dwarf) {
         flechas--;
         experiencia++;
-        alvo.recebeDano(10);
+        dwarf.receberFlechada();
+        //experiencia += 1;
+        //experiencia = experiencia + 1;
     }
 
-    public void atacarOrc(Orc alvo){
-        flechas--;
-        experiencia++;
-        alvo.recebeDano(8);
-    }
-
-
-    public void receberAtaqueDoOrc(Orc orc){
-        int dano = orc.getDanoDeAtaque();
-        this.vida -= dano;
-    }
-
-    public int getVida(){
-        return this.vida;
+    public void atacarOrc(Orc orc){
+        orc.levarAtaque();
     }
 
     /*
@@ -69,9 +58,7 @@ public class Elfo extends Personagem {
      *          flechas--;
      *      }
      *  }
-
      *  DEPOIS:
-
     public void atirarFlechaRefactory(){
     boolean acertar = true;
     if (acertar) {
@@ -79,8 +66,11 @@ public class Elfo extends Personagem {
     }
     flechas--;
     }
-
      */
+
+    public int getFlechas() {
+        return this.flechas;
+    }
 
     /* 
     public void setFlechas(int flechas) {
@@ -106,5 +96,5 @@ public class Elfo extends Personagem {
             flechaNoSingular ? "flecha" : "flechas",
             this.experiencia,
             nivelNoSingular ? "nível" : "níveis");
-    }    
+    }
 }

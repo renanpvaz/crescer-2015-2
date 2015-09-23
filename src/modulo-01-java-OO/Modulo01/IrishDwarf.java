@@ -18,10 +18,10 @@ public class IrishDwarf extends Dwarf {
         // poderia chamar método da super classe
         //super.tentarSorte();
         
-        double numero = getSorte();
+        double numero = gerarNumero();
         
         if (numero == -3333.0) {
-            this.inventario.adicionar1000TodosItensMaisSoma();
+            this.inventario.aumentarUnidadesComSomatorio();
         }
     }
 }

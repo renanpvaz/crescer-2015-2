@@ -1,59 +1,46 @@
-
-/**
- * Write a description of class Personagem here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Personagem
-{
-    protected Inventario inventario;
-    protected int experiencia;
-    protected int vida;
-    protected Status status;
+// public sealed class Personagem {
+// public final class Personagem {
+public class Personagem {
     protected String nome;
-    
-    public Personagem(String nome){
-        this.nome = nome;
-        this.inventario = new Inventario();
-        this.experiencia = 0;
-        this.status = Status.VIVO;
+    protected Status status;
+    protected int experiencia, vida;
+    protected final Inventario inventario;
 
+    public Personagem() {
+        this.status = Status.VIVO;
+        this.inventario = new Inventario();
     }
-    
-    public Personagem(){
-        this(null);
+
+    public Inventario getInventario() {
+        return this.inventario;
     }
-    
-    public Inventario getInventario(){
-        return inventario;
+
+    public String getNome() {
+        return this.nome;
     }
-    
-    public String getNome(){
-        return nome;
+
+    public Status getStatus() {
+        return this.status;
     }
-    
-    public int getVida(){
-        return vida;
+
+    public int getExperiencia() {
+        return this.experiencia;
     }
-    
-    public int getExperiencia(){
-        return experiencia;
+
+    public int getVida() {
+        return this.vida;
     }
-    
-    public Status getStatus(){
-        return status;
+
+    public void adicionarItem(Item item) {
+        inventario.adicionarItem(item);
     }
-    
-    public void adicionarItem(Item item){
-        this.inventario.adicionarItem(item);
+
+    public void perderItem(Item item) {
+        inventario.perderItem(item);
     }
-    
-    public void removerItem(Item item){
-        this.inventario.removerItem(item);
-    }
-    
-    public void serAtacado(){
+
+    public void receberAtaqueDoOrc(Orc orc){
+        int dano = orc.getDanoDeAtaque();
+        this.vida -= dano;
     }
 }
-
