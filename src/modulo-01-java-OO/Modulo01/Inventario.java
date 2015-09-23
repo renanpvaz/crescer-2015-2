@@ -1,9 +1,7 @@
 import java.util.ArrayList;
-import java.util.Random;
 public class Inventario
 {
     ArrayList<Item> ListaDeItens = new ArrayList<Item>();
-    Random r = new Random();
 
     public ArrayList<Item> getListaDeItens(){
         return ListaDeItens;
@@ -63,48 +61,6 @@ public class Inventario
                     ListaDeItens.set(ii, ListaDeItens.get(i));
                     ListaDeItens.set(i, maior);
                 }
-            }
-        }
-    }
-    
-    public Inventario gerarInventarioRandom(){
-        Inventario inventario = new Inventario();
-        int d = r.nextInt(5), numFlechas = r.nextInt(30)+5;
-        Item arco = new Item("Arco", 1);
-        Item escudoUrukHai = new Item("Escudo Uruk Hai", 1);
-        Item flechas = new Item("Flechas", numFlechas);
-        
-        switch(d){
-            case 0:
-                inventario.adicionarItem(arco);
-                break;
-            case 1:
-                inventario.adicionarItem(flechas);
-                break;
-            case 2:
-                inventario.adicionarItem(escudoUrukHai);
-                break;
-            case 3:
-                inventario.adicionarItem(escudoUrukHai);
-                inventario.adicionarItem(flechas);
-                break;    
-            case 4:
-                inventario.adicionarItem(arco);
-                inventario.adicionarItem(flechas);
-                break;
-            case 5:
-                inventario.adicionarItem(escudoUrukHai);
-                inventario.adicionarItem(escudoUrukHai);
-                break;    
-        }
-        
-        return inventario;
-    }
-    
-    public void perderFlecha(){
-        for(Item item : ListaDeItens){
-            if(item.getDescricao() == "Flechas"){
-                item.perderUmaFlecha();
             }
         }
     }

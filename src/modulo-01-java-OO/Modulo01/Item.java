@@ -44,10 +44,4 @@ public class Item
     public void adicionar1000(){
         this.quantidade += 1000;
     }
-    
-    public void perderUmaFlecha(){
-        this.quantidade -= 1;
-    }
-    
-    
 }
