@@ -2,7 +2,7 @@ public class Personagem {
     protected String nome;
     protected Status status;
     protected int experiencia, vida;
-    protected Inventario inventario;
+    protected final Inventario inventario;
 
     public Personagem() {
         this.inventario = new Inventario();
