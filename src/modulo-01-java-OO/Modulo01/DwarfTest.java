@@ -29,7 +29,7 @@ public class DwarfTest
     public void dwarfPerde10DeVidaAoReceberFlecha(){
         Elfo thranduil = new Elfo ("Thranduil", 10);
         Dwarf gimli = new Dwarf("Gimli");
-        thranduil.atirarFlecha(gimli);
+        thranduil.atacarDwarf(gimli);
         assertEquals(100, gimli.getVida());
     }
     
@@ -38,7 +38,7 @@ public class DwarfTest
         Elfo thranduil = new Elfo ("Thranduil", 11);
         Dwarf gimli = new Dwarf("Gimli");
         for(int i = 0; i <= 10; i++){
-          thranduil.atirarFlecha(gimli);  
+          thranduil.atacarDwarf(gimli);  
         }
         assertEquals(0, gimli.getVida());
     }
@@ -47,7 +47,7 @@ public class DwarfTest
     public void dwarfMorreAoReceberDano11Vezes(){
        Dwarf gimli = new Dwarf("Gimli");
        for(int i = 0; i <= 10; i++){  
-           gimli.recebeDano();
+           gimli.recebeDano(10);
        }
         assertEquals(Status.MORTO, gimli.getStatus());
     }
@@ -56,7 +56,7 @@ public class DwarfTest
     public void dwarfVidaNaoPassaDeZero(){
         Dwarf gimli = new Dwarf("Gimli");
        for(int i = 0; i <= 11; i++){
-          gimli.recebeDano();  
+          gimli.recebeDano(10);  
        }
         assertEquals(0, gimli.getVida());
     }
@@ -72,7 +72,7 @@ public class DwarfTest
     public void dwarfComVida90EAnoBissextoTrue(){
       Dwarf gimli = new Dwarf("Gimli", new DataTerceiraEra(29, 2, 2016));
       for(int i = 0; i <= 2; i++){
-          gimli.recebeDano();  
+          gimli.recebeDano(10);  
       }
       assertEquals(-3333.0, gimli.getSorte(), 0.001);
     }
@@ -81,7 +81,7 @@ public class DwarfTest
     public void dwarfComVida80EAnoBissextoTrueNaoPassaDe90(){
       Dwarf gimli = new Dwarf("Gimli", new DataTerceiraEra(29, 2, 2016));
       for(int i = 0; i <= 2; i++){
-          gimli.recebeDano();  
+          gimli.recebeDano(10);  
       }
       assertEquals(90, gimli.getVida());
     }
@@ -125,7 +125,7 @@ public class DwarfTest
     public void dwarfComVida80EAnoBissextoTrueGanha2Exp(){
       Dwarf gimli = new Dwarf("Gimli", new DataTerceiraEra(29, 2, 2016));
       for(int i = 0; i <= 2; i++){
-          gimli.recebeDano();  
+          gimli.recebeDano(10);  
       }
       assertEquals(2, gimli.getExperiencia());
     }
@@ -134,7 +134,7 @@ public class DwarfTest
     public void dwarfTestaSorteEGanhaNaMega(){
       Dwarf gimli = new Dwarf("Gimli", new DataTerceiraEra(29, 2, 2016));
       for(int i = 0; i <= 2; i++){
-          gimli.recebeDano();  
+          gimli.recebeDano(10);  
       }
       gimli.getInventario().adicionarItem(new Item("Pedra Arken", 1));
       gimli.tentarSorte();
@@ -146,7 +146,7 @@ public class DwarfTest
       Dwarf gimli = new Dwarf("Gimli", new DataTerceiraEra(29, 2, 2016));
       Inventario invDoThorin = new Inventario();
       for(int i = 0; i <= 2; i++){
-          gimli.recebeDano();  
+          gimli.recebeDano(10);  
       }
       gimli.getInventario().adicionarItem(new Item("Pedra Arken", 1));
       gimli.getInventario().adicionarItem(new Item("Tererê de barba", 3));
@@ -162,7 +162,7 @@ public class DwarfTest
       Dwarf gimli = new Dwarf("Gimli", new DataTerceiraEra(29, 2, 2016));
       Inventario invDoThorin = new Inventario();
       for(int i = 0; i <= 2; i++){
-          gimli.recebeDano();  
+          gimli.recebeDano(10);  
       }
       gimli.getInventario().adicionarItem(new Item("Pedra Arken", 1));
       gimli.getInventario().adicionarItem(new Item("Tererê de barba", 3));

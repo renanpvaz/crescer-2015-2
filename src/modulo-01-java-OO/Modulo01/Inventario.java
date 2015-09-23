@@ -1,7 +1,9 @@
 import java.util.ArrayList;
+import java.util.Random;
 public class Inventario
 {
     ArrayList<Item> ListaDeItens = new ArrayList<Item>();
+    Random r = new Random();
 
     public ArrayList<Item> getListaDeItens(){
         return ListaDeItens;
@@ -22,6 +24,16 @@ public class Inventario
             descricoes += item.getDescricao() + ",";
         }
         return descricoes.substring(0, descricoes.length() - 1);
+    }
+    
+    public Item getItemPorDescricao(String descricao){
+        for(Item item : this.ListaDeItens){
+            if(item.getDescricao().equals(descricao)) {
+                return item;
+            }
+        }
+        
+        return null;
     }
 
     public void adicionar1000TodosItens(){
@@ -64,5 +76,12 @@ public class Inventario
             }
         }
     }
+    
+    public void removerFlecha(){
+        for(Item item : this.ListaDeItens){
+            if(item.getDescricao() == "Flechas"){
+               item.perderUmaFlecha();
+            }
+        }
+    }
 }     
-

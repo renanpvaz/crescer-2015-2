@@ -1,45 +1,38 @@
-
-/**
- * Write a description of class DataTerceiraEra here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class DataTerceiraEra
-{
-    int dia, mes, ano;
+public class DataTerceiraEra {
+    private int dia, mes, ano;
     
-    public DataTerceiraEra (int dia, int mes, int ano){
+    public DataTerceiraEra() {
+        this.dia = this.mes = this.ano = 1;
+    }
+    
+    public DataTerceiraEra(int dia, int mes, int ano) {
         this.dia = dia;
         this.mes = mes;
         this.ano = ano;
     }
     
-    public DataTerceiraEra(){
-        this(1, 1, 1);
+    public int getDia() {
+        return this.dia;
     }
     
-    public int getDia(){
-        return dia;
-    }
-    public int getMes(){
-        return mes;
-    }
-    public int getAno(){
-        return ano;
+    public int getMes() {
+        return this.mes;
     }
     
-    public boolean ehBissexto(){
-        if(((this.ano % 4 == 0) && ((this.ano % 100 != 0) || (this.ano % 400 == 0)))){
-            return true;
-        }else{
-            return false;
-        }
+    public int getAno() {
+        return this.ano;
     }
     
-    public boolean equals(Object obj){
-        DataTerceiraEra outraData = (DataTerceiraEra) obj;
+    public boolean ehBissexto() {
+        return (this.ano % 4 == 0 && this.ano % 100 != 0) || this.ano % 400 == 0;
+    }
+    
+    public boolean equals(Object obj) {
         
-        return this.dia == outraData.getDia() && this.mes == outraData.getMes() && this.ano == outraData.getAno();
+        DataTerceiraEra outraData = (DataTerceiraEra)obj;
+        
+        return this.dia == outraData.getDia() &&
+            this.mes == outraData.getMes() &&
+            this.ano == outraData.getAno();
     }
 }
