@@ -6,8 +6,6 @@
  * @version (a version number or a date)
  */
 public class ElfoNoturno extends Elfo{
-    double vidaDecrescida = (double)vida;
-    
     public ElfoNoturno(String nome, int flechas) {
         super(nome, flechas);
         
@@ -17,19 +15,15 @@ public class ElfoNoturno extends Elfo{
         super(nome);
     }
     
-    public double getVidaDecrescida(){
-        return vidaDecrescida;
-    }
-    
     public void atirarFlecha(Dwarf dwarf) {
-        if(vidaDecrescida < 1){
-            vidaDecrescida = 0;
+        if(vida < 1){
+            vida = 0;
             status = Status.MORTO;
         }else {
             flechas--;
             experiencia += 3;
             dwarf.receberFlechada();
-            vidaDecrescida -= vidaDecrescida * 0.05;
+            vida -= vida * 0.05;
         }
         //experiencia += 1;
         //experiencia = experiencia + 1;
