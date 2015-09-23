@@ -17,18 +17,14 @@ public class Orc extends Personagem
         this.status = Status.VIVO;
     }
     
-    public void levarAtaqueDeAnao() {
+    public void recebeDano() {
         
         if(getItem("Escudo Uruk-Hai") == null){
             perderVida(10);
         }
         else {
-            perderVida(5);
+            perderVida(6);
         }
-    }
-    
-    public void levarAtaqueDeElfo() {
-        perderVida(8);
     }
     
     public void atacarAnao(Dwarf anao){
