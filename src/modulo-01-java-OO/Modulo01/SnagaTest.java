@@ -109,4 +109,24 @@ public class SnagaTest
         assertEquals(vidaEsperada, legolas.getVida());
     }
     
+    @Test
+    public void orcSnagaRecebeAtaqueDeUrukHai(){
+        Orc snaga = new Snaga();
+        Orc urukHai = new UrukHai();
+        
+        snaga.receberAtaqueDoOrc(urukHai);
+        
+        assertEquals(60, snaga.getVida());
+    }
+    
+    @Test
+    public void orcSnagaRecebeAtaqueDeSnaga(){
+        Orc snagaAlvo = new Snaga();
+        Orc snagaAtacante = new Snaga();
+        
+        snagaAlvo.receberAtaqueDoOrc(snagaAtacante);
+        
+        assertEquals(60, snagaAlvo.getVida());
+    }
+    
 }

@@ -75,4 +75,24 @@ public class UrukHaiTest
         assertEquals(Status.FUGINDO, orc.getStatus());
         assertEquals(vidaEsperada, legolas.getVida());
     }
+    
+    @Test
+    public void orcUrukHaiRecebeAtaqueDeUrukHai(){
+        Orc urukHaiAlvo = new UrukHai();
+        Orc urukHaiAtacante = new UrukHai();
+        
+        urukHaiAlvo.receberAtaqueDoOrc(urukHaiAtacante);
+        
+        assertEquals(urukHaiAlvo.getVida(), 144);
+    }
+    
+    @Test
+    public void orcUrukHaiRecebeAtaqueDeSnaga(){
+        Orc urukHaiAlvo = new UrukHai();
+        Orc snagaAtacante = new Snaga();
+        
+        urukHaiAlvo.receberAtaqueDoOrc(snagaAtacante);
+        
+        assertEquals(urukHaiAlvo.getVida(), 144);
+    }
 }

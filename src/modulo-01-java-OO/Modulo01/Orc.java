@@ -31,6 +31,10 @@ public class Orc extends Personagem
         }
     }
     
+    public void receberAtaqueDoOrc(Orc orc) {
+        this.levarAtaque();
+    }
+    
     public int getDanoDeAtaque(){
         if(podeAtacarComEspada()){
             return 12;
