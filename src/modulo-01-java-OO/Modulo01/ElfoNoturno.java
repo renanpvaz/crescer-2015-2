@@ -23,7 +23,7 @@ public class ElfoNoturno extends Elfo{
     
     public void atirarFlecha(Dwarf dwarf) {
         if(vidaDecrescida < 1){
-            vidaDecrescida = vidaDecrescida;
+            vidaDecrescida = 0;
             status = Status.MORTO;
         }else {
             flechas--;
@@ -34,6 +34,5 @@ public class ElfoNoturno extends Elfo{
         //experiencia += 1;
         //experiencia = experiencia + 1;
     }
-   
-    }
+}
 
