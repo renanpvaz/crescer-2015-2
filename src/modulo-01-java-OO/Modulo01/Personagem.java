@@ -1,3 +1,5 @@
+// public sealed class Personagem {
+// public final class Personagem {
 public class Personagem {
     protected String nome;
     protected Status status;
