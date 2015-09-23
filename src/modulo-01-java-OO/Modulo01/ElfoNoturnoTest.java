@@ -27,4 +27,13 @@ public class ElfoNoturnoTest
        noturno.atirarFlecha(new Dwarf());
        assertEquals(90.25, noturno.getVidaDecrescida(), 0.0001);
    }
+   
+   @Test
+   public void elfoNoturnoAtiraCemFlechas(){
+       ElfoNoturno noturno = new ElfoNoturno("Noturno", 10);
+       for(int i = 0; i < 99; i++){
+           noturno.atirarFlecha(new Dwarf());
+        }
+       assertEquals(Status.MORTO, noturno.getStatus());      
+   }
 }

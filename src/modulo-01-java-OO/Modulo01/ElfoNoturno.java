@@ -22,10 +22,15 @@ public class ElfoNoturno extends Elfo{
     }
     
     public void atirarFlecha(Dwarf dwarf) {
-        flechas--;
-        experiencia += 3;
-        dwarf.receberFlechada();
-        vidaDecrescida -= vidaDecrescida * 0.05;
+        if(vidaDecrescida < 1){
+            vidaDecrescida = vidaDecrescida;
+            status = Status.MORTO;
+        }else {
+            flechas--;
+            experiencia += 3;
+            dwarf.receberFlechada();
+            vidaDecrescida -= vidaDecrescida * 0.05;
+        }
         //experiencia += 1;
         //experiencia = experiencia + 1;
     }
