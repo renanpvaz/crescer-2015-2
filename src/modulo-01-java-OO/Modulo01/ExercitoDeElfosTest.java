@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * The test class ExercitoDeElfosTest.
@@ -46,6 +48,17 @@ public class ExercitoDeElfosTest
         exercitoDeElfos.alistarElfo(noturno);
         assertEquals(noturno, exercitoDeElfos.getExercito().get("Noturno"));
         assertEquals(green, exercitoDeElfos.getExercito().get("Fandango"));
+    }
+    
+    @Test
+    public void umElfoAgrupadoPorStatus(){
+        ExercitoDeElfos exercitoDeElfos = new ExercitoDeElfos();
+        ElfoNoturno noturno = new ElfoNoturno("Noturno");
+        ArrayList <Elfo> vivos;
+        exercitoDeElfos.agruparPorStatus();
+        //vivos = (ArrayList)exercitoDeElfos.getAgrupamentoPorStatus().get(Status.VIVO);
+        
+        assertEquals(noturno, exercitoDeElfos.getElfoVivoPorPosicao(0));
     }
     
 }
