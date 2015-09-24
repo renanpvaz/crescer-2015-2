@@ -24,6 +24,11 @@ public class ElfoTest
     }
     
     @Test
+    public void elfoNasceCom100DeVida() {
+        assertEquals(100.0, new Elfo("Legolas").getVida(), 0.0);
+    }
+    
+    @Test
     public void elfoNasceComInventarioVazio() {
         Elfo legolas = new Elfo("Legolas");
         assertEquals(new Inventario(), legolas.getInventario());
@@ -69,13 +74,13 @@ public class ElfoTest
         Dwarf balin = new Dwarf();
         int qtdFlechasEsperada = 41;
         int experienciaEsperada = 1;
-        int vidaEsperada = 100;
+        double vidaEsperada = 100;
         // Act
         elfo.atirarFlecha(balin);
         // Assert
         assertEquals(qtdFlechasEsperada, elfo.getFlechas());
         assertEquals(experienciaEsperada, elfo.getExperiencia());
-        assertEquals(vidaEsperada, balin.getVida());
+        assertEquals(vidaEsperada, balin.getVida(), 0.0);
     }
 
     @Test
@@ -86,15 +91,15 @@ public class ElfoTest
         Dwarf filhoDeBalin = new Dwarf();
         int qtdFlechasEsperada = 40;
         int experienciaEsperada = 2;
-        int vidaEsperada = 100;
+        double vidaEsperada = 100;
         // Act
         elfo.atirarFlecha(balin);
         elfo.atirarFlecha(filhoDeBalin);
         // Assert
         assertEquals(qtdFlechasEsperada, elfo.getFlechas());
         assertEquals(experienciaEsperada, elfo.getExperiencia());
-        assertEquals(vidaEsperada, balin.getVida());
-        assertEquals(vidaEsperada, filhoDeBalin.getVida());
+        assertEquals(vidaEsperada, balin.getVida(), 0.0);
+        assertEquals(vidaEsperada, filhoDeBalin.getVida(), 0.0);
     }
 
     @Test
@@ -106,7 +111,7 @@ public class ElfoTest
         Dwarf filhoDeBalin = new Dwarf();
         int qtdFlechasEsperada = 40;
         int experienciaEsperada = 2;
-        int vidaEsperada = 90;
+        double vidaEsperada = 90;
         // Act
         elfo1.atirarFlecha(balin);
         elfo1.atirarFlecha(filhoDeBalin);
@@ -117,8 +122,8 @@ public class ElfoTest
         assertEquals(experienciaEsperada, elfo1.getExperiencia());
         assertEquals(qtdFlechasEsperada, elfo2.getFlechas());
         assertEquals(experienciaEsperada, elfo2.getExperiencia());
-        assertEquals(vidaEsperada, balin.getVida());
-        assertEquals(vidaEsperada, filhoDeBalin.getVida());
+        assertEquals(vidaEsperada, balin.getVida(), 0.0);
+        assertEquals(vidaEsperada, filhoDeBalin.getVida(), 0.0);
     }
 
     @Test
@@ -151,7 +156,7 @@ public class ElfoTest
         
         orc.atacar(elfo);
         
-        assertEquals(68, elfo.getVida());
+        assertEquals(88, elfo.getVida(), 0.0);
     }
     
     @Test
@@ -161,7 +166,7 @@ public class ElfoTest
         
         orc.atacar(elfo);
         
-        assertEquals(72, elfo.getVida());
+        assertEquals(92, elfo.getVida(), 0.0);
     }
     
     
