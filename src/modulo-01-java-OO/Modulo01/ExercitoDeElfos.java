@@ -26,11 +26,17 @@ public class ExercitoDeElfos
     
     public void agruparPorStatus(){
         agrupamentoPorStatus = new HashMap<>();
-        for(Map.Entry<String, Elfo> entry : exercito.entrySet()){
-            if(!this.agrupamentoPorStatus.containsKey(entry.getKey())){
-                this.agrupamentoPorStatus.put(entry.getValue().getStatus(), new ArrayList<Elfo>());
+        for(Map.Entry<String, Elfo> entry : exercito.entrySet()){ //Elfo elfo : exercito.values();
+            Elfo elfo = entry.getValue();
+            ArrayList<Elfo> temp = agrupamentoPorStatus.get(elfo.getStatus());
+            //if(!this.agrupamentoPorStatus.containsKey(entry.getKey())){
+            if(temp == null){    
+                temp = new ArrayList<Elfo>();
+                agrupamentoPorStatus.put(elfo.getStatus(), temp);            
             }
-            this.buscar(entry.getValue().getStatus()).add(entry.getValue());
+            temp.add(elfo);
+            //this.agrupamentoPorStatus.put(elfo.getStatus(), new ArrayList<Elfo>());
+            //this.buscar(entry.getValue().getStatus()).add(entry.getValue());
         }
     }
 

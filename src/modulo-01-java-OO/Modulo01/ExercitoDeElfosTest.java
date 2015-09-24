@@ -118,7 +118,7 @@ public class ExercitoDeElfosTest
     public void doisElfosMortosEDoisVivosAgrupadosPorStatus(){
        ExercitoDeElfos exercitoDeElfos = new ExercitoDeElfos();
        ElfoVerde green = new ElfoVerde("Fandango");
-       ElfoVerde green2 = new ElfoVerde("Fandango");
+       ElfoVerde green2 = new ElfoVerde("Fandango2");
        ElfoNoturno noturno = new ElfoNoturno("Noturno", 100);
        ElfoNoturno noturno2 = new ElfoNoturno("Noturno II", 100);
        for(int i = 0; i < 99; i++){
