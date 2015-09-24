@@ -8,7 +8,6 @@
 public class ElfoNoturno extends Elfo{
     public ElfoNoturno(String nome, int flechas) {
         super(nome, flechas);
-        
     }
     
     public ElfoNoturno(String nome) {

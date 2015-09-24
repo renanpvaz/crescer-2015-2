@@ -53,12 +53,10 @@ public class ExercitoDeElfosTest
     @Test
     public void umElfoAgrupadoPorStatus(){
         ExercitoDeElfos exercitoDeElfos = new ExercitoDeElfos();
-        ElfoNoturno noturno = new ElfoNoturno("Noturno");
-        ArrayList <Elfo> vivos;
+        ElfoVerde green = new ElfoVerde("Fandango");
+        exercitoDeElfos.alistarElfo(green);
         exercitoDeElfos.agruparPorStatus();
-        //vivos = (ArrayList)exercitoDeElfos.getAgrupamentoPorStatus().get(Status.VIVO);
-        
-        assertEquals(noturno, exercitoDeElfos.getElfoVivoPorPosicao(0));
+        assertEquals(green, exercitoDeElfos.buscar(Status.VIVO).get(0));
     }
     
 }
