@@ -80,5 +80,6 @@ public class Orc extends Personagem
         return this.inventario.getItemPorDescricao(descricao);
     }
     
-    
+    public void tentarSorte(){
+    }
 }
