@@ -98,4 +98,42 @@ public class ExercitoDeElfosTest
         assertEquals(noturno, exercitoDeElfos.buscar(Status.MORTO).get(0));
         assertEquals(noturno2, exercitoDeElfos.buscar(Status.MORTO).get(1));
     }
+    
+    @Test
+    public void umElfoMortoEUmVivoAgrupadosPorStatus(){
+       ExercitoDeElfos exercitoDeElfos = new ExercitoDeElfos();
+       ElfoVerde green = new ElfoVerde("Fandango");
+       ElfoNoturno noturno = new ElfoNoturno("Noturno", 100);
+       for(int i = 0; i < 99; i++){
+           noturno.atirarFlecha(new Dwarf());
+       }
+       exercitoDeElfos.alistarElfo(green);
+       exercitoDeElfos.alistarElfo(noturno);
+       exercitoDeElfos.agruparPorStatus();
+       assertEquals(green, exercitoDeElfos.buscar(Status.VIVO).get(0));
+       assertEquals(noturno, exercitoDeElfos.buscar(Status.MORTO).get(0));
+    }
+    
+    @Test
+    public void doisElfosMortosEDoisVivosAgrupadosPorStatus(){
+       ExercitoDeElfos exercitoDeElfos = new ExercitoDeElfos();
+       ElfoVerde green = new ElfoVerde("Fandango");
+       ElfoVerde green2 = new ElfoVerde("Fandango");
+       ElfoNoturno noturno = new ElfoNoturno("Noturno", 100);
+       ElfoNoturno noturno2 = new ElfoNoturno("Noturno II", 100);
+       for(int i = 0; i < 99; i++){
+           noturno.atirarFlecha(new Dwarf());
+           noturno2.atirarFlecha(new Dwarf());
+       }
+       exercitoDeElfos.alistarElfo(green);
+       exercitoDeElfos.alistarElfo(green2);
+       exercitoDeElfos.alistarElfo(noturno);
+       exercitoDeElfos.alistarElfo(noturno2);
+       exercitoDeElfos.agruparPorStatus();
+       
+       assertEquals(green, exercitoDeElfos.buscar(Status.VIVO).get(0));
+       assertEquals(green2, exercitoDeElfos.buscar(Status.VIVO).get(1));
+       assertEquals(noturno, exercitoDeElfos.buscar(Status.MORTO).get(0));
+       assertEquals(noturno2, exercitoDeElfos.buscar(Status.MORTO).get(1));
+    }
 }

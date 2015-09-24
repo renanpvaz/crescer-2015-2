@@ -1,6 +1,5 @@
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 public class ExercitoDeElfos
 {
     private HashMap <String, Elfo> exercito;
@@ -27,11 +26,11 @@ public class ExercitoDeElfos
     
     public void agruparPorStatus(){
         agrupamentoPorStatus = new HashMap<>();
-        for(Elfo elfo : this.exercito.values()){
-            if(!this.agrupamentoPorStatus.containsKey(elfo.getStatus())){
-                this.agrupamentoPorStatus.put(elfo.getStatus(), new ArrayList<Elfo>());
+        for(Map.Entry<String, Elfo> entry : exercito.entrySet()){
+            if(!this.agrupamentoPorStatus.containsKey(entry.getKey())){
+                this.agrupamentoPorStatus.put(entry.getValue().getStatus(), new ArrayList<Elfo>());
             }
-            this.agrupamentoPorStatus.get(elfo.getStatus()).add(elfo);
+            this.buscar(entry.getValue().getStatus()).add(entry.getValue());
         }
     }
 
