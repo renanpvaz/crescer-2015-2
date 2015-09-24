@@ -164,8 +164,15 @@ public class ElfoTest
         assertEquals(92, elfo.getVida());
     }
     
+    @Test
+    public void countElfosContaMaisUm(){
+       new Elfo("meh");
+       assertEquals(1, Elfo.getCountElfos());
+    }
     
-    
-    
+    @Before
+    public void setUp(){
+        Elfo.resetCountElfos();
+    }
     
 }
