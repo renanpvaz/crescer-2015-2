@@ -24,18 +24,21 @@ public class ExercitoDeElfos
         return this.agrupamentoPorStatus;
     }
     
+    public Elfo buscarElfo(String nome){
+        return exercito.get(nome);
+    }
+    
     public void agruparPorStatus(){
         agrupamentoPorStatus = new HashMap<>();
         for(Map.Entry<String, Elfo> entry : exercito.entrySet()){ //Elfo elfo : exercito.values();
             Elfo elfo = entry.getValue();
             ArrayList<Elfo> temp = agrupamentoPorStatus.get(elfo.getStatus());
-            //if(!this.agrupamentoPorStatus.containsKey(entry.getKey())){
-            if(temp == null){    
+            if(temp == null){    //if(!this.agrupamentoPorStatus.containsKey(entry.getKey())){
                 temp = new ArrayList<Elfo>();
-                agrupamentoPorStatus.put(elfo.getStatus(), temp);            
+                agrupamentoPorStatus.put(elfo.getStatus(), temp);  
+                //this.agrupamentoPorStatus.put(elfo.getStatus(), new ArrayList<Elfo>());
             }
             temp.add(elfo);
-            //this.agrupamentoPorStatus.put(elfo.getStatus(), new ArrayList<Elfo>());
             //this.buscar(entry.getValue().getStatus()).add(entry.getValue());
         }
     }
