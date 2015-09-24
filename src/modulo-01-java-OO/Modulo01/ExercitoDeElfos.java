@@ -30,6 +30,7 @@ public class ExercitoDeElfos
     
     public void agruparPorStatus(){
         agrupamentoPorStatus = new HashMap<>();
+        agrupamentoPorStatus.clear();
         for(Map.Entry<String, Elfo> entry : exercito.entrySet()){ //Elfo elfo : exercito.values();
             Elfo elfo = entry.getValue();
             ArrayList<Elfo> temp = agrupamentoPorStatus.get(elfo.getStatus());
