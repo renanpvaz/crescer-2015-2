@@ -122,8 +122,6 @@ public class EstrategiaNormalTest{
         dwarves.add(d4);
         dwarves.add(d5);
         
-        exercito.agruparPorStatus();
-        
         exercito.getEstrategiaDeAtaque().atacar(exercito, dwarves);
         
         assertEquals(70, dwarves.get(0).getVida());

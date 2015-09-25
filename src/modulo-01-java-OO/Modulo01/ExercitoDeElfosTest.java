@@ -159,4 +159,25 @@ public class ExercitoDeElfosTest
        assertTrue(exercitoDeElfos.buscar(Status.MORTO).contains(noturno));
        assertTrue(exercitoDeElfos.buscar(Status.MORTO).contains(noturno2));
     }
+    
+    @Test
+    public void contemoisElfosMortosEDoisVivosOrdenadosDeixandoElfosNoturnosPorUltimo(){
+       ExercitoDeElfos exercitoDeElfos = new ExercitoDeElfos();
+       ElfoVerde green = new ElfoVerde("Fandango");
+       ElfoVerde green2 = new ElfoVerde("Fandango2");
+       ElfoNoturno noturno = new ElfoNoturno("Noturno");
+       ElfoNoturno noturno2 = new ElfoNoturno("Noturno II");
+       
+       exercitoDeElfos.alistarElfo(noturno);
+       exercitoDeElfos.alistarElfo(noturno2);
+       exercitoDeElfos.alistarElfo(green);
+       exercitoDeElfos.alistarElfo(green2);
+       exercitoDeElfos.agruparPorStatus();
+       ArrayList<Elfo> ordenados = exercitoDeElfos.ordenarDeixandoElfosNoturnosPorUltimo();
+       
+       assertTrue(ordenados.get(0) instanceof ElfoVerde);
+       assertTrue(ordenados.get(1) instanceof ElfoVerde);
+       assertTrue(ordenados.get(2) instanceof ElfoNoturno);
+       assertTrue(ordenados.get(3) instanceof ElfoNoturno);
+    }
 }

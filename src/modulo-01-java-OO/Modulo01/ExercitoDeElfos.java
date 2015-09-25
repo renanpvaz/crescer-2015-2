@@ -47,7 +47,27 @@ public class ExercitoDeElfos
             //this.buscar(entry.getValue().getStatus()).add(entry.getValue());
         }
     }
-
+    
+    public ArrayList<Elfo> ordenarDeixandoElfosNoturnosPorUltimo(){
+        ArrayList<Elfo> exercitoOrdenar = buscar(Status.VIVO);
+        
+        for (int i = 0; i < exercito.size(); i++) {
+            for (int j = 0; j < exercito.size() - 1; j++){
+                Elfo elfoAtual = exercitoOrdenar.get(j);
+                Elfo proximo = exercitoOrdenar.get(j + 1);
+                
+                boolean precisaTrocar = elfoAtual instanceof ElfoNoturno && proximo instanceof ElfoVerde;
+                
+                if (precisaTrocar) {
+                    exercitoOrdenar.set(j, proximo);
+                    exercitoOrdenar.set(j + 1, elfoAtual);
+                } 
+            }
+        }
+        
+        return exercitoOrdenar;
+    }
+    
     public ArrayList<Elfo> buscar (Status status){
         return exercitoAgrupado.get(status);
     }
