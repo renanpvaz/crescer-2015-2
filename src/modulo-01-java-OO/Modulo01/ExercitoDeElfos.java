@@ -3,8 +3,8 @@ import java.util.*;
 public class ExercitoDeElfos
 {
     private HashMap <String, Elfo> exercito;
-    private HashMap<Status, ArrayList<Elfo>> agrupamentoPorStatus;
-    
+    private HashMap<Status, ArrayList<Elfo>> exercitoAgrupado;
+    private EstrategiaDeAtaque estrategia = new EstrategiaNormal();
     
     public ExercitoDeElfos(){
         this.exercito = new HashMap<>();
@@ -20,8 +20,8 @@ public class ExercitoDeElfos
         return exercito;
     }
     
-     public HashMap getAgrupamentoPorStatus(){
-        return this.agrupamentoPorStatus;
+     public HashMap getexercitoAgrupado(){
+        return this.exercitoAgrupado;
     }
     
     public Elfo buscarElfo(String nome){
@@ -29,15 +29,15 @@ public class ExercitoDeElfos
     }
     
     public void agruparPorStatus(){
-        agrupamentoPorStatus = new HashMap<>();
-        agrupamentoPorStatus.clear();
+        exercitoAgrupado = new HashMap<>();
+        exercitoAgrupado.clear();
         for(Map.Entry<String, Elfo> entry : exercito.entrySet()){ //for(Elfo elfo : exercito.values()){
             Elfo elfo = entry.getValue();
-            ArrayList<Elfo> temp = agrupamentoPorStatus.get(elfo.getStatus());
-            if(temp == null){    //if(!this.agrupamentoPorStatus.containsKey(entry.getKey())){
+            ArrayList<Elfo> temp = exercitoAgrupado.get(elfo.getStatus());
+            if(temp == null){    //if(!this.exercitoAgrupado.containsKey(entry.getKey())){
                 temp = new ArrayList<Elfo>();
-                agrupamentoPorStatus.put(elfo.getStatus(), temp);  
-                //this.agrupamentoPorStatus.put(elfo.getStatus(), new ArrayList<Elfo>());
+                exercitoAgrupado.put(elfo.getStatus(), temp);  
+                //this.exercitoAgrupado.put(elfo.getStatus(), new ArrayList<Elfo>());
             }
             temp.add(elfo);
             //this.buscar(entry.getValue().getStatus()).add(entry.getValue());
@@ -45,6 +45,6 @@ public class ExercitoDeElfos
     }
 
     public ArrayList<Elfo> buscar (Status status){
-        return agrupamentoPorStatus.get(status);
+        return exercitoAgrupado.get(status);
     }
 }
