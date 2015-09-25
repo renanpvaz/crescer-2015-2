@@ -10,7 +10,7 @@ public class EstrategiaNormal implements EstrategiaDeAtaque{
         int count = 0;
         for(Elfo elfo : exercito){
             if(count >= (exercito.size() * dwarves.size()) * 0.3){
-                return;
+                continue;
             }
             if(elfo instanceof ElfoNoturno)count++;    
             for(Dwarf dwarf : dwarves){
