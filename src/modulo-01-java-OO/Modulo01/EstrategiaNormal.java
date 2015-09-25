@@ -5,20 +5,19 @@ public class EstrategiaNormal implements EstrategiaDeAtaque{
     
     public void atacar(ExercitoDeElfos exercitoDeElfos, ArrayList<Dwarf> dwarves){
         ordemAtaque = new ArrayList<Elfo>();
+        exercitoDeElfos.agruparPorStatus();
         ArrayList<Elfo> exercito = exercitoDeElfos.buscar(Status.VIVO);
         int count = 0;
         for(Elfo elfo : exercito){
-            if(count <= exercito.size() * 0.03){
+            if(count >= (exercito.size() * dwarves.size()) * 0.3){
                 return;
             }
-            else if(elfo instanceof ElfoNoturno) count++;
-            
+            if(elfo instanceof ElfoNoturno)count++;    
             for(Dwarf dwarf : dwarves){
-                elfo.atirarFlecha(dwarf);
-            }
+                    elfo.atirarFlecha(dwarf);
+                }
             ordemAtaque.add(elfo);
         }
-
     }
     
     public ArrayList<Elfo> getOrdemDoUltimoAtaque(){

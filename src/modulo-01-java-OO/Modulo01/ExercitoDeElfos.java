@@ -16,6 +16,10 @@ public class ExercitoDeElfos
         }
     }
     
+    public EstrategiaDeAtaque getEstrategiaDeAtaque(){
+        return estrategia;
+    }
+    
     public HashMap getExercito(){
         return exercito;
     }
