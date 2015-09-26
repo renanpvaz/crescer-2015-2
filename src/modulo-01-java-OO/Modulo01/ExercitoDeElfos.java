@@ -1,3 +1,4 @@
+
 import java.util.*;
 
 public class ExercitoDeElfos
@@ -16,6 +17,10 @@ public class ExercitoDeElfos
         }
     }
     
+    public void mudarEstrategia(EstrategiaDeAtaque estrategia){
+        this.estrategia = estrategia;
+    }
+    
     public EstrategiaDeAtaque getEstrategiaDeAtaque(){
         return estrategia;
     }
@@ -24,7 +29,7 @@ public class ExercitoDeElfos
         return exercito;
     }
     
-     public HashMap getexercitoAgrupado(){
+     public HashMap getExercitoAgrupado(){
         return this.exercitoAgrupado;
     }
     
@@ -48,7 +53,7 @@ public class ExercitoDeElfos
         }
     }
     
-    public ArrayList<Elfo> ordenarDeixandoElfosNoturnosPorUltimo(){
+    public ArrayList<Elfo> ordenarNoturnosNoFinal(){
         ArrayList<Elfo> exercitoOrdenar = buscar(Status.VIVO);
         
         for (int i = 0; i < exercito.size(); i++) {
@@ -68,7 +73,15 @@ public class ExercitoDeElfos
         return exercitoOrdenar;
     }
     
+    public void atacar(ArrayList<Dwarf> alvos) {
+        this.estrategia.atacar(this, alvos);
+    }
+    
     public ArrayList<Elfo> buscar (Status status){
         return exercitoAgrupado.get(status);
+    }
+    
+    public ArrayList<Elfo> getOrdemDoUltimoAtaque() {
+        return this.estrategia.getOrdemDoUltimoAtaque();
     }
 }

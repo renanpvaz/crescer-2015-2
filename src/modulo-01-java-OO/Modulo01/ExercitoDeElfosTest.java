@@ -173,7 +173,7 @@ public class ExercitoDeElfosTest
        exercitoDeElfos.alistarElfo(green);
        exercitoDeElfos.alistarElfo(green2);
        exercitoDeElfos.agruparPorStatus();
-       ArrayList<Elfo> ordenados = exercitoDeElfos.ordenarDeixandoElfosNoturnosPorUltimo();
+       ArrayList<Elfo> ordenados = exercitoDeElfos.ordenarNoturnosNoFinal();
        
        assertTrue(ordenados.get(0) instanceof ElfoVerde);
        assertTrue(ordenados.get(1) instanceof ElfoVerde);
