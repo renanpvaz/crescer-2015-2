@@ -1,7 +1,6 @@
 import java.util.*;
 public class EstrategiaAntiNoturnos implements EstrategiaDeAtaque{
      ArrayList<Elfo> ordemDoUltimoAtaque;
-    //TO DO:
     public void atacar(ExercitoDeElfos exercitoDeElfos, ArrayList<Dwarf> dwarves){
         ordemDoUltimoAtaque = new ArrayList<Elfo>();
         exercitoDeElfos.agruparPorStatus();
@@ -20,23 +19,7 @@ public class EstrategiaAntiNoturnos implements EstrategiaDeAtaque{
             ordemDoUltimoAtaque.add(elfo);
         }
     }
-    
-    /*
-    public void atacar(ExercitoDeElfos exercitoDeElfos, ArrayList<Dwarf> dwarves){
-        exercitoDeElfos.agruparPorStatus();
-        ArrayList<Elfo> exercito = exercitoDeElfos.ordenarNoturnosNoFinal();
-        for(Elfo elfo : exercito){
-            if(elfo.getStatus() == Status.MORTO){
-                continue;
-            }
-            for(Dwarf dwarf : dwarves){
-                    elfo.atirarFlecha(dwarf);
-            }
-            ordemDoUltimoAtaque.add(elfo);
-        }
-    }
-    */
-    
+ 
     public ArrayList<Elfo> getOrdemDoUltimoAtaque() {
         return this.ordemDoUltimoAtaque;
     }  
