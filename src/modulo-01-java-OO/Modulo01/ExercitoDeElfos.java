@@ -73,6 +73,25 @@ public class ExercitoDeElfos
         return exercitoOrdenar;
     }
     
+    public boolean ehMetadeNoturnosEMetadeVerdes(){
+        ArrayList<Elfo> exercito = buscar(Status.VIVO);
+        int countVerdes = 0, countNoturnos = 0;
+        for(Elfo elfo : exercito){
+            if(elfo instanceof ElfoVerde){
+                countVerdes++;
+            }else if(elfo instanceof ElfoNoturno){
+                countNoturnos++;
+            }
+        }
+        
+        if((int)(exercito.size() / 2) == countNoturnos) {
+            return true;
+        }
+        
+        return false;
+        
+    }
+    
     public void atacar(ArrayList<Dwarf> alvos) {
         this.estrategia.atacar(this, alvos);
     }

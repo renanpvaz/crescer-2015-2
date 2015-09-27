@@ -180,4 +180,28 @@ public class ExercitoDeElfosTest
        assertTrue(ordenados.get(2) instanceof ElfoNoturno);
        assertTrue(ordenados.get(3) instanceof ElfoNoturno);
     }
+    
+    @Test
+    public void exercitoÉMetadeNoturnosEMetadeVerdes(){
+        ExercitoDeElfos exercito = new ExercitoDeElfos();
+            
+            Elfo e1 = new ElfoNoturno("1");
+            Elfo e2 = new ElfoVerde("2");
+            Elfo e3 = new ElfoNoturno("3");
+            Elfo e4 = new ElfoVerde("4");
+            
+            Dwarf d1 = new Dwarf();
+            Dwarf d2 = new Dwarf();
+            Dwarf d3 = new Dwarf();
+            Dwarf d4 = new Dwarf();
+            Dwarf d5 = new Dwarf();
+            
+            exercito.alistarElfo(e1);
+            exercito.alistarElfo(e2);
+            exercito.alistarElfo(e3);
+            exercito.alistarElfo(e4);
+            
+            exercito.agruparPorStatus();
+            assertTrue(exercito.ehMetadeNoturnosEMetadeVerdes());
+    }
 }
