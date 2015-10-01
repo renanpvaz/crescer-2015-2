@@ -1,0 +1,46 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Diagram class="oracle.dbtools.crest.swingui.logical.DPVLogical" name="Logical" id="BF05F93A-E546-1F08-E6E7-508D49648F09">
+<createdBy>andrenunes</createdBy>
+<createdTime>2015-10-01 17:22:57 UTC</createdTime>
+<autoRoute>false</autoRoute>
+<boxInbox>true</boxInbox>
+<showLegend>false</showLegend>
+<showLabels>false</showLabels>
+<showRelAttributes>false</showRelAttributes>
+<showGrid>false</showGrid>
+<diagramColor>-1</diagramColor>
+<display>false</display>
+<notation>1</notation>
+<objectViews>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="7E7760A7-7C6A-E119-7929-B2840A05F677" otype="Entity" vid="0BACCB6D-6C84-60D0-3509-BE3CE80C9C70">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="177" y="49" width="167" height="97"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="E5D0734F-9517-9A44-B521-C768536D4700" otype="Entity" vid="C4016ED7-918F-DC30-CEE1-F2813963752E">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="15" y="44" width="129" height="76"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="F7A19EAC-B7DC-C798-9BEA-B79E532DEA5C" otype="Entity" vid="210A2B55-862F-21B5-CEF4-F31E3DBF10AE">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="47" y="184" width="170" height="82"/>
+</OView>
+</objectViews>
+<connectors>
+<Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="4CB30DC1-9BF7-4E7F-ECCF-8552EF53684B" otype="Relation" vid_source="C4016ED7-918F-DC30-CEE1-F2813963752E" vid_target="210A2B55-862F-21B5-CEF4-F31E3DBF10AE">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<lineWidth>1</lineWidth>
+<points>
+<point x="95" y="120"/>
+<point x="95" y="184"/>
+</points>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="FBCFDBBC-4F45-3F6C-7D80-2F60E88FEA99" otype="Relation" vid_source="0BACCB6D-6C84-60D0-3509-BE3CE80C9C70" vid_target="210A2B55-862F-21B5-CEF4-F31E3DBF10AE">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<lineWidth>1</lineWidth>
+<points>
+<point x="197" y="146"/>
+<point x="197" y="184"/>
+</points>
+</Connector>
+</connectors>
+</Diagram>

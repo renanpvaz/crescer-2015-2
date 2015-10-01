@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3CF9CDA0-6367-9276-ED4C-52686A0786E6" name="Cliente">
+<createdBy>andrenunes</createdBy>
+<createdTime>2015-10-01 17:40:57 UTC</createdTime>
+<generatorID>E5D0734F-9517-9A44-B521-C768536D4700</generatorID>
+<ownerDesignName>Armazem_Do_Joao</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDCliente" id="81528117-DEB0-564B-2F44-98FA99E33D33">
+<createdBy>andrenunes</createdBy>
+<createdTime>2015-10-01 17:40:57 UTC</createdTime>
+<generatorID>DA220F71-F2D8-4569-3A11-CBBE841CDDD2</generatorID>
+<ownerDesignName>Armazem_Do_Joao</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nome" id="CC58FE0A-91CD-5763-248E-EC2F71154305">
+<createdBy>andrenunes</createdBy>
+<createdTime>2015-10-01 17:40:57 UTC</createdTime>
+<generatorID>9AB52337-5449-77C6-EADD-B75EF31ECB9E</generatorID>
+<ownerDesignName>Armazem_Do_Joao</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Telefone" id="A5054D4A-4D5B-0D5F-DA23-4087B986CD48">
+<createdBy>andrenunes</createdBy>
+<createdTime>2015-10-01 17:40:57 UTC</createdTime>
+<generatorID>87C23FC8-D463-FB71-BED4-724FCF7D0D2D</generatorID>
+<ownerDesignName>Armazem_Do_Joao</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>18</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CPF_CNPJ" id="024975AC-B866-E870-E32B-9BF0E712BB85">
+<createdBy>andrenunes</createdBy>
+<createdTime>2015-10-01 18:05:40 UTC</createdTime>
+<ownerDesignName>Armazem_Do_Joao</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TipoPessoa" id="C359161E-EBFF-5738-337D-2E1A2C91A724">
+<createdBy>andrenunes</createdBy>
+<createdTime>2015-10-01 18:07:10 UTC</createdTime>
+<ownerDesignName>Armazem_Do_Joao</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2E0566AD-B3CE-A23B-12AB-2758B2747B69" name="Cliente_PK">
+<createdBy>andrenunes</createdBy>
+<createdTime>2015-10-01 17:40:57 UTC</createdTime>
+<generatorID>C5EE1AA8-2733-8010-A4AB-83DA4D646A56</generatorID>
+<ownerDesignName>Armazem_Do_Joao</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="81528117-DEB0-564B-2F44-98FA99E33D33"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C9B20085-BE9D-C6C6-3E75-7946EF454AFC" name="UK_Cliente_CPF_CNPJ">
+<createdBy>andrenunes</createdBy>
+<createdTime>2015-10-01 18:08:57 UTC</createdTime>
+<ownerDesignName>Armazem_Do_Joao</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="024975AC-B866-E870-E32B-9BF0E712BB85"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,82 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="54722FD3-46A1-FC6B-79E6-CCCE4E77894B" name="Pedido">
+<createdBy>andrenunes</createdBy>
+<createdTime>2015-10-01 17:40:57 UTC</createdTime>
+<generatorID>F7A19EAC-B7DC-C798-9BEA-B79E532DEA5C</generatorID>
+<ownerDesignName>Armazem_Do_Joao</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDPedido" id="1D3C2F03-6C08-4C04-5069-87EB4AA2C49D">
+<createdBy>andrenunes</createdBy>
+<createdTime>2015-10-01 17:40:57 UTC</createdTime>
+<generatorID>DEFBA46D-1F41-3E3A-EB32-A196E352D753</generatorID>
+<ownerDesignName>Armazem_Do_Joao</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DataCompra" id="8DA403E5-430C-0D19-FD19-385681CCB715">
+<createdBy>andrenunes</createdBy>
+<createdTime>2015-10-01 17:40:57 UTC</createdTime>
+<generatorID>49716391-83D6-1C77-8DCF-B2FACFD77C07</generatorID>
+<ownerDesignName>Armazem_Do_Joao</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDCliente" id="4B723ECE-FD1C-D700-82E2-69EBECDBE004">
+<createdBy>andrenunes</createdBy>
+<createdTime>2015-10-01 17:40:57 UTC</createdTime>
+<generatorID>626BC227-8107-E34C-DC89-B292101865F0</generatorID>
+<ownerDesignName>Armazem_Do_Joao</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>81528117-DEB0-564B-2F44-98FA99E33D33</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="84EE1B33-6ACA-FC1A-5FAA-DAE41BFE5CEB" referredColumn="81528117-DEB0-564B-2F44-98FA99E33D33"/>
+</associations>
+</Column>
+<Column name="ValorPedido" id="DC13161E-9BA2-FEDD-5B5A-64624CE95069">
+<createdBy>andrenunes</createdBy>
+<createdTime>2015-10-01 17:51:59 UTC</createdTime>
+<ownerDesignName>Armazem_Do_Joao</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="12D61730-AEED-ACF4-6B44-3402C0C479B2" name="Pedido_PK">
+<createdBy>andrenunes</createdBy>
+<createdTime>2015-10-01 17:40:57 UTC</createdTime>
+<generatorID>6E1C697A-779F-1683-64B7-73FEF10A4F66</generatorID>
+<ownerDesignName>Armazem_Do_Joao</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1D3C2F03-6C08-4C04-5069-87EB4AA2C49D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4FD5F462-B9CD-9792-21B6-5AC8CF38DC01" name="Pedido_Cliente_FK">
+<createdBy>andrenunes</createdBy>
+<createdTime>2015-10-01 17:40:57 UTC</createdTime>
+<generatorID>4CB30DC1-9BF7-4E7F-ECCF-8552EF53684B</generatorID>
+<ownerDesignName>Armazem_Do_Joao</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4B723ECE-FD1C-D700-82E2-69EBECDBE004"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
