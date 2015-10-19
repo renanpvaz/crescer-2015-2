@@ -34,3 +34,14 @@ function excelis(a){
     }
     return b;
   };
+
+//Exercício 6
+function queroCafe(x, precos){
+  var r = new Array();
+  for(var i = 0; i < precos.length; i++){
+    if(precos[i] <= x){
+      r.push(precos[i]);
+    }
+  }
+  return r.sort(function(a, b){ return a >= b});
+}
