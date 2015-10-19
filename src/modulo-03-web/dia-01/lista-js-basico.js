@@ -1,6 +1,10 @@
+function isNumber(number){ return typeof number === 'number' ? true : false; }
+
 // Exercício 1
 function daisyGame(petals){
-  return petals % 2 === 0 ? "Love me not" : "Love me";
+  if(isNumber(petals)){
+    return petals % 2 === 0 ? "Love me not" : "Love me";
+  }
 }
 
 //Exercício 2
@@ -23,7 +27,8 @@ function fiboSum(i){
   for(x = 2; x < (i + 2); x++){
     f[x] = f[x - 1] + f[x - 2];
   }
-  console.log(f);
+
+  console.log(f.reduce(function (a, b) { return a + b; });
 }
 
 //Exercício 5
