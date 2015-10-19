@@ -80,3 +80,29 @@ var fiboSum = function(n) {
   //return fibonacci(n) + fiboSum(n-1);
   return fibonacci(n+2)-1;
 };
+
+function queroCafe(mascada, precos) {
+  return precos
+    .filter(function(elem) {
+      return elem <= mascada;
+    })
+    .sort(function(elem1, elem2) {
+      return elem1 > elem2;
+    })
+    .join(',');
+    // alternativas:
+    // join()
+    // toString()
+};
+
+[
+  // caso de teste 1
+  { mascada: 3.14, precos: [ 5.16, 2.12, 1.15, 3.11, 17.5 ], esperado: '1.15,2.12,3.11' },
+  // caso de teste 2
+  { mascada: 99, precos: [ 101, 105 ], esperado: 'shimbalaie' },
+].forEach(function(elem) {
+  console.assert(
+    queroCafe(elem.mascada, elem.precos) === elem.esperado
+    , 'Falhou! ' + elem.mascada + ' ' + elem.precos
+  )
+});
