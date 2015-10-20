@@ -8,6 +8,7 @@
 public class Cliente{
    private String nome;
    private String endereco;
+   // cuidado com os nomes, neste caso use "numeroTelefone"
    private int numero;
    
    public Cliente(String nome, String endereco, int numero){
