@@ -74,8 +74,7 @@ function somarTodosTitulosDoClube(clube){
 
 function apenasOsMelhores(arr){
   var melhores = new Array();
-  arr.forEach(function (a) { somarTodosTitulosDoClube(a) > 18 ? melhores.push(a) : a; })
-  return melhores;
+  return arr.filter(function (elem) { return somarTodosTitulosDoClube(elem) > 18});
 }
 
 /*
