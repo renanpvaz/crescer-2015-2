@@ -16,3 +16,7 @@ carrinhoDeCompras.prototype.adicionarItem = function(item){
 carrinhoDeCompras.prototype.removerItem = function(sku){
   this.itens = this.itens.filter(function(elem, itens) { elem.sku != sku});
 }
+
+carrinhoDeCompras.prototype.atualizarQuantidade = function(sku, qtd){
+  this.itens.forEach(function (elem){ if(elem.sku === sku){ elem.qtd = qtd;}});
+}
