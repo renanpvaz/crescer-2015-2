@@ -38,7 +38,6 @@ CarrinhoDeCompras.prototype.sortearDesconto = function(){
 }
 
 CarrinhoDeCompras.prototype.forcarCompra = function(){
-  var intervalo;
   this.intervalo =
   setInterval(
     function(){
