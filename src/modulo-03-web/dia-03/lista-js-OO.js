@@ -33,6 +33,6 @@ carrinhoDeCompras.prototype.calcularTotal = function(){
 carrinhoDeCompras.prototype.sortearDesconto = function(){
   var sorte = Math.floor(Math.random() * 10) + 1;
   if(sorte <= 4){
-    this.itens.forEach(function(elem){ elem.valorUnitario = elem.valorUnitario * 0.1})
+    this.itens.forEach(function(elem){ elem.valorUnitario = elem.valorUnitario * 0.9})
   }
 }
