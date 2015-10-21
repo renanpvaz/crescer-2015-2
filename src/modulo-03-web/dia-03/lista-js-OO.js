@@ -21,13 +21,13 @@ carrinhoDeCompras.prototype.atualizarQuantidade = function(sku, qtd){
   this.itens.forEach(function (elem){ if(elem.sku === sku){ elem.qtd = qtd;}});
 }
 
-carrinhoDeCompras.prototype.calcularSubTotal = function(item){
-  return item.quantidade * item.valorUnitario;
+item.prototype.calcularSubTotal = function(){
+  return this.quantidade * this.valorUnitario;
 }
 
-carrinhoDeCompras.prototype.calcularTotal = function(carrinho){
-  return carrinho.itens
-  .reduce(function(sum, elem){ return sum + carrinho.calcularSubTotal(elem)} ,0);
+carrinhoDeCompras.prototype.calcularTotal = function(){
+  return this.itens
+  .reduce(function(sum, elem){ return sum + elem.calcularSubTotal()} ,0);
 }
 
 carrinhoDeCompras.prototype.sortearDesconto = function(){
