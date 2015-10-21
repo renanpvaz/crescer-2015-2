@@ -20,3 +20,12 @@ carrinhoDeCompras.prototype.removerItem = function(sku){
 carrinhoDeCompras.prototype.atualizarQuantidade = function(sku, qtd){
   this.itens.forEach(function (elem){ if(elem.sku === sku){ elem.qtd = qtd;}});
 }
+
+carrinhoDeCompras.prototype.calcularSubTotal = function(item){
+  return item.quantidade * item.valorUnitario;
+}
+
+carrinhoDeCompras.prototype.calcularTotal = function(carrinho){
+  return carrinho.itens
+  .reduce(function(sum, elem){ return sum + carrinho.calcularSubTotal(elem)} ,0);
+}
