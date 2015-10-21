@@ -29,3 +29,10 @@ carrinhoDeCompras.prototype.calcularTotal = function(carrinho){
   return carrinho.itens
   .reduce(function(sum, elem){ return sum + carrinho.calcularSubTotal(elem)} ,0);
 }
+
+carrinhoDeCompras.prototype.sortearDesconto = function(carrinho){
+  var sorte = Math.floor(Math.random() * 10) + 1;
+  if(sorte <= 10){
+    carrinho.itens.forEach(function(elem){ elem.valorUnitario = elem.valorUnitario * 0.1})
+  }
+}
