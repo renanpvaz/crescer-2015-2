@@ -1,3 +1,4 @@
-String.prototype.inverter(){
-  return this.split('').reverse().join('');
+
+String.prototype.palindromo = function(){
+  return this.split('').reverse().join('') === this.toString();
 }
