@@ -38,12 +38,17 @@ CarrinhoDeCompras.prototype.sortearDesconto = function(){
 }
 
 CarrinhoDeCompras.prototype.forcarCompra = function(){
-  var carrinho = this;
+  var intervalo;
+  this.intervalo =
   setInterval(
     function(){
-      carrinho.itens.forEach(function(elem){
+      this.itens.forEach(function(elem){
         elem.valorUnitario += elem.valorUnitario * 0.1;
         console.log(elem.valorUnitario);
       }
-    )}, 5000);
+    )}.bind(this), 5000);
+}
+
+CarrinhoDeCompras.prototype.concluirPedido = function(){
+  clearInterval(this.intervalo);
 }
