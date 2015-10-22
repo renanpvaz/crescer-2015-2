@@ -1,8 +1,8 @@
-CarrinhoDeCompras.prototype = Object.create(CarrinhoDeCompras.prototype);
+CarrinhoDeComprasChantagista.prototype = Object.create(CarrinhoDeCompras.prototype);
 
-function CarrinhoDeComprasChantagista{
+function CarrinhoDeComprasChantagista(){
   CarrinhoDeCompras.apply(this, arguments);
-}
+};
 
 CarrinhoDeComprasChantagista.prototype.forcarCompra = function(){
   if(!this.intervalo){
@@ -15,9 +15,9 @@ CarrinhoDeComprasChantagista.prototype.forcarCompra = function(){
         }
       )}.bind(this), 5000);
   }
-}
+};
 
 CarrinhoDeComprasChantagista.prototype.concluirPedido = function(){
   clearInterval(this.intervalo);
   this.interval = 'undefined';
-}
+};
