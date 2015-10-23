@@ -11,31 +11,38 @@
     <button id="submit">Pesquisar</button>
     <script type="text/javascript">
       $("button").click(function(){
-        var pesquisa = $("input:text").val();
+        var pesquisa = $("input:text").val().split(' ');
         var idArtista;
+        var searchArtist = 'https://api.spotify.com/v1/search?q=&type=artist'.split('=');
+        var searchId = 'https://api.spotify.com/v1/artists/sub/albums?limit=50'.split('/');
+        pesquisa = pesquisa.join('+');
+        searchArtist.splice(1, 0, pesquisa);
+
         $(function() {
-            $.get('https://api.spotify.com/v1/search?q=%C3%A9%20o%20tchan&type=artist')
+            $.get(searchArtist.join('='))
                 .done(function(data) {
                  idArtista = data.artists.items[0].id;
-                })
-              });
-        $(function() {
-            $.get('https://api.spotify.com/v1/artists/78oxdhJ0pr4Dkyk0paWUAf/albums?limit=50')
-              .done(function(data) {
-                  var albuns = data.items;
-                  albuns.forEach(function(album){
-                                if(album.images.length != 0){
-                                 var imagem = album.images[1].url;
-                                 var nome = album.name;
-                                 $('h2').append(
-                                   $('<img>')                  //TO DO: Fix albuns replicados
-                                   .attr('src', imagem)
-                                   .attr('alt', album.name),
-                                   $('<br>'));
-                                 }
-            });
-          });
-      });
+                 searchId.splice(5, 1, idArtista);
+                 $(function() {
+                     $.get(searchId.join('/'))
+                       .done(function(data) {
+                           $("h2").html("");
+                           var albuns = data.items;
+                           albuns.forEach(function(album){
+                                         if(album.images.length != 0){
+                                          var imagem = album.images[1].url;
+                                          var nome = album.name;
+                                          $('h2').append(
+                                            $('<img>')                  //TO DO: Fix albuns replicados
+                                            .attr('src', imagem)
+                                            .attr('alt', album.name),
+                                            $('<br>'));
+                                          }
+                     });
+                   });
+               });
+               })
+             });
     });
     </script>
   </body>
