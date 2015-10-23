@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <style type="text/css">
+      h2 {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h2></h2>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $.get('https://api.spotify.com/v1/artists/6mdiAmATAx73kdxrNrnlao/albums?limit=50')
+            .done(function(data) {
+                var albuns = data.items;
+                albuns.forEach(function(album){
+                               var imagem = album.images[1].url;
+                               $('h2').append(
+                                 $('<img>')                  //TO DO: Fix albuns replicados     
+                                 .attr('src', imagem)
+                                 .attr('alt', album.name),
+                                 $('<br>'));
+
+            });
+          });
+      });
+    </script>
+  </body>
+</html>
