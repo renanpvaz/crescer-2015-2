@@ -19,12 +19,13 @@
                 var albuns = data.items;
                 albuns.forEach(function(album){
                                var imagem = album.images[1].url;
+                               var nome = album.name;
                                $('h2').append(
-                                 $('<img>')                  //TO DO: Fix albuns replicados     
+                                 $('<img>')                  //TO DO: Fix albuns replicados
                                  .attr('src', imagem)
                                  .attr('alt', album.name),
                                  $('<br>'));
-
+                               
             });
           });
       });

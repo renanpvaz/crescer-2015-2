@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Consulta Eclética</title>
+  </head>
+  <body>
+    <h2></h2>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <input name="nome" type="text" placeholder="Digite">
+    <button id="submit">Pesquisar</button>
+    <script type="text/javascript">
+      $("button").click(function(){
+        var pesquisa = $("input:text").val();
+        var idArtista;
+        $(function() {
+            $.get('https://api.spotify.com/v1/search?q=%C3%A9%20o%20tchan&type=artist')
+                .done(function(data) {
+                 idArtista = data.artists.items[0].id;
+                })
+              });
+        $(function() {
+            $.get('https://api.spotify.com/v1/artists/78oxdhJ0pr4Dkyk0paWUAf/albums?limit=50')
+              .done(function(data) {
+                  var albuns = data.items;
+                  albuns.forEach(function(album){
+                                if(album.images.length != 0){
+                                 var imagem = album.images[1].url;
+                                 var nome = album.name;
+                                 $('h2').append(
+                                   $('<img>')                  //TO DO: Fix albuns replicados
+                                   .attr('src', imagem)
+                                   .attr('alt', album.name),
+                                   $('<br>'));
+                                 }
+            });
+          });
+      });
+    });
+    </script>
+  </body>
+</html>
