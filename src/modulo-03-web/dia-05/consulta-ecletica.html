@@ -1,49 +1,71 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Consulta Eclética</title>
-  </head>
-  <body>
-    <h2></h2>
-    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <input name="nome" type="text" placeholder="Digite">
-    <button id="submit">Pesquisar</button>
-    <script type="text/javascript">
-      $("button").click(function(){
-        var pesquisa = $("input:text").val().split(' ');
-        var idArtista;
-        var searchArtist = 'https://api.spotify.com/v1/search?q=&type=artist'.split('=');
-        var searchId = 'https://api.spotify.com/v1/artists/sub/albums?limit=50'.split('/');
-        pesquisa = pesquisa.join('+');
-        searchArtist.splice(1, 0, pesquisa);
 
-        $(function() {
-            $.get(searchArtist.join('='))
-                .done(function(data) {
-                 idArtista = data.artists.items[0].id;
-                 searchId.splice(5, 1, idArtista);
-                 $(function() {
-                     $.get(searchId.join('/'))
-                       .done(function(data) {
-                           $("h2").html("");
-                           var albuns = data.items;
-                           albuns.forEach(function(album){
-                                         if(album.images.length != 0){
-                                          var imagem = album.images[1].url;
-                                          var nome = album.name;
-                                          $('h2').append(
-                                            $('<img>')                  //TO DO: Fix albuns replicados
-                                            .attr('src', imagem)
-                                            .attr('alt', album.name),
-                                            $('<br>'));
-                                          }
-                     });
-                   });
+  <head>
+  <meta charset="utf-8">
+  <title>Consulta Eclética</title>
+  </head>
+
+  <body>
+  <h2></h2>
+  <style>
+      h2{
+        margin-left: 200px;
+        padding-right: 10px;
+      }
+  </style>
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <input name="nome" type="text" placeholder="Digite">
+  <button id="submit">Pesquisar</button>
+  <script type="text/javascript">
+    $("button").click(function() {
+      var pesquisa = $("input:text").val().split(' ');
+      var idArtista;
+      var searchArtist =
+        'https://api.spotify.com/v1/search?q=&type=artist'.split('=');
+      var searchId =
+        'https://api.spotify.com/v1/artists/sub/albums?limit=50'.split('/');
+      pesquisa = pesquisa.join('+');
+      searchArtist.splice(1, 0, pesquisa);
+
+      $(function() {
+        $.get(searchArtist.join('='))
+          .done(function(data) {
+
+            if(pesquisa.split('+').join(' ') === 'Justin Bieber' && Math.random() < 0.8){
+
+              $.get('https://api.spotify.com/v1/artists/douchebag/albums?limit=50')
+               .error(function(jqXHR, textStatus, errorThrown) {
+                   $('section').append($('h2').html('Caro usuário, devido a um erro '+jqXHR+', não foi possível pesquisar por '+ $('#artista').val()));
                });
-               })
-             });
+
+            }else{
+
+            idArtista = data.artists.items[0].id;
+            searchId.splice(5, 1, idArtista);
+
+              $(function() {
+                $.get(searchId.join('/'))
+                  .done(function(data) {
+                    $("h2").html("");
+                    var albuns = data.items;
+                    albuns.forEach(function(album) {
+                      if (album.images.length != 0) {
+                        var imagem = album.images[1].url;
+                        var nome = album.name;
+                        $('h2').append(
+                          $('<img>') //TO DO: Fix albuns replicados
+                          .attr('src', imagem)
+                          .attr('alt', album.name));
+                      }
+                    });
+                  });
+              });
+            };
+          })
+      });
     });
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>
