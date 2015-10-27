@@ -95,6 +95,11 @@ namespace DbFuncionarios
             return a == b;
         }
 
+        static void FazNada()
+        {
+            Console.WriteLine("Zorra Total");
+        }
+
     }
 }
 
