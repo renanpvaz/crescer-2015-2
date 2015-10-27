@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace DbFuncionarios
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -98,15 +98,6 @@ namespace DbFuncionarios
         static void FazNada()
         {
             Console.WriteLine("Zorra Total");
-        }
-
-        static IList<Funcionario> OrdenadosPorCargo()
-        {
-            var baseDeDados = new BaseDeDados();
-            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
-
-            return funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ToList();
-
         }
 
     }

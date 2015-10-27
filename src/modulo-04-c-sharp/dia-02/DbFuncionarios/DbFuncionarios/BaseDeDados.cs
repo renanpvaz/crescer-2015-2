@@ -81,5 +81,31 @@ namespace DbFuncionarios
             margareteRicardo.TurnoTrabalho = TurnoTrabalho.Manha;
             Funcionarios.Add(margareteRicardo);
         }
+
+        public IList<Funcionario> OrdenadosPorCargo()
+        {
+            var baseDeDados = new BaseDeDados();
+            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+
+            return funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ToList();
+
+        }
+
+        public IList<Funcionario> BuscarPorNome(string nome)
+        {
+            var baseDeDados = new BaseDeDados();
+            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+
+            return funcionarios.Where(funcionario => funcionario.Nome.Contains(nome))
+                .OrderBy(funcionario => funcionario.Nome).ToList();
+        }
+
+        public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho[] turnos)
+        {
+            var baseDeDados = new BaseDeDados();
+            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+
+            return funcionarios.Where(funcionario => turnos.Contains(funcionario.TurnoTrabalho)).ToList();
+        }
     }
 }
