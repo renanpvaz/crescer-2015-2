@@ -105,9 +105,10 @@ namespace DbFuncionarios
             var baseDeDados = new BaseDeDados();
             List<Funcionario> funcionarios = baseDeDados.Funcionarios;
 
-            return funcionarios.OrderBy(funcionario => funcionario.Cargo).ToList();
+            return funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ToList();
 
         }
+
     }
 }
 
