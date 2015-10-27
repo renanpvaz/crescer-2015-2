@@ -100,6 +100,14 @@ namespace DbFuncionarios
             Console.WriteLine("Zorra Total");
         }
 
+        static IList<Funcionario> OrdenadosPorCargo()
+        {
+            var baseDeDados = new BaseDeDados();
+            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+
+            return funcionarios.OrderBy(funcionario => funcionario.Cargo).ToList();
+
+        }
     }
 }
 
