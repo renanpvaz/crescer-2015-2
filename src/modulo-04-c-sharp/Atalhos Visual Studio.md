@@ -19,3 +19,5 @@
 - `CTRL + K + U` Descomenta o código selecionado
 - `CTRL + M + O` Collapse all methods (encolhe os métodos da classe)
 - `CTRL + M + M` Expande/Encolhe o método atual
+- `ctr + TAB + TAB` (Code Snippet) Cria um novo construtor na classe atual
+- `cw + TAB + TAB` (Code Snippet) `Console.WriteLine();`
