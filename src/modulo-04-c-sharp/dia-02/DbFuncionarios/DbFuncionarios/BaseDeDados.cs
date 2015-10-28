@@ -96,6 +96,7 @@ namespace DbFuncionarios
             var baseDeDados = new BaseDeDados();
             List<Funcionario> funcionarios = baseDeDados.Funcionarios;
 
+
             return funcionarios.Where(funcionario => funcionario.Nome.Contains(nome))
                 .OrderBy(funcionario => funcionario.Nome).ToList();
         }
@@ -105,7 +106,7 @@ namespace DbFuncionarios
             var baseDeDados = new BaseDeDados();
             List<Funcionario> funcionarios = baseDeDados.Funcionarios;
 
-            return funcionarios.Where(funcionario => turnos.Contains(funcionario.TurnoTrabalho)).ToList();
+            return funcionarios.Where(funcionario => turnos.Contains(funcionario.TurnoTrabalho) || false).ToList();
         }
 
         public IList<dynamic> QtdFuncionariosPorTurno()
