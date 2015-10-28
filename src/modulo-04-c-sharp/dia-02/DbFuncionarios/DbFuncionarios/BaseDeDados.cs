@@ -107,5 +107,27 @@ namespace DbFuncionarios
 
             return funcionarios.Where(funcionario => turnos.Contains(funcionario.TurnoTrabalho)).ToList();
         }
+
+        public IList<dynamic> QtdFuncionariosPorTurno()
+        {
+
+            var baseDeDados = new BaseDeDados();
+            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+
+            var query = from f in funcionarios
+                                   group f by f.TurnoTrabalho into g
+                                   select new
+                                   {
+                                       Turno = g.Key,
+                                       Count = g.Count()
+                                   };
+
+            return (IList<dynamic>)query;
+        }
     }
+
 }
+    
+
+    
+
