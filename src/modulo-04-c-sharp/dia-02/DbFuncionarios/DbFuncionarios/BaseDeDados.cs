@@ -115,12 +115,12 @@ namespace DbFuncionarios
             List<Funcionario> funcionarios = baseDeDados.Funcionarios;
 
             var query = from f in funcionarios
-                                   group f by f.TurnoTrabalho into g
-                                   select new
-                                   {
-                                       Turno = g.Key,
-                                       Count = g.Count()
-                                   };
+                        group f by f.TurnoTrabalho into g
+                        select new
+                      {
+                        Turno = g.Key,
+                        Count = g.Count()
+                      };
 
             return query.ToList<dynamic>();
         }
@@ -130,7 +130,21 @@ namespace DbFuncionarios
             var baseDeDados = new BaseDeDados();
             List<Funcionario> funcionarios = baseDeDados.Funcionarios;
 
-            return funcionarios.Where(funcionario => funcionario.Cargo == cargo).ToList();
+            return funcionarios.Where(funcionario => funcionario.Cargo.Equals(cargo)).ToList();
+        }
+
+        public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
+        {
+            var baseDeDados = new BaseDeDados();
+            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+
+            DateTime dataAtual = DateTime.Now;
+            DateTime dataInicial = new DateTime(1, 1, 1);
+
+            return funcionarios
+                     .Where(funcionario => 
+                        (dataInicial + (dataAtual - funcionario.DataNascimento)).Year - 1 > idade - 5 
+                            && (dataInicial + (dataAtual - funcionario.DataNascimento)).Year - 1 < idade + 5).ToList();
         }
 
     }
