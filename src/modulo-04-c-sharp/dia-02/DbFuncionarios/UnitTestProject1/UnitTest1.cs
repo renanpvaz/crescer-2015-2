@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DbFuncionarios;
-using System;
 
 namespace UnitTestProject1
 {

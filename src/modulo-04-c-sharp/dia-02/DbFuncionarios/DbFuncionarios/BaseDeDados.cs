@@ -122,8 +122,17 @@ namespace DbFuncionarios
                                        Count = g.Count()
                                    };
 
-            return (IList<dynamic>)query;
+            return query.ToList<dynamic>();
         }
+
+        public IList<Funcionario> BuscarPorCargo(Cargo cargo)
+        {
+            var baseDeDados = new BaseDeDados();
+            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+
+            return funcionarios.Where(funcionario => funcionario.Cargo == cargo).ToList();
+        }
+
     }
 
 }
