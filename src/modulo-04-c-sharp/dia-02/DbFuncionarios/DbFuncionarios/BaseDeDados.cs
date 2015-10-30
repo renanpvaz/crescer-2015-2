@@ -84,31 +84,23 @@ namespace DbFuncionarios
 
         public IList<Funcionario> OrdenadosPorCargo()
         {
-            List<Funcionario> funcionarios = Funcionarios;
-
-            return funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ToList();
+            return Funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ToList();
 
         }
 
         public IList<Funcionario> BuscarPorNome(string nome)
         {
-            List<Funcionario> funcionarios = Funcionarios;
-
-
-            return funcionarios.Where(funcionario => funcionario.Nome.Contains(nome))
+            return Funcionarios.Where(funcionario => funcionario.Nome.Contains(nome))
                 .OrderBy(funcionario => funcionario.Nome).ToList();
         }
 
         public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho[] turnos)
         {
-            List<Funcionario> funcionarios = Funcionarios;
-
-            return funcionarios.Where(funcionario => turnos.Contains(funcionario.TurnoTrabalho) || false).ToList();
+            return Funcionarios.Where(funcionario => turnos.Contains(funcionario.TurnoTrabalho) || false).ToList();
         }
 
         public IList<dynamic> QtdFuncionariosPorTurno()
         {
-
             List<Funcionario> funcionarios = Funcionarios;
 
             var query = from f in funcionarios
@@ -124,19 +116,15 @@ namespace DbFuncionarios
 
         public IList<Funcionario> BuscarPorCargo(Cargo cargo)
         {
-
             return Funcionarios.Where(funcionario => funcionario.Cargo.Equals(cargo)).ToList();
         }
 
         public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
         {
-
-            List<Funcionario> funcionarios = Funcionarios;
-
             DateTime dataAtual = DateTime.Now;
             DateTime dataInicial = new DateTime(1, 1, 1);
 
-            return funcionarios
+            return Funcionarios
                      .Where(funcionario => 
                         (dataInicial + (dataAtual - funcionario.DataNascimento)).Year - 1 > idade - 5 
                             && (dataInicial + (dataAtual - funcionario.DataNascimento)).Year - 1 < idade + 5).ToList();
@@ -151,6 +139,13 @@ namespace DbFuncionarios
         {
             return Funcionarios.Where(funcionario => funcionario.TurnoTrabalho == turno)
                 .Average(funcionario => funcionario.Cargo.Salario);
+        }
+
+        public IList<Funcionario> AniversariantesDoMes()
+        {
+            int mesAtual = DateTime.Now.Month;
+
+            return Funcionarios.Where(funcionario => funcionario.DataNascimento.Month == mesAtual).ToList();
         }
     }
 

@@ -79,6 +79,18 @@ namespace BaseDeDadosTeste
             Assert.AreEqual(274.1, resultado);
         }
 
+        [TestMethod]
+        public void BuscaFuncionarioQueFazemAniversarioNoMesAtual()
+        {
+            var baseDeDados = new BaseDeDados();
+            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+            var resultado = baseDeDados.AniversariantesDoMes();
+
+            Assert.AreEqual(DateTime.Now.Month, resultado[0].DataNascimento.Month);
+        }
+
+
+
 
     }
 }
