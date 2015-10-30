@@ -11,14 +11,24 @@ namespace Locadora.UnitTest
         [TestMethod]
         public void PesquisaPorJogoComUmResultado()
         {
-            var dados = new BaseDeDados(@"C:\Users\Public\game_store.xml");
+            var dados = new BaseDeDados();
             var jogo = new Jogo("Top Gear", 20, Categoria.CORRIDA);
             List<Jogo> expected = new List<Jogo>();
             expected.Add(jogo);
             var actual = dados.PesquisarJogoPorNome("Top Gear");
 
-
             Assert.IsTrue(expected[0].Equals(actual[0])); 
+        }
+
+        [TestMethod]
+        public void AdicionaJogoEPesquisaPeloMesmo()
+        {
+            var dados = new BaseDeDados();
+            var jogo = new Jogo("Metal Slug X", 25, Categoria.AVENTURA);
+            dados.CadastrarJogo(jogo);
+            var actual = dados.PesquisarJogoPorNome("Metal Slug X");
+
+            Assert.IsTrue(jogo.Equals(actual[0]));
         }
     }
 }

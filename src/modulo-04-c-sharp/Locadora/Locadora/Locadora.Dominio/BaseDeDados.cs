@@ -13,25 +13,35 @@ namespace Locadora.Dominio
 
         public string CaminhoJogo { get; private set; }
 
-        public BaseDeDados(string caminhoJogo)
-        {
-            CaminhoJogo = caminhoJogo;
-        }
+        public const string CAMINHO_XML_JOGOS = @"C:\Users\Public\game_store.xml";
 
-         public void CadastrarJogo(Jogo jogo)
+        public void CadastrarJogo(Jogo jogo)
         {
+            XElement xml = XElement.Load(CAMINHO_XML_JOGOS);
+
             //if(ValidaJogo)
+            XElement novoJogo = new XElement("jogo", new XAttribute("id", PegarProximoIdJogo()));
+            novoJogo.Add(new XElement("nome"));
+            novoJogo.Add(new XElement("preco"));
+            novoJogo.Add(new XElement("categoria"));
+            novoJogo.Element("nome").Value = jogo.Nome;
+            novoJogo.Element("preco").Value = jogo.Preco.ToString();
+            novoJogo.Element("categoria").Value = jogo.Categoria.ToString();
 
+            xml.Add(novoJogo);
+            xml.Save(CAMINHO_XML_JOGOS);
+
+            Console.ReadLine();
         }
 
         public List<Jogo> PesquisarJogoPorNome(string nome)
         {
-            XElement xml = XElement.Load(CaminhoJogo);
+            XElement xml = XElement.Load(CAMINHO_XML_JOGOS);
 
             List<Jogo> jogos = new List<Jogo>();
 
             IEnumerable<XElement> jogosXml = xml.Elements("jogo")
-                .Where(jogo => jogo.Element("nome").Value.Contains(nome));
+             .Where(jogo => jogo.Element("nome").Value.Contains(nome));
 
             foreach (var jogo in jogosXml)
             {
@@ -48,6 +58,15 @@ namespace Locadora.Dominio
                     (Categoria)Enum.Parse(typeof(Categoria), jogo.Element("categoria").Value));
         }
 
+        private int PegarProximoIdJogo()
+        {
+            XElement xml = XElement.Load(CAMINHO_XML_JOGOS);
+            var last = xml.Elements("jogo").Last();
+
+            return int.Parse(last.Attribute("id").Value) + 1;
+
+        }
+
         void EditarJogo(Jogo jogo)
         {
 
@@ -56,6 +75,6 @@ namespace Locadora.Dominio
         public string ExportarRelatorio()
         {
             return null;
-        } 
+        }
     }
 }
