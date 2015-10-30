@@ -84,8 +84,7 @@ namespace DbFuncionarios
 
         public IList<Funcionario> OrdenadosPorCargo()
         {
-            var baseDeDados = new BaseDeDados();
-            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+            List<Funcionario> funcionarios = Funcionarios;
 
             return funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ToList();
 
@@ -93,8 +92,7 @@ namespace DbFuncionarios
 
         public IList<Funcionario> BuscarPorNome(string nome)
         {
-            var baseDeDados = new BaseDeDados();
-            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+            List<Funcionario> funcionarios = Funcionarios;
 
 
             return funcionarios.Where(funcionario => funcionario.Nome.Contains(nome))
@@ -103,8 +101,7 @@ namespace DbFuncionarios
 
         public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho[] turnos)
         {
-            var baseDeDados = new BaseDeDados();
-            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+            List<Funcionario> funcionarios = Funcionarios;
 
             return funcionarios.Where(funcionario => turnos.Contains(funcionario.TurnoTrabalho) || false).ToList();
         }
@@ -112,8 +109,7 @@ namespace DbFuncionarios
         public IList<dynamic> QtdFuncionariosPorTurno()
         {
 
-            var baseDeDados = new BaseDeDados();
-            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+            List<Funcionario> funcionarios = Funcionarios;
 
             var query = from f in funcionarios
                         group f by f.TurnoTrabalho into g
@@ -128,16 +124,14 @@ namespace DbFuncionarios
 
         public IList<Funcionario> BuscarPorCargo(Cargo cargo)
         {
-            var baseDeDados = new BaseDeDados();
-            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
 
-            return funcionarios.Where(funcionario => funcionario.Cargo.Equals(cargo)).ToList();
+            return Funcionarios.Where(funcionario => funcionario.Cargo.Equals(cargo)).ToList();
         }
 
         public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
         {
-            var baseDeDados = new BaseDeDados();
-            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+
+            List<Funcionario> funcionarios = Funcionarios;
 
             DateTime dataAtual = DateTime.Now;
             DateTime dataInicial = new DateTime(1, 1, 1);
@@ -148,6 +142,16 @@ namespace DbFuncionarios
                             && (dataInicial + (dataAtual - funcionario.DataNascimento)).Year - 1 < idade + 5).ToList();
         }
 
+        public double SalarioMedio()
+        {
+            return Funcionarios.Average(funcionario => funcionario.Cargo.Salario);
+        }
+
+        public double SalarioMedio(TurnoTrabalho turno)
+        {
+            return Funcionarios.Where(funcionario => funcionario.TurnoTrabalho == turno)
+                .Average(funcionario => funcionario.Cargo.Salario);
+        }
     }
 
 }

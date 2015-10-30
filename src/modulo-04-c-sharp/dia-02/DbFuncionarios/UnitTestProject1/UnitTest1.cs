@@ -1,11 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DbFuncionarios;
 using System.Collections.Generic;
+using System;
 
-namespace UnitTestProject1
+namespace BaseDeDadosTeste
 {
     [TestClass]
-    public class ProgramTeste
+    public class BaseDeDadosTeste
     {
         [TestMethod]
         public void PrimeiroCargoComecaComLetraAAposOrdenacao()
@@ -44,7 +45,7 @@ namespace UnitTestProject1
             List<Funcionario> funcionarios = baseDeDados.Funcionarios;
             var resultado = baseDeDados.QtdFuncionariosPorTurno();
 
-            //Assert.AreEqual(TurnoTrabalho.Noite, resultado);
+            Assert.AreEqual(TurnoTrabalho.Noite, resultado);
 
         }
 
@@ -55,7 +56,29 @@ namespace UnitTestProject1
             List<Funcionario> funcionarios = baseDeDados.Funcionarios;
             var resultado = baseDeDados.BuscarPorCargo(new Cargo("Desenvolvedor", 190));
 
-            Assert.AreEqual("Desenvolvedor", resultado[0].Cargo.Titulo);
+            Assert.AreEqual("Lucas Leal", resultado[0].Nome);
         }
+
+        [TestMethod]
+        public void BuscaMediaDosSalariosDeTodosFuncionarios()
+        {
+            var baseDeDados = new BaseDeDados();
+            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+            var resultado = baseDeDados.SalarioMedio();
+
+            Assert.AreEqual(233, Math.Floor(resultado));
+        }
+
+        [TestMethod]
+        public void BuscaMediaDosSalariosDeTodosFuncionariosDaManha()
+        {
+            var baseDeDados = new BaseDeDados();
+            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+            var resultado = baseDeDados.SalarioMedio(TurnoTrabalho.Manha);
+
+            Assert.AreEqual(274.1, resultado);
+        }
+
+
     }
 }

@@ -67,9 +67,14 @@ namespace Locadora.Dominio
 
         }
 
-        void EditarJogo(Jogo jogo)
+        public void EditarJogo(string nomeJogo, string campo)
         {
+            XmlDocument xml = new XmlDocument();
+            xml.Load(CAMINHO_XML_JOGOS);
 
+            campo = String.Format("//jogo/{0}", campo);
+
+            xml.SelectSingleNode(campo);
         }
 
         public string ExportarRelatorio()
