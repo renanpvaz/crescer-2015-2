@@ -13,13 +13,14 @@ namespace Locadora.Dominio
 
         public string CaminhoJogo { get; private set; }
 
-        public BaseDeDados()
+        public BaseDeDados(string caminhoJogo)
         {
-            CaminhoJogo = @"C:\Users\renan.vaz\Documents\crescer-2015-2\src\modulo-04-c-sharp\Locadora\game_store.xml";
+            CaminhoJogo = caminhoJogo;
         }
 
-         void CadastrarJogo(Jogo jogo)
+         public void CadastrarJogo(Jogo jogo)
         {
+            //if(ValidaJogo)
 
         }
 
@@ -27,11 +28,10 @@ namespace Locadora.Dominio
         {
             XElement xml = XElement.Load(CaminhoJogo);
 
-            IEnumerable<XElement> jogosXml =
-                from j in xml.Elements("jogos")
-                where j.Element("nome").Value.Contains(nome)
-                select j;
             List<Jogo> jogos = new List<Jogo>();
+
+            IEnumerable<XElement> jogosXml = xml.Elements("jogo")
+                .Where(jogo => jogo.Element("nome").Value.Contains(nome));
 
             foreach (var jogo in jogosXml)
             {
@@ -45,7 +45,7 @@ namespace Locadora.Dominio
         {
             return new Jogo(jogo.Element("nome").Value,
                     Convert.ToDouble(jogo.Element("preco").Value),
-                    jogo.Element("categoria").Value);
+                    (Categoria)Enum.Parse(typeof(Categoria), jogo.Element("categoria").Value));
         }
 
         void EditarJogo(Jogo jogo)
