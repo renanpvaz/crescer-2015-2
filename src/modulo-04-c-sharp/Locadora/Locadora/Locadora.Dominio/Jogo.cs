@@ -33,5 +33,26 @@ namespace Locadora.Dominio
                 this.Preco == jogo.Preco &&
                 this.Categoria == jogo.Categoria;
         }
+
+        public string ToString()
+        {
+            string nome;
+            string categoria = this.Categoria.ToString();
+            string espacos1 = new string(' ', 17 - categoria.Length);
+            string espacos2;
+
+            if (Nome.Length > 29)
+            {
+                nome = Nome.Substring(0, 28) + ".";
+                espacos2 = new string(' ', 30 - nome.Length);
+            }
+            else
+            {
+                nome = Nome;
+                espacos2 = new string(' ', 30 - Nome.Length);
+            }
+
+            return categoria + espacos1 + nome + espacos2 + "R$ " + Preco.ToString().Replace(".", ","); 
+        }
     }
 }

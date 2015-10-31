@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,7 +53,7 @@ namespace Locadora.Dominio
         private Jogo ConverteXElementParaJogo(XElement jogo)
         {
             return new Jogo(jogo.Element("nome").Value,
-                    Convert.ToDouble(jogo.Element("preco").Value),
+                     Convert.ToDouble(jogo.Element("preco").Value, System.Globalization.CultureInfo.InvariantCulture),
                     (Categoria)Enum.Parse(typeof(Categoria), jogo.Element("categoria").Value));
         }
 
@@ -79,9 +80,67 @@ namespace Locadora.Dominio
             root.Save(CAMINHO_XML_JOGOS);
         }
 
-        public string ExportarRelatorio()
+        public List<string> ToString()
         {
-            return null;
+            XDocument root = XDocument.Load(CAMINHO_XML_JOGOS);
+            List<string> lista = new List<string>();
+            int index = 1;
+            string espacos = "       ";
+
+            foreach (var jogo in root.Element("jogos").Elements())
+            {
+                if (index > 9)
+                    espacos = "       ";
+                else
+                    espacos = "        ";
+
+                    lista.Add(index + espacos + ConverteXElementParaJogo(jogo).ToString());
+                    index++;
+            }
+
+            return lista;
+        }
+
+        public int BuscarTotalDeJogos()
+        {
+            XElement root = XElement.Load(CAMINHO_XML_JOGOS);
+
+            return root.Elements("jogo").Count();
+        }
+
+        public List<Jogo> BuscarTodosJogos()
+        {
+            XElement xml = XElement.Load(CAMINHO_XML_JOGOS);
+
+            List<Jogo> jogos = new List<Jogo>();
+
+            IEnumerable<XElement> jogosXml = xml.Elements("jogo");
+
+            foreach (var jogo in jogosXml)
+            {
+                jogos.Add(ConverteXElementParaJogo(jogo));
+            }
+
+            return jogos;
+        }
+
+        public double BuscarPrecoMedio()
+        {
+            return BuscarTodosJogos().Average(jogo => jogo.Preco);
+        }
+
+        public Jogo BuscarJogoMaisCaro()
+        {
+            double maiorPreco = BuscarTodosJogos().Max(jogo => jogo.Preco);
+
+            return BuscarTodosJogos().First(jogo => jogo.Preco == maiorPreco);
+        }
+
+        public Jogo BuscarJogoMaisBarato()
+        {
+            double menorPreco = BuscarTodosJogos().Min(jogo => jogo.Preco);
+
+            return BuscarTodosJogos().First(jogo => jogo.Preco == menorPreco);
         }
     }
 }
