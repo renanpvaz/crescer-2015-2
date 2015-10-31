@@ -149,7 +149,7 @@ namespace DbFuncionarios
         public dynamic FuncionarioMaisComplexo()
         {
             var funcionario = from f in Funcionarios
-                              where f.Nome == PossuiMaiorNumeroDeConsoantesNoNome()
+                              where f.Nome == BuscaNomeComMaiorNumeroDeConsoantes()
                               select new
                               {
                                   Nome = f.Nome,
