@@ -30,5 +30,14 @@ namespace Locadora.UnitTest
 
             Assert.IsTrue(jogo.Equals(actual[0]));
         }
+
+        [TestMethod]
+        public void EditaJogoEPesquisaPeloMesmo()
+        {
+            var dados = new BaseDeDados();
+            dados.EditarJogo(21, "categoria", Categoria.AVENTURA);
+
+            Assert.AreEqual(Categoria.AVENTURA, dados.PesquisarJogoPorNome("Metal Slug 3")[0].Categoria);
+        }
     }
 }

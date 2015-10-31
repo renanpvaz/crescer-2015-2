@@ -30,8 +30,6 @@ namespace Locadora.Dominio
 
             xml.Add(novoJogo);
             xml.Save(CAMINHO_XML_JOGOS);
-
-            Console.ReadLine();
         }
 
         public List<Jogo> PesquisarJogoPorNome(string nome)
@@ -67,14 +65,18 @@ namespace Locadora.Dominio
 
         }
 
-        public void EditarJogo(string nomeJogo, string campo)
+        public void EditarJogo<T>(int id, string campo, T arg)
         {
-            XmlDocument xml = new XmlDocument();
-            xml.Load(CAMINHO_XML_JOGOS);
+            var novoValor = arg.ToString();
 
-            campo = String.Format("//jogo/{0}", campo);
+            XDocument root = XDocument.Load(CAMINHO_XML_JOGOS);
 
-            xml.SelectSingleNode(campo);
+            XElement jogo = root.Element("jogos")
+                .Elements().FirstOrDefault(j => id.ToString() == j.Attribute("id").Value);
+
+            jogo.Element(campo.ToLower()).Value = novoValor;
+
+            root.Save(CAMINHO_XML_JOGOS);
         }
 
         public string ExportarRelatorio()
