@@ -101,16 +101,14 @@ namespace DbFuncionarios
 
         public IList<dynamic> QtdFuncionariosPorTurno()
         {
-            List<Funcionario> funcionarios = Funcionarios;
-
-            var query = from f in funcionarios
-                        group f by f.TurnoTrabalho into g
+            var query = from f in Funcionarios
+                        group f by f.TurnoTrabalho into f
                         select new
-                      {
-                        Turno = g.Key,
-                        Count = g.Count()
-                      };
+                        {
+                            Turno = f.Key,
+                            CountFuncionarios = f.Count()
 
+                        };
             return query.ToList<dynamic>();
         }
 
@@ -146,6 +144,28 @@ namespace DbFuncionarios
             int mesAtual = DateTime.Now.Month;
 
             return Funcionarios.Where(funcionario => funcionario.DataNascimento.Month == mesAtual).ToList();
+        }
+
+        public dynamic FuncionarioMaisComplexo()
+        {
+            var funcionario = from f in Funcionarios
+                              where f.Nome == PossuiMaiorNumeroDeConsoantesNoNome()
+                              select new
+                              {
+                                  Nome = f.Nome,
+                                  SalarioReais = f.Cargo.Salario,
+                                  SalarioDolares = String.Format("{0:C}", f.Cargo.Salario)
+                              }; 
+
+            return funcionario;
+        }
+
+        private string BuscaNomeComMaiorNumeroDeConsoantes()
+        {
+            var nomes = Funcionarios.SelectMany(f => f.Nome.ToString()).ToList();
+            var nomeComMaisConsoantes = nomes.First(nome => (nome.ToString().ToLower().Replace("a|e|i|o| |u", "").Length > 5));
+
+            return BuscarPorNome(nomeComMaisConsoantes.ToString())[0].Nome;
         }
     }
 
