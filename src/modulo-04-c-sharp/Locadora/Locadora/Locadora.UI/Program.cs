@@ -29,7 +29,6 @@ namespace Locadora.UI
                 Console.WriteLine("3. Editar jogo existente");
                 Console.WriteLine("4. Gerar relatório");
 
-                System.Threading.Thread.Sleep(1000);
                 var entrada = Console.ReadLine();
 
                 if(entrada == "")
@@ -37,27 +36,45 @@ namespace Locadora.UI
                     entrada = Console.ReadLine();
                 }
 
-                opcaoSelecionada = int.Parse(entrada);
+                try
+                {
+                    opcaoSelecionada = int.Parse(entrada);
+                }
+                catch(System.FormatException)
+                {
+                    Console.Clear();                 
+                    Console.WriteLine("Opção inválida!\nAperte qualquer botão para tentar novamente");
+                    Console.Read();
+                }
 
                 switch (opcaoSelecionada)
                 {
                     case OPC_CADASTRAR_JOGO:
 
-                        Console.Clear();
-                        Console.WriteLine("Informe o nome do novo jogo");
-                        string nomeJogo = Console.ReadLine();
+                        try
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Informe o nome do novo jogo");
+                            string nomeJogo = Console.ReadLine();
 
-                        Console.WriteLine("Informe a categoria do jogo");
-                        Categoria categoriaJogo = (Categoria)Enum.Parse(typeof(Categoria), Console.ReadLine().ToUpper());
+                            Console.WriteLine("Informe a categoria do jogo");
+                            Categoria categoriaJogo = (Categoria)Enum.Parse(typeof(Categoria), Console.ReadLine().ToUpper());
 
-                        Console.WriteLine("Informe o preço do jogo");
-                        double precoJogo = Convert.ToDouble(Console.ReadLine(), System.Globalization.CultureInfo.InvariantCulture);
+                            Console.WriteLine("Informe o preço do jogo");
+                            double precoJogo = Convert.ToDouble(Console.ReadLine(), System.Globalization.CultureInfo.InvariantCulture);
 
-                        dados.CadastrarJogo(new Jogo(nomeJogo, precoJogo, categoriaJogo));
+                            dados.CadastrarJogo(new Jogo(nomeJogo, precoJogo, categoriaJogo));
 
-                        Console.WriteLine(MSG_VOLTAR);
+                            Console.WriteLine(MSG_VOLTAR);
 
-                        Console.Read();
+                            Console.Read();
+                        }
+                        catch(System.FormatException)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Opção inválida!\nAperte qualquer botão para tentar novamente");
+                            Console.Read();
+                        }
 
                         break;
 
@@ -81,21 +98,31 @@ namespace Locadora.UI
 
                     case OPC_EDITAR_JOGO:
 
-                        Console.Clear();
-                        Console.WriteLine("Informe o ID do jogo à ser editado");
-                        int id = int.Parse(Console.ReadLine());
+                        try
+                        {
 
-                        Console.WriteLine("Digite o campo à ser alterado");
-                        string campo = Console.ReadLine();
+                            Console.Clear();
+                            Console.WriteLine("Informe o ID do jogo à ser editado");
+                            int id = int.Parse(Console.ReadLine());
 
-                        Console.WriteLine("Digite o novo valor para o campo " + campo);
-                        string novoValor = Console.ReadLine();
+                            Console.WriteLine("Digite o campo à ser alterado");
+                            string campo = Console.ReadLine();
 
-                        dados.EditarJogo(id, campo, novoValor);
+                            Console.WriteLine("Digite o novo valor para o campo " + campo);
+                            string novoValor = Console.ReadLine();
 
-                        Console.WriteLine(MSG_VOLTAR);
+                            dados.EditarJogo(id, campo, novoValor);
 
-                        Console.Read();
+                            Console.WriteLine(MSG_VOLTAR);
+
+                            Console.Read();
+                        }
+                        catch (System.FormatException)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Opção inválida!\nAperte qualquer botão para tentar novamente");
+                            Console.Read();
+                        }
 
                         break;
 
