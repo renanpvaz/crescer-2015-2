@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1B48FBE6-AFAE-4F1D-B204-BB2151204AC6}</ProjectGuid>
+    <ProjectGuid>{49195323-1AB3-4673-AFAB-4816C9A9C634}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Locadora.UI</RootNamespace>
@@ -48,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Locadora.Dominio\Locadora.Dominio.csproj">
+      <Project>{b266a47f-ff28-47ca-866d-d40279dda55c}</Project>
+      <Name>Locadora.Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
