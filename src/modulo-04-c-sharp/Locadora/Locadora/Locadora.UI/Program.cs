@@ -28,6 +28,7 @@ namespace Locadora.UI
                 Console.WriteLine("2. Buscar jogos por nome");
                 Console.WriteLine("3. Editar jogo existente");
                 Console.WriteLine("4. Gerar relatório");
+                Console.WriteLine("0. Sair");
 
                 var entrada = Console.ReadLine();
 
@@ -138,6 +139,8 @@ namespace Locadora.UI
                 }
 
             }
+
+            Environment.Exit(0);
         }
     }
 }
