@@ -131,6 +131,9 @@ namespace Locadora.UI
 
                         Console.Clear();
                         Console.WriteLine("Relatório gerado\nCaminho: C:\\Users\\Public\\relatorio.txt");
+
+                        Relatorio.ExportarRelatorioEmTxt();
+
                         Console.WriteLine(MSG_VOLTAR);
 
                         Console.Read();
