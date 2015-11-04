@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Locadora.UI.Web.Views.Relatorio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,9 @@ namespace Locadora.UI.Web.Controllers
 {
     public class RelatorioController : Controller
     {
-        // GET: Relatorio
-        public ActionResult Index()
+        public ActionResult JogosDisponiveis()
         {
-            return View();
+            return View(new RelatorioModel());
         }
     }
 }
