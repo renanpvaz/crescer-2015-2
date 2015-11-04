@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.UnitTest", "Locado
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.UI.ConsoleApp", "Locadora.UI\Locadora.UI.ConsoleApp.csproj", "{49195323-1AB3-4673-AFAB-4816C9A9C634}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{E187C616-D3EB-4121-8F4A-FA3055C6157B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.UI.Web", "Locadora.UI.Web\Locadora.UI.Web.csproj", "{C4692D5A-4BFD-4F32-819F-B3F4BD08FB4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{49195323-1AB3-4673-AFAB-4816C9A9C634}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49195323-1AB3-4673-AFAB-4816C9A9C634}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49195323-1AB3-4673-AFAB-4816C9A9C634}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E187C616-D3EB-4121-8F4A-FA3055C6157B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E187C616-D3EB-4121-8F4A-FA3055C6157B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E187C616-D3EB-4121-8F4A-FA3055C6157B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E187C616-D3EB-4121-8F4A-FA3055C6157B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4692D5A-4BFD-4F32-819F-B3F4BD08FB4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4692D5A-4BFD-4F32-819F-B3F4BD08FB4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4692D5A-4BFD-4F32-819F-B3F4BD08FB4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4692D5A-4BFD-4F32-819F-B3F4BD08FB4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
