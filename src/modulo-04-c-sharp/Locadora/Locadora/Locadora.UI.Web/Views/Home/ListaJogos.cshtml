@@ -1,0 +1,14 @@
+﻿@Model 
+
+@{
+    ViewBag.Title = "ListaJogos";
+}
+
+<h2>Lista dos jogos</h2>
+
+<ul>
+    @foreach (var jogo in Model)
+    {
+        <li>@jogo.Nome</li>
+    }
+</ul>
