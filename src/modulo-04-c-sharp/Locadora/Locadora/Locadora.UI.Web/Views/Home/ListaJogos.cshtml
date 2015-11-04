@@ -5,9 +5,9 @@
 
 <h2>Lista dos jogos</h2>
 
-<div>
+<ul>
     @foreach (var jogo in Model)
     {
-        <p>@jogo</p>
+        <li>@jogo.Nome</li>
     }
-</div>
+</ul>

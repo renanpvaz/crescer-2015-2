@@ -19,7 +19,7 @@ namespace Locadora.UI.Web.Controllers
         {
             BaseDeDados dados = new BaseDeDados();
 
-            var jogos = dados.ToString();          
+            var jogos = dados.BuscarTodosJogos();          
 
             return View(jogos);
         }
