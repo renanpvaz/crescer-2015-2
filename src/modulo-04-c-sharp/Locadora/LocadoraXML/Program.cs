@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Locadora.Dominio
+namespace LocadoraXML
 {
-    public enum Categoria
+    class Program
     {
-        AVENTURA,
-        CORRIDA,
-        ESPORTE,
-        LUTA,
-        RPG
+        static void Main(string[] args)
+        {
+        }
     }
 }

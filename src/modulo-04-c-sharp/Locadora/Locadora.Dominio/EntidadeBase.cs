@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aula04Ado
+namespace Locadora.Dominio
 {
-    class Program
+    public abstract class EntidadeBase
     {
-        static void Main(string[] args)
-        {
-        }
+        public int Id { get; protected set; }
     }
 }
