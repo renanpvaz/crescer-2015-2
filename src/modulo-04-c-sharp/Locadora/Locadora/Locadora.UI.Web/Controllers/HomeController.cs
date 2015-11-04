@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Locadora.Dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,7 +17,13 @@ namespace Locadora.UI.Web.Controllers
 
         public ActionResult ListaJogos()
         {
-            return View();
+            BaseDeDados dados = new BaseDeDados();
+
+            var jogos = dados.ToString();          
+
+            return View(jogos);
         }
+
+        
     }
 }
