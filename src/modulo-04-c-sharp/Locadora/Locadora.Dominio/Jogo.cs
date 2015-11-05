@@ -12,6 +12,8 @@ namespace Locadora.Dominio
 
         public Categoria Categoria { get; set; }
 
+        public Selo Selo{ get; set; }
+
         public int? IdClienteLocacao { get; private set; }
         
         public Jogo()

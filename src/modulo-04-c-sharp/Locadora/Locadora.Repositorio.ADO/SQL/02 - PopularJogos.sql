@@ -24,3 +24,7 @@ INSERT INTO dbo.Jogo VALUES ('Contra III',28,3, null)
 INSERT INTO dbo.Jogo VALUES ('Sunset Riders',37.9,3, null)
 INSERT INTO dbo.Jogo VALUES ('Goof Troop',41.9,3, null)
 INSERT INTO dbo.Jogo VALUES ('Mickey to Donald: Magical Adventure 3',32.9,3, null)
+
+insert into Selo (IDSelo, Nome) values (1, 'Ouro');
+insert into Selo (IDSelo, Nome) values (2, 'Prata');
+insert into Selo (IDSelo, Nome) values (3, 'Bronze');
