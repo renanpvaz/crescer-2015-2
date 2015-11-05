@@ -25,6 +25,7 @@ namespace Locadora.Dominio
         {
             this.Id = id;
             this.IdClienteLocacao = idClienteLocacao;
+            DefinirSeloNaCriacao();
         }
 
         public void LocarPara(Cliente cliente)
@@ -62,6 +63,22 @@ namespace Locadora.Dominio
             }
 
             return false;
+        }
+
+        private void DefinirSeloNaCriacao()
+        {
+            if (this.Preco > 35 && this.Preco <= 55)
+            {
+                this.Selo = Selo.Prata;
+            }
+            else if (this.Preco > 55)
+            {
+                this.Selo = Selo.Ouro;
+            }
+            else
+            {
+                this.Selo = Selo.Bronze;
+            }
         }
     }
 }
