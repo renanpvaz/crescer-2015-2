@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Locadora.Web.MVC.Models
 {
-    public class JogoModel
+    public class JogoDetalhesModel
     {
 
         public int Id { get; set; }
@@ -13,15 +13,19 @@ namespace Locadora.Web.MVC.Models
         public decimal Preco { get; set; }
         public string Categoria { get; set; }
         public string Selo { get; set; }
+        public string Descricao { get; set; }
+        public string Imagem { get; set; }
 
-        public JogoModel(int id, string nome, decimal preco, string categoria, string selo)
+        public JogoDetalhesModel(int id, string nome, decimal preco, string categoria, string selo, string descricao)
         {
             Id = id;
             Nome = nome;
             Preco = preco;
             Categoria = categoria;
             Selo = selo;
+            Descricao = descricao;
         }
 
     }
+
 }

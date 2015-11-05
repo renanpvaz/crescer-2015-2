@@ -1,7 +1,33 @@
-﻿@model JogoModel
+﻿@model JogoDetalhesModel
 @{
     ViewBag.Title = "DetalhesJogo";
+    ViewBag.seloImagem = "SeloBronze.png";
 }
 
-<h2>@Model.Nome</h2>
+
+@if(Model.Selo == "Ouro")
+{
+    ViewBag.seloImagem = "SeloOuro.png";
+}
+
+<style>
+    .titulo{
+        display:inline-block;
+        float:left
+    }
+    .selo{
+        display:inline-block;
+        float:right     
+    }
+</style>
+
+<div>
+    <h1 class="titulo">@Model.Nome</h1>
+    <div class="containerImagem">
+        <img clas="selo" src="@string.Format("/Content/Images/{0}", ViewBag.seloImagem)"/>
+    </div>
+</div>
+
+
+<img src="@Model.Imagem" />
 

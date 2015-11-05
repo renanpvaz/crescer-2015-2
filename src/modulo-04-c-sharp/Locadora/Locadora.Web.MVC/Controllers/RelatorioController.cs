@@ -19,7 +19,7 @@ namespace Locadora.Web.MVC.Controllers
             foreach(var jogo in repositorio.BuscarTodos())
             {
                 var jogoModel = new JogoModel
-                    (jogo.Id, jogo.Nome, jogo.Preco, jogo.Categoria.ToString(), jogo.Selo.ToString(), jogo.Descricao);
+                    (jogo.Id, jogo.Nome, jogo.Preco, jogo.Categoria.ToString(), jogo.Selo.ToString());
                 model.Jogos.Add(jogoModel);
             }
             

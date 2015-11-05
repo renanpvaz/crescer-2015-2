@@ -15,7 +15,9 @@ namespace Locadora.Web.MVC.Controllers
             IJogoRepositorio repositorio = new Repositorio.ADO.JogoRepositorio();
 
             var jogo = repositorio.BuscarPorId(id);
-            var jogoDetalhe = new JogoModel(jogo.Id, jogo.Nome, jogo.Preco, jogo.Categoria.ToString(), jogo.Selo.ToString(), jogo.Descricao);
+            var jogoDetalhe = new JogoDetalhesModel(jogo.Id, jogo.Nome, jogo.Preco, jogo.Categoria.ToString(), jogo.Selo.ToString(), jogo.Descricao);
+
+            jogoDetalhe.Imagem = jogo.Imagem;
 
             return View(jogoDetalhe);
         }

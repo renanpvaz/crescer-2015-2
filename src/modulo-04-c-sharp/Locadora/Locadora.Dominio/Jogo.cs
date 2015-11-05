@@ -18,6 +18,8 @@ namespace Locadora.Dominio
 
         public string Descricao { get; set; }
 
+        public string Imagem { get; set; }
+
         public Jogo()
         {
 
