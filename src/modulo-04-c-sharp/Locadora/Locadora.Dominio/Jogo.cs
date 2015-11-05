@@ -15,16 +15,19 @@ namespace Locadora.Dominio
         public Selo Selo{ get; set; }
 
         public int? IdClienteLocacao { get; private set; }
-        
+
+        public string Descricao { get; set; }
+
         public Jogo()
         {
 
         }
 
-        public Jogo(int id, int? idClienteLocacao = null)
+        public Jogo(int id, int? idClienteLocacao = null, string descricao = "Sem descrição" )
         {
             this.Id = id;
             this.IdClienteLocacao = idClienteLocacao;
+            this.Descricao = descricao;
             DefinirSeloNaCriacao();
         }
 
