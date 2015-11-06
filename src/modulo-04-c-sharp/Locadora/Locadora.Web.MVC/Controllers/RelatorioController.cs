@@ -17,12 +17,10 @@ namespace Locadora.Web.MVC.Controllers
             var model = new RelatorioModel();
             var jogos = repositorio.BuscarTodos();
 
-            if (!string.IsNullOrEmpty(busca))
+            if(repositorio.BuscarPorNome(busca).Count() != 0)
             {
-                if(repositorio.BuscarPorNome(busca) != null)
-                {
-                    jogos = repositorio.BuscarPorNome(busca);
-                }
+                model.EncontrouResultados = true;
+                jogos = repositorio.BuscarPorNome(busca);
             }
 
             foreach(var jogo in jogos)
