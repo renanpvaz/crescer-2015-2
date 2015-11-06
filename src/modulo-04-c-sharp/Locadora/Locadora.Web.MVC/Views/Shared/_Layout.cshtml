@@ -18,6 +18,26 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Locadora CWI Crescer", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <style> 
+                .pesquisa{     
+                    float: right;
+                    margin-top: 11px;
+                    display: inline-block;
+                    margin-right: -140%
+                }
+                .pesquisa :first-child{
+                    border-radius: 3px;
+                    padding: 2px; 
+                }
+                .pesquisa :last-child{
+                    margin-bottom: 3px;
+                    padding: 3.2px 10px;
+                }
+                </style>
+                <form class="pesquisa" action="~/Relatorio/JogosDisponiveis">
+                    <input class="barra_pesquisa"type="text" name="busca" placeholder="Digite o nome de um jogo">
+                    <input class="btn btn-default btn-md" type="submit" value="Pesquisar">
+                </form>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
