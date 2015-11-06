@@ -1,0 +1,39 @@
+﻿@model JogoDetalhesModel
+@{
+    ViewBag.Title = "Manter";
+}
+
+<h2>Editar jogo</h2>
+
+@using (Html.BeginForm("Salvar", "Cliente", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+  <div class="form-group">
+    @Html.LabelFor(m => m.Nome, new { @class = "col-sm-2 control-label" })
+     <div class="col-sm-10">
+        @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Nome)           
+      </div>       
+  </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Preco, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.Preco, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Preco)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Descricao, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.Descricao, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Descricao)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </div>
+}

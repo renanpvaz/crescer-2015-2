@@ -21,5 +21,15 @@ namespace Locadora.Web.MVC.Controllers
 
             return View(jogoDetalhe);
         }
+
+        public ActionResult Manter(int id)
+        {
+            IJogoRepositorio repositorio = new Repositorio.ADO.JogoRepositorio();
+
+            var jogo = repositorio.BuscarPorId(id);
+            var jogoEditar = new JogoDetalhesModel(jogo.Id, jogo.Nome, jogo.Preco, jogo.Categoria.ToString(), jogo.Selo.ToString(), jogo.Descricao);
+
+            return View(jogoEditar);
+        }
     }
 }

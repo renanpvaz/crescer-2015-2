@@ -10,21 +10,29 @@
     ViewBag.seloImagem = "SeloOuro.png";
 }
 <style>
+    .detalhes_header{
+        border-bottom: groove;
+        margin-bottom: 20px;
+    }
     .titulo{
         display:inline-block;
-        float:left
+        float:left;
     }
     .selo{
         display:inline-block;
-        float:right     
+        float:right;   
+    }
+    .btn-editar{
+        display: inline-block;
+        float: right;
+        margin-top: 31px;
     }
 </style>
 
-<div>
+<div class="detalhes_header">
     <h1 class="titulo">@Model.Nome</h1>
-    <div class="containerImagem">
         <img clas="selo" src="@string.Format("/Content/Images/{0}", ViewBag.seloImagem)"/>
-    </div>
+    <button class="btn-editar btn btn-info" onclick="location.href='/Jogo/Manter/' + @Model.Id">Editar</button>
 </div>
 
 
