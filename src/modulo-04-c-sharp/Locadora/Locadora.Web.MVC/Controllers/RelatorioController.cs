@@ -14,14 +14,26 @@ namespace Locadora.Web.MVC.Controllers
 
         public ActionResult JogosDisponiveis(string busca)
         {
-            var model = new RelatorioModel();
-            var jogos = repositorio.BuscarTodos();
+            var model = new RelatorioModel(); 
+            var buscaJogos = repositorio.BuscarPorNome(busca);
+            var jogos = buscaJogos;
 
-            if(repositorio.BuscarPorNome(busca).Count() != 0)
+            if (!string.IsNullOrWhiteSpace(busca))
             {
-                model.EncontrouResultados = true;
-                jogos = repositorio.BuscarPorNome(busca);
+                if (buscaJogos.Count() != 0)
+                {
+                    jogos = buscaJogos;
+                }
+                else
+                {
+                    model.EncontrouResultados = false;
+                }
             }
+            else
+            {
+                jogos = repositorio.BuscarTodos();
+            }
+            
 
             foreach(var jogo in jogos)
             {
@@ -29,15 +41,18 @@ namespace Locadora.Web.MVC.Controllers
                     (jogo.Id, jogo.Nome, jogo.Preco, jogo.Categoria.ToString(), jogo.Selo.ToString());
                 model.Jogos.Add(jogoModel);
             }
-            
-            model.QuantidadeDeJogos = model.Jogos.Count();
 
-            var maiorPreco = model.Jogos.Max(jogo => jogo.Preco);
-            var menorPreco = model.Jogos.Min(jogo => jogo.Preco);
-            model.JogoMaisCaro = model.Jogos.First(jogo => jogo.Preco == maiorPreco).Nome;
-            model.JogoMaisBarato= model.Jogos.First(jogo => jogo.Preco == menorPreco).Nome;
+            if(model.EncontrouResultados)
+            {                      
+                model.QuantidadeDeJogos = model.Jogos.Count();
 
-            model.PrecoMedio = model.Jogos.Average(jogo => jogo.Preco);
+                var maiorPreco = model.Jogos.Max(jogo => jogo.Preco);
+                var menorPreco = model.Jogos.Min(jogo => jogo.Preco);
+                model.JogoMaisCaro = model.Jogos.First(jogo => jogo.Preco == maiorPreco).Nome;
+                model.JogoMaisBarato= model.Jogos.First(jogo => jogo.Preco == menorPreco).Nome;
+
+                model.PrecoMedio = model.Jogos.Average(jogo => jogo.Preco);
+            }
 
             return View(model);
         }

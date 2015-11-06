@@ -17,7 +17,7 @@ namespace Locadora.Web.MVC.Models
 
         public RelatorioModel()
         {
-            EncontrouResultados = false;
+            EncontrouResultados = true;
             Jogos = new List<JogoModel>();
         }
 
