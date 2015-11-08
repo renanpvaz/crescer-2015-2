@@ -15,7 +15,9 @@ namespace Locadora.Web.MVC.Controllers
             IJogoRepositorio repositorio = new Repositorio.ADO.JogoRepositorio();
 
             var jogo = repositorio.BuscarPorId(id);
-            var jogoDetalhe = new JogoDetalhesModel(jogo.Id, jogo.Nome, jogo.Preco, jogo.Categoria.ToString(), jogo.Selo.ToString(), jogo.Descricao);
+            var jogoDetalhe = new JogoDetalhesModel(jogo.Id, jogo.Nome, jogo.Preco, 
+                                                    (Categoria)Enum.Parse(typeof(Categoria), jogo.Categoria.ToString()), 
+                                                    jogo.Selo.ToString(), jogo.Descricao);
 
             jogoDetalhe.Imagem = jogo.Imagem;
 
@@ -27,9 +29,32 @@ namespace Locadora.Web.MVC.Controllers
             IJogoRepositorio repositorio = new Repositorio.ADO.JogoRepositorio();
 
             var jogo = repositorio.BuscarPorId(id);
-            var jogoEditar = new JogoDetalhesModel(jogo.Id, jogo.Nome, jogo.Preco, jogo.Categoria.ToString(), jogo.Selo.ToString(), jogo.Descricao);
+            var jogoEditar = new JogoDetalhesModel(jogo.Id, jogo.Nome, jogo.Preco,
+                                                    (Categoria)Enum.Parse(typeof(Categoria), jogo.Categoria.ToString()),
+                                                    jogo.Selo.ToString(), jogo.Descricao);
+            jogoEditar.Imagem = jogo.Imagem;
 
             return View(jogoEditar);
+        }
+
+        public ActionResult Salvar(JogoDetalhesModel model)
+        {
+            ModelState.AddModelError("", "Erro");
+
+            if (ModelState.IsValid)
+            {
+                //salvar no banco
+                TempData["Mensagem"] = "Jogo salvo com sucesso!";
+
+                return RedirectToAction("JogosDisponiveis", "Relatorio");
+            }
+            else
+            {
+                //Exemplo de modificação dos dados da model antes de retornar!
+                //ModelState.SetModelValue("Nome", new ValueProviderResult("Bob Esponja", "", CultureInfo.InvariantCulture));
+
+                return View("Manter", model);
+            }
         }
     }
 }
