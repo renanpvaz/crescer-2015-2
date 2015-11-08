@@ -41,6 +41,8 @@ namespace Locadora.Web.MVC.Controllers
         {
             ModelState.AddModelError("", "Erro");
 
+            //Convert.ChangeType(model, typeof(Jogo))
+
             if (ModelState.IsValid)
             {
                 //salvar no banco

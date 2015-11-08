@@ -8,23 +8,38 @@
 @if (Model.EncontrouResultados)
 {
 
+
     <table class="table table-striped table-bordered table-hover">
         <thead>
             <tr>
                 <th style="width: 40%">Jogo</th>            
                 <th style="width: 30%">Categoria</th>
-                <th style="width: 22%">Preço</th>
-                <th style="width: 8%"></th>
+                <th style="width: 14%">Preço</th>
+                <th style="width: 16%"></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var jogo in @Model.Jogos)
             {
-                <tr>
-                    <td>@jogo.Nome</td>
+                if (jogo.Selo == "Ouro")
+                {
+                    ViewBag.SeloImagem = "Ouro.png";
+                }
+                else if (jogo.Selo == "Prata")
+                {
+                    ViewBag.SeloImagem = "Prata.png";
+                }
+                else if (jogo.Selo == "Bronze")
+                {
+                    ViewBag.SeloImagem = "Bronze.png";
+                }
+
+                <tr>                   
+                    <td><img src="~/Content/Images/@ViewBag.SeloImagem" /> @jogo.Nome</td>
                     <td>@jogo.Categoria</td>
                     <td>@jogo.Preco.ToString("c")</td>
-                    <td> <button class="btn btn-info" onclick="location.href='/Jogo/DetalhesJogo/' + @jogo.Id">Detalhes</button> </td>
+                    <td> <button class="btn btn-info" onclick="location.href='/Jogo/DetalhesJogo/' + @jogo.Id">Detalhes</button>                   
+                    <button class="btn-editar btn btn-info" onclick="location.href='/Jogo/Manter/' + @jogo.Id">Editar</button> </td>
                 </tr>        
             }
         </tbody>
