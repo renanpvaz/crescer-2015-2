@@ -1,39 +1,38 @@
 ﻿@model JogoDetalhesModel
 @{
     ViewBag.Title = "DetalhesJogo";
-    ViewBag.seloImagem = "SeloBronze.png";
 }
 
 
-@if(Model.Selo == "Ouro")
-{
-    ViewBag.seloImagem = "SeloOuro.png";
-}
 <style>
-    .detalhes_header{
-        border-bottom: groove;
-        margin-bottom: 20px;
+
+    .info{
+        margin-top: 20px;
+        margin-bottom: 310px;
     }
-    .titulo{
-        display:inline-block;
-        float:left;
+
+   .imagem{
+       display:inline-block;
+       vertical-align:middle;
+       margin-left: 25%;
+   }
+
+    .descricao{
+        display:inline-block
     }
-    .selo{
-        display:inline-block;
-        float:right;   
-    }
-    .btn-editar{
-        display: inline-block;
-        float: right;
-        margin-top: 31px;
-    }
+
 </style>
 
-<div class="detalhes_header">
-    <h1 class="titulo">@Model.Nome</h1>
-        <img clas="selo" src="@string.Format("/Content/Images/{0}", ViewBag.seloImagem)"/>
+<h1 class="titulo">@Model.Nome</h1>
+
+
+<img class="imagem" src="@Model.Imagem" />
+
+<div class="info">
+    <h4>Categoria: @Model.Categoria</h4>
+
+    <p class="descricao">
+        @Model.Descricao
+    </p>
 </div>
-
-
-<img src="@Model.Imagem" />
 

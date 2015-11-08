@@ -25,7 +25,7 @@ namespace Locadora.Dominio
 
         }
 
-        public Jogo(int id, int? idClienteLocacao = null, string descricao = "Sem descrição" )
+        public Jogo(int id, int? idClienteLocacao = null, string descricao = "Sem descrição", string imagem = "Sem imagem" )
         {
             this.Id = id;
             this.IdClienteLocacao = idClienteLocacao;

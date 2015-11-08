@@ -3,12 +3,30 @@
     ViewBag.Title = "Jogos Disponíveis";
 }
 
-<h2>Jogos disponíveis para locação</h2>
+<style>
+    .titulo{
+        margin-bottom: 50px;
+    }
+
+    .img_detalhes:hover {
+        opacity: 0.2;
+    }
+
+    .img_editar {
+        margin-left: 7px;
+    }
+
+     .img_editar:hover {
+         opacity: 0.2;
+    }
+</style>
+
+
+
+<h2 class="titulo">Jogos disponíveis para locação</h2>
 
 @if (Model.EncontrouResultados)
 {
-
-
     <table class="table table-striped table-bordered table-hover">
         <thead>
             <tr>
@@ -20,22 +38,7 @@
         </thead>
         <tbody>
             @foreach (var jogo in @Model.Jogos)
-            {
-                <style>
-
-                    .img_detalhes:hover{
-                        opacity: 0.2; 
-                    }
-
-                    .img_editar{
-                        margin-left: 7px;
-                    }
-
-                    .img_editar:hover{
-                        opacity: 0.2; 
-                    }
-
-                </style>
+            { 
 
                 <tr>                   
                     <td>@Html.Partial("_ImagemSelo", jogo.Selo) @jogo.Nome</td>

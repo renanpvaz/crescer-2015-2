@@ -3,10 +3,20 @@
     ViewBag.Title = "Manter";
 }
 
-<h2>Editar jogo</h2>
+@if(Model == null)
+{
+    <h2>Cadastrar jogo</h2>
+}
+else
+{
+    <h2>Editar jogo</h2>
+}
 
 @using (Html.BeginForm("Salvar", "Jogo", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false)
+
     @Html.HiddenFor(m => m.Id)
 
   <div class="form-group">
@@ -33,11 +43,10 @@
         </div>
     </div>
 
-
     <div class="form-group">
         @Html.LabelFor(m => m.Selo, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10">
-            @Html.TextBoxFor(m => m.Selo, new { @class = "form-control" })
+            @Html.EnumDropDownListFor(m => m.Selo, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Selo)
         </div>
     </div>
@@ -65,7 +74,9 @@
     </div>
 
 
-        <script src="~/Scripts/jquery.validate.js"></script>
-        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
+
 }
