@@ -13,33 +13,38 @@
         <thead>
             <tr>
                 <th style="width: 40%">Jogo</th>            
-                <th style="width: 30%">Categoria</th>
-                <th style="width: 14%">Preço</th>
-                <th style="width: 16%"></th>
+                <th style="width: 33%">Categoria</th>
+                <th style="width: 17%">Preço</th>
+                <th style="width: 10%">Opções</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var jogo in @Model.Jogos)
             {
-                if (jogo.Selo == "Ouro")
-                {
-                    ViewBag.SeloImagem = "Ouro.png";
-                }
-                else if (jogo.Selo == "Prata")
-                {
-                    ViewBag.SeloImagem = "Prata.png";
-                }
-                else if (jogo.Selo == "Bronze")
-                {
-                    ViewBag.SeloImagem = "Bronze.png";
-                }
+                <style>
+
+                    .img_detalhes:hover{
+                        opacity: 0.2; 
+                    }
+
+                    .img_editar{
+                        margin-left: 7px;
+                    }
+
+                    .img_editar:hover{
+                        opacity: 0.2; 
+                    }
+
+                </style>
 
                 <tr>                   
-                    <td><img src="~/Content/Images/@ViewBag.SeloImagem" /> @jogo.Nome</td>
+                    <td>@Html.Partial("_ImagemSelo", jogo.Selo) @jogo.Nome</td>
                     <td>@jogo.Categoria</td>
                     <td>@jogo.Preco.ToString("c")</td>
-                    <td> <button class="btn btn-info" onclick="location.href='/Jogo/DetalhesJogo/' + @jogo.Id">Detalhes</button>                   
-                    <button class="btn-editar btn btn-info" onclick="location.href='/Jogo/Manter/' + @jogo.Id">Editar</button> </td>
+                    <td> 
+                        <a href="/Jogo/DetalhesJogo/@jogo.Id"> <img class="img_detalhes" src="~/Content/Images/Detalhes.png" /></a>                   
+                        <a href="/Jogo/Manter/@jogo.Id"> <img class="img_editar" src="~/Content/Images/Editar.png" /></a>
+                    </td>
                 </tr>        
             }
         </tbody>

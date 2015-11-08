@@ -92,6 +92,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\chrono_trigger_capa.jpg" />
+    <Content Include="Content\Images\Detalhes.png" />
+    <Content Include="Content\Images\Editar.png" />
     <Content Include="Content\Images\Ouro.png" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -135,6 +137,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Jogo\DetalhesJogo.cshtml" />
     <Content Include="Views\Jogo\Manter.cshtml" />
+    <Content Include="Views\Shared\_ImagemSelo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
