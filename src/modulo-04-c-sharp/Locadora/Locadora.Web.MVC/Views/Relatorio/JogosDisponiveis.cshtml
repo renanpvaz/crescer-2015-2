@@ -4,26 +4,35 @@
 }
 
 <style>
-    .titulo{
+    .header{
         margin-bottom: 50px;
     }
 
-    .img_detalhes:hover {
+    .img-detalhes:hover {
         opacity: 0.2;
     }
 
-    .img_editar {
+    .img-editar {
         margin-left: 7px;
     }
 
-     .img_editar:hover {
+     .img-editar:hover {
          opacity: 0.2;
     }
+
+     .btn-cadastrar{
+         margin-top: 20px;
+         float:right;
+         display:inline-block;
+     }
 </style>
 
 
+<div class="header">
+    <h2 style="float: left">Jogos disponíveis para locação</h2>
 
-<h2 class="titulo">Jogos disponíveis para locação</h2>
+    <button class="btn btn-default btn-cadastrar" onclick="location.href='/Jogo/Manter'">Cadastrar jogo</button>
+</div>
 
 @if (Model.EncontrouResultados)
 {
@@ -45,8 +54,8 @@
                     <td>@jogo.Categoria</td>
                     <td>@jogo.Preco.ToString("c")</td>
                     <td> 
-                        <a href="/Jogo/DetalhesJogo/@jogo.Id"> <img class="img_detalhes" src="~/Content/Images/Detalhes.png" /></a>                   
-                        <a href="/Jogo/Manter/@jogo.Id"> <img class="img_editar" src="~/Content/Images/Editar.png" /></a>
+                        <a href="/Jogo/DetalhesJogo/@jogo.Id"> <img class="img-detalhes" src="~/Content/Images/Detalhes.png" /></a>                   
+                        <a href="/Jogo/Manter/@jogo.Id"> <img class="img-editar" src="~/Content/Images/Editar.png" /></a>
                     </td>
                 </tr>        
             }
