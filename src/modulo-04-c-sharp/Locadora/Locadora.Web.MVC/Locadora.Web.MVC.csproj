@@ -94,6 +94,7 @@
     <Content Include="Content\Images\chrono_trigger_capa.jpg" />
     <Content Include="Content\Images\Detalhes.png" />
     <Content Include="Content\Images\Editar.png" />
+    <Content Include="Content\Images\Logo.png" />
     <Content Include="Content\Images\Ouro.png" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
