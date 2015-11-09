@@ -29,7 +29,7 @@ namespace Locadora.Repositorio.XML
             jogoSalvo.SetElementValue("nome", entidade.Nome);
             jogoSalvo.SetElementValue("preco", entidade.Preco);
             jogoSalvo.SetElementValue("categoria", entidade.Categoria.ToString());
-            jogoSalvo.SetElementValue("id_cliente_locacao", entidade.IdClienteLocacao.HasValue ? entidade.IdClienteLocacao.Value.ToString() : "");
+            jogoSalvo.SetElementValue("id_cliente_locacao", entidade.Cliente.Id.HasValue ? entidade.Cliente.Value.ToString() : "");
 
             SalvarDbXml(db);
             return 1;

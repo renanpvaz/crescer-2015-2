@@ -33,7 +33,7 @@ namespace Locadora.Repositorio.ADO
                 comando.AddParam("paramNome", entidade.Nome);
                 comando.AddParam("paramPreco", entidade.Preco);
                 comando.AddParam("paramIdCategoria", (int)entidade.Categoria);
-                comando.AddParam("paramIdClienteLocacao", entidade.IdClienteLocacao);
+                comando.AddParam("paramIdClienteLocacao", entidade.Cliente.Id);
                 comando.AddParam("paramIDSelo", (int)entidade.Selo);
                 comando.AddParam("paramDescricao", entidade.Descricao);
                 comando.AddParam("paramImagem", entidade.Imagem);
@@ -102,7 +102,7 @@ namespace Locadora.Repositorio.ADO
                 comando.AddParam("paramNome", entidade.Nome);
                 comando.AddParam("paramPreco", entidade.Preco);
                 comando.AddParam("paramIdCategoria", (int)entidade.Categoria);
-                comando.AddParam("paramIdClienteLocacao", entidade.IdClienteLocacao);
+                comando.AddParam("paramIdClienteLocacao", entidade.Cliente.Id);
                 comando.AddParam("paramIDSelo", (int)entidade.Selo);
                 comando.AddParam("paramDescricao", entidade.Descricao);
                 comando.AddParam("paramImagem", entidade.Imagem);
@@ -139,9 +139,12 @@ namespace Locadora.Repositorio.ADO
 
         private Jogo ConverterDataReaderEmJogo(IDataReader reader)
         {
+            var cliente = new Cliente(Convert.ToInt32(reader["Id"]));
+
+
             var jogo = new Jogo(
                 id: Convert.ToInt32(reader["Id"]),
-                idClienteLocacao: reader["IdClienteLocacao"].ToString().ToNullable<int>(),
+                cliente: cliente,
                 descricao: reader["Descricao"].ToString()
                 );
 

@@ -14,7 +14,7 @@ namespace Locadora.Dominio
 
         public Selo Selo{ get; set; }
 
-        public int? IdClienteLocacao { get; private set; }
+        public Cliente Cliente { get; private set; }
 
         public string Descricao { get; set; }
 
@@ -25,17 +25,17 @@ namespace Locadora.Dominio
 
         }
 
-        public Jogo(int id, int? idClienteLocacao = null, string descricao = "Sem descrição", string imagem = "Sem imagem" )
+        public Jogo(int id, Cliente cliente = null, string descricao = "Sem descrição", string imagem = "Sem imagem" )
         {
             this.Id = id;
-            this.IdClienteLocacao = idClienteLocacao;
+            this.Cliente = cliente;
             this.Descricao = descricao;
             DefinirSeloNaCriacao();
         }
 
         public void LocarPara(Cliente cliente)
         {
-            this.IdClienteLocacao = cliente.Id;
+            this.Cliente = cliente;
         }
 
         public override string ToString()
@@ -64,7 +64,7 @@ namespace Locadora.Dominio
                     && this.Nome == jogoComp.Nome
                     && this.Preco == jogoComp.Preco
                     && this.Categoria == jogoComp.Categoria
-                    && this.IdClienteLocacao == jogoComp.IdClienteLocacao;
+                    && this.Cliente == jogoComp.Cliente;
             }
 
             return false;
