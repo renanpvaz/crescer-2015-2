@@ -5,7 +5,7 @@
 
 <style>
     .header{
-        margin-bottom: 50px;
+        margin-bottom: 70px;
     }
 
     .img-detalhes:hover {
@@ -27,12 +27,22 @@
      }
 </style>
 
-
 <div class="header">
     <h2 style="float: left">Jogos disponíveis para locação</h2>
 
     <button class="btn btn-default btn-cadastrar" onclick="location.href='/Jogo/Manter'">Cadastrar jogo</button>
 </div>
+
+@if (TempData["Status"] != null)
+{
+    if ((bool)TempData["Status"])
+    {
+        <div style="margin-top: 10px;" class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Sucesso!</strong> @TempData["Mensagem"]
+        </div>
+    }
+}
 
 @if (Model.EncontrouResultados)
 {
@@ -67,7 +77,7 @@
                     Total de jogos: @Model.QuantidadeDeJogos<br />
                     Jogo mais caro: @Model.JogoMaisCaro<br />
                     Jogo mais barato: @Model.JogoMaisBarato<br />
-                    Preço médio: @Model.PrecoMedio<br />
+                    Preço médio: R$ @Math.Round(@Model.PrecoMedio, 2)<br />
                     </strong>
                 </td>
             </tr>
@@ -77,5 +87,5 @@
 }
 else
 {
-    <h3>Nenhum jogo encontrado</h3>
+    <h3 style="margin-right: 60%;">Nenhum jogo encontrado</h3>
 }

@@ -16,17 +16,9 @@ namespace Locadora.Web.MVC.Controllers
             IJogoRepositorio repositorio = new Repositorio.ADO.JogoRepositorio();
 
             var jogo = repositorio.BuscarPorId(id);
-            var jogoDetalhe = new JogoDetalhesModel();
+            var jogoDetalhes = new JogoDetalhesModel();
 
-            jogoDetalhe.Id = jogo.Id;
-            jogoDetalhe.Nome = jogo.Nome;
-            jogoDetalhe.Preco = jogo.Preco;
-            jogoDetalhe.Descricao = jogo.Descricao;
-            jogoDetalhe.Categoria = jogo.Categoria;
-            jogoDetalhe.Imagem = jogo.Imagem;
-            jogoDetalhe.Selo = jogo.Selo;
-
-            return View(jogoDetalhe);
+            return View(jogoDetalhes.ConverterJogoParaModel(jogo));
         }
 
         public ActionResult Manter(int id = 0)
@@ -37,17 +29,9 @@ namespace Locadora.Web.MVC.Controllers
                 IJogoRepositorio repositorio = new Repositorio.ADO.JogoRepositorio();
 
                 var jogo = repositorio.BuscarPorId(id);
-                var jogoEditar = new JogoDetalhesModel();
-                
-                jogoEditar.Id = jogo.Id;
-                jogoEditar.Nome = jogo.Nome;
-                jogoEditar.Preco = jogo.Preco;
-                jogoEditar.Descricao = jogo.Descricao;
-                jogoEditar.Categoria = jogo.Categoria;
-                jogoEditar.Imagem = jogo.Imagem;
-                jogoEditar.Selo = jogo.Selo;
+                var jogoEditar = new JogoDetalhesModel();              
 
-                return View(jogoEditar);
+                return View(jogoEditar.ConverterJogoParaModel(jogo));
             }
 
             return View();
@@ -60,43 +44,24 @@ namespace Locadora.Web.MVC.Controllers
             if (ModelState.IsValid)
             {
                 IJogoRepositorio repositorio = new Repositorio.ADO.JogoRepositorio();
+                TempData["Status"] = true;
 
-                if (model.Id.HasValue)
+
+                if (!model.Id.HasValue)
                 {
-                    var jogo = new Jogo();
-                    jogo.Nome = model.Nome;
-                    jogo.Descricao = model.Descricao;
-                    jogo.Selo = model.Selo;
-                    jogo.Preco = model.Preco;
-                    jogo.Categoria = model.Categoria;
-                    jogo.Imagem = model.Imagem;
-
-                    repositorio.Criar(jogo);
-
-                    TempData["Mensagem"] = "Jogo salvo com sucesso!";
+                    repositorio.Criar(model.ConverterParaJogo());
+                    TempData["Mensagem"] = "Jogo cadastrado.";
                 }
                 else
                 {
-                    var jogo = new Jogo((int)model.Id);
-                    jogo.Nome = model.Nome;
-                    jogo.Descricao = model.Descricao;
-                    jogo.Selo = model.Selo;
-                    jogo.Preco = model.Preco;
-                    jogo.Categoria = model.Categoria;
-                    jogo.Imagem = model.Imagem;
-
-                    repositorio.Atualizar(jogo); 
-
-                    TempData["Mensagem"] = "Jogo editado com sucesso!";
+                    repositorio.Atualizar(model.ConverterParaJogo());
+                    TempData["Mensagem"] = "Jogo atualizado.";
                 }
 
                 return RedirectToAction("JogosDisponiveis", "Relatorio");
             }
             else
             {
-                //Exemplo de modificação dos dados da model antes de retornar!
-                //ModelState.SetModelValue("Nome", new ValueProviderResult("Bob Esponja", "", CultureInfo.InvariantCulture));
-
                 return View("Manter", model);
             }
         }

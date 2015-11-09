@@ -23,9 +23,9 @@ namespace Locadora.Repositorio.ADO
                 sql.Append(" Nome = @paramNome, ");
                 sql.Append(" Preco = @paramPreco, ");
                 sql.Append(" IdCategoria = @paramIdCategoria, ");
-                sql.Append(" IDSelo = @paramIDSelo");
-                sql.Append(" Descricao = @paramDescricao");
-                sql.Append(" Imagem = @paramImagem");
+                sql.Append(" IDSelo = @paramIDSelo, ");
+                sql.Append(" Descricao = @paramDescricao, ");
+                sql.Append(" Imagem = @paramImagem ");
                 sql.Append(" WHERE Id = @paramId ");
 
                 IDbCommand comando = conexao.CreateCommand();
