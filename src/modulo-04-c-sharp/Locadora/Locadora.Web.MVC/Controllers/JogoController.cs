@@ -61,17 +61,34 @@ namespace Locadora.Web.MVC.Controllers
             {
                 IJogoRepositorio repositorio = new Repositorio.ADO.JogoRepositorio();
 
-                var jogo = new Jogo();
-                jogo.Nome = model.Nome;
-                jogo.Descricao = model.Descricao;
-                jogo.Selo = model.Selo;
-                jogo.Preco = model.Preco;
-                jogo.Categoria = model.Categoria;
-                jogo.Imagem = model.Imagem;
+                if (model.Id.HasValue)
+                {
+                    var jogo = new Jogo();
+                    jogo.Nome = model.Nome;
+                    jogo.Descricao = model.Descricao;
+                    jogo.Selo = model.Selo;
+                    jogo.Preco = model.Preco;
+                    jogo.Categoria = model.Categoria;
+                    jogo.Imagem = model.Imagem;
 
-                repositorio.Criar(jogo);
+                    repositorio.Criar(jogo);
 
-                TempData["Mensagem"] = "Jogo salvo com sucesso!";
+                    TempData["Mensagem"] = "Jogo salvo com sucesso!";
+                }
+                else
+                {
+                    var jogo = new Jogo((int)model.Id);
+                    jogo.Nome = model.Nome;
+                    jogo.Descricao = model.Descricao;
+                    jogo.Selo = model.Selo;
+                    jogo.Preco = model.Preco;
+                    jogo.Categoria = model.Categoria;
+                    jogo.Imagem = model.Imagem;
+
+                    repositorio.Atualizar(jogo); 
+
+                    TempData["Mensagem"] = "Jogo editado com sucesso!";
+                }
 
                 return RedirectToAction("JogosDisponiveis", "Relatorio");
             }
