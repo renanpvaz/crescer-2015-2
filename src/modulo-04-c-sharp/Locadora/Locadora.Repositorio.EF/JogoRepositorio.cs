@@ -10,9 +10,15 @@ namespace Locadora.Repositorio.EF
     class JogoRepositorio
     {
 
-        public int Atualizar(Jogo jogo)
+        public int Atualizar(Jogo entidade)
         {
-            return 1;
+            using (var db = new BaseDeDados())
+            {
+                Jogo jogo = db.Jogo.Find(entidade.Id);
+                db.Entry(jogo).State = System.Data.Entity.EntityState.Added;
+
+                return db.SaveChanges();
+            }
         }
 
         public Jogo BuscarPorId(int id)
@@ -33,17 +39,31 @@ namespace Locadora.Repositorio.EF
 
         public IList<Jogo> BuscarTodos()
         {
-            return null;
+            using (var db = new BaseDeDados())
+            {
+                return db.Jogo.ToList();
+            }
         }
 
-        public int Criar(Jogo jogo)
+        public int Criar(Jogo entidade)
         {
-            return 1;
+            using (var db = new BaseDeDados())
+            {
+                db.Entry(entidade).State = System.Data.Entity.EntityState.Added;
+
+                return db.SaveChanges();
+            }
         }
 
         public int Excluir(int id)
         {
-            return 1;
+            using (var db = new BaseDeDados())
+            {
+                Jogo jogo = db.Jogo.Find(id);
+                db.Entry(jogo).State = System.Data.Entity.EntityState.Deleted;
+
+                return db.SaveChanges();
+            }
         }
 
 
