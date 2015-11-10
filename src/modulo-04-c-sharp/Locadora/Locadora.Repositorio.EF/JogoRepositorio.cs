@@ -14,7 +14,6 @@ namespace Locadora.Repositorio.EF
         public int Atualizar(Jogo entidade)
         {
             using (var db = new BaseDeDados())
-            using (TransactionScope scope = new TransactionScope())
             {
                 Jogo jogo = db.Jogo.Find(entidade.Id);
                 db.Entry(jogo).State = System.Data.Entity.EntityState.Added;
@@ -50,7 +49,6 @@ namespace Locadora.Repositorio.EF
         public int Criar(Jogo entidade)
         {
             using (var db = new BaseDeDados())
-            using (TransactionScope scope = new TransactionScope())
             {
                 db.Entry(entidade).State = System.Data.Entity.EntityState.Added;
 
@@ -61,7 +59,6 @@ namespace Locadora.Repositorio.EF
         public int Excluir(int id)
         {
             using (var db = new BaseDeDados())
-            using (TransactionScope scope = new TransactionScope())
             {
                 Jogo jogo = db.Jogo.Find(id);
                 db.Entry(jogo).State = System.Data.Entity.EntityState.Deleted;

@@ -3,32 +3,39 @@ namespace Locadora.Repositorio.EF.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class AddtableSeloeCategoriaagain : DbMigration
     {
+
+
+
         public override void Up()
         {
+
+            DropTable("dbo.Jogo");
+            DropTable("dbo.Cliente");
+
             CreateTable(
                 "dbo.Cliente",
                 c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Nome = c.String(nullable: false, maxLength: 250),
-                    })
+                {
+                    Id = c.Int(nullable: false, identity: true),
+                    Nome = c.String(nullable: false, maxLength: 250),
+                })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.Jogo",
                 c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Nome = c.String(nullable: false, maxLength: 250),
-                        Preco = c.Decimal(nullable: false, precision: 19, scale: 2),
-                        IdCategoria = c.Int(nullable: false),
-                        IDSelo = c.Int(nullable: false),
-                        Descricao = c.String(nullable: false),
-                        Imagem = c.String(nullable: false),
-                        IdClienteLocacao = c.Int(),
-                    })
+                {
+                    Id = c.Int(nullable: false, identity: true),
+                    Nome = c.String(nullable: false, maxLength: 250),
+                    Preco = c.Decimal(nullable: false, precision: 19, scale: 2),
+                    IdCategoria = c.Int(nullable: false),
+                    IDSelo = c.Int(nullable: false),
+                    Descricao = c.String(nullable: false),
+                    Imagem = c.String(nullable: false),
+                    IdClienteLocacao = c.Int(),
+                })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Cliente", t => t.IdClienteLocacao)
                 .ForeignKey("dbo.Selo", t => t.IDSelo)
@@ -52,6 +59,7 @@ namespace Locadora.Repositorio.EF.Migrations
                     Descricao = c.String(nullable: false, maxLength: 250),
                 })
                 .PrimaryKey(t => t.Id);
+
         }
         
         public override void Down()

@@ -57,6 +57,14 @@
     <Compile Include="Migrations\201511091926351_Initial.Designer.cs">
       <DependentUpon>201511091926351_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511100227401_Add table Selo e Categoria.cs" />
+    <Compile Include="Migrations\201511100227401_Add table Selo e Categoria.Designer.cs">
+      <DependentUpon>201511100227401_Add table Selo e Categoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511100237061_Add table Selo e Categoria again.cs" />
+    <Compile Include="Migrations\201511100237061_Add table Selo e Categoria again.Designer.cs">
+      <DependentUpon>201511100237061_Add table Selo e Categoria again.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -75,6 +83,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201511091926351_Initial.resx">
       <DependentUpon>201511091926351_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511100227401_Add table Selo e Categoria.resx">
+      <DependentUpon>201511100227401_Add table Selo e Categoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511100237061_Add table Selo e Categoria again.resx">
+      <DependentUpon>201511100237061_Add table Selo e Categoria again.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
