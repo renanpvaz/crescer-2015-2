@@ -10,11 +10,11 @@ namespace Locadora.Web.MVC.Controllers
 {
     public class RelatorioController : Controller
     {
-        private IJogoRepositorio repositorio = new Repositorio.ADO.JogoRepositorio();
+        private IJogoRepositorio repositorio = new Repositorio.EF.JogoRepositorio();
 
         public ActionResult JogosDisponiveis(string busca)
         {
-            var model = new RelatorioModel(); 
+            var model = new RelatorioModel();
             var buscaJogos = repositorio.BuscarPorNome(busca);
             var jogos = buscaJogos;
 

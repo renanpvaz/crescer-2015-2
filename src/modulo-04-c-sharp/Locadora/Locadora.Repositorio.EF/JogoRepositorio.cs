@@ -1,22 +1,19 @@
 ﻿using Locadora.Dominio;
+using Locadora.Dominio.Repositorio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
 
 namespace Locadora.Repositorio.EF
 {
-    class JogoRepositorio
+    public class JogoRepositorio : IJogoRepositorio
     {
 
         public int Atualizar(Jogo entidade)
         {
             using (var db = new BaseDeDados())
             {
-                Jogo jogo = db.Jogo.Find(entidade.Id);
-                db.Entry(jogo).State = System.Data.Entity.EntityState.Added;
+                db.Entry(BuscarPorId(entidade.Id)).State = System.Data.Entity.EntityState.Modified;
 
                 return db.SaveChanges();
             }
@@ -60,8 +57,7 @@ namespace Locadora.Repositorio.EF
         {
             using (var db = new BaseDeDados())
             {
-                Jogo jogo = db.Jogo.Find(id);
-                db.Entry(jogo).State = System.Data.Entity.EntityState.Deleted;
+                db.Entry(BuscarPorId(id)).State = System.Data.Entity.EntityState.Deleted;
 
                 return db.SaveChanges();
             }

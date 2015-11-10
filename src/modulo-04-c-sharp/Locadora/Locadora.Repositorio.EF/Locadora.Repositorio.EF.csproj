@@ -65,6 +65,22 @@
     <Compile Include="Migrations\201511100237061_Add table Selo e Categoria again.Designer.cs">
       <DependentUpon>201511100237061_Add table Selo e Categoria again.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511101551569_AddIndexFKSeloEFKCategoria.cs" />
+    <Compile Include="Migrations\201511101551569_AddIndexFKSeloEFKCategoria.Designer.cs">
+      <DependentUpon>201511101551569_AddIndexFKSeloEFKCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511101601259_AddInsertSeloECategoriaValues.cs" />
+    <Compile Include="Migrations\201511101601259_AddInsertSeloECategoriaValues.Designer.cs">
+      <DependentUpon>201511101601259_AddInsertSeloECategoriaValues.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511101712124_AddUsuario.cs" />
+    <Compile Include="Migrations\201511101712124_AddUsuario.Designer.cs">
+      <DependentUpon>201511101712124_AddUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511101755404_AddPermissaoUsuario.cs" />
+    <Compile Include="Migrations\201511101755404_AddPermissaoUsuario.Designer.cs">
+      <DependentUpon>201511101755404_AddPermissaoUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -89,6 +105,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511100237061_Add table Selo e Categoria again.resx">
       <DependentUpon>201511100237061_Add table Selo e Categoria again.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511101551569_AddIndexFKSeloEFKCategoria.resx">
+      <DependentUpon>201511101551569_AddIndexFKSeloEFKCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511101601259_AddInsertSeloECategoriaValues.resx">
+      <DependentUpon>201511101601259_AddInsertSeloECategoriaValues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511101712124_AddUsuario.resx">
+      <DependentUpon>201511101712124_AddUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511101755404_AddPermissaoUsuario.resx">
+      <DependentUpon>201511101755404_AddPermissaoUsuario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

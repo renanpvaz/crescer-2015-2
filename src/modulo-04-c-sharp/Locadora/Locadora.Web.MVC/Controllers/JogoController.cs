@@ -13,7 +13,7 @@ namespace Locadora.Web.MVC.Controllers
     {
         public ActionResult DetalhesJogo(int id)
         {
-            IJogoRepositorio repositorio = new Repositorio.ADO.JogoRepositorio();
+            IJogoRepositorio repositorio = new Repositorio.EF.JogoRepositorio();
 
             var jogo = repositorio.BuscarPorId(id);
             var jogoDetalhes = new JogoDetalhesModel();
@@ -26,7 +26,7 @@ namespace Locadora.Web.MVC.Controllers
             if (id > 0)
             {
 
-                IJogoRepositorio repositorio = new Repositorio.ADO.JogoRepositorio();
+                IJogoRepositorio repositorio = new Repositorio.EF.JogoRepositorio();
 
                 var jogo = repositorio.BuscarPorId(id);
                 var jogoEditar = new JogoDetalhesModel();              
@@ -43,7 +43,7 @@ namespace Locadora.Web.MVC.Controllers
 
             if (ModelState.IsValid)
             {
-                IJogoRepositorio repositorio = new Repositorio.ADO.JogoRepositorio();
+                IJogoRepositorio repositorio = new Repositorio.EF.JogoRepositorio();
                 TempData["Status"] = true;
 
 
