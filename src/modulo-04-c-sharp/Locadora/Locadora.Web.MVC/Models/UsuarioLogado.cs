@@ -13,6 +13,12 @@ namespace Locadora.Web.MVC.Models
 
         public string[] Permissoes { get; set;}
 
+        public bool PodeCadastrarEEditar { get
+            {
+                return Array.IndexOf(this.Permissoes, Permissao.PERMISSAO_MASTER) > -1;
+            }
+        }
+
         public UsuarioLogado(string nome, string email, string[] permissoes)
         {
             this.Nome = nome;

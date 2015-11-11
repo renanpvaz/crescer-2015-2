@@ -7,19 +7,19 @@
 
 @if (ViewBag.UsuarioLogado != null)
 {
-    @ViewBag.UsuarioLogado.Nome
+    <h4>Bem vindo @ViewBag.UsuarioLogado.Nome!</h4>
 }
 else
 {
     using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
-        @Html.ValidationSummary(false)
+        @Html.ValidationSummary(true)
 
         <div class="form-group">
             @Html.LabelFor(m => m.Email, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "example@domain.com" })
                 @Html.ValidationMessageFor(m => m.Email)
             </div>
         </div>
