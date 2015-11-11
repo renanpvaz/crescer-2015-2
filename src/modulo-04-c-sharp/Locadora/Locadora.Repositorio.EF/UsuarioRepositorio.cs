@@ -13,7 +13,7 @@ namespace Locadora.Repositorio.EF
         {
             using (var db = new BaseDeDados())
             {
-                return db.Usuario.Include("Permissoes").First(u => u.Email == email);
+                return db.Usuario.Include("Permissoes").FirstOrDefault(u => u.Email == email);
             }
         }
     }

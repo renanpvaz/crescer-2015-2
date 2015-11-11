@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Locadora.Servicos
+namespace Locadora.Repositorio.Servicos
 {
     public class ServicoCriptografia : IServicoCriptografia
     {

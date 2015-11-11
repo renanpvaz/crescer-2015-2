@@ -81,6 +81,18 @@
     <Compile Include="Migrations\201511101755404_AddPermissaoUsuario.Designer.cs">
       <DependentUpon>201511101755404_AddPermissaoUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511112045040_PopularJogo.cs" />
+    <Compile Include="Migrations\201511112045040_PopularJogo.Designer.cs">
+      <DependentUpon>201511112045040_PopularJogo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511112108408_PopularUsuario.cs" />
+    <Compile Include="Migrations\201511112108408_PopularUsuario.Designer.cs">
+      <DependentUpon>201511112108408_PopularUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511112119269_PopularUsuarioPermissao.cs" />
+    <Compile Include="Migrations\201511112119269_PopularUsuarioPermissao.Designer.cs">
+      <DependentUpon>201511112119269_PopularUsuarioPermissao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioRepositorio.cs" />
@@ -118,6 +130,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511101755404_AddPermissaoUsuario.resx">
       <DependentUpon>201511101755404_AddPermissaoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511112045040_PopularJogo.resx">
+      <DependentUpon>201511112045040_PopularJogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511112108408_PopularUsuario.resx">
+      <DependentUpon>201511112108408_PopularUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511112119269_PopularUsuarioPermissao.resx">
+      <DependentUpon>201511112119269_PopularUsuarioPermissao.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

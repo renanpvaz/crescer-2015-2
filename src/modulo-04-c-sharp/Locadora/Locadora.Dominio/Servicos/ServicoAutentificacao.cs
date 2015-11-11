@@ -12,6 +12,12 @@ namespace Locadora.Dominio.Servicos
         private IUsuarioRepositorio usuarioRepositorio;
         private IServicoCriptografia servicoCriptografia;
 
+        public ServicoAutenticacao(IUsuarioRepositorio usuarioRepositorio, IServicoCriptografia servicoCriptografia)
+        {
+            this.usuarioRepositorio = usuarioRepositorio;
+            this.servicoCriptografia = servicoCriptografia;
+        }
+
         public Usuario BuscarPorAutenticacao(string email, string senha)
         {
             Usuario usuario = this.usuarioRepositorio.BuscarPorEmail(email);

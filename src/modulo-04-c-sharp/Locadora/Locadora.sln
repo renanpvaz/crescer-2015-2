@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Repositorio.EF", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Servicos", "Servicos", "{A603EC50-C275-49D9-9336-C7C6B46DD472}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Servicos", "Locadora.Servicos\Locadora.Servicos.csproj", "{10D21641-7585-4664-961C-DF2E00581B1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Repositorio.Servicos", "Locadora.Servicos\Locadora.Repositorio.Servicos.csproj", "{10D21641-7585-4664-961C-DF2E00581B1E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Servicos.Test", "Locadora.Servicos.Test\Locadora.Servicos.Test.csproj", "{B3F1433B-D17D-4922-94BE-0517DD4A0D6C}"
 EndProject

@@ -6,6 +6,7 @@ namespace Locadora.Dominio.Test
     [TestClass]
     public class JogoTest
     {
+        /*
         [TestMethod]
         public void JogoADeveSerIgualJogoB()
         {
@@ -24,5 +25,6 @@ namespace Locadora.Dominio.Test
 
             Assert.AreEqual(1, jogo.IdClienteLocacao);
         }
+        */
     }
 }

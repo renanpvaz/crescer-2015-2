@@ -45,18 +45,25 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
     <Compile Include="JogoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Locadora.Dominio\Locadora.Dominio.csproj">
       <Project>{93d95d00-78c7-4b77-be44-686ab7a29c7c}</Project>
       <Name>Locadora.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Locadora.Web.MVC\Locadora.Web.MVC.csproj">
+      <Project>{22a0ef1d-2c02-421d-b368-4c3f49c351f3}</Project>
+      <Name>Locadora.Web.MVC</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

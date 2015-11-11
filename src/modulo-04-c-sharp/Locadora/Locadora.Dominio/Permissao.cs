@@ -4,7 +4,7 @@ using Locadora.Dominio;
 
 public class Permissao : EntidadeBase
 {
-    public const string PERMISSAO_MASTER = "MASTER";
+    public const string PERMISSAO_MASTER = "ADMIN";
 
     public string Nome { get; set; }
 

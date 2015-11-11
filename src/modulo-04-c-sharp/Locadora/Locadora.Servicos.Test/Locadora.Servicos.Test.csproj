@@ -54,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Locadora.Servicos\Locadora.Servicos.csproj">
+    <ProjectReference Include="..\Locadora.Servicos\Locadora.Repositorio.Servicos.csproj">
       <Project>{10d21641-7585-4664-961c-df2e00581b1e}</Project>
-      <Name>Locadora.Servicos</Name>
+      <Name>Locadora.Repositorio.Servicos</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

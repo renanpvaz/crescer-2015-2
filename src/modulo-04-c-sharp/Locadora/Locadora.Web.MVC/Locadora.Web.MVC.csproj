@@ -122,6 +122,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FabricaDeModulos.cs" />
     <Compile Include="Models\JogoDetalhesModel.cs" />
     <Compile Include="Models\JogoModel.cs" />
     <Compile Include="Models\RelatorioModel.cs" />
@@ -166,6 +167,10 @@
     <ProjectReference Include="..\Locadora.Repositorio.EF\Locadora.Repositorio.EF.csproj">
       <Project>{df53ccd5-dac7-437f-922f-69939f78c8ef}</Project>
       <Name>Locadora.Repositorio.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Locadora.Servicos\Locadora.Repositorio.Servicos.csproj">
+      <Project>{10d21641-7585-4664-961c-df2e00581b1e}</Project>
+      <Name>Locadora.Repositorio.Servicos</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
