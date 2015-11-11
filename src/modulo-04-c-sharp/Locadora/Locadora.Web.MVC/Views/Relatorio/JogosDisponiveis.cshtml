@@ -1,6 +1,7 @@
 ﻿@model RelatorioModel
 @{
     ViewBag.Title = "Jogos Disponíveis";
+    ViewBag.UsuarioLogado = Session["USUARIO_LOGADO"];
 }
 
 <style>
@@ -29,8 +30,13 @@
 
 <div class="header">
     <h2 style="float: left">Jogos disponíveis para locação</h2>
-
-    <button class="btn btn-default btn-cadastrar" onclick="location.href='/Jogo/Manter'">Cadastrar jogo</button>
+    @if (ViewBag.UsuarioLogado != null)
+    {
+        if (Array.IndexOf(ViewBag.UsuarioLogado.Permissoes, Permissao.PERMISSAO_MASTER) > -1)
+        {
+        <button class="btn btn-default btn-cadastrar" onclick="location.href='/Jogo/Manter'">Cadastrar jogo</button>
+        }
+    }
 </div>
 
 @if (TempData["Status"] != null)
@@ -64,8 +70,15 @@
                     <td>@jogo.Categoria</td>
                     <td>@jogo.Preco.ToString("c")</td>
                     <td> 
-                        <a href="/Jogo/DetalhesJogo/@jogo.Id"> <img class="img-detalhes" src="~/Content/Images/Detalhes.png" /></a>                   
-                        <a href="/Jogo/Manter/@jogo.Id"> <img class="img-editar" src="~/Content/Images/Editar.png" /></a>
+                        <a href="/Jogo/DetalhesJogo/@jogo.Id"> <img class="img-detalhes" src="~/Content/Images/Detalhes.png" /></a>           
+                        
+                        @if (ViewBag.UsuarioLogado != null)
+                        {
+                            if (Array.IndexOf(ViewBag.UsuarioLogado.Permissoes, Permissao.PERMISSAO_MASTER) > -1)
+                            {
+                                <a href="/Jogo/Manter/@jogo.Id"> <img class="img-editar" src="~/Content/Images/Editar.png" /></a>
+                            }
+                        }
                     </td>
                 </tr>        
             }

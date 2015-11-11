@@ -128,7 +128,7 @@
     <Compile Include="Models\UsuarioLogado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\UsuarioLoginModel.cs" />
-    <Compile Include="Segurança\Autorizador.cs" />
+    <Compile Include="Seguranca\Autorizador.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

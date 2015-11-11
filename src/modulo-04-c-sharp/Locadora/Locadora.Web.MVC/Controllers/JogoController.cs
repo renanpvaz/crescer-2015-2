@@ -1,6 +1,7 @@
 ﻿using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
 using Locadora.Web.MVC.Models;
+using Locadora.Web.MVC.Segurança;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace Locadora.Web.MVC.Controllers
             return View(jogoDetalhes.ConverterJogoParaModel(jogo));
         }
 
+        [Autorizador(Roles = "MASTER")]
         public ActionResult Manter(int id = 0)
         {
             if (id > 0)
