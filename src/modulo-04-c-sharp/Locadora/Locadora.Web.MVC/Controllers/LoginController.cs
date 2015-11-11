@@ -13,7 +13,7 @@ namespace Locadora.Web.MVC.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.NomeUsuario = Session["USUARIO_LOGADO"];
+            ViewBag.UsuarioLogado = Session["USUARIO_LOGADO"];
             return View();
         }
 
