@@ -32,7 +32,7 @@
     <h2 style="float: left">Jogos disponíveis para locação</h2>
     @if (ViewBag.UsuarioLogado != null)
     {
-        if (Array.IndexOf(ViewBag.UsuarioLogado.Permissoes, "MASTER") > -1)
+        if (Array.IndexOf(ViewBag.UsuarioLogado.Permissoes, Permissao.PERMISSAO_MASTER) > -1)
         {
         <button class="btn btn-default btn-cadastrar" onclick="location.href='/Jogo/Manter'">Cadastrar jogo</button>
         }
@@ -74,7 +74,7 @@
                         
                         @if (ViewBag.UsuarioLogado != null)
                         {
-                            if (Array.IndexOf(ViewBag.UsuarioLogado.Permissoes, "MASTER") > -1)
+                            if (Array.IndexOf(ViewBag.UsuarioLogado.Permissoes, Permissao.PERMISSAO_MASTER) > -1)
                             {
                                 <a href="/Jogo/Manter/@jogo.Id"> <img class="img-editar" src="~/Content/Images/Editar.png" /></a>
                             }

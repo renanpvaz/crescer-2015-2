@@ -17,7 +17,7 @@ namespace Locadora.Web.MVC.Controllers
             return View();
         }
 
-        [Autorizador(Roles = "MASTER")]
+        [Autorizador(Roles = Permissao.PERMISSAO_MASTER)]
         public ActionResult Master()
         {
             return View();
@@ -27,7 +27,7 @@ namespace Locadora.Web.MVC.Controllers
         {
             if (usuario.Email == "didi@die" && usuario.Senha == "plz")
             {
-                var usuarioLogadoModel = new UsuarioLogado("Didi", "didi@die", new string[] { "MASTER" });
+                var usuarioLogadoModel = new UsuarioLogado("Didi", "didi@die", new string[] { Permissao.PERMISSAO_MASTER });
 
                 FormsAuthentication.SetAuthCookie(usuario.Email, true);
                 Session["USUARIO_LOGADO"] = usuarioLogadoModel;
