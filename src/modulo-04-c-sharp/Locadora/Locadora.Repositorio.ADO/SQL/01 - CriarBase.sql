@@ -54,3 +54,15 @@ CREATE INDEX [IX_IdUsuario] ON [dbo].[Usuario_Permissao]([IdUsuario])
 CREATE INDEX [IX_IdPermissao] ON [dbo].[Usuario_Permissao]([IdPermissao])
 ALTER TABLE [dbo].[Usuario_Permissao] ADD CONSTRAINT [FK_dbo.Usuario_Permissao_dbo.Usuario_IdUsuario] FOREIGN KEY ([IdUsuario]) REFERENCES [dbo].[Usuario] ([Id]) ON DELETE CASCADE
 ALTER TABLE [dbo].[Usuario_Permissao] ADD CONSTRAINT [FK_dbo.Usuario_Permissao_dbo.Permissao_IdPermissao] FOREIGN KEY ([IdPermissao]) REFERENCES [dbo].[Permissao] ([Id]) ON DELETE CASCADE
+
+
+ALTER TABLE usuario
+ALTER COLUMN Senha varchar(250);
+
+insert into usuario (Nome, Senha, Email) values ('Master', '501C3E9279882FFB776A1D1E506D0410', 'master@admin.com');
+
+insert into usuario (Nome, Senha, Email) values ('Fabricio', '68ACE0CACCCF2CAF2C604BB54FDF450C', 'fabricio@operador.com');
+
+insert into usuario_permissao (idusuario, idpermissao) values (3, 1);
+
+insert into usuario_permissao (idusuario, idpermissao) values (4, 2);
