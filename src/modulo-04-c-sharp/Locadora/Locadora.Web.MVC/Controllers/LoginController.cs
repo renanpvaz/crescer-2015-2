@@ -1,4 +1,5 @@
 ﻿using Locadora.Dominio.Servicos;
+using Locadora.Repositorio.Servicos;
 using Locadora.Web.MVC.Helpers;
 using Locadora.Web.MVC.Models;
 using Locadora.Web.MVC.Segurança;
@@ -27,14 +28,15 @@ namespace Locadora.Web.MVC.Controllers
 
         public ActionResult Login(UsuarioLoginModel usuario)
         {
-
-            ServicoAutenticacao servicoAutenticacao = FabricaDeModulos.CriarServicoAutenticacao();
-
             var repositorio = FabricaDeModulos.CriarUsuarioRepositorio();
+
+            var criptografia = FabricaDeModulos.CriarServicoCriptografia();
 
             var usuarioAutenticado = repositorio.BuscarPorEmail(usuario.Email);
 
-            if (usuarioAutenticado != null && usuarioAutenticado.Senha == usuario.Senha)
+            var senha = criptografia.CriptografarSenha(usuario.Senha);
+
+            if (usuarioAutenticado != null && usuarioAutenticado.Senha == senha)
             {
                 var usuarioLogadoModel = new UsuarioLogado(usuarioAutenticado.Nome, usuarioAutenticado.Email, new string[] { usuarioAutenticado.Permissoes.First().Nome });
 

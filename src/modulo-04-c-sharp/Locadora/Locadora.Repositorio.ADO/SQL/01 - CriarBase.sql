@@ -63,6 +63,10 @@ insert into usuario (Nome, Senha, Email) values ('Master', '501C3E9279882FFB776A
 
 insert into usuario (Nome, Senha, Email) values ('Fabricio', '68ACE0CACCCF2CAF2C604BB54FDF450C', 'fabricio@operador.com');
 
+insert into permissao (Nome) values ('ADMIN');
+
+insert into permissao (Nome) values ('OPERADOR');
+
 insert into usuario_permissao (idusuario, idpermissao) values (3, 1);
 
 insert into usuario_permissao (idusuario, idpermissao) values (4, 2);

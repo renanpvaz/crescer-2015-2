@@ -16,7 +16,7 @@ namespace Locadora.Repositorio.EF
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Permissao> Permissao { get; set; }
 
-        public BaseDeDados() : base("LOCADORA2")
+        public BaseDeDados() : base("LOCADORA")
         {
         }
 
