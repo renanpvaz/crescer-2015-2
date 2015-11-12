@@ -100,8 +100,10 @@
     <Content Include="Content\Images\Logo.png" />
     <Content Include="Content\Images\megaman.png" />
     <Content Include="Content\Images\metroid.png" />
+    <Content Include="Content\Images\Ouro-lg.png" />
     <Content Include="Content\Images\Ouro.png" />
     <Content Include="Content\Images\Prata.png" />
+    <Content Include="Content\Images\white_circle.png" />
     <Content Include="Content\Images\youtube.png" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -124,6 +126,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
+    <Compile Include="Controllers\LocacaoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -152,6 +155,8 @@
     <Content Include="Views\Jogo\Manter.cshtml" />
     <Content Include="Views\Shared\_ImagemSelo.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Locacao\Index.cshtml" />
+    <Content Include="Views\Shared\_InformacaoJogoLocacao.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

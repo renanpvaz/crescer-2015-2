@@ -22,6 +22,17 @@ namespace Locadora.Web.MVC.Models
         {
         }
 
+        public JogoDetalhesModel(Jogo jogo)
+        {
+            this.Id = jogo.Id;
+            this.Nome = jogo.Nome;
+            this.Descricao = jogo.Descricao;
+            this.Selo = jogo.Selo;
+            this.Preco = jogo.Preco;
+            this.Categoria = jogo.Categoria;
+            this.Imagem = jogo.Imagem;
+        }
+
         public Jogo ConverterParaJogo()
         {
             Jogo jogo = null;

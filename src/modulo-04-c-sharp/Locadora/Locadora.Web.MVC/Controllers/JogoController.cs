@@ -1,5 +1,6 @@
 ﻿using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
+using Locadora.Web.MVC.Helpers;
 using Locadora.Web.MVC.Models;
 using Locadora.Web.MVC.Segurança;
 using System;
@@ -14,12 +15,11 @@ namespace Locadora.Web.MVC.Controllers
     {
         public ActionResult DetalhesJogo(int id)
         {
-            IJogoRepositorio repositorio = new Repositorio.EF.JogoRepositorio();
+            var repositorio = FabricaDeModulos.CriarJogoRepositorio();
 
             var jogo = repositorio.BuscarPorId(id);
-            var jogoDetalhes = new JogoDetalhesModel();
 
-            return View(jogoDetalhes.ConverterJogoParaModel(jogo));
+            return View(new JogoDetalhesModel(jogo));
         }
 
         [Autorizador(Roles = Permissao.PERMISSAO_MASTER)]
@@ -27,12 +27,11 @@ namespace Locadora.Web.MVC.Controllers
         {
             if (id > 0)
             {
-                IJogoRepositorio repositorio = new Repositorio.EF.JogoRepositorio();
+                var repositorio = FabricaDeModulos.CriarJogoRepositorio();
 
-                var jogo = repositorio.BuscarPorId(id);
-                var jogoEditar = new JogoDetalhesModel();              
+                var jogo = repositorio.BuscarPorId(id);              
 
-                return View(jogoEditar.ConverterJogoParaModel(jogo));
+                return View(new JogoDetalhesModel(jogo));
             }
 
             return View();

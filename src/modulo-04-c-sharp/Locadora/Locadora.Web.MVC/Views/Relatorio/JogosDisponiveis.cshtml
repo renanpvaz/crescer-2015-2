@@ -58,9 +58,8 @@
         <thead>
             <tr>
                 <th style="width: 40%">Jogo</th>            
-                <th style="width: 33%">Categoria</th>
-                <th style="width: 17%">Preço</th>
-                <th style="width: 10%">Opções</th>
+                <th style="width: 40%">Categoria</th>
+                <th style="width: 20%">Opções</th>
             </tr>
         </thead>
         <tbody>
@@ -70,7 +69,6 @@
                 <tr>                   
                     <td>@Html.Partial("_ImagemSelo", jogo.Selo) @jogo.Nome</td>
                     <td>@jogo.Categoria</td>
-                    <td>@jogo.Preco.ToString("c")</td>
                     <td> 
                         <a href="/Jogo/DetalhesJogo/@jogo.Id"> <img class="opcoes img-detalhes" src="~/Content/Images/Detalhes.png" /></a>
                         
@@ -81,7 +79,8 @@
                                     <a href="/Jogo/Manter/@jogo.Id"> <img class="opcoes img-editar" src="~/Content/Images/Editar.png" /></a>
                                 }
                             }
-</td>
+                        <button onclick="location.href = '/Locacao/Index/@jogo.Id'"class="btn btn-sm btn-info">Locar</button>
+                    </td>
                 </tr>        
             }
         </tbody>
