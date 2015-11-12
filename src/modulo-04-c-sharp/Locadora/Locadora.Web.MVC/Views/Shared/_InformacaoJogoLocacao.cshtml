@@ -1,4 +1,4 @@
-﻿@model JogoDetalhesModel
+﻿@model JogoLocacaoModel
 
 
 <style>
@@ -14,15 +14,27 @@
 </style>
 
 <div style="width: 100%; position: absolute; right: 0%; background-color:#D4D4D4;" class="info-jogo jumbotron">
-    <div class="col-sm-5">
-            <img src="https://legostevereviews.files.wordpress.com/2013/01/chrono-trigger-snes-box-350h.jpg" />
-            @Html.Partial("_ImagemSelo", Model.Selo.ToString() + "-lg")
-    </div>
 
-    <div class="col-sm-offset-1 col-sm-6">
-        <h1>@Model.Nome</h1>
-        <h2>@Model.Preco.ToString("c")</h2>
-        <h3>Previsão de entrega: @DateTime.Now.AddDays(Model.NumeroDeDiasDeEntrega).Date.ToString("dd/MM/yyyy")</h3>
+        @if (Model != null)
+        {
+            <div class="col-sm-5">
+                <img src="https://legostevereviews.files.wordpress.com/2013/01/chrono-trigger-snes-box-350h.jpg" />
 
-    </div>
+                Html.Partial("_ImagemSelo", Model.Selo.ToString() + "-lg");
+
+            </div>
+
+            <div class="col-sm-offset-1 col-sm-6">
+                <h1>@Model.Nome</h1>
+                <h2>@Model.Preco.ToString("c")</h2>
+                @if (Model.DataLocacao == null)
+                {
+                    <h3>Previsão de entrega: @DateTime.Now.AddDays(Model.NumeroDeDiasDeEntrega).Date.ToString("dd/MM/yyyy")</h3>
+                }
+                else
+                {
+                    <h3>Data locação: @Model.DataLocacao</h3>
+                }
+            </div>
+        }
 </div>

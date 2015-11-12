@@ -35,24 +35,6 @@ namespace Locadora.Web.MVC.Models
         public Selo Selo { get; set; }
         public string Descricao { get; set; }
         public string Imagem { get; set; }
-        public int NumeroDeDiasDeEntrega { get {
-
-                var selo = this.Selo.ToString();
-
-                if (selo == "Ouro")
-                {
-                    return 1;
-                }
-                else if (selo == "Prata")
-                {
-                    return 2;
-                }
-                else if (selo == "Bronze")
-                {
-                    return 3;
-                }
-                return 0;
-            } }
 
 
         public JogoDetalhesModel()

@@ -22,7 +22,7 @@ namespace Locadora.Web.MVC.Controllers
 
             ViewBag.Jogos = repositorioCliente.BuscarTodos();
 
-            return View(new JogoDetalhesModel(jogo));
+            return View(new JogoLocacaoModel(jogo));
         }
 
         public ActionResult Salvar(int Id, string nomeCliente)

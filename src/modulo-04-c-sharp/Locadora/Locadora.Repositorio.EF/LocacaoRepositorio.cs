@@ -28,5 +28,13 @@ namespace Locadora.Repositorio.EF
             }
         }
 
+        public Locacao BuscarPorJogo(Jogo jogo)
+        {
+            using (var db = new BaseDeDados())
+            {
+                return db.Locacao.FirstOrDefault(l => l.IdJogo == jogo.Id);
+            }
+        }
+
     }
 }

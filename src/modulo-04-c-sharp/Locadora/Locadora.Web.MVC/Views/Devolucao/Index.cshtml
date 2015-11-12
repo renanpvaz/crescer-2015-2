@@ -1,0 +1,20 @@
+﻿@model JogoLocacaoModel
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>Devolução</h2>
+
+@Html.Partial("_InformacaoJogoLocacao", Model)
+
+@using (Html.BeginForm("ExibirLocacao", "Devolucao", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <!--Html.HiddenFor(m => m.Id)-->
+
+    <div class="col-lg-offset-3 col-xs-3">
+        <input id="pesquisaNome" class="form-control input-lg " type="text" name="buscaLocacao" placeholder="Pesquisar jogo">
+    </div>
+        <div class="col-xs-6">
+            <button type="submit" id="btn-locar" class="btn btn-lg btn-default" style="display:inline-block;">Buscar jogo</button>
+        </div>
+}
