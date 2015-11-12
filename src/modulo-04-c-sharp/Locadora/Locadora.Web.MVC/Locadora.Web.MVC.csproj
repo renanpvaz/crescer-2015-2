@@ -152,7 +152,6 @@
     <Content Include="Views\Jogo\Manter.cshtml" />
     <Content Include="Views\Shared\_ImagemSelo.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Jogo\Video.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
