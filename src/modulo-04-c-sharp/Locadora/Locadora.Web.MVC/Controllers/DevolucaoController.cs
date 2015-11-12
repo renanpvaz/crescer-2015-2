@@ -16,6 +16,11 @@ namespace Locadora.Web.MVC.Controllers
             return View();
         }
 
+        public ActionResult Devolver()
+        {
+            return View();
+        }
+
         public ActionResult ExibirLocacao(string buscaLocacao)
         {
             var repositorioJogo = FabricaDeModulos.CriarJogoRepositorio();

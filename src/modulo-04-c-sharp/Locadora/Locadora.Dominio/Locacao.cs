@@ -19,7 +19,10 @@ namespace Locadora.Dominio
         public DateTime DataLocacao { get; private set; }
 
         public DateTime? DataEntrega { get; private set; }
-        
+
+        private Locacao()
+        {
+        }
 
         public Locacao(Jogo jogo, Cliente cliente)
         {
