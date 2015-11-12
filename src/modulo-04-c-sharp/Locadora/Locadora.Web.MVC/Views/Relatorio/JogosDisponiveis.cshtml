@@ -5,20 +5,22 @@
 }
 
 <style>
+
     .header{
         margin-bottom: 70px;
     }
 
-    .img-detalhes:hover {
+    .opcoes:hover {
         opacity: 0.2;
     }
 
     .img-editar {
         margin-left: 7px;
+        margin-bottom: 2px;
     }
 
-     .img-editar:hover {
-         opacity: 0.2;
+    .img-video {
+        margin-left: 7px;
     }
 
      .btn-cadastrar{
@@ -70,16 +72,16 @@
                     <td>@jogo.Categoria</td>
                     <td>@jogo.Preco.ToString("c")</td>
                     <td> 
-                        <a href="/Jogo/DetalhesJogo/@jogo.Id"> <img class="img-detalhes" src="~/Content/Images/Detalhes.png" /></a>           
+                        <a href="/Jogo/DetalhesJogo/@jogo.Id"> <img class="opcoes img-detalhes" src="~/Content/Images/Detalhes.png" /></a>
                         
-                        @if (ViewBag.UsuarioLogado != null)
-                        {
-                            if (ViewBag.UsuarioLogado.PodeCadastrarEEditar)
+                            @if (ViewBag.UsuarioLogado != null)
                             {
-                                <a href="/Jogo/Manter/@jogo.Id"> <img class="img-editar" src="~/Content/Images/Editar.png" /></a>
+                                if (ViewBag.UsuarioLogado.PodeCadastrarEEditar)
+                                {
+                                    <a href="/Jogo/Manter/@jogo.Id"> <img class="opcoes img-editar" src="~/Content/Images/Editar.png" /></a>
+                                }
                             }
-                        }
-                    </td>
+</td>
                 </tr>        
             }
         </tbody>
@@ -96,6 +98,7 @@
             </tr>
         </tfoot>
     </table>
+
 
 }
 else
