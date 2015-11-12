@@ -7,30 +7,22 @@
     }
 
     .img-selo{
-    position: absolute;
-    top: 0%;
-    right: 12%;
-    }
-
-    .bg-selo{
-    border-radius: 130px;
-    background-color: #eee;
-    width: 97px;
-    height: 96px;
-    position: absolute;
-    top: -7%;
-    right: 8%;
+        position: absolute;
+        top: -2%;
+        right: -4%;
     }
 </style>
 
-<div style="width: 113%; position: absolute; right: -12%;" class="info-jogo jumbotron">
+<div style="width: 100%; position: absolute; right: 0%; background-color:#D4D4D4;" class="info-jogo jumbotron">
     <div class="col-sm-5">
             <img src="https://legostevereviews.files.wordpress.com/2013/01/chrono-trigger-snes-box-350h.jpg" />
-            <div class="bg-selo" style="border-radius:33px;"></div>
             @Html.Partial("_ImagemSelo", Model.Selo.ToString() + "-lg")
     </div>
 
     <div class="col-sm-offset-1 col-sm-6">
         <h1>@Model.Nome</h1>
+        <h2>@Model.Preco.ToString("c")</h2>
+        <h3>Previsão de entrega: @DateTime.Now.AddDays(Model.NumeroDeDiasDeEntrega).Date.ToString("dd/MM/yyyy")</h3>
+
     </div>
 </div>

@@ -8,6 +8,8 @@ namespace Locadora.Dominio
 {
     public class Cliente : EntidadeBase
     {
+        public int Id { get; set; }
+
         public string Nome { get; set; }
 
         public Cliente()

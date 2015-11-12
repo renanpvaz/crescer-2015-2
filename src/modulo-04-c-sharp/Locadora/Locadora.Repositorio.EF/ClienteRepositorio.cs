@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Locadora.Repositorio.EF
 {
-    class ClienteRepositorio
+    public class ClienteRepositorio
     {
 
         public Cliente BuscarPorId(int id)
@@ -22,7 +22,17 @@ namespace Locadora.Repositorio.EF
         {
             using (var db = new BaseDeDados())
             {
-                return db.Cliente.Where(j => j.Nome.Contains(nome)).ToList();
+                var jogos = db.Cliente.Where(j => j.Nome.Contains(nome)).ToList();
+
+                return jogos;
+            }
+        }
+
+        public IList<Cliente> BuscarTodos()
+        {
+            using (var db = new BaseDeDados())
+            {
+                return db.Cliente.ToList();
             }
         }
 

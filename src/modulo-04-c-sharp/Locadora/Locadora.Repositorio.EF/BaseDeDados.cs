@@ -15,6 +15,7 @@ namespace Locadora.Repositorio.EF
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Permissao> Permissao { get; set; }
+        public DbSet<Locacao> Locacao { get; set; }
 
         public BaseDeDados() : base("LOCADORA")
         {
@@ -26,6 +27,7 @@ namespace Locadora.Repositorio.EF
             modelBuilder.Configurations.Add(new JogoMap());
             modelBuilder.Configurations.Add(new UsuarioMap());
             modelBuilder.Configurations.Add(new PermissaoMap());
+            modelBuilder.Configurations.Add(new LocacaoMap());
             base.OnModelCreating(modelBuilder);
         }
     }
@@ -66,6 +68,20 @@ namespace Locadora.Repositorio.EF
             HasKey(p => p.Id);
 
             Property(p => p.Nome).IsRequired().HasMaxLength(250);
+        }
+    }
+
+    class LocacaoMap : EntityTypeConfiguration<Locacao>
+    {
+        public LocacaoMap()
+        {
+            ToTable("Locacao");
+            HasKey(p => p.Id);
+
+            HasRequired(p => p.Jogo).WithMany().HasForeignKey(x => x.IdJogo);
+            HasRequired(p => p.Cliente).WithMany().HasForeignKey(x => x.IdCliente);
+            Property(p => p.DataLocacao).IsRequired();
+            Property(p => p.DataEntrega).IsOptional();
         }
     }
 

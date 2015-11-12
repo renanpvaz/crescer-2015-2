@@ -12,11 +12,48 @@ namespace Locadora.Web.MVC.Models
 
         public int? Id { get; set; }
         public string Nome { get; set; }
-        public decimal Preco { get; set; }
+        public decimal Preco { get
+            {
+                var selo = this.Selo.ToString();
+
+                if(selo == "Ouro")
+                {
+                    return 15;
+                }
+                else if(selo == "Prata")
+                {
+                    return 10;
+                }
+                else if (selo == "Bronze")
+                {
+                    return 5;
+                }
+                return 0;
+            }
+        }
         public Categoria Categoria { get; set; }
         public Selo Selo { get; set; }
         public string Descricao { get; set; }
         public string Imagem { get; set; }
+        public int NumeroDeDiasDeEntrega { get {
+
+                var selo = this.Selo.ToString();
+
+                if (selo == "Ouro")
+                {
+                    return 1;
+                }
+                else if (selo == "Prata")
+                {
+                    return 2;
+                }
+                else if (selo == "Bronze")
+                {
+                    return 3;
+                }
+                return 0;
+            } }
+
 
         public JogoDetalhesModel()
         {
@@ -28,7 +65,6 @@ namespace Locadora.Web.MVC.Models
             this.Nome = jogo.Nome;
             this.Descricao = jogo.Descricao;
             this.Selo = jogo.Selo;
-            this.Preco = jogo.Preco;
             this.Categoria = jogo.Categoria;
             this.Imagem = jogo.Imagem;
         }
@@ -60,7 +96,6 @@ namespace Locadora.Web.MVC.Models
         {          
             this.Id = jogo.Id;
             this.Nome = jogo.Nome;
-            this.Preco = jogo.Preco;
             this.Descricao = jogo.Descricao;
             this.Categoria = jogo.Categoria;
             this.Imagem = jogo.Imagem;

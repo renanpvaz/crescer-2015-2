@@ -16,6 +16,16 @@ namespace Locadora.Web.MVC.Helpers
             return new JogoRepositorio();
         }
 
+        public static ClienteRepositorio CriarClienteRepositorio()
+        {
+            return new ClienteRepositorio();
+        }
+
+        public static LocacaoRepositorio CriarLocacaoRepositorio()
+        {
+            return new LocacaoRepositorio();
+        }
+
         public static IUsuarioRepositorio CriarUsuarioRepositorio()
         {
             return new UsuarioRepositorio();
