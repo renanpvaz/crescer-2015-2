@@ -13,7 +13,7 @@ namespace Locadora.Repositorio.EF
         {
             using (var db = new BaseDeDados())
             {
-                db.Entry(BuscarPorId(entidade.Id)).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(entidade).State = System.Data.Entity.EntityState.Modified;
 
                 return db.SaveChanges();
             }

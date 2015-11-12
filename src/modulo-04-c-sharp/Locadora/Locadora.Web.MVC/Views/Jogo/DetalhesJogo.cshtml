@@ -5,34 +5,29 @@
 
 
 <style>
-
-    .info{
-        margin-top: 20px;
-        margin-bottom: 310px;
+    .detalhes{
+        overflow: hidden;
     }
 
-   .imagem{
-       display:inline-block;
-       vertical-align:middle;
-       margin-left: 25%;
+   .descricao{
+       padding-top:10px;
    }
-
-    .descricao{
-        display:inline-block
-    }
 
 </style>
 
-<h1 class="titulo">@Model.Nome</h1>
+<div class="jumbotron detalhes">
+    <div class="col-xs-7">
+        <h1 class="titulo">@Model.Nome</h1>
 
+        <h2>Categoria: @Model.Categoria</h2>
 
-<img class="imagem" src="@Model.Imagem" />
+        <p class="descricao">
+            @Model.Descricao
+        </p>
+    </div>
 
-<div class="info">
-    <h4>Categoria: @Model.Categoria</h4>
+    <img class="col-xs-5 imagem" src="@Model.Imagem" />
 
-    <p class="descricao">
-        @Model.Descricao
-    </p>
 </div>
+
 

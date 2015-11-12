@@ -22,12 +22,11 @@ namespace Locadora.Web.MVC.Controllers
             return View(jogoDetalhes.ConverterJogoParaModel(jogo));
         }
 
-        [Autorizador(Roles = "MASTER")]
+        [Autorizador(Roles = Permissao.PERMISSAO_MASTER)]
         public ActionResult Manter(int id = 0)
         {
             if (id > 0)
             {
-
                 IJogoRepositorio repositorio = new Repositorio.EF.JogoRepositorio();
 
                 var jogo = repositorio.BuscarPorId(id);
