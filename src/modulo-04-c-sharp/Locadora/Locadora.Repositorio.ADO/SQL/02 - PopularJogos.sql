@@ -29,6 +29,8 @@ insert into Selo (IDSelo, Nome) values (1, 'Ouro');
 insert into Selo (IDSelo, Nome) values (2, 'Prata');
 insert into Selo (IDSelo, Nome) values (3, 'Bronze');
 
+update jogo set imagem = '/Content/Images/chrono_trigger_capa.png' where id = 1
+
 --update jogo set imagem = '/Content/Images/ken.png' where id = 7;
 
 --update jogo set imagem = '/Content/Images/megaman.png' where id = 3;

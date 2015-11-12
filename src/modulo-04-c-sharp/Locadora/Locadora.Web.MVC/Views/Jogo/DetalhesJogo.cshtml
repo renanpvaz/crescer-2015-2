@@ -81,6 +81,11 @@
                 $('#player').attr('src', '');
             });
 
+            $('#overlay').on('click', function () {
+                $('#overlay, #overlay-back').fadeOut(500);
+                $('#player').attr('src', '');
+            });
+
         </script>
     }
 

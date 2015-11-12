@@ -38,7 +38,7 @@ namespace Locadora.Web.MVC.Controllers
 
             if (usuarioAutenticado != null && usuarioAutenticado.Senha == senha)
             {
-                var usuarioLogadoModel = new UsuarioLogado(usuarioAutenticado.Nome, usuarioAutenticado.Email, new string[] { usuarioAutenticado.Permissoes.First().Nome });
+                var usuarioLogadoModel = new UsuarioLogado(usuarioAutenticado.Nome, usuarioAutenticado.Email, usuarioAutenticado.Permissoes.Select(x => x.Nome).ToArray());
 
                 FormsAuthentication.SetAuthCookie(usuario.Email, true);
                 Session["USUARIO_LOGADO"] = usuarioLogadoModel;
