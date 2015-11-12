@@ -19,6 +19,15 @@ CREATE TABLE dbo.Jogo
     IdClienteLocacao INT					NULL CONSTRAINT FK_IdClienteLocacao FOREIGN KEY REFERENCES Cliente(Id)    
 )
 
+CREATE TABLE dbo.Locacao
+(    
+    Id               INT IDENTITY (1,1)		NOT NULL CONSTRAINT PK_IdJLocacao PRIMARY KEY,
+    IdCliente        INT					NOT NULL CONSTRAINT FK_IdCliente FOREIGN KEY REFERENCES Cliente(Id),
+    IdJogo           INT					NULL CONSTRAINT FK_IdJogo FOREIGN KEY REFERENCES Jogo(Id),
+	DataLocacao      DATETIME               NOT NULL,
+	DataEntrega      DATETIME               NULL    
+)
+
 ALTER TABLE Jogo ADD Descricao VARCHAR(MAX) NOT NULL DEFAULT 'Sem descrição';
 
 CREATE TABLE Selo
@@ -70,3 +79,9 @@ insert into permissao (Nome) values ('OPERADOR');
 insert into usuario_permissao (idusuario, idpermissao) values (3, 1);
 
 insert into usuario_permissao (idusuario, idpermissao) values (4, 2);
+
+insert into cliente (id, nome) values (1, 'Renan');
+
+insert into cliente (id, nome) values (2, 'Daniele');
+
+insert into cliente (id, nome) values (3, 'Bruno');

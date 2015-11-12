@@ -3,4 +3,51 @@
     ViewBag.Title = "Index";
 }
 
-@Html.Partial("_InformacaoJogoLocacao", Model);
+<style>
+
+    body{
+      background-color: #ECE9E9;
+    }
+
+    .pesquisa-cliente :first-child{
+        border-radius: 3px;
+        padding: 2px; 
+     }
+
+      .pesquisa-cliente :last-child{
+        margin-bottom: 3px;
+        padding: 3.2px 10px;
+      }
+
+      #pesquisaNome{
+        width: 280px;
+        height: 52px;
+        display:inline-block;
+        float:left
+      }
+
+</style>
+
+<div>
+    @Html.Partial("_InformacaoJogoLocacao", Model);
+</div>
+
+<div class="pesquisa-cliente" style="position:absolute;top: 80%;">
+    @using (Html.BeginForm("Salvar", "Locacao", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.HiddenFor(m => m.Id)
+
+        <div class="col-xs-6">
+            <input id="pesquisaNome" class="form-control input-lg " type="text" name="nomeCliente" placeholder="Pesquisar cliente">
+        </div>
+        <div class="col-xs-1 col-lg-offset-5">
+            <button type="submit" id="btn-locar" class="btn btn-lg btn-default" style="display:inline-block;">Fazer locação</button>
+        </div>
+    }
+</div>
+
+<script>
+    $("#pesquisaNome").autocomplete({
+        source: 'http://localhost:56771/Locacao/JogosAutocomplete'
+    });
+</script>
