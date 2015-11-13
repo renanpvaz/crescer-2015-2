@@ -21,6 +21,12 @@
                 @Html.ActionLink("Login", "Index", "Login", new { area = "" }, new { @class = "navbar-brand lista-jogos" })
                 @Html.ActionLink("Lista de jogos", "JogosDisponiveis", "Relatorio", new { area = "" }, new { @class = "navbar-brand lista-jogos" })
                 @Html.ActionLink("Devolução de jogos", "Index", "Devolucao", new { area = "" }, new { @class = "navbar-brand lista-jogos" })
+                
+                <form class="pesquisa" action="~/Relatorio/JogosDisponiveis">
+                    <input class="barra_pesquisa" type="text" name="busca" placeholder="Digite o nome de um jogo">
+                    <input class="btn btn-default btn-md" type="submit" value="Pesquisar">
+                </form>
+                
                 <style> 
                 .lista-jogos{
                     margin-top: 2px;
@@ -31,7 +37,7 @@
                     float: right;
                     margin-top: 11px;
                     display: inline-block;
-                    margin-right: -140%
+                    margin-right: -80%;
                 }
                 .pesquisa :first-child{
                     border-radius: 3px;
@@ -42,10 +48,6 @@
                     padding: 3.2px 10px;
                 }
                 </style>
-                <form class="pesquisa" action="~/Relatorio/JogosDisponiveis">
-                    <input class="barra_pesquisa"type="text" name="busca" placeholder="Digite o nome de um jogo">
-                    <input class="btn btn-default btn-md" type="submit" value="Pesquisar">
-                </form>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
