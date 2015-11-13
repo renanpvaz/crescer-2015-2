@@ -28,9 +28,17 @@
 
 </style>
 
-<div>
-    @Html.Partial("_InformacaoJogoLocacao", Model);
-</div>
+@if (TempData["MensagemLocação"] != null)
+{
+    <div style="margin-top: 10px;" class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Falha!</strong> @TempData["MensagemLocação"]
+    </div>
+}
+
+  <div>
+      @Html.Partial("_InformacaoJogoLocacao", Model);
+  </div>
 
 <div class="pesquisa-cliente" style="position:absolute;top: 80%;">
     @using (Html.BeginForm("Salvar", "Locacao", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))

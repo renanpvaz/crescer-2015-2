@@ -48,11 +48,21 @@ namespace Locadora.Repositorio.EF
             }
         }
 
+        public int BuscarTotalDeLocacoesPorCliente(int idCliente)
+        {
+            using (var db = new BaseDeDados())
+            {
+                var locacoes = db.Locacao.Include("Jogo").Include("Cliente").Where(l => l.IdCliente == idCliente).ToList();
+
+                return locacoes.Count();
+            }
+        }
+
         public List<Locacao> BuscarPorNomeDoJogo(string nome)
         {
             using (var db = new BaseDeDados())
             {
-                var locacoes = db.Locacao.Include("Jogo").Include("Cliente").Where(l => l.Jogo.Nome.Contains(nome)).ToList(); ;
+                var locacoes = db.Locacao.Include("Jogo").Include("Cliente").Where(l => l.Jogo.Nome.Contains(nome)).ToList();
 
                 return locacoes;
             }

@@ -30,11 +30,19 @@ namespace Locadora.Web.MVC.Controllers
             var repositorioCliente = FabricaDeModulos.CriarClienteRepositorio();
             var repositorioLocacao = FabricaDeModulos.CriarLocacaoRepositorio();
 
-            var cliente = repositorioCliente.BuscarPorNome(nomeCliente).First(); ;
+            var cliente = repositorioCliente.BuscarPorNome(nomeCliente).First();
+            var totalDeLocacoes = repositorioLocacao.BuscarTotalDeLocacoesPorCliente(cliente.Id);
 
-            repositorioLocacao.Criar(new Locacao(Id, cliente.Id));
+            if (totalDeLocacoes < 3)
+            {
+                repositorioLocacao.Criar(new Locacao(Id, cliente.Id));
+            }
+            else
+            {
+                TempData["MensagemLocação"] = "O cliente já possui três jogos locados!";
+            }
 
-            return View();
+            return RedirectToAction("Index", new { id = Id });
         }
 
         public JsonResult ClienteAutocomplete(string term)
