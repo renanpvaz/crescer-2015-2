@@ -38,7 +38,7 @@ namespace Locadora.Dominio
             this.DataLocacao = DateTime.Now;
         }
 
-        private void RealizarEntrega()
+        public void RealizarEntrega()
         {
             this.DataEntrega = DateTime.Now;
         }

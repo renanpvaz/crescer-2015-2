@@ -36,6 +36,12 @@
                 {
                     <h2>Valor total: @Model.PrecoTotal</h2>
                     <h3>Data locação: @Model.DataLocacao</h3>
+                    <h3>Cliente: @Model.Cliente</h3>
+                    <h3>Situação: @Model.Situacao</h3>
+                    if (Model.Situacao == "Aberta")
+                    {
+                        <button id="btn-locar" class="btn btn-lg btn-info" style="display:inline-block;" onclick="location.href = '/Devolucao/Desalocar/@Model.IdLocacao'">Desalocar</button>
+                    }
                 }
             </div>
         }

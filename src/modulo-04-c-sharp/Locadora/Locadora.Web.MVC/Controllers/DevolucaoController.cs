@@ -16,22 +16,26 @@ namespace Locadora.Web.MVC.Controllers
             return View();
         }
 
-        public ActionResult Devolver()
-        {
-            return View();
-        }
-
-        public ActionResult ExibirLocacao(string buscaLocacao)
+        public ActionResult Desalocar(int id)
         {
             var repositorioJogo = FabricaDeModulos.CriarJogoRepositorio();
             var repositorioLocacao = FabricaDeModulos.CriarLocacaoRepositorio();
 
-            var jogo = repositorioJogo.BuscarPorNome(buscaLocacao).First();
-            var locacao = repositorioLocacao.BuscarPorJogo(jogo);
+            var jogo = repositorioJogo.BuscarPorId(id);
+            var locacao = repositorioLocacao.BuscarPorId(id);
 
-            ViewBag.Nome = jogo.Nome;
+            repositorioLocacao.Desalocar(locacao);
 
-            return View("Index", new JogoLocacaoModel(jogo, locacao));
+            return View("Index");
+        }
+
+        public ActionResult ExibirLocacao(string buscaLocacao)
+        {
+            var repositorioLocacao = FabricaDeModulos.CriarLocacaoRepositorio();
+
+            var locacoes = repositorioLocacao.BuscarPorNomeDoJogo(buscaLocacao);
+
+            return View("Index", new DevolucaoModel(locacoes));
         }
     }
 }

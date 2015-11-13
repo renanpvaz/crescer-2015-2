@@ -36,5 +36,27 @@ namespace Locadora.Repositorio.EF
             }
         }
 
+        public int Desalocar(Locacao locacao)
+        {
+            using (var db = new BaseDeDados())
+            {
+                locacao.RealizarEntrega();
+
+                db.Entry(locacao).State = System.Data.Entity.EntityState.Modified;
+
+                return db.SaveChanges();
+            }
+        }
+
+        public List<Locacao> BuscarPorNomeDoJogo(string nome)
+        {
+            using (var db = new BaseDeDados())
+            {
+                var locacoes = db.Locacao.Include("Jogo").Include("Cliente").Where(l => l.Jogo.Nome.Contains(nome)).ToList(); ;
+
+                return locacoes;
+            }
+        }
+
     }
 }

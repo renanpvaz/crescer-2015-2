@@ -1,26 +1,33 @@
-﻿@model JogoLocacaoModel
+﻿@model DevolucaoModel
 @{
     ViewBag.Title = "View";
 }
 
-<h2 class="col-xs-4">Devolução</h2>
+<div style="margin-bottom: -350px;">
+    <h2 class="col-xs-4">Devolução</h2>
 
-<div style="margin-top: 18px" class="col-xs-6">
-    @using (Html.BeginForm("ExibirLocacao", "Devolucao", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-    {
+    <div style="margin-top: 18px" class="col-xs-6">
+        @using (Html.BeginForm("ExibirLocacao", "Devolucao", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
     <!--Html.HiddenFor(m => m.Id)-->
 
-        <div class="col-lg-offset-3 col-xs-3">
-            <input id="pesquisaNome" class="form-control input-lg " type="text" name="buscaLocacao" placeholder="Pesquisar jogo">
-        </div>
-        <div class="col-xs-6">
-            <button type="submit" id="btn-locar" class="btn btn-lg btn-default" style="display:inline-block;">Buscar jogo</button>
-        </div>
+            <div class="col-lg-offset-3 col-xs-3">
+                <input id="pesquisaNome" class="form-control input-lg " type="text" name="buscaLocacao" placeholder="Pesquisar jogo">
+            </div>
+            <div class="col-xs-6">
+                <button type="submit" id="btn-locar" class="btn btn-lg btn-default" style="display:inline-block;">Buscar jogo</button>
+            </div>
+        }
+    </div>
+</div>
+
+    @if (Model != null)
+    {
+            foreach (var locacao in Model.Locacoes)
+            {
+            <div style="margin-top:430px">
+                @Html.Partial("_InformacaoJogoLocacao", new JogoLocacaoModel(locacao));
+            </div>
+            }
     }
-</div>
-
-<button style="margin-top: 18px" class="col-xs-2 btn btn-lg btn-default">Devolver</button>
-
-<div style="margin-top: 80px;">
-    @Html.Partial("_InformacaoJogoLocacao", Model)
-</div>
+    

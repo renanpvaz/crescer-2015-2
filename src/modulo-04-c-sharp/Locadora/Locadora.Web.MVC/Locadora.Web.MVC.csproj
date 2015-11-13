@@ -134,6 +134,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FabricaDeModulos.cs" />
+    <Compile Include="Models\DevolucaoModel.cs" />
     <Compile Include="Models\JogoDetalhesModel.cs" />
     <Compile Include="Models\JogoLocacaoModel.cs" />
     <Compile Include="Models\JogoModel.cs" />
