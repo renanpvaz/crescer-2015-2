@@ -5,6 +5,14 @@
 
 <h2>Login</h2>
 
+@if (TempData["MensagemPermissao"] != null)
+{
+    <div style="margin-top: 10px;" class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Falha!</strong> @TempData["MensagemPermissao"]
+    </div>
+}
+
 @if (ViewBag.UsuarioLogado != null)
 {
     <h4>Bem vindo @ViewBag.UsuarioLogado.Nome!</h4>

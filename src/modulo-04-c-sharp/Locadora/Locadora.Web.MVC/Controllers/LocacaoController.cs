@@ -2,6 +2,7 @@
 using Locadora.Dominio.Repositorio;
 using Locadora.Web.MVC.Helpers;
 using Locadora.Web.MVC.Models;
+using Locadora.Web.MVC.Segurança;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Locadora.Web.MVC.Controllers
 {
     public class LocacaoController : Controller
     {
-        // GET: Locacao
+        [Autorizador]
         public ActionResult Index(int id)
         {
             var repositorioJogo = FabricaDeModulos.CriarJogoRepositorio();
@@ -25,6 +26,7 @@ namespace Locadora.Web.MVC.Controllers
             return View(new JogoLocacaoModel(jogo));
         }
 
+        [Autorizador]
         public ActionResult Salvar(int Id, string nomeCliente)
         {
             var repositorioCliente = FabricaDeModulos.CriarClienteRepositorio();
@@ -45,23 +47,5 @@ namespace Locadora.Web.MVC.Controllers
             return RedirectToAction("Index", new { id = Id });
         }
 
-        public JsonResult ClienteAutocomplete(string term)
-        {
-            IList<Cliente> clientesEncontrados = ObterClientesPorFiltro(term);
-
-            var json = clientesEncontrados.Select(x => x.Nome);
-
-            return Json(json, JsonRequestBehavior.AllowGet);
-        }
-
-        private IList<Cliente> ObterClientesPorFiltro(string nome)
-        {
-            var clienteRepositorio = FabricaDeModulos.CriarClienteRepositorio();
-
-            if (string.IsNullOrEmpty(nome))
-                return clienteRepositorio.BuscarTodos();
-            else
-                return clienteRepositorio.BuscarPorNome(nome);
-        }
     }
 }

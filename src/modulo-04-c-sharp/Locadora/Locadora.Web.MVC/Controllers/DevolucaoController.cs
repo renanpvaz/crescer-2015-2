@@ -1,5 +1,6 @@
 ﻿using Locadora.Web.MVC.Helpers;
 using Locadora.Web.MVC.Models;
+using Locadora.Web.MVC.Segurança;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
 {
+    [Autorizador]
     public class DevolucaoController : Controller
     {
         // GET: Devolucao
@@ -29,6 +31,7 @@ namespace Locadora.Web.MVC.Controllers
             return View("Index");
         }
 
+        [Autorizador]
         public ActionResult ExibirLocacao(string buscaLocacao)
         {
             var repositorioLocacao = FabricaDeModulos.CriarLocacaoRepositorio();

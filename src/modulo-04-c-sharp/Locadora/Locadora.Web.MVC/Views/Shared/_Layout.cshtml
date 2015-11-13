@@ -18,7 +18,9 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Login", "Index", "Login", new { area = "" }, new { @class = "navbar-brand lista-jogos" })
                 @Html.ActionLink("Lista de jogos", "JogosDisponiveis", "Relatorio", new { area = "" }, new { @class = "navbar-brand lista-jogos" })
+                @Html.ActionLink("Devolução de jogos", "Index", "Devolucao", new { area = "" }, new { @class = "navbar-brand lista-jogos" })
                 <style> 
                 .lista-jogos{
                     margin-top: 2px;

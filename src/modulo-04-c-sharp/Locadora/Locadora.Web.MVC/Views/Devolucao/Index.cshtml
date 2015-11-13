@@ -9,13 +9,11 @@
     <div style="margin-top: 18px" class="col-xs-6">
         @using (Html.BeginForm("ExibirLocacao", "Devolucao", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
-    <!--Html.HiddenFor(m => m.Id)-->
-
             <div class="col-lg-offset-3 col-xs-3">
-                <input id="pesquisaNome" class="form-control input-lg " type="text" name="buscaLocacao" placeholder="Pesquisar jogo">
+                <input id="pesquisaNome" class="form-control input-lg " type="text" name="buscaLocacao" placeholder="Procurar locação por jogo" style="width: 294px;">
             </div>
             <div class="col-xs-6">
-                <button type="submit" id="btn-locar" class="btn btn-lg btn-default" style="display:inline-block;">Buscar jogo</button>
+                <button type="submit" id="btn-locar" class="btn btn-lg btn-default" style="margin-left: 190px;">Buscar</button>
             </div>
         }
     </div>
@@ -23,11 +21,11 @@
 
     @if (Model != null)
     {
-            foreach (var locacao in Model.Locacoes)
-            {
-            <div style="margin-top:430px">
-                @Html.Partial("_InformacaoJogoLocacao", new JogoLocacaoModel(locacao));
-            </div>
-            }
+        foreach (var locacao in Model.Locacoes)
+          {
+          <div style="margin-top:430px">
+              @Html.Partial("_InformacaoJogoLocacao", new JogoLocacaoModel(locacao));
+          </div>
+          }
     }
     
