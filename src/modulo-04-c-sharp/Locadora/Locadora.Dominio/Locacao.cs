@@ -27,6 +27,7 @@ namespace Locadora.Dominio
         public Locacao(Jogo jogo, Cliente cliente)
         {
             this.Cliente = cliente;
+            this.IdCliente = cliente.Id;
             this.Jogo = jogo;
             this.DataLocacao = DateTime.Now;
         }

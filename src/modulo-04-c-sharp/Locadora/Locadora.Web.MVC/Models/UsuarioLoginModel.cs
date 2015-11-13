@@ -8,12 +8,11 @@ namespace Locadora.Web.MVC.Models
 {
     public class UsuarioLoginModel
     {
-        [Required]
-        [MaxLength(250)]
-        
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [MaxLength(250)]    
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Campo obrigatório")]
         [MaxLength(250)]
         public string Senha { get; set; }
 

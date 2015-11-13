@@ -5,11 +5,11 @@
 
 <h2>Login</h2>
 
-@if (TempData["MensagemPermissao"] != null)
+@if (TempData["MensagemErro"] != null)
 {
     <div style="margin-top: 10px;" class="alert alert-danger">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Falha!</strong> @TempData["MensagemPermissao"]
+        <strong>Falha!</strong> @TempData["MensagemErro"]
     </div>
 }
 

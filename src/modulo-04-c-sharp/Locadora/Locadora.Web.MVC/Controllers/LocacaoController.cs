@@ -37,7 +37,14 @@ namespace Locadora.Web.MVC.Controllers
 
             if (totalDeLocacoes < 3)
             {
-                repositorioLocacao.Criar(new Locacao(Id, cliente.Id));
+                if (nomeCliente != "")
+                {
+                    repositorioLocacao.Criar(new Locacao(Id, cliente.Id));
+                }
+                else
+                {
+                    TempData["MensagemLocação"] = "Digite o nome de um cliente";
+                }
             }
             else
             {

@@ -28,6 +28,8 @@ namespace Locadora.Web.MVC.Controllers
 
             repositorioLocacao.Desalocar(locacao);
 
+            TempData["MensagemDevolucao"] = "Jogo devolvido";
+
             return View("Index");
         }
 

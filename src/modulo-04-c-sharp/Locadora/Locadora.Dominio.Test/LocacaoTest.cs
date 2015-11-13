@@ -7,6 +7,14 @@ namespace Locadora.Dominio.Test
     public class LocacaoTest
     {
         [TestMethod]
+        public void LocacaoCriadaComADataAtual()
+        {
+            var locacao = new Locacao(1, 1);
+
+            Assert.AreEqual(DateTime.Now.Date, locacao.DataLocacao.Date);
+        }
+
+        [TestMethod]
         public void CriadaLocacaoComClienteEJogo()
         {
             var cliente = new Cliente(1);

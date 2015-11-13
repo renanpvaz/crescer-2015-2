@@ -69,6 +69,7 @@ namespace Locadora.Web.MVC.Models
             {
 
                 var selo = this.Selo.ToString();
+                
 
                 if (selo == "Ouro")
                 {

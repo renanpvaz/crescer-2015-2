@@ -52,9 +52,9 @@ namespace Locadora.Repositorio.EF
         {
             using (var db = new BaseDeDados())
             {
-                var locacoes = db.Locacao.Include("Jogo").Include("Cliente").Where(l => l.IdCliente == idCliente).ToList();
+                var locacoes = db.Locacao.Count(l => l.IdCliente == idCliente);
 
-                return locacoes.Count();
+                return locacoes;
             }
         }
 

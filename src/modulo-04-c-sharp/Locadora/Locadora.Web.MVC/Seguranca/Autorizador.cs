@@ -30,7 +30,7 @@ namespace Locadora.Web.MVC.Segurança
             }
             else
             {
-                filterContext.Controller.TempData.Add("MensagemPermissao", "Autentique-se primeiro");
+                filterContext.Controller.TempData.Add("MensagemErro", "Autentique-se primeiro");
                 RedirecionarParaLogin(filterContext);
             }
         }

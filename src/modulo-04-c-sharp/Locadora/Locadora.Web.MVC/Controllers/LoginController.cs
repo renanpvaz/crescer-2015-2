@@ -28,23 +28,32 @@ namespace Locadora.Web.MVC.Controllers
 
         public ActionResult Login(UsuarioLoginModel usuario)
         {
-            var repositorio = FabricaDeModulos.CriarUsuarioRepositorio();
-
-            var criptografia = FabricaDeModulos.CriarServicoCriptografia();
-
-            var usuarioAutenticado = repositorio.BuscarPorEmail(usuario.Email);
-
-            var senha = criptografia.CriptografarSenha(usuario.Senha);
-
-            if (usuarioAutenticado != null && usuarioAutenticado.Senha == senha)
+            if (ModelState.IsValid)
             {
-                var usuarioLogadoModel = new UsuarioLogado(usuarioAutenticado.Nome, usuarioAutenticado.Email, usuarioAutenticado.Permissoes.Select(x => x.Nome).ToArray());
+                var repositorio = FabricaDeModulos.CriarUsuarioRepositorio();
 
-                FormsAuthentication.SetAuthCookie(usuario.Email, true);
-                Session["USUARIO_LOGADO"] = usuarioLogadoModel;
+                var criptografia = FabricaDeModulos.CriarServicoCriptografia();
+
+                var usuarioAutenticado = repositorio.BuscarPorEmail(usuario.Email);
+
+                var senha = criptografia.CriptografarSenha(usuario.Senha);
+
+                if (usuarioAutenticado != null && usuarioAutenticado.Senha == senha)
+                {
+                    var usuarioLogadoModel = new UsuarioLogado(usuarioAutenticado.Nome, usuarioAutenticado.Email, usuarioAutenticado.Permissoes.Select(x => x.Nome).ToArray());
+
+                    FormsAuthentication.SetAuthCookie(usuario.Email, true);
+                    Session["USUARIO_LOGADO"] = usuarioLogadoModel;
+                }
+                else
+                {
+                    TempData["MensagemErro"] = "Email ou senha incorretos.";
+                }
+
+                return RedirectToAction("Index", "Login");
             }
 
-            return RedirectToAction("Index", "Login");
+            return View("Index");
         }
     }
 }

@@ -3,6 +3,14 @@
     ViewBag.Title = "View";
 }
 
+@if (TempData["MensagemDevolucao"] != null)
+{
+    <div style="margin-top: 10px;" class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Sucesso!</strong> @TempData["MensagemDevolucao"]
+    </div>
+}
+
 <div style="margin-bottom: -350px;">
     <h2 class="col-xs-4">Devolução</h2>
 
