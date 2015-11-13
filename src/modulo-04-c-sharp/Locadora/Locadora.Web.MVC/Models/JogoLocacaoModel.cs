@@ -31,6 +31,22 @@ namespace Locadora.Web.MVC.Models
                 return 0;
             }
         }
+        public string PrecoTotal {
+            get
+            {
+                var diasAtraso = (decimal)(DateTime.Now.Date - Convert.ToDateTime(this.DataLocacao)).TotalDays;
+
+                if(diasAtraso > 0)
+                { 
+
+                return (this.Preco + diasAtraso * 5).ToString("c");
+                }
+                else
+                {
+                    return this.Preco.ToString("c");
+                }
+            }
+        }
         public Selo Selo { get; set; }
         public int NumeroDeDiasDeEntrega
         {

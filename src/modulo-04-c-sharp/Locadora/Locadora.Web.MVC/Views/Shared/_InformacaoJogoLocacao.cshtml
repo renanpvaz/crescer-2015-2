@@ -34,7 +34,7 @@
                 }
                 else
                 {
-                    <h2>Valor total: @((Model.Preco - (decimal)(DateTime.Now.Date - Convert.ToDateTime(Model.DataLocacao)).TotalDays * 5).ToString("c"))</h2>
+                    <h2>Valor total: @Model.PrecoTotal</h2>
                     <h3>Data locação: @Model.DataLocacao</h3>
                 }
             </div>
