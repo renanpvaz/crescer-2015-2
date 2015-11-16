@@ -1,5 +1,6 @@
 package br.com.cwi.crescer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DoublyLinkedList implements LinkableList {
@@ -11,11 +12,15 @@ public class DoublyLinkedList implements LinkableList {
 
     @Override
     public void addFirst(String value) {
-    	 Node node = new Node(value, first);
+    	 Node node = new Node(value, first, last);
     	 
          if (first == null) {
         	 
              last = node;
+             
+         } else {
+        	 
+        	 last.setNext(node);    	 
          }
          
          first = node;
@@ -23,7 +28,7 @@ public class DoublyLinkedList implements LinkableList {
 
     @Override
     public void addLast(String value) {
-        Node node = new Node(value);
+        Node node = new Node(value, first, last);
 
         if (first == null) {
         	
@@ -40,12 +45,12 @@ public class DoublyLinkedList implements LinkableList {
 
     @Override
     public String getFirst() {  
-        return first;
+        return first.getValue();
     }
 
     @Override
     public String getLast() {
-        return last;
+        return last.getValue();
     }
 
     @Override
@@ -80,7 +85,7 @@ public class DoublyLinkedList implements LinkableList {
     	Node anterior = getNode(index - 1); 
     	Node proximo =  getNode(index);
     	
-    	anterior.setNext(new Node(value, proximo));
+    	anterior.setNext(new Node(value, proximo, anterior));
     }
 
     public Node getNode(int index) {
