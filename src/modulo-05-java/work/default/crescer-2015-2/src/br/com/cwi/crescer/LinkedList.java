@@ -62,12 +62,18 @@ public class LinkedList implements LinkableList {
 
     @Override
     public void remove(int index) {
-        getNode(index - 1).setNext(getNode(index).getNext());
+    	Node anterior = getNode(index - 1);
+    	Node proximo =  getNode(index).getNext();	
+    	
+        anterior.setNext(proximo);
     }
 
     @Override
     public void add(int index, String value) {
-        getNode(index - 1).setNext(new Node(value, getNode(index)));
+    	Node anterior = getNode(index - 1); 
+    	Node proximo =  getNode(index);
+    	
+    	anterior.setNext(new Node(value, proximo));
     }
 
     public Node getNode(int index) {

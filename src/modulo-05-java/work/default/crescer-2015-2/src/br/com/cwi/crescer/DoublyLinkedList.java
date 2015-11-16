@@ -39,45 +39,58 @@ public class DoublyLinkedList implements LinkableList {
     }
 
     @Override
-    public String getFirst() {
-        // TODO Auto-generated method stub
-        return null;
+    public String getFirst() {  
+        return first;
     }
 
     @Override
     public String getLast() {
-        // TODO Auto-generated method stub
-        return null;
+        return last;
     }
 
     @Override
     public List<String> list() {
-        // TODO Auto-generated method stub
-        return null;
+    	ArrayList<String> lista = new ArrayList<String>();
+        Node node = first;
+
+        while (node != null) {
+            lista.add(node.getValue());
+            node = node.getNext();
+        }
+
+        return lista;
     }
 
     @Override
     public void removeFirst() {
-        // TODO Auto-generated method stub
-
+    	first = first.getNext();
+    	last.setPrevious(first);
     }
 
     @Override
     public void remove(int index) {
-        // TODO Auto-generated method stub
-
+    	Node anterior = getNode(index - 1);
+    	Node proximo =  getNode(index).getNext();	
+    	
+        anterior.setNext(proximo);
     }
 
     @Override
     public void add(int index, String value) {
-        // TODO Auto-generated method stub
-
+    	Node anterior = getNode(index - 1); 
+    	Node proximo =  getNode(index);
+    	
+    	anterior.setNext(new Node(value, proximo));
     }
 
-
     public Node getNode(int index) {
-        // TODO Auto-generated method stub
-        return null;
+    	Node node = first;
+
+        for (int i = 0; i < index; i++) {
+            node = node.getNext();
+        }
+
+        return node;
     }
 
     public boolean isEmpty() {
