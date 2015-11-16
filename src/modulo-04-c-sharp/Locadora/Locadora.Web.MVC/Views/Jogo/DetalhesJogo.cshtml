@@ -17,7 +17,7 @@
         width      : 100%;
         height     : 100%;
         background : #000;
-        opacity    : 0.6;
+        opacity    : 0.8;
         filter     : alpha(opacity=60);
         z-index    : 5;
         display    : none;
@@ -56,7 +56,7 @@
         </p>
     </div>
 
-    <img class="col-xs-5 imagem" src="@Model.Imagem" />
+    <img class="col-xs-5 imagem" src="/Content/Images/@(Model.Id + ".png")" />
 
     <div id="overlay-back"></div>
     <div id="overlay">
