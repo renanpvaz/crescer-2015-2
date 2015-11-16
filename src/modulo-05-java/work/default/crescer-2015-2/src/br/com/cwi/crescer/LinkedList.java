@@ -9,23 +9,26 @@ public class LinkedList implements LinkableList {
 
     @Override
     public void addFirst(String value) {
-        Node node = new Node(value, null);
-
+        Node node = new Node(value, first);
+        
         if (first == null) {
+        	
             last = node;
         }
-        node.setNext(first);
+        
         first = node;
     }
 
     @Override
     public void addLast(String value) {
-        Node node = new Node(value, null);
-
+    	Node node = new Node(value);
+    	
         if (first == null) {
+        	
             first = node;
         }
-        node.setNext(last);
+        
+        last.setNext(node);
         last = node;
     }
 

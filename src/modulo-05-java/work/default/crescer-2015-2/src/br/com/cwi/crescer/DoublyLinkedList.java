@@ -11,15 +11,14 @@ public class DoublyLinkedList implements LinkableList {
 
     @Override
     public void addFirst(String value) {
-        Node node = new Node(value);
-
-        if (first == null) {
-            last = node;
-        }
-
-        node.setNext(first);
-        first.setPrevious(node);
-        first = node;
+    	 Node node = new Node(value, first);
+    	 
+         if (first == null) {
+        	 
+             last = node;
+         }
+         
+         first = node;
     }
 
     @Override
@@ -27,12 +26,16 @@ public class DoublyLinkedList implements LinkableList {
         Node node = new Node(value);
 
         if (first == null) {
-            first = node;
+        	
+            first = node; 
+            
+        } else {
+        	
+        	node.setNext(first);
         }
 
-        node.setNext(first);
         first.setPrevious(node);
-        first = node;
+        last = node;
     }
 
     @Override
