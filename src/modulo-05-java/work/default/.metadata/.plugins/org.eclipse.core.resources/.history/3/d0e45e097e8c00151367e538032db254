@@ -1,0 +1,20 @@
+package br.com.cwi.crescer;
+
+public class LinkedList {
+
+    private Node last, first;
+
+    public void addFirst(String value) {
+        Node node = new Node(value, null);
+        first = node;
+    }
+
+    public String getFirst() {
+        return first.getValue();
+    }
+
+    public String getLast() {
+        return last.getValue();
+    }
+
+}
