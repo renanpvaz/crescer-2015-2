@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="LinkedListTest" project="crescer-2015-2" tests="2" started="2" failures="0" errors="0" ignored="0">
-  <testsuite name="br.com.cwi.test.LinkedListTest" time="0.0">
-    <testcase name="test" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
-    <testcase name="insereTresNodosEverificaQueOUltimoEOPrimeiro" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
-  </testsuite>
-</testrun>
