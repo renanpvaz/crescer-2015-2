@@ -95,9 +95,13 @@ public class Aplicacao {
                 				
                 				System.err.println(lista.list());
                 				
+                				break;
+                				
                 			case 2:
                 				
                 				System.err.println(((DoublyLinkedList) lista).invertedList());
+                				
+                				break;
                 		}
 
                     } else {
