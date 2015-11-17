@@ -8,11 +8,11 @@ public class Aplicacao {
         
     	Scanner scanner = new Scanner(System.in);
     	
-    	System.out.println("Digite 1 para lista encadeada \nOu 2 para lista duplamente encadeada");
-    	int opcao = scanner.nextInt();
+    	System.out.println("Opções:\n1 - Lista encadeada\n2 - Lista duplamente encadeada");
+    	int opcaoLista = scanner.nextInt();
     	LinkableList lista;
-    	
-    	if(opcao == 1) {   		
+
+    	if(opcaoLista == 1) {   		
     		
     		lista = new LinkedList();
     		
@@ -74,7 +74,8 @@ public class Aplicacao {
 	        	}
         	
         	}
-    		
+        	
+        	System.exit(0);    		
     }
 
 }
