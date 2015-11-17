@@ -1,7 +1,12 @@
 package br.com.cwi.crescer;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 import br.com.cwi.dao.ServicoDao;
 import br.com.cwi.jdbc.ConnectionFactory;
@@ -13,48 +18,9 @@ public class Aplicacao {
 
     public static void main(String[] args) throws Exception {
 
-        try {
-            Connection connection = new ConnectionFactory().getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Erro sql!!!");
-        }
-
-        Servico servico = new Servico();
-
-        servico.setIdServico(1L);
-        servico.setDsServico("Lavagem normal");
-
-        Servico servicoAtl = new Servico();
-
-        servico.setIdServico(1L);
-        servico.setDsServico("Lavagem");
-
-        Servico servico2 = new Servico();
-
-        servico.setIdServico(2L);
-        servico.setDsServico("Lavagem a seco");
-
-        ServicoDao servicoDao = new ServicoDao();
-
-        System.out.println(LINHAS_AFETADAS + servicoDao.adicionar(servico));
-        System.out.println(LINHAS_AFETADAS + servicoDao.adicionar(servico2));
-
-        for (Servico s : servicoDao.listarTodos()) {
-            System.out.println(s.toString());
-        }
-
-        System.out.println(LINHAS_AFETADAS + servicoDao.atualizar(servicoAtl));
-
-        System.out.println(LINHAS_AFETADAS + servicoDao.excluir(2L));
-
-
-
-        /*
-
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Opções:\n1 - Lista encadeada\n2 - Lista duplamente encadeada");
+        System.out.println("Opcoes:\n1 - Lista encadeada\n2 - Lista duplamente encadeada");
         int opcaoLista = scanner.nextInt();
         LinkableList lista = null;
 
@@ -73,8 +39,8 @@ public class Aplicacao {
             System.out.println("\nEscolha:");
             System.out.println("1 - Inserir");
             System.out.println("2 - Remover");
-            System.out.println("3 - Listar" + (opcaoLista == 2 ? "\n4 - Listar invertidamente" : ""));
-
+            System.out.println("3 - Listar");
+            System.out.println("4 - Exportar em .txt");
             System.out.println("0 - Sair");
             subOpcao = scanner.nextInt();
 
@@ -92,7 +58,7 @@ public class Aplicacao {
 
                     } else {
 
-                        System.out.println("Digite a posição");
+                        System.out.println("Digite a posicao");
                         int index = scanner.nextInt();
 
                         lista.add(index, valor);
@@ -108,7 +74,7 @@ public class Aplicacao {
 
                     } else {
 
-                        System.out.println("Digite a posição");
+                        System.out.println("Digite a posicao");
                         scanner.nextLine();
                         int index = scanner.nextInt();
 
@@ -116,17 +82,34 @@ public class Aplicacao {
                     }
 
                 case 3:
+                	
+                	if (opcaoLista == 2) {
+                		
+                		System.out.println("1 - Listar\n2 - Listar inversamente");
+                		
+                		int opcao = scanner.nextInt();
+                		
+                		switch(opcao) {
+                		
+                			case 1:
+                				
+                				System.err.println(lista.list());
+                				
+                			case 2:
+                				
+                				System.err.println(((DoublyLinkedList) lista).invertedList());
+                		}
 
-                    System.err.println(lista.list());
+                    } else {
+                    	
+                    	System.err.println(lista.list());
+                    }
 
                     break;
-
+                    
                 case 4:
-
-                    if (opcaoLista == 2) {
-
-                        System.err.println(((DoublyLinkedList) lista).invertedList());
-                    }
+                	
+                	imprimirLista(lista, "lista");
             }
 
         }
@@ -134,7 +117,23 @@ public class Aplicacao {
         System.exit(0);
     }
 
-         */
-    }
+    
+    public static void imprimirLista(LinkableList lista, String nomeArquivo) throws IOException {
+		
+		File file = new File("D:\\" + nomeArquivo + ".txt");
+		
+		if(!file.exists()) { 
+			
+			file.createNewFile();
+		}
+
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+
+			for (String value : lista.list()) {
+				writer.write(value);
+				writer.newLine();
+			}
+		}
+	}
 
 }
