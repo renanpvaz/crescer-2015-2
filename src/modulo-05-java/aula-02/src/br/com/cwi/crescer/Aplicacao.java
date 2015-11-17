@@ -5,7 +5,6 @@ import java.sql.SQLException;
 
 import br.com.cwi.dao.ClienteDao;
 import br.com.cwi.jdbc.ConnectionFactory;
-import br.com.cwi.model.Cliente;
 
 public class Aplicacao {
 
@@ -20,9 +19,7 @@ public class Aplicacao {
 
         ClienteDao clienteDao = new ClienteDao();
 
-        for (Cliente cliente : clienteDao.listarTodos()) {
-            System.out.println(cliente.toString());
-        }
+        clienteDao.excluir(2L);
 
         /*
 

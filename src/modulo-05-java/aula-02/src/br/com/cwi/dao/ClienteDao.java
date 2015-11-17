@@ -55,4 +55,19 @@ public class ClienteDao {
         return clientes;
     }
 
+    public void excluir(long idCliente) throws SQLException {
+
+        try (Connection conexao = new ConnectionFactory().getConnection();) {
+
+            PreparedStatement statement = conexao.prepareStatement("delete from cliente where idCliente = ?");
+
+            statement.setLong(1, idCliente);
+
+            statement.execute();
+
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+
 }
