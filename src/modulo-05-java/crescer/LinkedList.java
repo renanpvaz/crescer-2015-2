@@ -85,6 +85,10 @@ public class LinkedList implements LinkableList {
 
         return node;
     }
+    
+    public boolean isEmpty() {
+        return first == null;
+    }
 
     protected class Node {
 
