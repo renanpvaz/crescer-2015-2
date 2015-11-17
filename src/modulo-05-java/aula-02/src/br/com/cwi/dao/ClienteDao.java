@@ -55,7 +55,9 @@ public class ClienteDao {
         return clientes;
     }
 
-    public void excluir(long idCliente) throws SQLException {
+    public int excluir(long idCliente) throws SQLException {
+
+        int affectedRows;
 
         try (Connection conexao = new ConnectionFactory().getConnection();) {
 
@@ -63,11 +65,32 @@ public class ClienteDao {
 
             statement.setLong(1, idCliente);
 
-            statement.execute();
+            affectedRows = statement.executeUpdate();
 
         } catch (SQLException e) {
             throw e;
         }
+        return affectedRows;
+    }
+
+    public int atualizar(Cliente cliente) throws SQLException {
+
+        int affectedRows;
+
+        try (Connection conexao = new ConnectionFactory().getConnection();) {
+
+            PreparedStatement statement = conexao.prepareStatement("update cliente set nmCliente = ?, nrCpf = ? where idCliente = ?");
+
+            statement.setString(1, cliente.getNmCliente());
+            statement.setString(2, cliente.getNrCpf());
+            statement.setLong(3, cliente.getIdCliente());
+
+            affectedRows = statement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw e;
+        }
+        return affectedRows;
     }
 
 }

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import br.com.cwi.dao.ClienteDao;
 import br.com.cwi.jdbc.ConnectionFactory;
+import br.com.cwi.model.Cliente;
 
 public class Aplicacao {
 
@@ -17,9 +18,15 @@ public class Aplicacao {
             System.out.println("Erro sql!!!");
         }
 
+        Cliente cliente = new Cliente();
+
+        cliente.setIdCliente(3L);
+        cliente.setNmCliente("Orozco");
+        cliente.setNrCpf("349587");
+
         ClienteDao clienteDao = new ClienteDao();
 
-        clienteDao.excluir(2L);
+        System.out.println(clienteDao.atualizar(cliente));
 
         /*
 
