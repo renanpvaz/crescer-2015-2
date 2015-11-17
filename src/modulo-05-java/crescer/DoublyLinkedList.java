@@ -99,7 +99,7 @@ public class DoublyLinkedList implements LinkableList {
     }
 
     public boolean isEmpty() {
-        return this.getFirst() == null;
+        return first == null;
     }
 
     protected class Node {

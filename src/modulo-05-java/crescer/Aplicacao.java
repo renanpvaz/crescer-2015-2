@@ -10,10 +10,16 @@ public class Aplicacao {
     	
     	System.out.println("Digite 1 para lista encadeada \nOu 2 para lista duplamente encadeada");
     	int opcao = scanner.nextInt();
+    	LinkableList lista;
     	
-    	if(opcao == 1) {
+    	if(opcao == 1) {   		
     		
-    		LinkedList linkedList = new LinkedList();
+    		lista = new LinkedList();
+    		
+    	} else {
+    		
+    		lista = new DoublyLinkedList();
+    	}
     		int subOpcao = -1;
         	
         	while(subOpcao != 0) {
@@ -33,25 +39,25 @@ public class Aplicacao {
 		    			scanner.nextLine();
 		    			String valor = scanner.nextLine();
 		    			
-		    			if(linkedList.isEmpty()) {
+		    			if(lista.isEmpty()) {
 		    				
-		    				linkedList.addFirst(valor);
+		    				lista.addFirst(valor);
 		    				
 		    			} else {
 		    				
 		    				System.out.println("Digite a posição");
 			    			int index = scanner.nextInt();
 			    			
-			    			linkedList.add(index, valor);
+			    			lista.add(index, valor);
 		    			}
 		    			
 		    			break;
 		    			
 		    		case 2:
 		    					    			
-		    			if(linkedList.isEmpty()) {
+		    			if(lista.isEmpty()) {
 		    				
-		    				linkedList.removeFirst();
+		    				lista.removeFirst();
 		    				
 		    			} else {
 		    				
@@ -59,28 +65,16 @@ public class Aplicacao {
 			    			scanner.nextLine();
 			    			int index = scanner.nextInt();
 		    				
-			    			linkedList.remove(index);
+			    			lista.remove(index);
 		    			}
 		    		
 		    		case 3:
 		    			
-		    			System.err.println(linkedList.list());
+		    			System.err.println(lista.list());
 	        	}
         	
         	}
     		
-    		
-    	} else if(opcao == 2) {
-    		
-    		System.out.println("Escolha uma opção");
-        	int subOpcao = scanner.nextInt();
-    		
-        	switch(subOpcao) {
-        	
-        		case 1:
-        			break;      		
-        	}
-    	}
     }
 
 }

@@ -20,5 +20,7 @@ public interface LinkableList {
 
     public void add(int index, String value);
 
+	public boolean isEmpty();
+
 
 }
