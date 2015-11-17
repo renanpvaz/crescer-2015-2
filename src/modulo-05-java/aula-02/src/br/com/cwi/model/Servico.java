@@ -23,4 +23,10 @@ public class Servico {
         this.dsServico = dsServico;
     }
 
+    @Override
+    public String toString() {
+        return this.idServico.toString() + " "
+                + this.dsServico;
+    }
+
 }

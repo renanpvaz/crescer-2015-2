@@ -12,7 +12,9 @@ import br.com.cwi.model.Cliente;
 
 public class ClienteDao {
 
-    public void adicionar(Cliente cliente) throws Exception {
+    public int adicionar(Cliente cliente) throws Exception {
+
+        int affectedRows;
 
         try (Connection conexao = new ConnectionFactory().getConnection();) {
 
@@ -22,11 +24,12 @@ public class ClienteDao {
             statement.setString(2, cliente.getNmCliente());
             statement.setString(3, cliente.getNrCpf());
 
-            statement.execute();
+            affectedRows = statement.executeUpdate();
 
         } catch (SQLException e) {
             throw e;
         }
+        return affectedRows;
     }
 
     public List<Cliente> listarTodos() throws Exception {

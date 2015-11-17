@@ -3,11 +3,13 @@ package br.com.cwi.crescer;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import br.com.cwi.dao.ClienteDao;
+import br.com.cwi.dao.ServicoDao;
 import br.com.cwi.jdbc.ConnectionFactory;
-import br.com.cwi.model.Cliente;
+import br.com.cwi.model.Servico;
 
 public class Aplicacao {
+
+    public static final String LINHAS_AFETADAS = "Linhas afetadas: ";
 
     public static void main(String[] args) throws Exception {
 
@@ -18,15 +20,35 @@ public class Aplicacao {
             System.out.println("Erro sql!!!");
         }
 
-        Cliente cliente = new Cliente();
+        Servico servico = new Servico();
 
-        cliente.setIdCliente(3L);
-        cliente.setNmCliente("Orozco");
-        cliente.setNrCpf("349587");
+        servico.setIdServico(1L);
+        servico.setDsServico("Lavagem normal");
 
-        ClienteDao clienteDao = new ClienteDao();
+        Servico servicoAtl = new Servico();
 
-        System.out.println(clienteDao.atualizar(cliente));
+        servico.setIdServico(1L);
+        servico.setDsServico("Lavagem");
+
+        Servico servico2 = new Servico();
+
+        servico.setIdServico(2L);
+        servico.setDsServico("Lavagem a seco");
+
+        ServicoDao servicoDao = new ServicoDao();
+
+        System.out.println(LINHAS_AFETADAS + servicoDao.adicionar(servico));
+        System.out.println(LINHAS_AFETADAS + servicoDao.adicionar(servico2));
+
+        for (Servico s : servicoDao.listarTodos()) {
+            System.out.println(s.toString());
+        }
+
+        System.out.println(LINHAS_AFETADAS + servicoDao.atualizar(servicoAtl));
+
+        System.out.println(LINHAS_AFETADAS + servicoDao.excluir(2L));
+
+
 
         /*
 
