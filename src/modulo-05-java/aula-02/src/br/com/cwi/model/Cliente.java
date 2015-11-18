@@ -1,5 +1,7 @@
 package br.com.cwi.model;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cliente {
 
@@ -31,6 +33,22 @@ public class Cliente {
 
     public void setNrCpf(String nrCpf) {
         this.nrCpf = nrCpf;
+    }
+
+    public List<Object> getAttributes() {
+        List<Object> lista = new ArrayList<Object>();
+
+        lista.add(this.idCliente);
+        lista.add(this.nmCliente);
+        lista.add(this.nrCpf);
+
+        return lista;
+    }
+
+    public boolean equals(Cliente cliente) {
+        return this.idCliente.toString() == cliente.idCliente.toString() &&
+                this.nmCliente == cliente.nmCliente &&
+                this.nrCpf == cliente.nrCpf;
     }
 
     @Override

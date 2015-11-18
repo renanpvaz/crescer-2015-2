@@ -42,6 +42,60 @@ public class ClienteDao {
         return cliente;
     }
 
+    public List<Cliente> find(Cliente cliente) throws SQLException {
+
+        int index = 1;
+        List<Cliente> clientes = new ArrayList<Cliente>();
+
+        try (Connection conexao = new ConnectionFactory().getConnection();) {
+
+            StringBuilder stmt = new StringBuilder("select * from cliente where 1 = 1");
+
+            if (cliente.getNmCliente() != null) {
+
+                stmt.append(" and idCliente = ?");
+
+            }
+            if (cliente.getNmCliente() != null) {
+
+                stmt.append(" and nmCliente = ?");
+
+            }
+            if (cliente.getNrCpf() != null) {
+
+                stmt.append(" and nrCpf = ?");
+            }
+
+            PreparedStatement statement = conexao.prepareStatement(stmt.toString());
+
+            for (Object attr : cliente.getAttributes()) {
+
+                if(attr != null) {
+                    statement.setObject(index, attr);
+                }
+
+                index++;
+            }
+
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+
+                Cliente clienteEncontrado = new Cliente();
+
+                clienteEncontrado.setIdCliente(result.getLong(1));
+                clienteEncontrado.setNmCliente(result.getString(2));
+                clienteEncontrado.setNrCpf(result.getString(3));
+
+                clientes.add(clienteEncontrado);
+            }
+
+        } catch (SQLException e) {
+            throw e;
+        }
+        return clientes;
+    }
+
     public int add(Cliente cliente) throws Exception {
 
         int affectedRows;
