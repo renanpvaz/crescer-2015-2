@@ -45,10 +45,13 @@ public class Cliente {
         return lista;
     }
 
-    public boolean equals(Cliente cliente) {
-        return this.idCliente.toString() == cliente.idCliente.toString() &&
-                this.nmCliente == cliente.nmCliente &&
-                this.nrCpf == cliente.nrCpf;
+    @Override
+    public boolean equals(Object obj) {
+        Cliente cliente = (Cliente) obj;
+
+        return this.idCliente.equals(cliente.idCliente) &&
+                this.nmCliente.equals(cliente.nmCliente) &&
+                this.nrCpf.equals(cliente.nrCpf);
     }
 
     @Override

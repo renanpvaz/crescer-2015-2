@@ -37,9 +37,12 @@ public class Pedido {
         this.dsPedido = dsPedido;
     }
 
-    public boolean equals(Pedido pedido) {
-        return this.idPedido == pedido.idPedido &&
-                this.dsPedido == pedido.dsPedido &&
+    @Override
+    public boolean equals(Object obj) {
+        Pedido pedido = (Pedido) obj;
+
+        return this.idPedido.equals(pedido.idPedido) &&
+                this.dsPedido.equals(pedido.dsPedido) &&
                 this.cliente.equals(pedido.cliente);
     }
 }
