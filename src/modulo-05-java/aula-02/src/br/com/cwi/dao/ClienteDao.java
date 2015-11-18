@@ -12,7 +12,37 @@ import br.com.cwi.model.Cliente;
 
 public class ClienteDao {
 
-    public int adicionar(Cliente cliente) throws Exception {
+    public Cliente load(Long idCliente) throws SQLException {
+
+        Cliente cliente;
+
+        try (Connection conexao = new ConnectionFactory().getConnection();) {
+
+            PreparedStatement statement = conexao.prepareStatement("select * from cliente where id = ?");
+
+            statement.setLong(1, idCliente);
+
+            ResultSet result = statement.executeQuery();
+
+            cliente = new Cliente();
+
+            if (result.next()) {
+
+                cliente.setIdCliente(result.getLong(1));
+                cliente.setNmCliente(result.getString(2));
+                cliente.setNrCpf(result.getString(3));
+            } else {
+
+                throw new RuntimeException("Registro não encontrado");
+            }
+
+        } catch (SQLException e) {
+            throw e;
+        }
+        return cliente;
+    }
+
+    public int add(Cliente cliente) throws Exception {
 
         int affectedRows;
 
@@ -32,7 +62,7 @@ public class ClienteDao {
         return affectedRows;
     }
 
-    public List<Cliente> listarTodos() throws Exception {
+    public List<Cliente> listAll() throws Exception {
 
         List<Cliente> clientes = new ArrayList<Cliente>();
 
@@ -58,7 +88,7 @@ public class ClienteDao {
         return clientes;
     }
 
-    public int excluir(long idCliente) throws SQLException {
+    public int delete(long idCliente) throws SQLException {
 
         int affectedRows;
 
@@ -76,7 +106,7 @@ public class ClienteDao {
         return affectedRows;
     }
 
-    public int atualizar(Cliente cliente) throws SQLException {
+    public int update(Cliente cliente) throws SQLException {
 
         int affectedRows;
 

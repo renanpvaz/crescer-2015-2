@@ -12,6 +12,35 @@ import br.com.cwi.model.Servico;
 
 public class ServicoDao {
 
+    public Servico load(Long idServico) throws SQLException {
+
+        Servico servico;
+
+        try (Connection conexao = new ConnectionFactory().getConnection();) {
+
+            PreparedStatement statement = conexao.prepareStatement("select * from servico where id = ?");
+
+            statement.setLong(1, idServico);
+
+            ResultSet result = statement.executeQuery();
+
+            servico = new Servico();
+
+            if (result.next()) {
+
+                servico.setIdServico(result.getLong(1));
+                servico.setDsServico(result.getString(2));
+            } else {
+
+                throw new RuntimeException("Registro não encontrado");
+            }
+
+        } catch (SQLException e) {
+            throw e;
+        }
+        return servico;
+    }
+
     public int adicionar(Servico servico) throws Exception {
 
         int affectedRows;
@@ -31,7 +60,7 @@ public class ServicoDao {
         return affectedRows;
     }
 
-    public List<Servico> listarTodos() throws Exception {
+    public List<Servico> listAll() throws Exception {
 
         List<Servico> servicos = new ArrayList<Servico>();
 
@@ -56,7 +85,7 @@ public class ServicoDao {
         return servicos;
     }
 
-    public int excluir(long idServico) throws SQLException {
+    public int delete(long idServico) throws SQLException {
 
         int affectedRows;
 
@@ -74,7 +103,7 @@ public class ServicoDao {
         return affectedRows;
     }
 
-    public int atualizar(Servico servico) throws SQLException {
+    public int update(Servico servico) throws SQLException {
 
         int affectedRows;
 
