@@ -4,19 +4,26 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.Scanner;
 
-import br.com.cwi.dao.ServicoDao;
-import br.com.cwi.jdbc.ConnectionFactory;
-import br.com.cwi.model.Servico;
+import br.com.cwi.dao.PedidoDao;
+import br.com.cwi.model.Cliente;
+import br.com.cwi.model.Pedido;
 
 public class Aplicacao {
 
     public static final String LINHAS_AFETADAS = "Linhas afetadas: ";
 
     public static void main(String[] args) throws Exception {
+
+        PedidoDao dao = new PedidoDao();
+
+        Pedido pedido = dao.load(1L);
+        Cliente cliente = pedido.getCliente();
+
+        System.out.println(pedido.getIdPedido());
+        System.out.println(pedido.getDsPedido());
+        System.out.println(cliente.toString());
 
         Scanner scanner = new Scanner(System.in);
 
@@ -82,38 +89,38 @@ public class Aplicacao {
                     }
 
                 case 3:
-                	
-                	if (opcaoLista == 2) {
-                		
-                		System.out.println("1 - Listar\n2 - Listar inversamente");
-                		
-                		int opcao = scanner.nextInt();
-                		
-                		switch(opcao) {
-                		
-                			case 1:
-                				
-                				System.err.println(lista.list());
-                				
-                				break;
-                				
-                			case 2:
-                				
-                				System.err.println(((DoublyLinkedList) lista).invertedList());
-                				
-                				break;
-                		}
+
+                    if (opcaoLista == 2) {
+
+                        System.out.println("1 - Listar\n2 - Listar inversamente");
+
+                        int opcao = scanner.nextInt();
+
+                        switch(opcao) {
+
+                            case 1:
+
+                                System.err.println(lista.list());
+
+                                break;
+
+                            case 2:
+
+                                System.err.println(((DoublyLinkedList) lista).invertedList());
+
+                                break;
+                        }
 
                     } else {
-                    	
-                    	System.err.println(lista.list());
+
+                        System.err.println(lista.list());
                     }
 
                     break;
-                    
+
                 case 4:
-                	
-                	imprimirLista(lista, "lista");
+
+                    imprimirLista(lista, "lista");
             }
 
         }
@@ -121,23 +128,23 @@ public class Aplicacao {
         System.exit(0);
     }
 
-    
+
     public static void imprimirLista(LinkableList lista, String nomeArquivo) throws IOException {
-		
-		File file = new File("D:\\" + nomeArquivo + ".txt");
-		
-		if(!file.exists()) { 
-			
-			file.createNewFile();
-		}
 
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+        File file = new File("D:\\" + nomeArquivo + ".txt");
 
-			for (String value : lista.list()) {
-				writer.write(value);
-				writer.newLine();
-			}
-		}
-	}
+        if(!file.exists()) {
+
+            file.createNewFile();
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+
+            for (String value : lista.list()) {
+                writer.write(value);
+                writer.newLine();
+            }
+        }
+    }
 
 }
