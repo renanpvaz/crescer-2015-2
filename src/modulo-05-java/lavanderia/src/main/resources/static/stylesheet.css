@@ -4,7 +4,7 @@ body {
 }
 
 .imagem {
-	width: inherit;
+  width: inherit;
   height: 643px;
   overflow: hidden;
 
@@ -15,12 +15,12 @@ body {
 }
 
 .titulo {
-	position: absolute;
+  position: absolute;
   font-size: 120px;
   opacity: 0.9;
   font-family: Montserrat;
   top: 20%;
-  right: 5%;
+  right: 8%;
   text-shadow: 2px 2px 2px #636465;
   color: #A7B0DA;
 }

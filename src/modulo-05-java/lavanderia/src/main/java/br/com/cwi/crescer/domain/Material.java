@@ -10,27 +10,27 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Servico")
-@SequenceGenerator(name = Servico.SEQUENCE_NAME, sequenceName = Servico.SEQUENCE_NAME, allocationSize = 1)
-public class Servico {
+@Table(name = "Material")
+@SequenceGenerator(name = Material.SEQUENCE_NAME, sequenceName = Material.SEQUENCE_NAME, allocationSize = 1)
+public class Material {
 
-    public static final String SEQUENCE_NAME = "SEQ_Servico";
+    public static final String SEQUENCE_NAME = "SEQ_Material";
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
-    @Column(name = "IDServico")
-    private Long idServico;
+    @Column(name = "IDMaterial")
+    private Long idMaterial;
 
     @Column(name = "Descricao", length = 30)
     @Basic(optional = false)
     private String descricao;
 
-    public Long getIdServico() {
-        return idServico;
+    public Long getIdMaterial() {
+        return idMaterial;
     }
 
-    public void setIdServico(Long idServico) {
-        this.idServico = idServico;
+    public void setIdMaterial(Long idMaterial) {
+        this.idMaterial = idMaterial;
     }
 
     public String getDescricao() {

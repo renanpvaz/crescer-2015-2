@@ -8,64 +8,66 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Produto")
-@SequenceGenerator(name = Produto.SEQUENCE_NAME, sequenceName = Produto.SEQUENCE_NAME)
+@SequenceGenerator(name = Produto.SEQUENCE_NAME, sequenceName = Produto.SEQUENCE_NAME, allocationSize = 1)
 public class Produto {
-	
-	protected final static String SEQUENCE_NAME = "seq_produto";
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
-	@Column(name = "IDProduto")
-	private Long idProduto;
-	
-	@Column(name = "IDServico")
-	@Basic(optional = false)
-	private Long idServico;
-	
-	@Column(name = "IDMaterial")
-	@Basic(optional = false)
-	private Long idMaterial;
-	
-	@Column(name = "Valor", precision = 12, scale = 2)
-	@Basic(optional = false)
-	private BigDecimal valor;
 
-	public Long getIdProduto() {
-		return idProduto;
-	}
+    public static final String SEQUENCE_NAME = "SEQ_Produto";
 
-	public void setIdProduto(Long idProduto) {
-		this.idProduto = idProduto;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
+    @Column(name = "IDProduto")
+    private Long idProduto;
 
-	public Long getIdServico() {
-		return idServico;
-	}
+    @ManyToOne
+    @JoinColumn(name = "IDServico")
+    @Basic(optional = false)
+    private Servico servico;
 
-	public void setIdServico(Long idServico) {
-		this.idServico = idServico;
-	}
+    @ManyToOne
+    @JoinColumn(name = "IDMaterial")
+    @Basic(optional = false)
+    private Material material;
 
-	public Long getIdMaterial() {
-		return idMaterial;
-	}
+    @Column(name = "Valor")
+    @Basic(optional = false)
+    private BigDecimal valor;
 
-	public void setIdMaterial(Long idMaterial) {
-		this.idMaterial = idMaterial;
-	}
+    public Long getIdProduto() {
+        return idProduto;
+    }
 
-	public BigDecimal getValor() {
-		return valor;
-	}
+    public void setIdProduto(Long idProduto) {
+        this.idProduto = idProduto;
+    }
 
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
-	}
+    public Servico getServico() {
+        return servico;
+    }
 
-	
+    public void setIdServico(Servico servico) {
+        this.servico = servico;
+    }
+
+    public Material getIdMAterial() {
+        return material;
+    }
+
+    public void setIdMAterial(Material material) {
+        this.material = material;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
 }
