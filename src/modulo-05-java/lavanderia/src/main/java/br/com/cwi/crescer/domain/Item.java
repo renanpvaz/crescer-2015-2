@@ -77,11 +77,11 @@ public class Item {
         this.pedido = pedido;
     }
 
-    public Produto getIdProduto() {
+    public Produto getProduto() {
         return produto;
     }
 
-    public void setIdProduto(Produto produto) {
+    public void setProduto(Produto produto) {
         this.produto = produto;
     }
 

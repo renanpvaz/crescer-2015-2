@@ -2,6 +2,7 @@ package br.com.cwi.crescer.domain;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -34,6 +36,9 @@ public class Pedido {
     @JoinColumn(name = "IDCliente")
     @Basic(optional = false)
     private Cliente cliente;
+    
+    @OneToMany(mappedBy = "item")
+    private List<Item> itens;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATAInclusao")
@@ -68,7 +73,7 @@ public class Pedido {
         return cliente;
     }
 
-    public void setIdCliente(Cliente cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
@@ -103,4 +108,14 @@ public class Pedido {
     public void setSituacao(SituacaoPedido situacao) {
         this.situacao = situacao;
     }
+
+	public List<Item> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<Item> itens) {
+		this.itens = itens;
+	}
+    
+    
 }

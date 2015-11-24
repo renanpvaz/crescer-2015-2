@@ -55,11 +55,11 @@ public class Produto {
         this.servico = servico;
     }
 
-    public Material getIdMAterial() {
+    public Material getMaterial() {
         return material;
     }
 
-    public void setIdMAterial(Material material) {
+    public void setMaterial(Material material) {
         this.material = material;
     }
 
