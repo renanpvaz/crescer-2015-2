@@ -61,4 +61,12 @@ public class ClienteService {
 
         clienteDAO.save(entity);
     }
+
+    public void remover(Long id) {
+        Cliente entity = clienteDAO.findById(id);
+
+        entity.setSituacao(SituacaoCliente.INATIVO);
+
+        clienteDAO.save(entity);
+    }
 }

@@ -60,6 +60,17 @@ public class ClienteController {
         return new ModelAndView("redirect:/clientes");
     }
 
+    @RequestMapping(path = "/remover/{id}", method = RequestMethod.GET)
+    public ModelAndView remover(@PathVariable("id") Long id) {
+        return new ModelAndView("cliente/remove", "cliente", clienteService.buscarPorId(id));
+    }
+
+    @RequestMapping(path = "/remover", method = RequestMethod.POST)
+    public ModelAndView remover(ClienteDTO dto) {
+        clienteService.remover(dto.getId());
+        return new ModelAndView("redirect:/clientes");
+    }
+
     @ModelAttribute("cidades")
     public List<Cidade> comboCidades() {
         return cidadeService.listar();

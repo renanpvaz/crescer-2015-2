@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <title>Layout page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{~/layout-stylesheet.css}"></link>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open Sans"></link>
+  </head>
+  <body>
+  
+    <header>
+    	<div class="header">
+    	  <h1 layout:fragment="custom-footer">My header</h1>	
+    	</div>
+    
+    </header>
+    
+    <section layout:fragment="content">
+    </section>
+    
+    <footer>
+      <div class="footer">
+	      <h4 layout:fragment="custom-footer"> &copy; 2015 - CWI Crescer </h4>
+      </div>
+    </footer>  
+    
+  </body>
+</html>
