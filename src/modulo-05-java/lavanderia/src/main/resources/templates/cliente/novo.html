@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<link rel="stylesheet" type="text/css" href="/css/index.css" />
+		<link rel="stylesheet" type="text/css" href="/css/edita.css" />
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/bootstrap-theme.min.css" />
+		<link href='https://fonts.googleapis.com/css?family=Droid+Serif'
+			rel='stylesheet' type='text/css' />
+		<meta charset="UTF-8" />
+		<title>Inserir</title>
+	</head>
+	
+		<form th:action="@{/clientes/novo}" th:object="${cliente}" method="post">
+			
+			<label class="control-label">Nome: </label> 
+			<input class="form-control" th:field="*{nome}" type="text" />
+	​
+	​
+				<label class="control-label ">CPF: </label> <input
+					class="form-control" th:field="*{cpf}"
+					type="text" />
+	​​
+			
+				<label class="control-label">Email: </label> <input
+					class="form-control" th:field="*{email}"
+					type="text" />
+			
+	​
+				<label class="control-label ">Endereco: </label> <input
+					class="form-control" th:field="*{endereco.endereco}"
+					type="text" />
+		
+	​
+				<label class="control-label">Bairro: </label> <input
+					class="form-control" th:field="*{endereco.bairro}"
+					type="text" />
+	​
+	​
+				<label class="control-label">Cep: </label> <input
+					class="form-control" th:field="*{endereco.cep}"
+					type="text" />
+		
+				<label class="control-label ">Cidade: </label> <select
+					class="form-control " th:field="*{idCidade}">
+					<option th:each="c : ${cidades}" th:text="${c.nome}"
+						th:value="${c.idCidade}">[option]</option>
+				</select>
+			
+	​
+			<button type="submit">Salvar</button>
+		</form>
+	</div>
+	​
+	</body>
+</html>

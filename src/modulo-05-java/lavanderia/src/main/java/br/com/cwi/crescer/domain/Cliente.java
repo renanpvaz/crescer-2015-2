@@ -63,6 +63,20 @@ public class Cliente {
         ATIVO, INATIVO
     }
 
+    public Cliente() {
+
+    }
+
+    public Cliente(String nome, String cpf, String email, String endereco, String bairro, Cidade cidade, Long cep) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.endereco = endereco;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.cep = cep;
+    }
+
     public List<Pedido> getPedidos() {
         return pedidos;
     }

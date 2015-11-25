@@ -36,8 +36,8 @@ public class Pedido {
     @JoinColumn(name = "IDCliente")
     @Basic(optional = false)
     private Cliente cliente;
-    
-    @OneToMany(mappedBy = "item")
+
+    @OneToMany(mappedBy = "pedido")
     private List<Item> itens;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -109,13 +109,13 @@ public class Pedido {
         this.situacao = situacao;
     }
 
-	public List<Item> getItens() {
-		return itens;
-	}
+    public List<Item> getItens() {
+        return itens;
+    }
 
-	public void setItens(List<Item> itens) {
-		this.itens = itens;
-	}
-    
-    
+    public void setItens(List<Item> itens) {
+        this.itens = itens;
+    }
+
+
 }

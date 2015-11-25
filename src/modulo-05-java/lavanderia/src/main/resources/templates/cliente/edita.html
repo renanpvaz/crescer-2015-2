@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Editar</title>
+	</head>
+
+	<body>
+	
+		<h2>Editar</h2>
+		
+		<form th:action="@{/clientes/editar}" th:object="${cliente}" method="post">
+		
+			<input th:field="*{id}" type="hidden" />
+			
+			<p>
+				<label class="control-label">Nome: </label>
+				<input th:field="*{nome}" type="text" />
+			</p>
+			
+			<p>
+				<label class="control-label">CPF: </label>
+		 		<input th:field="*{cpf}" type="text"/>
+			</p>
+			
+			<p>
+		 		<label class="control-label">Email: </label>
+		 		<input th:field="*{email}" type="text"/>
+	 		</p>
+	 		
+	 		<p>
+		 		<label class="control-label">Cidade: </label>
+		 		<select th:field="*{idCidade}">
+	                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
+	            </select>
+            </p>
+             
+             <button type="submit">Salvar</button>
+             
+		</form>
+	
+	
+	</body>
+	
+</html>
