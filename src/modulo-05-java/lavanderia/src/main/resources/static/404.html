@@ -3,11 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{error.css}"></link>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open Sans"></link>
 </head>
 <body>
 	
-	<h1>Caraca véi, não achei</h1>
-	<img src="http://www.tonkinresolutions.com/wp-content/uploads/dryer-repair-kansas-city.jpg" />
+	<style>
+	
+		body {
+			font-family: Open Sans;
+			background-color: rgba(255, 235, 59, 0.59);
+		}
+	
+		.container {	
+		    position: absolute;
+		    top: 30%;
+    		right: 55%;
+		}
+		
+		.mensagem {
+			position: absolute;
+	        top: -28%;
+    		right: -115%;
+		    font-size: 35px;
+		}
+	
+		.chave {
+		   position: absolute;
+		   right: 0%;
+		   top: 10%;
+        }
+	
+	</style>
+	
+	<div class = "container">
+		<img src="/images/washing-machine.png" />
+		<img class="chave" src="/images/wrench.png" />
+		<div class = "mensagem">
+			<h1>404</h1>
+			<h2>Página não<br> encontrada</h2>
+		</div>
+	</div>
+	
 	
 </body>
 </html>
