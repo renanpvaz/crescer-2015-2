@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
   <head>
-    <title>Layout page</title>
+    <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Lavanderia</title>
     <link rel="stylesheet" type="text/css" th:href="@{~/layout-stylesheet.css}"></link>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open Sans"></link>
   </head>
@@ -9,9 +9,8 @@
   
     <header>
     	<div class="header">
-    	  <h1 layout:fragment="custom-footer">My header</h1>	
-    	</div>
-    
+    	  <h1 layout:fragment="custom-header">My header</h1>	
+    	</div>  
     </header>
     
     <section layout:fragment="content">

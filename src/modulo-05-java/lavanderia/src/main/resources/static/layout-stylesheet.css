@@ -10,6 +10,10 @@ section {
   right: 41%;
 }
 
+section span {
+	color: #D83434;
+}
+
 .header, .footer {
 	background-image: url(http://startbootstrap.com/assets/img/bg.png);
 	text-align: center;

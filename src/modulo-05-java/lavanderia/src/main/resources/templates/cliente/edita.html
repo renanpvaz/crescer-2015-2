@@ -9,6 +9,14 @@
 
 	<body>
 	
+	<style>
+		
+		span {
+			color: red;
+		}
+		
+		</style>
+	
 		<h2>Editar</h2>
 		
 		<form th:action="@{/clientes/editar}" th:object="${cliente}" method="post">
@@ -18,16 +26,19 @@
 			<p>
 				<label class="control-label">Nome: </label>
 				<input th:field="*{nome}" type="text" />
+				<br></br><span th:errors="*{nome}"></span>
 			</p>
 			
 			<p>
 				<label class="control-label">CPF: </label>
 		 		<input th:field="*{cpf}" type="text"/>
+		 		<br></br><span th:errors="*{cpf}"></span>
 			</p>
 			
 			<p>
 		 		<label class="control-label">Email: </label>
 		 		<input th:field="*{email}" type="text"/>
+		 		<br></br><span th:errors="*{email}"></span>
 	 		</p>
 	 		
 	 		<p>

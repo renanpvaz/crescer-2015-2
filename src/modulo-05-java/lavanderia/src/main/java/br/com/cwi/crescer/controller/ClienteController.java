@@ -2,13 +2,17 @@ package br.com.cwi.crescer.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.cwi.crescer.domain.Cidade;
 import br.com.cwi.crescer.dto.ClienteDTO;
@@ -49,14 +53,24 @@ public class ClienteController {
     }
 
     @RequestMapping(path = "/cadastrar", method = RequestMethod.POST)
-    public ModelAndView cadastrar(ClienteDTO dto) {
-        clienteService.incluir(dto);
+    public ModelAndView cadastrar(@Valid @ModelAttribute("cliente") ClienteDTO cliente, BindingResult result, final RedirectAttributes redirectAttributes) {
+
+        if (result.hasErrors()) {
+            return new ModelAndView("cliente/novo", "cliente", cliente);
+        }
+
+        clienteService.incluir(cliente);
         return new ModelAndView("redirect:/clientes");
     }
 
     @RequestMapping(path = "/editar", method = RequestMethod.POST)
-    public ModelAndView editar(ClienteDTO dto) {
-        clienteService.atualizar(dto);
+    public ModelAndView editar(@Valid @ModelAttribute("cliente") ClienteDTO cliente, BindingResult result, final RedirectAttributes redirectAttributes) {
+
+        if (result.hasErrors()) {
+            return new ModelAndView("cliente/edita", "cliente", cliente);
+        }
+
+        clienteService.atualizar(cliente);
         return new ModelAndView("redirect:/clientes");
     }
 
