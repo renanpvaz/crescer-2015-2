@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap.min.css"></link>
+	</head>
+	<body>
+	
+		<style>
+		
+			input {		
+			    background-color: rgba(255, 255, 255, 0);
+			    margin-bottom: 35px;
+			    width: 350px;
+			    height: 55px;
+			    border: none;
+			    border-bottom: groove;			
+			}
+		
+			img {
+			    top: -45%;
+    			position: absolute;
+    			
+    			-webkit-filter: blur(5px);
+				-moz-filter: blur(5px);
+				-o-filter: blur(5px);
+				-ms-filter: blur(5px);		
+			}
+			
+			section {
+			  width:70%;
+			  position:absolute;
+			  top:55%;
+			  left:62%;
+			  padding:15px;
+			  -ms-transform: translateX(-50%) translateY(-50%);
+			  -webkit-transform: translate(-50%,-50%);
+			  transform: translate(-50%,-50%);
+			}
+		
+		</style>
+		
+		<img class="img-responsive" src="http://corporatecomplianceinsights.com/wp-content/uploads/2014/04/dirty-laundry.jpg" />
+		
+		<section>
+			
+			<div th:if="${param.logout}" class="alert alert-success">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			  <strong>Successo!</strong> Logout executado
+			</div>
+			
+			<div th:if="${param.error}" class="alert alert-danger">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			  <strong>Erro!</strong> Login incorreto. Tente novamente !
+			</div>
+				
+				<form name="form" th:action="@{/login}" action="/login" method="POST">
+					<input type="text" name="username" placeholder="Username" />
+					<input type="password" name="password" placeholder="Password" />
+					<input type="submit" id="login" value="Login" class="btn btn-primary" />
+				</form>	
+
+		 </section>
+		 
+	</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,48 +9,45 @@
 
 	<body>
 	
-	<style>
+	<header>
+    	<div class="header" style=" background-color: #b94a48;">
+    	  <h1 layout:fragment="custom-header">Editar</h1>	
+    	</div>  
+    </header>
+
+		<section layout:fragment="content">
 		
-		span {
-			color: red;
-		}
+		<form th:action="@{/clientes/editar}" th:object="${cliente}" class="form-group" method="post">
 		
-		</style>
-	
-		<h2>Editar</h2>
-		
-		<form th:action="@{/clientes/editar}" th:object="${cliente}" method="post">
-		
-			<input th:field="*{id}" type="hidden" />
+		      <input th:field="*{id}" type="hidden" />
 			
-			<p>
-				<label class="control-label">Nome: </label>
-				<input th:field="*{nome}" type="text" />
-				<br></br><span th:errors="*{nome}"></span>
-			</p>
-			
-			<p>
-				<label class="control-label">CPF: </label>
-		 		<input th:field="*{cpf}" type="text"/>
-		 		<br></br><span th:errors="*{cpf}"></span>
-			</p>
-			
-			<p>
-		 		<label class="control-label">Email: </label>
-		 		<input th:field="*{email}" type="text"/>
-		 		<br></br><span th:errors="*{email}"></span>
-	 		</p>
-	 		
-	 		<p>
-		 		<label class="control-label">Cidade: </label>
-		 		<select th:field="*{idCidade}">
-	                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
-	            </select>
-            </p>
-             
-             <button type="submit">Salvar</button>
-             
+			  <div th:classappend="${#fields.hasErrors('email')} ? 'has-error'" class="form-group">
+			    <label>Nome <span stlye="float:right;" class="help-inline" th:errors="*{nome}"></span></label>
+			    <input th:field="*{nome}" type="text" class="form-control"></input>
+			  </div>
+			  
+			  <div th:classappend="${#fields.hasErrors('email')} ? 'has-error'" class="form-group">
+			    <label>CPF <span stlye="float:right;" class="help-inline" th:errors="*{cpf}"></span></label>
+			    <input th:field="*{cpf}" type="text" class="form-control"></input>
+			  </div>
+			  
+			  <div th:classappend="${#fields.hasErrors('email')} ? 'has-error'" class="form-group">
+			    <label>Email <span stlye="float:right;" class="help-inline" th:errors="*{email}"></span></label>
+			    <input th:field="*{email}" type="text" class="form-control"></input>
+			  </div>
+			  
+			  <div class="form-group">
+			      <label>Cidade</label>
+			      <select class="form-control" th:field="*{idCidade}">
+			        <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
+			      </select>
+			    </div>
+			    
+			<button type="submit">Salvar</button>
+			             
 		</form>
+		
+		</section>
 	
 	
 	</body>

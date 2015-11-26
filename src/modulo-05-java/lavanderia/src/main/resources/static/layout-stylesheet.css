@@ -5,13 +5,19 @@ body {
 }
 
 section {
-  position: absolute;
-  top: 30%;
-  right: 41%;
+  width:70%;
+  position:absolute;
+  top:55%;
+  left:50%;
+  padding:15px;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
 }
 
 section span {
 	color: #D83434;
+	margin-left: 50px;
 }
 
 .header, .footer {
@@ -19,7 +25,7 @@ section span {
 	text-align: center;
     position: fixed;
     width: 100%;
-    background-color: #B5B5B5;
+    background-color: #428bca;
 }
 
 .footer {
@@ -27,5 +33,6 @@ section span {
 }
 
 .header {
-    top: 0;
+    top: 52px;
+    padding: 15px;
 }
