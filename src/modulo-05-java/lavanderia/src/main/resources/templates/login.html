@@ -8,10 +8,22 @@
 	<body>
 	
 		<style>
+			
+			input, button, select, option, textarea {
+    			font-size: 45px;
+			}
+			
+			button {
+				width:350px;
+				height:42px;
+				font-size: 28px;
+   				padding-bottom: 43px;
+			}
 		
 			input {		
+				outline: 0px;
 			    background-color: rgba(255, 255, 255, 0);
-			    margin-bottom: 35px;
+			    margin-bottom: 12px;
 			    width: 350px;
 			    height: 55px;
 			    border: none;
@@ -29,14 +41,14 @@
 			}
 			
 			section {
-			  width:70%;
-			  position:absolute;
-			  top:55%;
-			  left:62%;
-			  padding:15px;
-			  -ms-transform: translateX(-50%) translateY(-50%);
-			  -webkit-transform: translate(-50%,-50%);
-			  transform: translate(-50%,-50%);
+				  width:70%;
+				  position:absolute;
+				  top:55%;
+				  left:62%;
+				  padding:15px;
+				  -ms-transform: translateX(-50%) translateY(-50%);
+				  -webkit-transform: translate(-50%,-50%);
+				  transform: translate(-50%,-50%);
 			}
 		
 		</style>
@@ -56,9 +68,10 @@
 			</div>
 				
 				<form name="form" th:action="@{/login}" action="/login" method="POST">
-					<input type="text" name="username" placeholder="Username" />
+					<input type="text" name="username" placeholder="Username" style="margin-right: 20px;" />
 					<input type="password" name="password" placeholder="Password" />
-					<input type="submit" id="login" value="Login" class="btn btn-primary" />
+					<button class="btn btn-primary" type="submit" style="margin-right: 20px; font-size: 26px;padding-bottom: 43px;">Entrar</button>
+					<button class="btn btn-primary" type="submit" style="font-size: 26px;padding-bottom: 43px;">Cadastrar-se</button>
 				</form>	
 
 		 </section>

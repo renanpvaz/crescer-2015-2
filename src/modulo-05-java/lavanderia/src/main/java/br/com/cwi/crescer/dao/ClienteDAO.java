@@ -16,9 +16,19 @@ public class ClienteDAO extends AbstractDAO {
         return em.find(Cliente.class, id);
     }
 
+    public List<Cliente> findAll() {
+        return em.createQuery("FROM Cliente", Cliente.class).getResultList();
+    }
+
     public List<Cliente> findBySituacao(SituacaoCliente situacao) {
         return em.createQuery("FROM Cliente c WHERE c.situacao = :situacao", Cliente.class)
                 .setParameter("situacao", situacao)
+                .getResultList();
+    }
+
+    public List<Cliente> findByNome(String nome) {
+        return em.createQuery("FROM Cliente c WHERE lower(c.nome) like :nome", Cliente.class)
+                .setParameter("nome", nome.toLowerCase() + "%")
                 .getResultList();
     }
 
@@ -32,9 +42,9 @@ public class ClienteDAO extends AbstractDAO {
 
         return em.merge(cliente);
     }
-    
+
     @Transactional
-	public void remove(Long id){
-		em.remove(em.getReference(Cliente.class, id));
-	}
+    public void remove(Long id){
+        em.remove(em.getReference(Cliente.class, id));
+    }
 }

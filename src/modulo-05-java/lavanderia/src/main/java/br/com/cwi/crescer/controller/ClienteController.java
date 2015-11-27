@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -34,12 +35,17 @@ public class ClienteController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView listar() {
-        return new ModelAndView("cliente/lista", "clientes", clienteService.listarClientesAtivos());
+        return new ModelAndView("cliente/lista", "clientes", clienteService.listarTodos());
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public ModelAndView exibirDetalhes(@PathVariable("id") Long id) {
         return new ModelAndView("cliente/exibe", "cliente", clienteService.buscarPorId(id));
+    }
+
+    @RequestMapping(params = "busca", method = RequestMethod.GET)
+    public ModelAndView buscar(@RequestParam String busca) {
+        return new ModelAndView("cliente/lista", "clientes", clienteService.listarPorNome(busca));
     }
 
     @RequestMapping(path = "/editar/{id}", method = RequestMethod.GET)

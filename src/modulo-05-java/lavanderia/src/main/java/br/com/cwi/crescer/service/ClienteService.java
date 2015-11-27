@@ -39,9 +39,22 @@ public class ClienteService {
         clienteDAO.save(cliente);
     }
 
-    public List<ClienteResumoDTO> listarClientesAtivos() {
+    public List<ClienteResumoDTO> listarTodos() {
 
-        List<Cliente> clientes = clienteDAO.findBySituacao(SituacaoCliente.ATIVO);
+        List<Cliente> clientes = clienteDAO.findAll();
+
+        List<ClienteResumoDTO> dtos = new ArrayList<ClienteResumoDTO>();
+
+        for (Cliente cliente : clientes) {
+            dtos.add(new ClienteResumoDTO(cliente));
+        }
+
+        return dtos;
+    }
+
+    public List<ClienteResumoDTO> listarPorNome(String nome) {
+
+        List<Cliente> clientes = clienteDAO.findByNome(nome);
 
         List<ClienteResumoDTO> dtos = new ArrayList<ClienteResumoDTO>();
 
