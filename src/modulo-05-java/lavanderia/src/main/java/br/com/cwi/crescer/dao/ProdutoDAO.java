@@ -6,7 +6,9 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import br.com.cwi.crescer.domain.Material;
 import br.com.cwi.crescer.domain.Produto;
+import br.com.cwi.crescer.domain.Servico;
 
 @Repository
 public class ProdutoDAO extends AbstractDAO {
@@ -29,9 +31,26 @@ public class ProdutoDAO extends AbstractDAO {
 
         return em.merge(produto);
     }
-
-    @Transactional
-    public void remove(Long id){
-        em.remove(em.getReference(Produto.class, id));
+    
+    public List<Produto> findByServicoEMaterial(Servico servico, Material material) {
+    	
+    	return em.createQuery("FROM Produto p where p.servico = :servico and p.material = :material", Produto.class)
+                .setParameter("material", material)
+                .setParameter("servico", servico)
+                .getResultList();
     }
+
+	public List<Produto> findByServico(Servico servico) {
+		
+		return em.createQuery("FROM Produto p where p.servico = :servico", Produto.class)
+			.setParameter("servico", servico)
+			.getResultList();
+	}
+	
+	public List<Produto> findByMaterial(Material material) {
+		
+		return em.createQuery("FROM Produto p where p.material= :material", Produto.class)
+			.setParameter("material", material)
+			.getResultList();
+	}
 }

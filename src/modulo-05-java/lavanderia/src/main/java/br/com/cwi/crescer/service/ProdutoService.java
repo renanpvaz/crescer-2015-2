@@ -10,7 +10,9 @@ import br.com.cwi.crescer.dao.MaterialDAO;
 import br.com.cwi.crescer.dao.ProdutoDAO;
 import br.com.cwi.crescer.dao.ServicoDAO;
 import br.com.cwi.crescer.domain.Cliente;
+import br.com.cwi.crescer.domain.Material;
 import br.com.cwi.crescer.domain.Produto;
+import br.com.cwi.crescer.domain.Servico;
 import br.com.cwi.crescer.dto.ClienteResumoDTO;
 import br.com.cwi.crescer.dto.ProdutoDTO;
 import br.com.cwi.crescer.mapper.ClienteMapper;
@@ -56,6 +58,32 @@ public class ProdutoService {
         entity.setMaterial(materialDAO.findById(produto.getMaterial().getIdMaterial()));
 
         produtoDAO.save(entity);
+	}
+
+	public List<ProdutoDTO> listarPorServicoOuMaterial(Long idServico, Long idMaterial) {	
+		List<Produto> produtos = null;
+		
+		if(idServico != 0 && idMaterial != 0) {
+			Servico servico = servicoDAO.findById(idServico);
+			Material material = materialDAO.findById(idMaterial);
+			produtos = produtoDAO.findByServicoEMaterial(servico, material);
+		}
+		else if (idServico != 0) {
+			Servico servico = servicoDAO.findById(idServico);
+			produtos = produtoDAO.findByServico(servico);
+		}
+		else if (idMaterial != 0) {
+			Material material = materialDAO.findById(idMaterial);
+			produtos = produtoDAO.findByMaterial(material);
+		}
+		
+        List<ProdutoDTO> produtosDTO = new ArrayList<ProdutoDTO>();
+        
+        for (Produto produto: produtos) {
+        	produtosDTO.add(new ProdutoDTO(produto));
+        }
+
+        return produtosDTO;
 	}
 
 }

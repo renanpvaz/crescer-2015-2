@@ -25,7 +25,7 @@
         <li><a th:href="${'/clientes/'}">Clientes <span class="sr-only">(current)</span></a></li>
         <li><a th:href="${'/produtos/'}">Produtos</a></li>  
       </ul>
-      <form class="navbar-form navbar-left" method="get">
+      <form layout:fragment="pesquisa" class="navbar-form navbar-left" method="get">
         <div class="form-group">
           <input name="busca" type="text" class="form-control" placeholder="Digite o nome de um cliente"></input>
         </div>
