@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Produtos</title>
+	</head>
+
+	<body>
+	
+	<style>
+		.info {
+	  		background-color: #d9edf7;
+		}
+	
+	</style>
+	
+	<h2>Produtos</h2>
+	
+	<section layout:fragment="content">
+		<div th:if="${not #lists.isEmpty(produtos)}">
+	        
+	        <table class="table table-bordered table-hover">
+	        
+	            <tr>
+	                <th>Serviço</th>
+	                <th>Material</th>
+	                <th>Valor</th>
+	                <th>Prazo(dias)</th>
+	                <th>Editar</th>
+	            </tr>
+	            <tr style="background-color:#d9edf7;" th:each="produto : ${produtos}" th:class="${produto.situacao == 'INATIVO'} ? 'danger'">
+	                <td th:text="${produto.servico}"></td>
+	                <td th:text="${produto.material}"></td>
+	                <td th:text="'R$ ' + ${produto.valor}"></td>
+	                <td th:text="${produto.prazo}"></td>
+	                <td><a th:href="${'/produtos/editar/' + produto.id}">Editar</a></td>
+	            </tr>
+	        </table>
+	    </div>
+	    
+	  </section>
+		
+	</body>
+	
+</html>

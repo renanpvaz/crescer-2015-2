@@ -15,6 +15,10 @@ section {
   transform: translate(-50%,-50%);
 }
 
+li:active{
+	background-color: #DCD9D9;
+}
+
 section span {
 	color: #D83434;
 	margin-left: 50px;
