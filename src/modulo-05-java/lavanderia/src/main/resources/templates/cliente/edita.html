@@ -21,18 +21,18 @@
 		
 		      <input th:field="*{id}" type="hidden" />
 			
-			  <div th:classappend="${#fields.hasErrors('email')} ? 'has-error'" class="form-group">
-			    <label>Nome <span stlye="float:right;" class="help-inline" th:errors="*{nome}"></span></label>
+			  <div th:classappend="${#fields.hasErrors('nome')} ? 'has-error'" class="form-group">
+			    <label>Nome <span class="help-inline" th:errors="*{nome}"></span></label>
 			    <input th:field="*{nome}" type="text" class="form-control"></input>
 			  </div>
 			  
-			  <div th:classappend="${#fields.hasErrors('email')} ? 'has-error'" class="form-group">
-			    <label>CPF <span stlye="float:right;" class="help-inline" th:errors="*{cpf}"></span></label>
+			  <div th:classappend="${#fields.hasErrors('cpf')} ? 'has-error'" class="form-group">
+			    <label>CPF <span class="help-inline" th:errors="*{cpf}"></span></label>
 			    <input th:field="*{cpf}" type="text" class="form-control"></input>
 			  </div>
 			  
 			  <div th:classappend="${#fields.hasErrors('email')} ? 'has-error'" class="form-group">
-			    <label>Email <span stlye="float:right;" class="help-inline" th:errors="*{email}"></span></label>
+			    <label>Email <span class="help-inline" th:errors="*{email}"></span></label>
 			    <input th:field="*{email}" type="text" class="form-control"></input>
 			  </div>
 			  
