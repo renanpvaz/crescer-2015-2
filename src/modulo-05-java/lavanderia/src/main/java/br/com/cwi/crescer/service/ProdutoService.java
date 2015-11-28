@@ -14,6 +14,7 @@ import br.com.cwi.crescer.domain.Produto;
 import br.com.cwi.crescer.dto.ClienteResumoDTO;
 import br.com.cwi.crescer.dto.ProdutoDTO;
 import br.com.cwi.crescer.mapper.ClienteMapper;
+import br.com.cwi.crescer.mapper.ProdutoMapper;
 
 @Service
 public class ProdutoService {
@@ -54,7 +55,7 @@ public class ProdutoService {
         entity.setServico(servicoDAO.findById(produto.getServico().getIdServico()));
         entity.setMaterial(materialDAO.findById(produto.getMaterial().getIdMaterial()));
 
-        clienteDAO.save(entity);
+        produtoDAO.save(entity);
 	}
 
 }

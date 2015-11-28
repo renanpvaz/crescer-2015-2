@@ -30,7 +30,7 @@
 	                <th>Prazo(dias)</th>
 	                <th>Editar</th>
 	            </tr>
-	            <tr style="background-color:#d9edf7;" th:each="produto : ${produtos}" th:class="${produto.situacao == 'INATIVO'} ? 'danger'">
+	            <tr th:each="produto : ${produtos}" th:class="${produto.situacao.toString() == 'INATIVO'} ? 'danger'">
 	                <td th:text="${produto.servico.descricao}"></td>
 	                <td th:text="${produto.material.descricao}"></td>
 	                <td th:text="'R$ ' + ${produto.valor}"></td>

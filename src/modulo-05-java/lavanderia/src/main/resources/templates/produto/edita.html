@@ -10,8 +10,8 @@
 	<body>
 	
 	<header>
-    	<div class="header" style=" background-color: #b94a48;">
-    	  <h1 layout:fragment="custom-header">Editar</h1>	
+    	<div layout:fragment="custom-header" class="header" style="background-color: #b94a48;">
+    	  <h1>Editar</h1>	
     	</div>  
     </header>
 
@@ -38,8 +38,8 @@
 			    <div class="form-group" th:classappend="${#fields.hasErrors('situacao')} ? 'has-error'">
 			 		<label class="control-label">Situacao: </label>
 			 		<select class="form-control" th:field="*{situacao}">
-							<option th:text="ATIVO" th:value="0"></option>
-							<option th:text="INATIVO" th:value="1"></option>
+							<option th:text="ATIVO" th:value="ATIVO"></option>
+							<option th:text="INATIVO" th:value="INATIVO"></option>
 						</select>
 		            <span class="help-inline" th:errors="*{situacao}"></span>
 	            </div>
@@ -66,6 +66,11 @@
 		
 		</section>
 	
+	<footer>
+      <div layout:fragment="custom-footer" class="footer" style="background-color: #b94a48;">
+	      <h4> &copy; 2015 - CWI Crescer </h4>
+      </div>
+    </footer>
 	
 	</body>
 	
