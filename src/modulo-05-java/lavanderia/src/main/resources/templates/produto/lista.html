@@ -9,6 +9,12 @@
 
 	<body>
 	
+	<header>
+    	<div layout:fragment="custom-header" class="header">
+    	  <h1>Lista de produtos</h1>	
+    	</div>  
+    </header>
+	
 	<form th:action="@{/produtos/buscar}" layout:fragment="pesquisa" class="navbar-form navbar-left" method="get">
         <div class="form-group">
 			      <select name="servico" class="form-control">

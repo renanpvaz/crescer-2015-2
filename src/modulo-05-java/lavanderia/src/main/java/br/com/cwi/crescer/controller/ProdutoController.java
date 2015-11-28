@@ -49,6 +49,22 @@ public class ProdutoController {
         return new ModelAndView("produto/lista", "produtos", produtoService.listarPorServicoOuMaterial(servico, material));
     }
     
+    @RequestMapping(path = "/cadastrar", method = RequestMethod.GET)
+    public ModelAndView cadastrar() {
+        return new ModelAndView("produto/novo", "produto", new ProdutoDTO());
+    }
+
+    @RequestMapping(path = "/cadastrar", method = RequestMethod.POST)
+    public ModelAndView cadastrar(@Valid @ModelAttribute("produto") ProdutoDTO produto, BindingResult result, final RedirectAttributes redirectAttributes) {
+
+        if (result.hasErrors()) {
+            return new ModelAndView("produto/novo", "produto", produto);
+        }
+
+        produtoService.incluir(produto);
+        return new ModelAndView("redirect:/produtos");
+    }
+    
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public ModelAndView editar(@PathVariable Long id) {
         return new ModelAndView("produto/edita", "produto", produtoService.buscarPorId(id));

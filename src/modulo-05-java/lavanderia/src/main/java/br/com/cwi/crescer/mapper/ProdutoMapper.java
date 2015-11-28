@@ -1,6 +1,10 @@
 package br.com.cwi.crescer.mapper;
 
+import br.com.cwi.crescer.domain.Cidade;
+import br.com.cwi.crescer.domain.Cliente;
+import br.com.cwi.crescer.domain.Material;
 import br.com.cwi.crescer.domain.Produto;
+import br.com.cwi.crescer.domain.Servico;
 import br.com.cwi.crescer.dto.ProdutoDTO;
 
 public class ProdutoMapper {
@@ -14,4 +18,13 @@ public class ProdutoMapper {
         
         return entity;
     }
+
+	public static Produto getNewEntity(ProdutoDTO dto) {
+        return new Produto(dto.getId(),
+                dto.getServico(),
+                dto.getMaterial(),
+                dto.getValor(),
+                dto.getPrazo(),
+                dto.getSituacao());
+	}
 }

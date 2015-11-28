@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Cadastrar</title>
+	</head>
+
+	<body>
+	
+	<header>
+    	<div layout:fragment="custom-header" class="header" style="background-color: #BD8E3D;">
+    	  <h1>Cadastrar</h1>	
+    	</div>  
+    </header>
+
+		<section layout:fragment="content">
+		
+		<form th:action="@{/produtos/cadastrar}" th:object="${produto}" class="form-group" method="post">
+		
+		      <input th:field="*{id}" type="hidden" />
+			
+			  <div class="form-group">
+			      <label>Serviço: <span class="help-inline" th:errors="*{servico}"></span></label>
+			      <select class="form-control" th:field="*{servico.idServico}">
+			      	<option selected="selected" th:value="${null}">Selecione</option>
+			        <option th:each="s : ${servicos}" th:text="${s.descricao}" th:value="${s.idServico}" ></option>
+			      </select>
+			    </div>
+			    
+			    <div class="form-group">
+			      <label>Material: <span class="help-inline" th:errors="*{material}"></span></label>
+			      <select class="form-control" th:field="*{material.idMaterial}">
+			      	<option selected="selected" th:value="${null}">Selecione</option>
+			        <option th:each="m : ${materiais}" th:text="${m.descricao}" th:value="${m.idMaterial}" ></option>
+			      </select>
+			    </div>
+			    
+			    <div class="form-group" th:classappend="${#fields.hasErrors('situacao')} ? 'has-error'">
+			 		<label class="control-label">Situacao: <span class="help-inline" th:errors="*{situacao}"></span></label>
+			 		<select class="form-control" th:field="*{situacao}">
+			 				<option selected="selected" th:value="${null}">Selecione</option>
+							<option th:text="ATIVO" th:value="ATIVO"></option>
+							<option th:text="INATIVO" th:value="INATIVO"></option>
+						</select>
+		            <span class="help-inline" th:errors="*{situacao}"></span>
+	            </div>
+	            
+	          <div th:classappend="${#fields.hasErrors('valor')} ? 'has-error'" class="form-group">
+			    <label>Valor:<span class="help-inline" th:errors="*{valor}"></span></label>
+			    <div class="input-group">
+			      <div class="input-group-addon">R$</div>
+			      <input style="width:10%" th:field="*{valor}" type="text" class="form-control" placeholder="Quantidade" />
+			    </div>
+			  </div>
+	            
+	           <div th:classappend="${#fields.hasErrors('prazo')} ? 'has-error'" class="form-group">
+			    <label>Prazo:<span class="help-inline" th:errors="*{prazo}"></span></label>
+			    <div class="input-group">
+			      <div class="input-group-addon">Dias</div>
+			      <input style="width:9%" th:field="*{prazo}" type="text" class="form-control" placeholder="Prazo" />
+			    </div>
+			  </div>
+			    
+			<button class="btn btn-primary" type="submit">Salvar</button>
+			             
+		</form>
+		
+		</section>
+	
+	<footer>
+      <div layout:fragment="custom-footer" class="footer" style="background-color: #BD8E3D;">
+	      <h4> &copy; 2015 - CWI Crescer </h4>
+      </div>
+    </footer>
+	
+	</body>
+	
+</html>

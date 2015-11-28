@@ -54,7 +54,22 @@ public class Produto {
         ATIVO, INATIVO
     }
 
-    public Long getPrazo() {
+    public Produto() {
+    }
+    
+    public Produto(Long idProduto, Servico servico, Material material, BigDecimal valor, Long prazo,
+			SituacaoProduto situacao) {
+		this.idProduto = idProduto;
+		this.servico = servico;
+		this.material = material;
+		this.valor = valor;
+		this.prazo = prazo;
+		this.situacao = situacao;
+	}
+
+
+
+	public Long getPrazo() {
         return prazo;
     }
 

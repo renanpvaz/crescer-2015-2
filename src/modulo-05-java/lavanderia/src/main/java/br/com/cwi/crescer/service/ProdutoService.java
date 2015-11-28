@@ -12,7 +12,9 @@ import br.com.cwi.crescer.dao.ServicoDAO;
 import br.com.cwi.crescer.domain.Cliente;
 import br.com.cwi.crescer.domain.Material;
 import br.com.cwi.crescer.domain.Produto;
+import br.com.cwi.crescer.domain.Produto.SituacaoProduto;
 import br.com.cwi.crescer.domain.Servico;
+import br.com.cwi.crescer.domain.Cliente.SituacaoCliente;
 import br.com.cwi.crescer.dto.ClienteResumoDTO;
 import br.com.cwi.crescer.dto.ProdutoDTO;
 import br.com.cwi.crescer.mapper.ClienteMapper;
@@ -84,6 +86,15 @@ public class ProdutoService {
         }
 
         return produtosDTO;
+	}
+
+	public void incluir(ProdutoDTO dto) {
+		
+		Produto produto = ProdutoMapper.getNewEntity(dto);
+
+        produto.setSituacao(SituacaoProduto.ATIVO);
+
+        produtoDAO.save(produto);
 	}
 
 }
