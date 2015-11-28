@@ -2,18 +2,20 @@ package br.com.cwi.crescer.dto;
 
 import java.math.BigDecimal;
 
+import br.com.cwi.crescer.domain.Material;
 import br.com.cwi.crescer.domain.Produto;
+import br.com.cwi.crescer.domain.Servico;
 
 public class ProdutoDTO {
 
 	private Long id;
-    private String material;
-    private String servico;
+    private Material material;
+    private Servico servico;
     private BigDecimal valor;
     private Long prazo;
     private String situacao;
 
-    public ProdutoDTO(String material, String servico, BigDecimal valor, Long prazo, String situacao) {
+    public ProdutoDTO(Material material, Servico servico, BigDecimal valor, Long prazo, String situacao) {
         this.material = material;
         this.servico = servico;
         this.valor = valor;
@@ -23,8 +25,8 @@ public class ProdutoDTO {
 
     public ProdutoDTO(Produto entity) {
     	this.id = entity.getIdProduto();
-        this.material = entity.getMaterial().getDescricao();
-        this.servico = entity.getServico().getDescricao();
+        this.material = entity.getMaterial();
+        this.servico = entity.getServico();
         this.valor = entity.getValor();
         this.prazo = entity.getPrazo();
         this.situacao = entity.getSituacao().toString();
@@ -38,19 +40,19 @@ public class ProdutoDTO {
 		this.id = id;
 	}
 
-	public String getMaterial() {
+	public Material getMaterial() {
 		return material;
 	}
 
-	public void setMaterial(String material) {
+	public void setMaterial(Material material) {
 		this.material = material;
 	}
 
-	public String getServico() {
+	public Servico getServico() {
 		return servico;
 	}
 
-	public void setServico(String servico) {
+	public void setServico(Servico servico) {
 		this.servico = servico;
 	}
 

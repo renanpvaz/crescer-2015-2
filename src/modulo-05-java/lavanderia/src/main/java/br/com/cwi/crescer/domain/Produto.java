@@ -86,10 +86,6 @@ public class Produto {
         return servico;
     }
 
-    public void setIdServico(Servico servico) {
-        this.servico = servico;
-    }
-
     public Material getMaterial() {
         return material;
     }

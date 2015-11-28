@@ -5,7 +5,7 @@ body {
 }
 
 section {
-  width:70%;
+  width:60%;
   position:absolute;
   top:55%;
   left:50%;
@@ -13,6 +13,10 @@ section {
   -ms-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
+}
+
+section tr {
+	width: 100%;
 }
 
 li:active{
