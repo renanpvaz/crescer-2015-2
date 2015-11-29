@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Pedidos</title>
+	</head>
+
+	<body>
+	
+	<h2>Pedidos</h2>
+	
+	<section layout:fragment="content">
+		<div th:if="${not #lists.isEmpty(pedidos)}">
+	        
+	        <table class="table table-bordered table-hover">
+	        	<tr>
+	        		<th colspan="2" style="text-align: center;">Cliente</th>
+    				<th colspan="5" style="text-align: center;">Pedido</th>
+	        	</tr>
+	            <tr>
+	                <th>Nome</th>
+	                <th>CPF</th>
+	                <th>Data inclusão</th>
+	                <th>Valor total</th>
+	                <th>Situação</th>
+	                <th>Editar</th>
+	                <th>Remover</th>
+	            </tr>
+	            <tr th:classappend="${pedido.situacao == 'CANCELADO'} ? 'danger' : 'sucess'" th:each="pedido : ${pedidos}">
+	                <td th:text="${pedido.cliente.nome}"></td>
+	                <td th:text="${pedido.cliente.cpf}"></td>
+	                <td th:text="${pedido.dataInclusao.toString().substring(0, 10)}"></td>
+	                <td th:text="${pedido.valorTotal}"></td>
+	                <td th:text="${pedido.situacao}"></td>
+	                <td><a th:href="${'/pedido/editar/' + pedido.id}">Editar</a></td>
+	                <td><a th:href="${'/pedido/remover/' + pedido.id}">Remover</a></td>
+	            </tr>
+	        </table>
+	    </div>
+	    
+	  </section>
+		
+	</body>
+	
+</html>

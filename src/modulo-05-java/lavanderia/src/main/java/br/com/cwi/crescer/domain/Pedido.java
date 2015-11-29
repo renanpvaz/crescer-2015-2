@@ -49,13 +49,21 @@ public class Pedido {
     @Column(name = "DATAEntrega")
     private Date dataEntrega;
 
-    @Column(name = "Valor")
+    @Column(name = "VALORBruto")
     @Basic(optional = false)
-    private BigDecimal valor;
+    private BigDecimal valorBruto;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "Situacao", length = 1)
     private SituacaoPedido situacao;
+    
+    @Column(name = "VALORDesconto")
+    @Basic(optional = false)
+    private BigDecimal valorDesconto;
+
+    @Column(name = "VALORFinal")
+    @Basic(optional = false)
+    private BigDecimal valorFinal;
 
     public static enum SituacaoPedido {
         PENDENTE, PROCESSANDO, PROCESSADO, ENCERRADO, CANCELADO
@@ -93,15 +101,31 @@ public class Pedido {
         this.dataEntrega = dataEntrega;
     }
 
-    public BigDecimal getValor() {
-        return valor;
-    }
+    public BigDecimal getValorBruto() {
+		return valorBruto;
+	}
 
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
-    }
+	public void setValorBruto(BigDecimal valorBruto) {
+		this.valorBruto = valorBruto;
+	}
 
-    public SituacaoPedido getSituacao() {
+	public BigDecimal getValorDesconto() {
+		return valorDesconto;
+	}
+
+	public void setValorDesconto(BigDecimal valorDesconto) {
+		this.valorDesconto = valorDesconto;
+	}
+
+	public BigDecimal getValorFinal() {
+		return valorFinal;
+	}
+
+	public void setValorFinal(BigDecimal valorFinal) {
+		this.valorFinal = valorFinal;
+	}
+
+	public SituacaoPedido getSituacao() {
         return situacao;
     }
 

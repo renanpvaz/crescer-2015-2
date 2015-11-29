@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import br.com.cwi.crescer.domain.Pedido;
+import br.com.cwi.crescer.domain.Produto;
 import br.com.cwi.crescer.domain.Pedido.SituacaoPedido;
 
 @Repository
@@ -15,8 +16,12 @@ public class PedidoDAO extends AbstractDAO {
     }
 
     public List<Pedido> findBySituacao(SituacaoPedido situacao) {
-        return em.createQuery("FROM Pedido c WHERE c.situacao = :situacao", Pedido.class)
+        return em.createQuery("FROM Pedido p WHERE p.situacao = :situacao", Pedido.class)
                 .setParameter("situacao", situacao)
                 .getResultList();
+    }
+
+    public List<Pedido> listAll() {
+        return em.createQuery("FROM Pedido", Pedido.class).getResultList();
     }
 }
