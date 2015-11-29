@@ -10,9 +10,13 @@ import br.com.cwi.crescer.dao.ClienteDAO;
 import br.com.cwi.crescer.dao.PedidoDAO;
 import br.com.cwi.crescer.domain.Cliente;
 import br.com.cwi.crescer.domain.Pedido;
+import br.com.cwi.crescer.domain.Item.SituacaoItem;
+import br.com.cwi.crescer.dto.ItemDTO;
 import br.com.cwi.crescer.dto.PedidoDTO;
 import br.com.cwi.crescer.dto.PedidoResumoDTO;
+import br.com.cwi.crescer.dto.ProdutoDTO;
 import br.com.cwi.crescer.mapper.PedidoMapper;
+import br.com.cwi.crescer.mapper.ProdutoMapper;
 
 @Service
 public class PedidoService {
@@ -22,6 +26,18 @@ public class PedidoService {
     @Autowired
     public PedidoService(PedidoDAO pedidoDAO) {
         this.pedidoDAO = pedidoDAO;
+    }
+    
+    public ItemDTO atribuirProdutoANovoItem(ProdutoDTO produto, Long idPedido) { 	
+    	ItemDTO item = new ItemDTO(); 
+    	Pedido pedido = buscarPorId(idPedido);
+    	
+    	item.setValorUnitario(produto.getValor());
+    	item.setPedido(pedido);
+    	item.setProduto(ProdutoMapper.getNewEntity(produto));
+    	item.setSituacao(SituacaoItem.PENDENTE);
+    	
+    	return item;
     }
 	
     public PedidoDTO buscarUltimo() {

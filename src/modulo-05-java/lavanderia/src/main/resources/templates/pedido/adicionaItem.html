@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Adicionar item</title>
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	</head>
+
+	<body>
+	
+	<header>
+    	<div layout:fragment="custom-header" class="header" style="background-color: #BD8E3D;">
+    	  <h1>Adicionar Item</h1>	
+    	</div>  
+    </header>
+
+		<section layout:fragment="content">
+		
+		
+			<div class="col-sm-6">
+			  <div class="form-group">
+			    <label>Serviço</label>
+			    <input type="text" class="form-control" disabled="disabled" th:value="*{item.produto.servico.descricao}" />
+			  </div>
+			  <div class="form-group">
+			    <label>Material</label>
+			    <input type="text" class="form-control" disabled="disabled" th:value="*{item.produto.material.descricao}" />
+			  </div>
+			  <div class="form-group">
+				    <label>Valor unitário:</label>
+				    <div style="width:28%" class="input-group">
+				      <div class="input-group-addon">R$</div>
+				      <input disabled="disabled" id="valorUnitario" th:field="*{item.valorUnitario}" type="number" min="1" class="form-control"/>
+				    </div>
+				  </div>
+			 </div> 
+		   
+			<div class="col-sm-6">       
+				<form id="form-servico" th:action="@{/pedidos/buscarMateriais}" class="form-group" method="get">
+				
+				<div class="form-group">
+				    <label>Peso:</label>
+				    <div style="width:29%" class="input-group">
+				      <input step="0.5" id="peso" th:field="*{item.peso}" type="number" min="1" class="form-control"/>
+				      <div class="input-group-addon">kg</div>
+				    </div>
+				  </div>
+				  
+				  <div class="form-group">
+				    <label>Valor total:</label>
+				    <div style="width:29%" class="input-group">
+				      <div class="input-group-addon">R$</div>
+				      <input disabled="disabled" id="valorTotal" th:field="*{item.valorTotal}" type="number" min="1" class="form-control"/>
+				    </div>
+				  </div>
+				    
+	      		</form>
+      		</div>
+      		
+      		<script>
+		
+				$("#peso").change(function() {
+					var valorUnitario = $('#valorUnitario').val();
+					var peso = $('#peso').val();
+					$('#valorTotal').val(peso * valorUnitario);
+					});	
+			</script>
+      		
+		</section>
+	
+	<footer>
+      <div layout:fragment="custom-footer" class="footer" style="background-color: #BD8E3D;">
+	      <h4> &copy; 2015 - CWI Crescer </h4>
+      </div>
+    </footer>
+	
+	</body>
+	
+</html>

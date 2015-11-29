@@ -47,14 +47,22 @@
 				      </select>
 				    </div>
 	      		</form>	      		
-	      		<form th:action="@{/pedidos/buscarServico}" class="form-group" method="get">
+	      		<form th:action="@{/pedidos/adicionarItem}" class="form-group" method="get">
+	      		
+	      			<input name="idPedido" th:field="*{pedido.idPedido}" type="hidden" />
+	      			
+	      			<input th:if="${servicoSelecionado != null}" name="idServico" th:field="${servicoSelecionado.idServico}" type="hidden" />
+	      			
 	        		<div class="form-group">
 	        		<label>Material</label>
-				      <select th:disabled="${servicoSelecionado == null}" id="materiais" name="material" class="form-control">
+				      <select th:disabled="${servicoSelecionado == null}" id="materiais" name="idMaterial" class="form-control">
 				        <option value="0"> </option>
 				        <option th:each="m : ${materiais}" th:text="${m.descricao}" th:value="${m.idMaterial}" ></option>
 				      </select>
 				    </div>
+				    
+				    <button class="btn btn-primary" type="submit">Salvar</button>
+				    
 	      		</form>
       		</div>
       		
