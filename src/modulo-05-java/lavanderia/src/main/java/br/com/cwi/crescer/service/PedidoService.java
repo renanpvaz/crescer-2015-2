@@ -10,6 +10,7 @@ import br.com.cwi.crescer.dao.ClienteDAO;
 import br.com.cwi.crescer.dao.PedidoDAO;
 import br.com.cwi.crescer.domain.Cliente;
 import br.com.cwi.crescer.domain.Pedido;
+import br.com.cwi.crescer.dto.PedidoDTO;
 import br.com.cwi.crescer.dto.PedidoResumoDTO;
 import br.com.cwi.crescer.mapper.PedidoMapper;
 
@@ -23,6 +24,10 @@ public class PedidoService {
         this.pedidoDAO = pedidoDAO;
     }
 	
+    public PedidoDTO buscarUltimo() {
+    	return new PedidoDTO(pedidoDAO.last());
+    }
+    
 	public List<PedidoResumoDTO> listarTodos() {
 		
 		List<Pedido> pedidos = pedidoDAO.listAll();
@@ -38,6 +43,10 @@ public class PedidoService {
 
 	public void incluir(Pedido pedido) {
 		pedidoDAO.save(pedido);
+	}
+
+	public Pedido buscarPorId(Long id) {
+		return pedidoDAO.findById(id);
 	}
 
 }

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Adicionar item</title>
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	</head>
+
+	<body>
+	
+	<header>
+    	<div layout:fragment="custom-header" class="header" style="background-color: #BD8E3D;">
+    	  <h1>Adicionar Item</h1>	
+    	</div>  
+    </header>
+
+		<section layout:fragment="content">
+		
+		
+			<div class="col-sm-6">
+			  <div class="form-group">
+			    <label>Nome</label>
+			    <input type="text" class="form-control" disabled="disabled" th:value="*{pedido.cliente.nome}" />
+			  </div>
+			  <div class="form-group">
+			    <label>CPF</label>
+			    <input type="text" class="form-control" disabled="disabled" th:value="*{pedido.cliente.cpf}" />
+			  </div>
+			 </div>   
+			<div class="col-sm-6">       
+				<form id="form-servico" th:action="@{/pedidos/buscarMateriais}" class="form-group" method="get">
+				
+					<input name="idPedido" th:field="*{pedido.idPedido}" type="hidden" />
+				
+	        		<div class="form-group">
+	        		<label>Serviço</label>
+	        		<select th:if="${servicoSelecionado != null}" name="idServico" class="form-control">
+				        <option th:text="${servicoSelecionado.descricao}" th:value="${servicoSelecionado.idServico}" ></option>
+				        <option th:each="s : ${servicos}" th:if="${s.idServico != servicoSelecionado.idServico}" th:text="${s.descricao}" th:value="${s.idServico}" ></option>
+				      </select>  		
+				      <select th:if="${servicoSelecionado == null}" name="idServico" class="form-control">
+				        <option value="0"> </option>
+				        <option th:each="s : ${servicos}" th:text="${s.descricao}" th:value="${s.idServico}" ></option>
+				      </select>
+				    </div>
+	      		</form>	      		
+	      		<form th:action="@{/pedidos/buscarServico}" class="form-group" method="get">
+	        		<div class="form-group">
+	        		<label>Material</label>
+				      <select id="materiais" name="material" class="form-control">
+				        <option value="0"> </option>
+				        <option th:each="m : ${materiais}" th:text="${m.descricao}" th:value="${m.idMaterial}" ></option>
+				      </select>
+				    </div>
+	      		</form>
+      		</div>
+      		
+      		<script>
+		
+				$("#form-servico").focusout(function() {
+					  $("#form-servico").submit();
+					  $('#materiais').prop('disabled', false);
+					});	
+			</script>
+      		
+		</section>
+	
+	<footer>
+      <div layout:fragment="custom-footer" class="footer" style="background-color: #BD8E3D;">
+	      <h4> &copy; 2015 - CWI Crescer </h4>
+      </div>
+    </footer>
+	
+	</body>
+	
+</html>

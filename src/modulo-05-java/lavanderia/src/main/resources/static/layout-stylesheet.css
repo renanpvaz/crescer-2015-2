@@ -19,6 +19,26 @@ section tr {
 	width: 100%;
 }
 
+
+.button {
+    border-radius: 45px;
+    font-family: Montserrat Alternates;
+    padding: 5px 30px;
+    position: absolute;
+    top: 10.5%;
+    right: -10%;
+    border: 4px white solid;
+    font-size: 32px;
+    color: white;
+    font-weight: bolder;
+}
+
+.button:hover {
+	-webkit-background-clip: padding-box:;
+	color: rgba(0,0,0,.3);
+	background-color: white;
+}
+
 li:active{
 	background-color: #DCD9D9;
 }

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import br.com.cwi.crescer.domain.Cliente;
+import br.com.cwi.crescer.domain.Pedido;
 import br.com.cwi.crescer.domain.Pedido.SituacaoPedido;
 
 public class PedidoDTO {
@@ -17,10 +18,20 @@ public class PedidoDTO {
 	private BigDecimal valorDesconto;
 	private BigDecimal valorFinal;
 	
-	public PedidoDTO() {
-		
+	public PedidoDTO() {	
 	}
 	
+	public PedidoDTO(Pedido pedido) {
+		this.id = pedido.getIdPedido();
+		this.cliente = pedido.getCliente();
+		this.dataInclusao = pedido.getDataInclusao();
+		this.dataEntrega = pedido.getDataEntrega();
+		this.valorTotal = pedido.getValorBruto();
+		this.situacao = pedido.getSituacao();
+		this.valorDesconto = pedido.getValorDesconto();
+		this.valorFinal = pedido.getValorFinal();
+	}
+
 	public Long getId() {
 		return id;
 	}

@@ -38,4 +38,10 @@ public class PedidoDAO extends AbstractDAO {
 
         return em.merge(pedido);
     }
+
+	public Pedido last() {
+		return em.createQuery("FROM Pedido ORDER BY idPedido DESC", Pedido.class)
+				.setMaxResults(1)
+				.getSingleResult();
+	}
 }

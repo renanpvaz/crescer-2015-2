@@ -39,6 +39,20 @@ public class ProdutoService {
     	Produto produto = produtoDAO.findById(id);
     	return new ProdutoDTO(produto);
     }
+    
+    public List<Material> buscarMaterialPorServico(Long idServico) {
+    	List<Material> materiais = new ArrayList<Material>();
+    	
+    	for(ProdutoDTO p : listarTodos()) {
+    		if(p.getServico().getIdServico().equals(idServico)) {
+    			if(!materiais.contains(p.getMaterial())) {
+    				materiais.add(p.getMaterial());
+    			}
+    		}
+    	}
+    	
+    	return materiais;
+    }
 
     public List<ProdutoDTO> listarTodos() {
         List<Produto> produtos = produtoDAO.findAll();
@@ -65,16 +79,16 @@ public class ProdutoService {
 	public List<ProdutoDTO> listarPorServicoOuMaterial(Long idServico, Long idMaterial) {	
 		List<Produto> produtos = null;
 		
-		if(idServico != 0 && idMaterial != 0) {
+		if(idServico != 0L && idMaterial != 0L) {
 			Servico servico = servicoDAO.findById(idServico);
 			Material material = materialDAO.findById(idMaterial);
 			produtos = produtoDAO.findByServicoEMaterial(servico, material);
 		}
-		else if (idServico != 0) {
+		else if (idServico != 0L) {
 			Servico servico = servicoDAO.findById(idServico);
 			produtos = produtoDAO.findByServico(servico);
 		}
-		else if (idMaterial != 0) {
+		else if (idMaterial != 0L) {
 			Material material = materialDAO.findById(idMaterial);
 			produtos = produtoDAO.findByMaterial(material);
 		}

@@ -19,6 +19,8 @@
 		
 		<form th:action="@{/pedidos/cadastrar}" th:object="${pedido}" class="form-group" method="post">
 		
+			<input th:field="*{id}" type="hidden" />
+		
 			    <div class="form-group">
 			      <label>Cliente: </label>
 			      <select class="form-control" th:field="*{cliente.idCliente}">
