@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import br.com.cwi.crescer.dao.ClienteDAO;
 import br.com.cwi.crescer.dao.PedidoDAO;
+import br.com.cwi.crescer.domain.Cliente;
 import br.com.cwi.crescer.domain.Pedido;
 import br.com.cwi.crescer.dto.PedidoResumoDTO;
+import br.com.cwi.crescer.mapper.PedidoMapper;
 
 @Service
 public class PedidoService {
@@ -32,6 +34,10 @@ public class PedidoService {
 		}
 		
 		return dtos;
+	}
+
+	public void incluir(Pedido pedido) {
+		pedidoDAO.save(pedido);
 	}
 
 }

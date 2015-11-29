@@ -7,6 +7,25 @@ a:link, a:visited {
    text-decoration: none
 }
 
+.button {
+	border-radius: 45px;
+    font-family: Montserrat Alternates;
+    padding: 30px 70px;
+    position: absolute;
+    top: 76%;
+    right: 45%;
+    border: 4px white solid;
+    font-size: 48px;
+    color: white;
+    font-weight: bolder;
+}
+
+.button:hover {
+	-webkit-background-clip: padding-box:;
+	color: rgba(0,0,0,.3);
+	background-color: white;
+}
+
 .imagem {
   width: inherit;
   height: 643px;
@@ -21,7 +40,7 @@ a:link, a:visited {
 .titulo {
   font-size: 120px;
   opacity: 0.9;
-  font-family: Montserrat;
+  font-family: Montserrat Alternates;
   top: 20%;
   right: 8%;
   text-shadow: 2px 2px 2px #636465;
@@ -33,7 +52,7 @@ a:link, a:visited {
     position: absolute;
     top: 60%;
     right: 25%;
-    font-family: Montserrat;
+    font-family: Montserrat Alternates;
     font-size: 35px;
     text-shadow: 0.5px 0.5px 0.5px #636465;
 }

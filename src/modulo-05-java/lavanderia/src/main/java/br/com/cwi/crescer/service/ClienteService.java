@@ -39,6 +39,10 @@ public class ClienteService {
         clienteDAO.save(cliente);
     }
 
+    public List<Cliente> listar() {
+    	return clienteDAO.findAll();
+    }
+    
     public List<ClienteResumoDTO> listarTodos() {
 
         List<Cliente> clientes = clienteDAO.findAll();

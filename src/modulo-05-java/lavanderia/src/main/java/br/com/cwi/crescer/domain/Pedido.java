@@ -65,7 +65,19 @@ public class Pedido {
     @Basic(optional = false)
     private BigDecimal valorFinal;
 
-    public static enum SituacaoPedido {
+    public Pedido() {
+    }
+    
+    public Pedido(Cliente cliente, Date dataInclusao, BigDecimal valorBruto, SituacaoPedido situacao) {
+		this.cliente = cliente;
+		this.dataInclusao = dataInclusao;
+		this.valorBruto = valorBruto;
+		this.situacao = situacao;
+	}
+
+
+
+	public static enum SituacaoPedido {
         PENDENTE, PROCESSANDO, PROCESSADO, ENCERRADO, CANCELADO
     }
 
