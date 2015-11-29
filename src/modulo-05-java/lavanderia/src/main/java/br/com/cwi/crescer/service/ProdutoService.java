@@ -45,6 +45,7 @@ public class ProdutoService {
     	
     	for(ProdutoDTO p : listarTodos()) {
     		if(p.getServico().getIdServico().equals(idServico)) {
+    			
     			if(!materiais.contains(p.getMaterial())) {
     				materiais.add(p.getMaterial());
     			}

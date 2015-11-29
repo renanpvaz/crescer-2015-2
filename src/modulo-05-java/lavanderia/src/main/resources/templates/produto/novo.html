@@ -59,7 +59,7 @@
 			    <label>Prazo:<span class="help-inline" th:errors="*{prazo}"></span></label>
 			    <div class="input-group">
 			      <div class="input-group-addon">Dias</div>
-			      <input style="width:9%" th:field="*{prazo}" type="text" class="form-control" placeholder="Prazo" />
+			      <input style="width:9%" th:field="*{prazo}" type="number"  min="1" class="form-control"/>
 			    </div>
 			  </div>
 			    

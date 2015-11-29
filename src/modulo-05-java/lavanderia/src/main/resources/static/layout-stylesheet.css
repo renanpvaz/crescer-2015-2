@@ -14,11 +14,21 @@ section {
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
 }
+section table {
+	
+}
 
 section tr {
 	width: 100%;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
 
 .button {
     border-radius: 45px;
