@@ -64,5 +64,4 @@ public class PedidoService {
 	public Pedido buscarPorId(Long id) {
 		return pedidoDAO.findById(id);
 	}
-
 }

@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.cwi.crescer.domain.Cliente;
 import br.com.cwi.crescer.domain.Item.SituacaoItem;
 import br.com.cwi.crescer.domain.Material;
+import br.com.cwi.crescer.domain.Pedido;
 import br.com.cwi.crescer.domain.Produto;
 import br.com.cwi.crescer.domain.Servico;
 import br.com.cwi.crescer.dto.ClienteDTO;
@@ -29,6 +30,7 @@ import br.com.cwi.crescer.mapper.ClienteMapper;
 import br.com.cwi.crescer.mapper.PedidoMapper;
 import br.com.cwi.crescer.mapper.ProdutoMapper;
 import br.com.cwi.crescer.service.ClienteService;
+import br.com.cwi.crescer.service.ItemService;
 import br.com.cwi.crescer.service.MaterialService;
 import br.com.cwi.crescer.service.PedidoService;
 import br.com.cwi.crescer.service.ProdutoService;
@@ -41,17 +43,16 @@ public class PedidoController {
     private PedidoService pedidoService;
     private ClienteService clienteService;
     private ProdutoService produtoService;
-    private MaterialService materialService;
     private ServicoService servicoService;
+    private ItemService itemService;
 
     @Autowired
-    public PedidoController(PedidoService pedidoService, ClienteService clienteService, MaterialService materialService,
-			ServicoService servicoService, ProdutoService produtoService) {
+    public PedidoController(PedidoService pedidoService, ClienteService clienteService, ServicoService servicoService, ProdutoService produtoService, ItemService itemService) {
 		this.pedidoService = pedidoService;
 		this.clienteService = clienteService;
-		this.materialService = materialService;
 		this.servicoService = servicoService;
 		this.produtoService = produtoService;
+		this.itemService = itemService;
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -97,6 +98,19 @@ public class PedidoController {
     	ItemDTO item = pedidoService.atribuirProdutoANovoItem(produto, idPedido);
     	
     	return new ModelAndView("pedido/adicionaItem", "item", item);
+    }
+    
+    @RequestMapping(path = "/adicionarNovoItem", method = RequestMethod.POST)
+    public ModelAndView adicionarNovoItem(@Valid @ModelAttribute("item") ItemDTO item, 
+    		BindingResult result, 
+    		final RedirectAttributes redirectAttributes) {
+    	
+    	if (result.hasErrors()) {
+        }
+    	
+    	itemService.adicionarItem(item);
+    	
+    	return new ModelAndView("redirect:/pedidos");
     }
     
     @ModelAttribute("clientes")

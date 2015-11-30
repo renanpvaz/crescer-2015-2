@@ -39,12 +39,20 @@
 			 </div> 
 		   
 			<div class="col-sm-6">       
-				<form id="form-servico" th:action="@{/pedidos/buscarMateriais}" class="form-group" method="get">
+				<form id="form-servico" th:action="@{/pedidos/adicionarNovoItem}" th:object="${item}" class="form-group" method="post">
+				
+				<input th:field="*{pedido.idPedido}" type="hidden" />
+				
+				<input th:field="*{produto.idProduto}" type="hidden" />
+				
+				<input th:field="*{valorUnitario}" type="hidden" />
+				
+				<input th:field="*{situacao}" type="hidden" />
 				
 				<div class="form-group">
 				    <label>Peso:</label>
 				    <div style="width:29%" class="input-group">
-				      <input step="0.5" id="peso" th:field="*{item.peso}" type="number" min="1" class="form-control"/>
+				      <input step="0.1" id="peso" th:field="*{peso}" type="number" min="1" class="form-control"/>
 				      <div class="input-group-addon">kg</div>
 				    </div>
 				  </div>
@@ -53,10 +61,11 @@
 				    <label>Valor total:</label>
 				    <div style="width:29%" class="input-group">
 				      <div class="input-group-addon">R$</div>
-				      <input disabled="disabled" id="valorTotal" th:field="*{item.valorTotal}" type="number" min="1" class="form-control"/>
+				      <input readonly="readonly" id="valorTotal" th:field="*{valorTotal}" th:value="10" type="number" min="1" class="form-control"/>
 				    </div>
 				  </div>
 				    
+				    <button style="margin-top:23px;" class="btn btn-primary" type="submit">Concluir</button>
 	      		</form>
       		</div>
       		

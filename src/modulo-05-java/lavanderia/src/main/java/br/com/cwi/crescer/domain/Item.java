@@ -45,10 +45,6 @@ public class Item {
     @Basic(optional = false)
     private BigDecimal valorUnitario;
 
-    @Column(name = "VALORDesconto")
-    @Basic(optional = false)
-    private BigDecimal valorDesconto;
-
     @Column(name = "VALORTotal")
     @Basic(optional = false)
     private BigDecimal valorTotal;
@@ -61,7 +57,20 @@ public class Item {
         PENDENTE, PROCESSANDO, PROCESSADO
     }
 
-    public Long getIdItem() {
+    public Item() {
+    }
+    
+    public Item(Long idItem, Pedido pedido, Produto produto, BigDecimal peso, BigDecimal valorUnitario, BigDecimal valorTotal, SituacaoItem situacao) {
+		this.idItem = idItem;
+		this.pedido = pedido;
+		this.produto = produto;
+		this.peso = peso;
+		this.valorUnitario = valorUnitario;
+		this.valorTotal = valorTotal;
+		this.situacao = situacao;
+	}
+
+	public Long getIdItem() {
         return idItem;
     }
 
@@ -73,7 +82,7 @@ public class Item {
         return pedido;
     }
 
-    public void setIdPedido(Pedido pedido) {
+    public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
 
@@ -99,14 +108,6 @@ public class Item {
 
     public void setValorUnitario(BigDecimal valorUnitario) {
         this.valorUnitario = valorUnitario;
-    }
-
-    public BigDecimal getValorDesconto() {
-        return valorDesconto;
-    }
-
-    public void setValorDesconto(BigDecimal valorDesconto) {
-        this.valorDesconto = valorDesconto;
     }
 
     public BigDecimal getValorTotal() {

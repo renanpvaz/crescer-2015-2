@@ -9,6 +9,7 @@ import br.com.cwi.crescer.domain.Produto;
 
 public class ItemDTO {
 	
+	private Long idItem;
 	private Pedido pedido;
 	private Produto produto;
 	private BigDecimal peso;
@@ -20,6 +21,7 @@ public class ItemDTO {
 	}
 	
 	public ItemDTO(Item item) {
+		this.idItem = item.getIdItem();
 		this.pedido = item.getPedido();
 		this.produto = item.getProduto();
 		this.peso = item.getPeso();
@@ -28,6 +30,14 @@ public class ItemDTO {
 		this.situacao = item.getSituacao();
 	}
 	
+	public Long getIdItem() {
+		return idItem;
+	}
+
+	public void setIdItem(Long idItem) {
+		this.idItem = idItem;
+	}
+
 	public Pedido getPedido() {
 		return pedido;
 	}
