@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title th:text="'Pedido #0' + ${pedido.idPedido}">Pedidos</title>
+	</head>
+
+	<body>
+	
+	<h2>Pedidos</h2>
+	
+	<div layout:fragment="custom-header" class="header">
+	    <h1 th:text="'Pedido #0' + ${pedido.idPedido} + ' - Itens'"></h1>	
+	 </div>
+	
+	<section layout:fragment="content">
+	
+	<div style="margin-bottom:15px" class="form-inline">
+			    <label>Data de inclusão</label>
+			    <input style="width:13%" type="text" class="form-control" disabled="disabled" th:value="*{pedido.dataInclusao.toString().substring(0, 10)}" />
+			    <label>Previsão de entrega</label>
+			    <input style="width:13%" type="text" class="form-control" disabled="disabled" th:value="*{pedido.dataEntrega}" />
+			    <div class="input-group">
+			    	<label>Valor bruto</label>
+				      <div style="width:5%" class="input-group-addon">R$</div>
+				      <input style="width:13%" readonly="readonly" id="valorTotal" th:field="*{pedido.valorBruto}" th:value="10" type="number" min="1" class="form-control"/>
+			 	</div>
+			 </div>
+	
+		<div th:if="${not #lists.isEmpty(pedido.itens)}">
+	        
+	        <table class="table table-bordered table-hover">
+	        	<tr>
+	        		<th colspan="2" style="text-align: center;">Produto</th>
+    				<th colspan="5" style="text-align: center;"></th>
+	        	</tr>
+	            <tr>
+	                <th>Serviço</th>
+	                <th>Material</th>
+	                <th>Peso</th>
+	                <th>Valor total</th>
+	                <th>Situação</th>
+	            </tr>
+	            <tr th:each="item : ${pedido.itens}">
+	                <td th:text="${item.produto.servico.descricao}"></td>
+	                <td th:text="${item.produto.material.descricao}"></td>
+	                <td th:text="${item.peso}"></td>
+	                <td th:text="${item.valorTotal}"></td>
+	                <td th:text="${item.situacao}"></td>
+	            </tr>
+	        </table>
+	    </div>
+	    
+	  </section>
+		
+	</body>
+	
+</html>

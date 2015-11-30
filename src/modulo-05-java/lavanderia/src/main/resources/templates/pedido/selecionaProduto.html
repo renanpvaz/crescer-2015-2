@@ -66,9 +66,8 @@
 	      		</form>
       		</div>
       		
-      		<script>
-		
-				$("#form-servico").focusout(function() {
+      		<script>	 
+				$("#form-servico").change(function() {
 					  $("#form-servico").submit();
 					  $('#materiais').prop('disabled', false);
 					});	

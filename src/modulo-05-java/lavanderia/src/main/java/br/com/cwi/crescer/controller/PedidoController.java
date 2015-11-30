@@ -1,5 +1,6 @@
 package br.com.cwi.crescer.controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -64,7 +65,12 @@ public class PedidoController {
     public ModelAndView cadastrar() {
         return new ModelAndView("pedido/novo", "pedido", new PedidoDTO());
     }
-
+    
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
+    public ModelAndView visualizar(@PathVariable("id") Long id) {
+    	return new ModelAndView("pedido/exibe", "pedido", pedidoService.buscarPorId(id));
+    }
+    
     @RequestMapping(path = "/cadastrar", method = RequestMethod.POST)
     public ModelAndView cadastrar(@Valid @ModelAttribute("pedido") PedidoDTO pedido, BindingResult result, final RedirectAttributes redirectAttributes) {
 
@@ -103,14 +109,17 @@ public class PedidoController {
     @RequestMapping(path = "/adicionarNovoItem", method = RequestMethod.POST)
     public ModelAndView adicionarNovoItem(@Valid @ModelAttribute("item") ItemDTO item, 
     		BindingResult result, 
-    		final RedirectAttributes redirectAttributes) {
+    		final RedirectAttributes redirectAttributes) throws ParseException {
+    	
+    	Pedido pedido = pedidoService.buscarPorId(item.getPedido().getIdPedido());
     	
     	if (result.hasErrors()) {
         }
     	
     	itemService.adicionarItem(item);
+    	pedidoService.atualizarInformacoes(pedido, item);
     	
-    	return new ModelAndView("redirect:/pedidos");
+    	return new ModelAndView("redirect:/pedidos/" + item.getPedido().getIdPedido());
     }
     
     @ModelAttribute("clientes")
