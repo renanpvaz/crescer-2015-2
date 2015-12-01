@@ -11,19 +11,31 @@
 			margin-bottom: 4px;
 		}
 		
+		span {
+			color: #009688 !important;
+		}
+		
 		</style>
 		
 	</head>
 
 	<body>
 	
+	<form layout:fragment="pesquisa">      
+      </form>
+	
 	<h2>Pedidos</h2>
 	
-	<div layout:fragment="custom-header" class="header">
+	<div style="background-color:#009688;" layout:fragment="custom-header" class="header">
 	    <h1 th:text="'Pedido #0' + ${pedido.idPedido} + ' - Itens'"></h1>	
 	 </div>
 	
 	<section style="overflow:visible;" layout:fragment="content">
+	
+	<div th:if="${mensagem != null}" class="alert alert-success" style="position: absolute;top: -15%;right: 35%;">
+		  <strong>Success!</strong> <span th:text="${mensagem}"></span>
+		</div>
+	
 		<div class="jumbotron col-sm-4">
 			<div class="input-group input-group-sm">
 				<div class="input-group">
@@ -54,7 +66,7 @@
 			        
 			        <table class="table table-bordered table-hover">
 			        	<tr>
-			        		<th colspan="3" style="text-align: center; width:50%"><a >Processar Itens</a></th>
+			        		<th colspan="3" style="text-align: center; width:50%"><a th:href="${'/pedidos/processarItens/' + pedido.idPedido}">Processar Itens</a></th>
 		    				<th colspan="3" style="text-align: center;"><a th:href="${'/pedidos/selecionarProduto/' + pedido.idPedido}">Adicionar Item</a></th>
 			        	</tr>
 			            <tr>
@@ -76,6 +88,12 @@
 			</div>
 	    
 	  </section>
+	  
+	  <footer>
+      <div style="background-color:#009688;" layout:fragment="custom-footer" class="footer">
+	      <h4> &copy; 2015 - CWI Crescer </h4>
+      </div>
+    </footer> 
 		
 	</body>
 	

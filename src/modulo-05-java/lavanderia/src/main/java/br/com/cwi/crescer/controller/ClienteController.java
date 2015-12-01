@@ -64,6 +64,8 @@ public class ClienteController {
         if (result.hasErrors()) {
             return new ModelAndView("cliente/novo", "cliente", cliente);
         }
+        
+        redirectAttributes.addFlashAttribute("mensagem", "Cliente adicionado");
 
         clienteService.incluir(cliente);
         return new ModelAndView("redirect:/clientes");

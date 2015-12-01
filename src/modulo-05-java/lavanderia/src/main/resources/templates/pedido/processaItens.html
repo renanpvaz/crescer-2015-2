@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<style>
+		.checkbox { 
+			font-size: 14px !important; 
+		}
+		
+		input {
+		    width: 13px;
+		    height: 13px;
+		    padding: 0 !important;
+		    margin: 0 !important;
+		    vertical-align: baseline;
+		    position: relative;
+		    top: 8px;
+		}
+		
+		span {
+			color: #009688 !important;
+		}
+		
+		label {
+		    display: inline;
+		    margin-bottom: 0;
+		    font-weight: normal;
+		    cursor: pointer;
+	        padding-left: 8px;
+		}
+		
+		</style>
+		
+	</head>
+
+	<body>
+	
+	<form layout:fragment="pesquisa">      
+      </form>
+	
+	<div style="background-color:#009688;" layout:fragment="custom-header" class="header">
+	    <h1 th:text="'Pedido #0' + ${pedido.idPedido} + ' - Processar itens'"></h1>	
+	 </div>
+	
+	<section style="overflow:visible;" layout:fragment="content">
+		<div class="jumbotron input-group">
+			<form id="form-item" th:action="@{/pedidos/processarItem}" class="form-group" method="get">
+				<div th:each="item : ${itens}" class="checkbox">
+				  <label th:text="${'#' + item.idItem  + ' ' + item.produto.servico.descricao + ' &mdash; ' + item.produto.material.descricao}">
+				  </label>
+				  <input name="idItem" type="checkbox" th:value="${item.idItem}" />
+				</div>
+			</form>
+		</div>
+		
+		<script>	 
+				$("input[type='checkbox']").change(function() {
+					 if(this.checked) {
+						$("#form-item").submit();
+					 }
+				});	
+			</script>
+		
+	  </section>
+	  
+	  <footer>
+      <div style="background-color:#009688;" layout:fragment="custom-footer" class="footer">
+	      <h4> &copy; 2015 - CWI Crescer </h4>
+      </div>
+    </footer> 
+		
+	</body>
+	
+</html>

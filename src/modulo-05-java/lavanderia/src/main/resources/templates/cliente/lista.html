@@ -11,6 +11,13 @@
 	
 	<h2>Clientes</h2>
 	
+	<header>
+    	<div layout:fragment="custom-header" class="header">
+    	  <h1 style="color:white;">Lista de clientes</h1>	
+    	  <button onclick="location.href = '/clientes/cadastrar'" class="btn btn-lg btn-default">Adicionar cliente</button>
+    	</div>
+    </header>
+	
 	<section layout:fragment="content">
 		<div th:if="${not #lists.isEmpty(clientes)}">
 	        

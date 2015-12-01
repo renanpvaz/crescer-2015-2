@@ -11,8 +11,9 @@
 	
 	<header>
     	<div layout:fragment="custom-header" class="header">
-    	  <h1>Lista de produtos</h1>	
-    	</div>  
+    	  <h1 style="color:white;">Lista de produtos</h1>	
+    	  <button onclick="location.href = '/produtos/cadastrar'" class="btn btn-lg btn-default">Adicionar produto</button>
+    	</div>
     </header>
 	
 	<form th:action="@{/produtos/buscar}" layout:fragment="pesquisa" class="navbar-form navbar-left" method="get">
@@ -43,6 +44,11 @@
 	<h2>Produtos</h2>
 	
 	<section layout:fragment="content">
+	
+	<div th:if="${mensagem != null}" class="alert alert-success" style="position: absolute;top: -15%;right: 35%;">
+		  <strong>Success!</strong> <span th:text="${mensagem}"></span>
+		</div>
+	
 		<div th:if="${not #lists.isEmpty(produtos)}">
 	        
 	        <table class="table table-bordered table-hover">

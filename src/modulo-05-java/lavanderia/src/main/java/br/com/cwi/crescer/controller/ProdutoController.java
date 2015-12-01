@@ -60,6 +60,8 @@ public class ProdutoController {
         if (result.hasErrors()) {
             return new ModelAndView("produto/novo", "produto", produto);
         }
+        
+        redirectAttributes.addFlashAttribute("mensagem", "Produto adicionado");
 
         produtoService.incluir(produto);
         return new ModelAndView("redirect:/produtos");

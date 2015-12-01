@@ -1,6 +1,7 @@
 package br.com.cwi.crescer.controller;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.cwi.crescer.domain.Cliente;
+import br.com.cwi.crescer.domain.Item;
 import br.com.cwi.crescer.domain.Item.SituacaoItem;
 import br.com.cwi.crescer.domain.Material;
 import br.com.cwi.crescer.domain.Pedido;
@@ -119,8 +121,29 @@ public class PedidoController {
     	itemService.adicionarItem(item);
     	pedidoService.atualizarInformacoes(pedido, item);
     	
+    	redirectAttributes.addFlashAttribute("mensagem", "Item adicionado");
+    	
     	return new ModelAndView("redirect:/pedidos/" + item.getPedido().getIdPedido());
     }
+    
+    @RequestMapping(path = "/processarItens/{id}", method = RequestMethod.GET)
+    public ModelAndView processarItens(Model model, @PathVariable("id") Long id) {
+    	Pedido pedido = pedidoService.buscarPorId(id); 	
+    	
+    	model.addAttribute("itens", pedido.getItens());
+    	
+    	return new ModelAndView("pedido/processaItens", "pedido", pedido);
+    }
+    
+    @RequestMapping(params="idItem", path = "/processarItem", method = RequestMethod.GET)
+    public ModelAndView processarItem(@RequestParam("idItem") Long id) {
+    	Item item = itemService.buscarPorId(id);
+    	
+    	itemService.processarItem(item);
+    	
+    	return new ModelAndView("redirect:/pedidos/processarItens/" + item.getPedido().getIdPedido());
+    }
+
     
     @ModelAttribute("clientes")
     public List<Cliente> comboClientes() {

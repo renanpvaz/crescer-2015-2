@@ -8,6 +8,12 @@
 	</head>
 	<body>
 		
+		<header>
+	    	<div class="header" style=" background-color: #b94a48;">
+	    	  <h1 layout:fragment="custom-header">Remover</h1>	
+	    	</div>  
+	    </header>
+		
 		<section layout:fragment="content">
 		
 			<h2>Remover</h2>
@@ -16,29 +22,29 @@
 				
 				<input th:field="*{id}" type="hidden" />
 				
-				<p>
-					<label class="control-label">Nome: </label>
-					<input th:field="*{nome}" type="text" disabled="true" />
-				</p>
-				
-				<p>
-					<label class="control-label">CPF: </label>
-			 		<input th:field="*{cpf}" type="text" disabled="true"/>
-				</p>
-				
-				<p>
-			 		<label class="control-label">Email: </label>
-			 		<input th:field="*{email}" type="text" disabled="true"/>
-		 		</p>
-		 		
-		 		<p>
-			 		<label class="control-label">Cidade: </label>
-			 		<select th:field="*{idCidade}" disabled="true">
-		                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
-		            </select>
-	            </p>
+				<div class="form-group">
+			    <label>Nome</label>
+			    <input th:field="*{nome}" type="text" class="form-control" disabled="true"></input>
+			  </div>
+			  
+			  <div class="form-group">
+			    <label>CPF</label>
+			    <input th:field="*{cpf}" type="text" class="form-control" disabled="true"></input>
+			  </div>
+			  
+			  <div class="form-group">
+			    <label>Email</label>
+			    <input th:field="*{email}" type="text" class="form-control" disabled="true"></input>
+			  </div>
+			  
+			  <div class="form-group">
+			      <label>Cidade</label>
+			      <select class="form-control" th:field="*{idCidade}" disabled="true">
+			        <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
+			      </select>
+			    </div>
 	            
-	            <button type="submit">Remover</button>
+	            <button class="btn btn-primary" type="submit">Remover</button>
 	             
 			</form>
 		

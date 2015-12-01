@@ -9,15 +9,24 @@
 
 	<body>
 	
-	<h2>Pedidos</h2>
+	<form layout:fragment="pesquisa" class="navbar-form navbar-left" method="get">
+      </form>
+	
+	<header>
+    	<div layout:fragment="custom-header" class="header">
+    	  <h1 style="color:white;">Lista de pedidos</h1>	
+    	  <button onclick="location.href = '/pedidos/cadastrar'" class="btn btn-lg btn-default">Adicionar pedido</button>
+    	</div>
+    </header>
 	
 	<section layout:fragment="content">
+	
 		<div th:if="${not #lists.isEmpty(pedidos)}">
 	        
 	        <table class="table table-bordered table-hover">
 	        	<tr>
 	        		<th colspan="2" style="text-align: center;">Cliente</th>
-    				<th colspan="5" style="text-align: center;">Pedido</th>
+    				<th colspan="6" style="text-align: center;">Pedido</th>
 	        	</tr>
 	            <tr>
 	                <th>Nome</th>
@@ -25,8 +34,8 @@
 	                <th>Data inclusão</th>
 	                <th>Valor total</th>
 	                <th>Situação</th>
-	                <th>Editar</th>
-	                <th>Remover</th>
+	                <th colspan="2">Editar</th>
+	                <th>Visualizar</th>
 	            </tr>
 	            <tr th:classappend="${pedido.situacao == 'CANCELADO'} ? 'danger' : 'sucess'" th:each="pedido : ${pedidos}">
 	                <td th:text="${pedido.cliente.nome}"></td>
@@ -34,8 +43,9 @@
 	                <td th:text="${pedido.dataInclusao.toString().substring(0, 10)}"></td>
 	                <td th:text="${pedido.valorTotal}"></td>
 	                <td th:text="${pedido.situacao}"></td>
-	                <td><a th:href="${'/pedido/editar/' + pedido.id}">Editar</a></td>
-	                <td><a th:href="${'/pedido/remover/' + pedido.id}">Remover</a></td>
+	                <td><a th:href="${'/pedidos/selecionarProduto/' + pedido.id}">Adicionar Item</a></td>
+	                <td><a th:href="${'/pedidos/processarItens/' + pedido.id}">Processar</a></td>
+	                <td><a th:href="${'/pedidos/' + pedido.id}">Visualizar</a></td>
 	            </tr>
 	        </table>
 	    </div>
