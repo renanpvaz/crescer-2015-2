@@ -128,7 +128,7 @@ public class PedidoService {
 		
 		Integer diaDaSemana = DateUtils.dayOfWeek(pedido.getDataInclusao());
 		
-		if(diaDaSemana == Calendar.MONDAY || diaDaSemana == Calendar.WEDNESDAY) {
+		if(diaDaSemana == Calendar.MONDAY || diaDaSemana == Calendar.TUESDAY || diaDaSemana == Calendar.WEDNESDAY) {
 			desconto = pedido.getValorBruto().multiply(new BigDecimal("0.08"));
 		} 
 		else if(diaDaSemana == Calendar.THURSDAY || diaDaSemana == Calendar.FRIDAY) {

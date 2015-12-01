@@ -5,6 +5,14 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title th:text="'Pedido #0' + ${pedido.idPedido}">Pedidos</title>
+		<style>
+		.input-group { 
+			font-size: 14px !important; 
+			margin-bottom: 4px;
+		}
+		
+		</style>
+		
 	</head>
 
 	<body>
@@ -15,43 +23,57 @@
 	    <h1 th:text="'Pedido #0' + ${pedido.idPedido} + ' - Itens'"></h1>	
 	 </div>
 	
-	<section layout:fragment="content">
+	<section style="overflow:visible;" layout:fragment="content">
+		<div class="jumbotron col-sm-4">
+			<div class="input-group input-group-sm">
+				<div class="input-group">
+					<span style="padding-right: 30px;" class="span input-group-addon" id="basic-addon3">Inclusão</span>
+					<input th:value="*{pedido.dataInclusao.toString().substring(0, 10)}" type="text" class="form-control" aria-describedby="sizing-addon3" />
+				</div>
+				<div class="input-group">
+					<span style="padding-right: 33px;" class="span input-group-addon" id="basic-addon3">Entrega </span>
+					<input th:value="*{pedido.dataEntrega}" type="text" class="form-control" aria-describedby="sizing-addon3" />
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon" id="basic-addon3"> Valor bruto </span>
+					<input th:value="${'R$ ' + #numbers.formatDecimal(pedido.valorBruto, 0, 'COMMA', 2, 'POINT')}" type="text" class="form-control" aria-describedby="sizing-addon3" />
+				</div>
+	  			<div class="input-group">
+					<span style="padding-right: 23px;" class="span input-group-addon" id="basic-addon3">Desconto</span>
+					<input th:value="${'R$ ' + #numbers.formatDecimal(pedido.valorDesconto, 0, 'COMMA', 2, 'POINT')}" type="text" class="form-control" aria-describedby="sizing-addon3" />
+				</div>
+				<div class="input-group">
+					<span style="padding-right: 21px;" class="span input-group-addon" id="basic-addon3">Valor final</span>
+					<input th:value="${'R$ ' + #numbers.formatDecimal(pedido.valorFinal, 0, 'COMMA', 2, 'POINT')}" type="text" class="form-control" aria-describedby="sizing-addon3" />
+				</div>	  			
+			</div>
+			</div>
 	
-	<div style="margin-bottom:15px" class="form-inline">
-			    <label>Data de inclusão</label>
-			    <input style="width:13%" type="text" class="form-control" disabled="disabled" th:value="*{pedido.dataInclusao.toString().substring(0, 10)}" />
-			    <label>Previsão de entrega</label>
-			    <input style="width:13%" type="text" class="form-control" disabled="disabled" th:value="*{pedido.dataEntrega}" />
-			    <div class="input-group">
-			    	<label>Valor bruto</label>
-				      <div style="width:5%" class="input-group-addon">R$</div>
-				      <input style="width:13%" readonly="readonly" id="valorTotal" th:field="*{pedido.valorBruto}" th:value="10" type="number" min="1" class="form-control"/>
-			 	</div>
-			 </div>
-	
-		<div th:if="${not #lists.isEmpty(pedido.itens)}">
-	        
-	        <table class="table table-bordered table-hover">
-	        	<tr>
-	        		<th colspan="2" style="text-align: center;">Produto</th>
-    				<th colspan="5" style="text-align: center;"></th>
-	        	</tr>
-	            <tr>
-	                <th>Serviço</th>
-	                <th>Material</th>
-	                <th>Peso</th>
-	                <th>Valor total</th>
-	                <th>Situação</th>
-	            </tr>
-	            <tr th:each="item : ${pedido.itens}">
-	                <td th:text="${item.produto.servico.descricao}"></td>
-	                <td th:text="${item.produto.material.descricao}"></td>
-	                <td th:text="${item.peso}"></td>
-	                <td th:text="${item.valorTotal}"></td>
-	                <td th:text="${item.situacao}"></td>
-	            </tr>
-	        </table>
-	    </div>
+			<div class="col-sm-8">
+				<div th:if="${not #lists.isEmpty(pedido.itens)}">
+			        
+			        <table class="table table-bordered table-hover">
+			        	<tr>
+			        		<th colspan="3" style="text-align: center; width:50%"><a >Processar Itens</a></th>
+		    				<th colspan="3" style="text-align: center;"><a th:href="${'/pedidos/selecionarProduto/' + pedido.idPedido}">Adicionar Item</a></th>
+			        	</tr>
+			            <tr>
+			                <th>Serviço</th>
+			                <th>Material</th>
+			                <th>Peso</th>
+			                <th>Valor total</th>
+			                <th>Situação</th>
+			            </tr>
+			            <tr th:each="item : ${pedido.itens}">
+			                <td th:text="${item.produto.servico.descricao}"></td>
+			                <td th:text="${item.produto.material.descricao}"></td>
+			                <td th:text="${item.peso}"></td>
+			                <td th:text="${item.valorTotal}"></td>
+			                <td th:text="${item.situacao}"></td>
+			            </tr>
+			        </table>
+			    </div>
+			</div>
 	    
 	  </section>
 		
